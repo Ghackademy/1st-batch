@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2014 at 11:01 AM
--- Server version: 5.5.24-log
--- PHP Version: 5.3.13
+-- Generation Time: Jul 08, 2014 at 10:35 PM
+-- Server version: 5.1.37
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,6 +18,42 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_shoppingcart`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `fname` varchar(20) DEFAULT NULL,
+  `lname` varchar(20) DEFAULT NULL,
+  `email` varchar(20) DEFAULT NULL,
+  `country` varchar(20) DEFAULT NULL,
+  `city` varchar(20) DEFAULT NULL,
+  `zip_code` int(6) DEFAULT NULL,
+  `post_box` int(10) DEFAULT NULL,
+  `user_type` varchar(20) DEFAULT NULL,
+  `phone` int(20) DEFAULT NULL,
+  `image` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `confirm_password` varchar(50) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`id`, `fname`, `lname`, `email`, `country`, `city`, `zip_code`, `post_box`, `user_type`, `phone`, `image`, `password`, `confirm_password`, `gender`) VALUES
+(1, 'admin', 'admin', 'admin@yahoo.com', 'nepal', 'nepal', 13324, 3424, 'admin', 14453, NULL, 'admin11', 'admin11', NULL),
+(2, 'kriti', 'nemkul', 'nemkulk@yahoo.com', 'nepal', 'lalitpur', 12345, 1234, 'User', 2147483647, '46757_651251811590762_127441764_n3.jpg', 'mekriti', 'mekriti', 'female'),
+(3, 'ram', 'ram', 'ram@gmail.com', 'nea', 'hjhkj', 225, 23, 'Vendor', 2343, 'aa.jpg', 'ramram', 'ramram', 'male'),
+(4, 'hari', 'chapagain', 'hari@gmail.com', 'nepal', 'siddhipur,lalitpur', 476576, 456, 'Vendor', 243453, 'Hydrangeas.jpg', 'hari1', 'hari1', 'male'),
+(5, 'mina', 'kumari', 'mina@gmail.com', 'nepal', 'siddhipur,lalitpur', 43564, 2345, 'User', 365467, 'Jellyfish.jpg', 'mina1', 'mina1', 'female'),
+(6, 'pragrya', 'nemkul', 'p@gmail.com', 'Nepal', 'kathmandu', 977, 4564, 'User', 657687687, 'Penguins.jpg', 'pragya', 'pragya', 'female');
 
 -- --------------------------------------------------------
 
@@ -34,6 +69,11 @@ CREATE TABLE IF NOT EXISTS `tb_cart` (
   PRIMARY KEY (`cart_id`),
   KEY `fkforproduct` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `tb_cart`
+--
+
 
 -- --------------------------------------------------------
 
