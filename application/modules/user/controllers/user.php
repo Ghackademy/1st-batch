@@ -12,8 +12,8 @@ class User extends MX_Controller {
         }
 	public function index()
 	{
-		//$this->load->view('signUpForm');
-            echo "hio";
+	       $this->load->view('signUpForm');
+            
 	}
 }
 
