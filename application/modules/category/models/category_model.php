@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Category_model extends CI_Model {
+    const table = "tb_category"; 
     function __construct() {
                 // Call the Model constructor
                 parent::__construct();
@@ -9,15 +10,19 @@ class Category_model extends CI_Model {
          }
          
          //function to display all categories
-         function getAllCategory($tbname){
-             $query= $this->db->get($tbname);
+         function getAllCategory(){
+             $query= $this->db->get(category_model::table);
              $res = $query->result_array();
              
              return $res;
          }
          
-         public function insertCategory($tablename, $data){
-             $this->db->insert($tablename, $data);
+
+         /*
+          * 
+          */
+         public function insertCategory($data){
+             $this->db->insert(category_model::table, $data);
              return $this->db->insert_id();
          }
          
