@@ -23,7 +23,7 @@ class Category_model extends CI_Model {
              $this->db->insert($tablename, $data);
              return $this->db->insert_id();
          }
-       
+        
          public function getSingleCategory($id){
               if($_POST){
              $res=$this->db->get_where(category::table,array('cat_id'=>$id));
