@@ -23,8 +23,10 @@
                 Password:<input type="password" name="password" ><?php echo form_error('password');?><br>
                 Confirm Password:<input type="password" name="passconf" ><?php echo form_error('passconf');?><br>
                 User Type:<select name="usertype">
-                    <option selected="selected">user</option>
-                    <option>vendor</option>
+                    <?php foreach($groups as $g): ?>        
+                        <option value=<?php echo $g['group_id'];?>><?php echo $g['group_type'];?></option>
+                     <?php endforeach;  ?>
+                    
                 </select><br>
                 <input type="submit" name="submit">
         </form>
