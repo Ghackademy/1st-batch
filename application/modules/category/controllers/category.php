@@ -4,21 +4,21 @@ class category extends MX_Controller {
 const table = "tb_category";    
     Public function __construct(){
         parent::__construct();
-        $this->load->model('category_model');
+        $this->load->model('category_model'); // load category model
         $this->load->library('session');
         
               
     }
     
 
-    public function categorylist(){
+    public function categorylist(){ // get all list of category form table
         
          $data['allcategory']= $this->category_model->getallcategory(category::table);
 
         $this->load->view('categorylist',$data);
     }
 
-    public function add(){
+    public function add(){  // add category in tb_category table 
         if ($_POST){
             $data= array(
                 'cat_title'=>  $this->input->post('cat_title'),
