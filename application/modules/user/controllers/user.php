@@ -12,8 +12,9 @@ class User extends MX_Controller {
         }
 	public function index()
 	{
-		//$this->load->view('signUpForm');
-            echo "hio";
+	//	$this->load->view('signUpForm');
+          $data['test']=$this->user_model->getFromDb('','row','','');
+          print_r($data);
 	}
 }
 
