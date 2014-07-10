@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class category extends MX_Controller {
-    
+const table = "tb_category";    
     Public function __construct(){
         parent::__construct();
         $this->load->model('category_model');
@@ -13,7 +13,7 @@ class category extends MX_Controller {
 
     public function categorylist(){
         
-         $data['allcategory']= $this->category_model->getallcategory('tb_category');
+         $data['allcategory']= $this->category_model->getallcategory(category::table);
 
         $this->load->view('categorylist',$data);
     }
@@ -25,7 +25,7 @@ class category extends MX_Controller {
                 'cat_description'=>  $this->input->post('cat_desc')
             );
         
-        $this->category_model->insertcategory('tb_category',$data);
+        $this->category_model->insertcategory(category::table,$data);
         redirect('category/categorylist');
         
         }
