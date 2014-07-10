@@ -13,7 +13,7 @@ const table = "tb_category";
 
     public function categorylist(){ // get all list of category form table
         
-         $data['allcategory']= $this->category_model->getallcategory(category::table);
+         $data['allcategory']= $this->category_model->getAllCategory(category::table);
 
         $this->load->view('categorylist',$data);
     }
@@ -25,7 +25,7 @@ const table = "tb_category";
                 'cat_description'=>  $this->input->post('cat_desc')
             );
         
-        $this->category_model->insertcategory(category::table,$data);
+        $this->category_model->insertCategory(category::table,$data);
         redirect('category/categorylist');
         
         }
