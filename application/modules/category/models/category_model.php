@@ -9,14 +9,14 @@ class Category_model extends CI_Model {
          }
          
          //function to display all categories
-         function getallcategory($tbname){
+         function getAllCategory($tbname){
              $query= $this->db->get($tbname);
              $res = $query->result_array();
              
              return $res;
          }
          
-         public function insertcategory($tablename, $data){
+         public function insertCategory($tablename, $data){
              $this->db->insert($tablename, $data);
              return $this->db->insert_id();
          }
