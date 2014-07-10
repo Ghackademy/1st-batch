@@ -10,15 +10,20 @@ const table = "tb_category";
               
     }
     
-
-    public function categorylist(){ // get all list of category form table
+     /*
+      * returns template
+      */
+    public function categorylist(){ 
         
          $data['allcategory']= $this->category_model->getAllCategory(category::table);
 
         $this->load->view('categorylist',$data);
     }
-
-    public function add(){  // add category in tb_category table 
+    
+    /*
+     * returns data insert
+     */
+    public function add(){  
         if ($_POST){
             $data= array(
                 'cat_title'=>  $this->input->post('cat_title'),
