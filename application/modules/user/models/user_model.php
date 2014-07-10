@@ -13,7 +13,7 @@ class User_model extends CI_Model {
                
          }
          
-         function addToDb($data){
+         function insertUser($data){
              //insert $data into table tbl_user
              $this->db->insert(user_model::table,$data);
          }
