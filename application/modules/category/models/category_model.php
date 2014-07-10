@@ -9,7 +9,7 @@ class Category_model extends CI_Model {
          }
          
          //function to display all categories
-         function getallcategory($tbname){
+         function getAllCategory($tbname){
              $query= $this->db->get($tbname);
              $res = $query->result_array();
              
@@ -17,7 +17,7 @@ class Category_model extends CI_Model {
          }
          
          
-         public function insertcategory($tablename, $data){
+         public function insertCategory($tablename, $data){
              // function to insert category in table
              $this->db->insert($tablename, $data);
              return $this->db->insert_id();
