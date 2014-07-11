@@ -120,8 +120,12 @@ class User extends MX_Controller {
    function login(){
             if($_POST){
                 $result = $this->user_model->validateLogin();
+                $this->session->set_userdata('res',$result);
                 if(! $result){
-                    $this->session->set_userdata('msg',$msg);
+                   $msg = '<font color="red">Username or password invalid </font>';
+                   $this->session->set_userdata('msg',$msg);
+                   
+                    //echo $msg;
                     redirect('user/login');
                 }
                 else{
