@@ -147,6 +147,21 @@ class User extends MX_Controller {
                 $this->load->view('login');
             } 
    }
+   
+   
+   
+   
+   public function edit($id){
+       //to edit user
+       if($_POST){
+           $this->user_model->editUser($id,$image);
+            redirect('user/userinfo');
+       }
+       else{
+            $data['users'] = $this->user_model->getSingleUser($id,$image);
+            $this->load->view('edit', $data);
+       }
+   }
 }
 
 ?>

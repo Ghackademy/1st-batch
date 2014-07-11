@@ -69,5 +69,13 @@ class User_model extends CI_Model {
 			return $query->result_array(); // returns all the data ie result of the table
                 
          }
- }
+         
+          public function getSingleUser($id) {
+        $query = $this->db->get_where('tbl_user', array('user_id' => $id));
+        return $query->row($id);
+    }
+    
+    
+    public function editUser(){
+    } }
 
