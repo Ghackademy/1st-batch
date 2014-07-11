@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 12, 2014 at 12:38 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: Jul 11, 2014 at 12:00 PM
+-- Server version: 5.1.37
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -35,27 +34,32 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `city` varchar(20) DEFAULT NULL,
   `zip_code` int(6) DEFAULT NULL,
   `post_box` int(10) DEFAULT NULL,
-  `user_type` varchar(20) DEFAULT NULL,
+  `group_id` int(20) NOT NULL,
   `phone` int(20) DEFAULT NULL,
   `image` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
+  `confirm_password` varchar(50) DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `fname`, `lname`, `email`, `country`, `city`, `zip_code`, `post_box`, `user_type`, `phone`, `image`, `password`, `gender`) VALUES
-(1, 'admin', 'admin', 'admin@yahoo.com', 'nepal', 'nepal', 13324, 3424, 'admin', 14453, NULL, 'admin11', NULL),
-(2, 'kriti', 'nemkul', 'nemkulk@yahoo.com', 'nepal', 'lalitpur', 12345, 1234, 'User', 2147483647, '46757_651251811590762_127441764_n3.jpg', 'mekriti', 'female'),
-(3, 'ram', 'ram', 'ram@gmail.com', 'nea', 'hjhkj', 225, 23, 'Vendor', 2343, 'aa.jpg', 'ramram', 'male'),
-(4, 'hari', 'chapagain', 'hari@gmail.com', 'nepal', 'siddhipur,lalitpur', 476576, 456, 'Vendor', 243453, 'Hydrangeas.jpg', 'hari1', 'male'),
-(5, 'mina', 'kumari', 'mina@gmail.com', 'nepal', 'siddhipur,lalitpur', 43564, 2345, 'User', 365467, 'Jellyfish.jpg', 'mina1', 'female'),
-(6, 'pragrya', 'nemkul', 'p@gmail.com', 'Nepal', 'kathmandu', 977, 4564, 'User', 657687687, 'Penguins.jpg', 'pragya', 'female'),
-(7, 'nirmala', 'Shrestha', 'shrestha.nirmala100@', 'nepal', 'ktm', 977, 0, 'user', 3456788, NULL, 'niru', 'female'),
-(8, 'rita', 'rita', 'shrestha.nirmala100@', 'nepal', 'k', 377, 0, 'user', 8799, 'Desert.jpg', 'nir', 'female');
+INSERT INTO `tbl_user` (`id`, `fname`, `lname`, `email`, `country`, `city`, `zip_code`, `post_box`, `group_id`, `phone`, `image`, `password`, `confirm_password`, `gender`) VALUES
+(1, 'admin', 'admin', 'admin@yahoo.com', 'nepal', 'nepal', 13324, 3424, 0, 14453, NULL, 'admin11', 'admin11', NULL),
+(2, 'kriti', 'nemkul', 'nemkulk@yahoo.com', 'nepal', 'lalitpur', 12345, 1234, 0, 2147483647, '46757_651251811590762_127441764_n3.jpg', 'mekriti', 'mekriti', 'female'),
+(3, 'ram', 'ram', 'ram@gmail.com', 'nea', 'hjhkj', 225, 23, 0, 2343, 'aa.jpg', 'ramram', 'ramram', 'male'),
+(4, 'hari', 'chapagain', 'hari@gmail.com', 'nepal', 'siddhipur,lalitpur', 476576, 456, 0, 243453, 'Hydrangeas.jpg', 'hari1', 'hari1', 'male'),
+(5, 'mina', 'kumari', 'mina@gmail.com', 'nepal', 'siddhipur,lalitpur', 43564, 2345, 0, 365467, 'Jellyfish.jpg', 'mina1', 'mina1', 'female'),
+(6, 'pragrya', 'nemkul', 'p@gmail.com', 'Nepal', 'kathmandu', 977, 4564, 0, 657687687, 'Penguins.jpg', 'pragya', 'pragya', 'female'),
+(7, 'kriti', 'nemkul', 'nemkulk1@yahoo.com', 'Nepal', 'kathmandu', 977, 6576, 2, 4354, '46757_651251811590762_127441764_n1.jpg', 'kriti', 'kriti', 'female'),
+(8, 'ertert', 'ertret', 'aaa@yahoo.com', 'Nepal', 'kathmandu', 977, 354345, 2, 34325, 'dashain.jpg', 'sssss', 'sssss', 'male'),
+(9, 'ertert', 'ertret', 'aba@yahoo.com', 'Nepal', 'kathmandu', 977, 56456, 2, 34325, 'vlcsnap-17237.png', 'sssss', 'sssss', 'male'),
+(10, 'ertert', 'ertret', 'abc@yahoo.com', 'Nepal', 'kathmandu', 977, 5656, 3, 34325, '224929_246836312093775_976813195_n[1].jpg', 'qqqqq', 'qqqqq', '0'),
+(11, 'ertert', 'ertret', 'abcd@yahoo.com', 'Nepal', 'kathmandu', 977, 56456, 2, 34325, '14730_473112642730036_315035117_n.jpg', 'abcde', 'abcde', 'female'),
+(12, 'ertert', 'ertret', 'abcde@yahoo.com', 'Nepal', 'kathmandu', 977, 55, 3, 34325, '250760_390739517651005_931283085_n[1].jpg', 'uffff', 'uffff', 'female');
 
 -- --------------------------------------------------------
 
@@ -71,6 +75,11 @@ CREATE TABLE IF NOT EXISTS `tb_cart` (
   PRIMARY KEY (`cart_id`),
   KEY `fkforproduct` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `tb_cart`
+--
+
 
 -- --------------------------------------------------------
 
@@ -109,14 +118,16 @@ CREATE TABLE IF NOT EXISTS `tb_groups` (
   `group_description` text NOT NULL,
   `group_type` varchar(200) NOT NULL,
   PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tb_groups`
 --
 
 INSERT INTO `tb_groups` (`group_id`, `group_description`, `group_type`) VALUES
-(1, 'admin worked perfectly', 'admin');
+(1, 'admin worked perfectly', 'admin'),
+(2, 'user who  buys the product', 'user'),
+(3, 'vendor that post the products and their details', 'vendor');
 
 -- --------------------------------------------------------
 
@@ -193,49 +204,15 @@ CREATE TABLE IF NOT EXISTS `tb_usergroup` (
   PRIMARY KEY (`id`),
   KEY `fkforuser` (`user_id`),
   KEY `fkforgrup` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `tb_usergroup`
 --
 
 INSERT INTO `tb_usergroup` (`id`, `user_id`, `group_id`) VALUES
-(1, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_users`
---
-
-CREATE TABLE IF NOT EXISTS `tb_users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(200) NOT NULL,
-  `lastname` varchar(200) NOT NULL,
-  `country` varchar(200) NOT NULL,
-  `city` varchar(200) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `phoneno` varchar(200) NOT NULL,
-  `zipcode` int(200) NOT NULL,
-  `pobox` int(200) NOT NULL,
-  `faxno` int(200) NOT NULL,
-  `user_image` varchar(200) NOT NULL,
-  `legal_name` varchar(200) NOT NULL,
-  `street_address` varchar(200) NOT NULL,
-  `business_type` varchar(200) NOT NULL,
-  `email` varchar(300) NOT NULL,
-  `password` varchar(200) NOT NULL,
-  `username` varchar(200) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `tb_users`
---
-
-INSERT INTO `tb_users` (`user_id`, `firstname`, `lastname`, `country`, `city`, `address`, `phoneno`, `zipcode`, `pobox`, `faxno`, `user_image`, `legal_name`, `street_address`, `business_type`, `email`, `password`, `username`) VALUES
-(1, 'kriti', 'dangol', 'Nepal', 'Bhaktapur', 'samakhusi', '98418683883', 977, 38488, 329939, 'ae4.jpg', 'smartsamaj', 'jjjjd', 'sole', 'samina@yahoo.com', 'dmhsa', 'kriti'),
-(4, 'samina', 'tuladhar', 'nepal', 'kathmandu', '', '9808939399', 14410, 12224, 0, '', '', '', '', 'samina_tuladhar@yahoo.com', 'samina', 'samina');
+(1, 1, 1),
+(6, 12, 3);
 
 --
 -- Constraints for dumped tables
@@ -252,21 +229,21 @@ ALTER TABLE `tb_cart`
 --
 ALTER TABLE `tb_payment`
   ADD CONSTRAINT `tb_payment_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `tb_product` (`product_id`),
-  ADD CONSTRAINT `tb_payment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`user_id`);
+  ADD CONSTRAINT `tb_payment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
 
 --
 -- Constraints for table `tb_product`
 --
 ALTER TABLE `tb_product`
   ADD CONSTRAINT `FKforcategory` FOREIGN KEY (`cat_id`) REFERENCES `tb_category` (`cat_id`),
-  ADD CONSTRAINT `fkforusers` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`user_id`);
+  ADD CONSTRAINT `tb_product_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
 
 --
 -- Constraints for table `tb_usergroup`
 --
 ALTER TABLE `tb_usergroup`
   ADD CONSTRAINT `fkforgrup` FOREIGN KEY (`group_id`) REFERENCES `tb_groups` (`group_id`),
-  ADD CONSTRAINT `fkforuser` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`user_id`);
+  ADD CONSTRAINT `fkforuser` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

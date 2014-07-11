@@ -23,12 +23,12 @@ class Category_model extends CI_Model {
              $this->db->insert($tablename, $data);
              return $this->db->insert_id();
          }
-        
+        //function to edit category
          public function getSingleCategory($id){
               if($_POST){
              $res=$this->db->get_where(category::table,array('cat_id'=>$id));
-             return $res->row($id);
-               $this->db->update(category::table,$data);
+             $value = $res->row($id);
+              return $value;
              
               }
          }

@@ -41,10 +41,19 @@ const table = "tb_category";
     }
 	      //return data updated value 
       public function edit($id){
-         
+          if ($_POST){
+              $data=array(
+                'cat_title' =>$this->input->post('cat_title'),
+              'cat_description' =>  $this->input->post('cat_description')
+              );
+          $this->db->update($id,category::table,$data);
+          redirect('category/categorylist');
+          }
+              else{
           $data['category']=$this->category_model->getSingleCategory($id);
           $this->load->view('edit',$data);
-        
+          }
       }
+          
 }
 
