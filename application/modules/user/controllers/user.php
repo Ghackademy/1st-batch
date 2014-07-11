@@ -147,6 +147,10 @@ class User extends MX_Controller {
                 $this->load->view('login');
             }
    }
+   
+   function dashboard(){
+       
+   }
                 
                 
 }//end of class user
