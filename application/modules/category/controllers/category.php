@@ -39,7 +39,12 @@ const table = "tb_category";
         }
         
     }
-	       
+	      //return data updated value 
+      public function edit($id){
+         
+          $data['category']=$this->category_model->getSingleCategory($id);
+          $this->load->view('edit',$data);
         
+      }
 }
 
