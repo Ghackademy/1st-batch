@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class User extends MX_Controller {
+     const table = "tbl_user";
+    const table_group = "tb_groups";
+    const table_usergroup = "tb_usergroup";
 
 	public function __construct(){
             //call the constructor
@@ -62,7 +65,7 @@ class User extends MX_Controller {
         public function signup()
                 {
                  // to signup by new user 
-            if($this->input->post('submit')){
+            if($_POST){
                  $this->load->library('form_validation');//to use form_validation library in ci
                 $this->form_validation->set_rules('fname', 'Name', 'required');
                $this->form_validation->set_rules('lname', 'Username', 'required');
@@ -77,10 +80,13 @@ class User extends MX_Controller {
                      $this->form_validation->set_rules('email', 'Email', 'required'); 
                       $this->form_validation->set_rules('phone', 'Phone', 'required');
                        $this->form_validation->set_rules('usertype', 'User Type', 'required');
+                       
+                        $this->form_validation->set_error_delimiters('<font color="red">','</font>');
             if ($this->form_validation->run() == FALSE) {
                
                 $this->load->view('signUpForm');
-            } else {
+                return false;
+            } else{
                 
               $image = $this->do_upload();
                 
@@ -101,7 +107,7 @@ class User extends MX_Controller {
                    
                    
                );
-                $this->user_model->insertUser($data);
+                $this->user_model->insertUser(user::table,$data);
                 echo'sucessful';
                    
                }
