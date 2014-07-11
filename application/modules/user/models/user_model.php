@@ -7,19 +7,24 @@ class User_model extends CI_Model {
     const table_usergroup = "tb_usergroup";
     
     function __construct() {
-                // Call the Model constructor
                 parent::__construct();
-                $this->load->database();//loading database
+                $this->load->database();
                
          }
-         //returns data insert and insert_id
+       /*
+        * @param STRING table name
+        * @param ARRAY data
+        * return user id
+        */
          function insertUser($tablename,$data){
             
              $this->db->insert($tablename,$data);
              return $this->db->insert_id();
          }
          
-         //validating login form
+        /*
+         * returns form validation
+         */
         public function validateLogin(){
             //taking input from the form
             $email = $this->input->post('email');
@@ -48,12 +53,19 @@ class User_model extends CI_Model {
                 return false;
         }
          
-         //functin to fetch data from table ie returns templete @ param tablename-required table name ,where - condition ,array type - row or result , limit and start for the start and limi tpoint of pagination
+         /*
+          * @param STRING table name
+          * @param STRING where condition
+          * @param ARRAY 
+          * @param INT limit
+          * @param INT start
+          * return data
+          */
          function getFromDb($tablename,$where="",$array_type="",$limit="",$start=""){
-             //checking where condition to get required conditioned data from table
+             
              if($where!="")
 			$this->db->where($where);
-             //$limit and $start for pagination 
+             
              if($limit!="" || $start!=""){
 			if($start!="")
 				$this->db->limit($start,$limit);
@@ -62,12 +74,20 @@ class User_model extends CI_Model {
 		}
                 
 		$query=$this->db->get($tablename);
-                //checking array type
+                
                 if($array_type=="row")
-			return $query->row_array(); //returns the row from the table
+			return $query->row_array();
 		else
-			return $query->result_array(); // returns all the data ie result of the table
+			return $query->result_array(); 
                 
          }
- }
+         
+          public function getSingleUser($id) {
+        $query = $this->db->get_where('tbl_user', array('user_id' => $id));
+        return $query->row($id);
+    }
+    
+    
+    public function editUser(){
+    } }
 

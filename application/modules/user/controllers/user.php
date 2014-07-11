@@ -120,12 +120,9 @@ class User extends MX_Controller {
    function login(){
             if($_POST){
                 $result = $this->user_model->validateLogin();
-                $this->session->set_userdata('res',$result);
                 if(! $result){
                    $msg = '<font color="red">Username or password invalid </font>';
-                   $this->session->set_userdata('msg',$msg);
-                   
-                    //echo $msg;
+                   $this->session->set_flashdata('msg',$msg);
                     redirect('user/login');
                 }
                 else{
@@ -147,6 +144,17 @@ class User extends MX_Controller {
                 $this->load->view('login');
             }
    }
+    public function edit($id){
+       //to edit user
+       if($_POST){
+           $this->user_model->editUser($id,$image);
+            redirect('user/userinfo');
+       }
+       else{
+            $data['users'] = $this->user_model->getSingleUser($id,$image);
+            $this->load->view('edit', $data);
+       }
+   }
    
    function dashboard(){
        
@@ -157,3 +165,5 @@ class User extends MX_Controller {
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
+
+
