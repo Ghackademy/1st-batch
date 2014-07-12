@@ -32,4 +32,11 @@ class Category_model extends CI_Model {
              
               }
          }
+            public function update($id,$tablename,$data){
+			
+		$this->db->where('cat_id', $id);
+		$this->db->update($tablename, $data); 
+		return $this->db->affected_rows();
+			
+	}
 }
