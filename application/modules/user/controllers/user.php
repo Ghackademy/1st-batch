@@ -63,24 +63,24 @@ class User extends MX_Controller {
                 {
                  // to signup by new user 
             if($this->input->post('submit')){
-//                 $this->load->library('form_validation');//to use form_validation library in ci
-//                $this->form_validation->set_rules('fname', 'Name', 'required');
-//               $this->form_validation->set_rules('lname', 'Username', 'required');
-//            $this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]');
-//            $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
-//            
-//           
-//              $this->form_validation->set_rules('country', 'Country', 'required');
-//                $this->form_validation->set_rules('city', 'City', 'required');
-//                  $this->form_validation->set_rules('zcode', 'Zipcode', 'required');
-//                    $this->form_validation->set_rules('postcode', 'Postbox', 'required');
-//                     $this->form_validation->set_rules('email', 'Email', 'required'); 
-//                      $this->form_validation->set_rules('phone', 'Phone', 'required');
-//                       $this->form_validation->set_rules('usertype', 'User Type', 'required');
-//            if ($this->form_validation->run() == FALSE) {
-//               
-//                $this->load->view('signUpForm');
-//            } else {
+                 $this->load->library('form_validation');//to use form_validation library in ci
+                $this->form_validation->set_rules('fname', 'Name', 'required');
+               $this->form_validation->set_rules('lname', 'Username', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]');
+            $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
+            
+           
+              $this->form_validation->set_rules('country', 'Country', 'required');
+                $this->form_validation->set_rules('city', 'City', 'required');
+                  $this->form_validation->set_rules('zcode', 'Zipcode', 'required');
+                    $this->form_validation->set_rules('postcode', 'Postbox', 'required');
+                     $this->form_validation->set_rules('email', 'Email', 'required'); 
+                      $this->form_validation->set_rules('phone', 'Phone', 'required');
+                       $this->form_validation->set_rules('usertype', 'User Type', 'required');
+            if ($this->form_validation->run() == FALSE) {
+               
+                $this->load->view('signUpForm');
+            } else {
                 
               $image = $this->do_upload();
                 
@@ -104,14 +104,18 @@ class User extends MX_Controller {
                 $this->user_model->insertUser($data);
                 echo'sucessful';
                    
-               //}
+               }
                 
             }
             else{
                 $this->load->view('signUpForm');
             }
                 }
-}
+                
+                
+                
+                
+}//end of class user
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
