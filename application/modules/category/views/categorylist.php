@@ -24,7 +24,7 @@
                     <td> <?php echo $all['cat_title'];?></td>
                     <td> <?php echo $all['cat_description'];?></td>
                      <td><a href="edit/<?php echo $all['cat_id'];?>">Edit</a></td>
-                    
+                     <td><a href="delete/<?php echo $all['cat_id'];?>">Delete</a></td>
                     <td>  </td>
                     <td> </td>
                 </tr>
