@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2014 at 10:35 PM
--- Server version: 5.1.37
--- PHP Version: 5.3.0
+-- Generation Time: Jul 12, 2014 at 12:38 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -38,22 +39,23 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `phone` int(20) DEFAULT NULL,
   `image` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
-  `confirm_password` varchar(50) DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `fname`, `lname`, `email`, `country`, `city`, `zip_code`, `post_box`, `user_type`, `phone`, `image`, `password`, `confirm_password`, `gender`) VALUES
-(1, 'admin', 'admin', 'admin@yahoo.com', 'nepal', 'nepal', 13324, 3424, 'admin', 14453, NULL, 'admin11', 'admin11', NULL),
-(2, 'kriti', 'nemkul', 'nemkulk@yahoo.com', 'nepal', 'lalitpur', 12345, 1234, 'User', 2147483647, '46757_651251811590762_127441764_n3.jpg', 'mekriti', 'mekriti', 'female'),
-(3, 'ram', 'ram', 'ram@gmail.com', 'nea', 'hjhkj', 225, 23, 'Vendor', 2343, 'aa.jpg', 'ramram', 'ramram', 'male'),
-(4, 'hari', 'chapagain', 'hari@gmail.com', 'nepal', 'siddhipur,lalitpur', 476576, 456, 'Vendor', 243453, 'Hydrangeas.jpg', 'hari1', 'hari1', 'male'),
-(5, 'mina', 'kumari', 'mina@gmail.com', 'nepal', 'siddhipur,lalitpur', 43564, 2345, 'User', 365467, 'Jellyfish.jpg', 'mina1', 'mina1', 'female'),
-(6, 'pragrya', 'nemkul', 'p@gmail.com', 'Nepal', 'kathmandu', 977, 4564, 'User', 657687687, 'Penguins.jpg', 'pragya', 'pragya', 'female');
+INSERT INTO `tbl_user` (`id`, `fname`, `lname`, `email`, `country`, `city`, `zip_code`, `post_box`, `user_type`, `phone`, `image`, `password`, `gender`) VALUES
+(1, 'admin', 'admin', 'admin@yahoo.com', 'nepal', 'nepal', 13324, 3424, 'admin', 14453, NULL, 'admin11', NULL),
+(2, 'kriti', 'nemkul', 'nemkulk@yahoo.com', 'nepal', 'lalitpur', 12345, 1234, 'User', 2147483647, '46757_651251811590762_127441764_n3.jpg', 'mekriti', 'female'),
+(3, 'ram', 'ram', 'ram@gmail.com', 'nea', 'hjhkj', 225, 23, 'Vendor', 2343, 'aa.jpg', 'ramram', 'male'),
+(4, 'hari', 'chapagain', 'hari@gmail.com', 'nepal', 'siddhipur,lalitpur', 476576, 456, 'Vendor', 243453, 'Hydrangeas.jpg', 'hari1', 'male'),
+(5, 'mina', 'kumari', 'mina@gmail.com', 'nepal', 'siddhipur,lalitpur', 43564, 2345, 'User', 365467, 'Jellyfish.jpg', 'mina1', 'female'),
+(6, 'pragrya', 'nemkul', 'p@gmail.com', 'Nepal', 'kathmandu', 977, 4564, 'User', 657687687, 'Penguins.jpg', 'pragya', 'female'),
+(7, 'nirmala', 'Shrestha', 'shrestha.nirmala100@', 'nepal', 'ktm', 977, 0, 'user', 3456788, NULL, 'niru', 'female'),
+(8, 'rita', 'rita', 'shrestha.nirmala100@', 'nepal', 'k', 377, 0, 'user', 8799, 'Desert.jpg', 'nir', 'female');
 
 -- --------------------------------------------------------
 
@@ -69,11 +71,6 @@ CREATE TABLE IF NOT EXISTS `tb_cart` (
   PRIMARY KEY (`cart_id`),
   KEY `fkforproduct` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tb_cart`
---
-
 
 -- --------------------------------------------------------
 
