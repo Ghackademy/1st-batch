@@ -39,4 +39,8 @@ class Category_model extends CI_Model {
 		return $this->db->affected_rows();
 			
 	}
+        public function delete_row($id){
+            $this->db->where('cat_id',$id);
+            $this->db->delete(category::table);
+        }
 }
