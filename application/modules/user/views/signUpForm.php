@@ -21,7 +21,7 @@
 		<input name="gender" type="radio" value="female" ><br>
                 Image:<input type="file" name="userfile"/><br>
                 Password:<input type="password" name="password" ><?php echo form_error('password');?><br>
-                Confirm Password:<input type="password" name="cpassword" ><?php echo form_error('cpassword');?><br>
+                Confirm Password:<input type="password" name="passconf" ><?php echo form_error('passconf');?><br>
                 User Type:<select name="usertype">
                     <option selected="selected">user</option>
                     <option>vendor</option>
