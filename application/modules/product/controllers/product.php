@@ -9,6 +9,10 @@ class Product extends MX_Controller {
         $this->load->model('category/category_model');
      }
      
+     public function index(){
+         $this->load->view('productAction');
+     }
+     
              function do_upload() {
         $config['upload_path'] = "uploads/product/original/";
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -48,6 +52,8 @@ class Product extends MX_Controller {
         }
     }
     
+    //return product image
+    
     public function lists(){
              $config['base_url'] = base_url().'/product/lists/';
             $config['total_rows'] = $this->product_model->countProduct();
@@ -62,8 +68,38 @@ class Product extends MX_Controller {
            // print_r($data);die();
          $this->load->view('viewProduct',$data);
         }
+        //return all the value in database
         
-    
+        
+public function add(){
+    $res['allcategory'] = $this->category_model->getCategoriesAccToProduct('tb_category');
+            //print_r($data);die();
+             if($_POST){
+                 $image=$this->do_upload(); 
+                $data = array(
+                    'Product_name'=>$this->input->post('pname'),
+                    'product_description'=>$this->input->post('pdescription'),
+                    'price'=>$this->input->post('pprice'),
+                    'featured'=>$this->input->post('feature'),
+                    'publish'=>$this->input->post('publish'),
+                    'stock_info'=>$this->input->post('pquantity'),
+                    'rating'=>$this->input->post('prating'),
+                    'shipping_detail'=>$this->input->post('pdetails'),
+                    'product_image'=>$image,
+                     'cat_id'=>$this->input->post('category'),
+                                         
+                );
+                $this->product_model->addProduct($data);
+               redirect('product/index');
+               
+        }
+        else{
+                //$this->load->view('addProduct',$data);
+                $this->load->view('addProduct',$res);
+            }
+        
+        }
+    //return new added value
 	
 }
 
