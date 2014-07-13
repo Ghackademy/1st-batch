@@ -42,7 +42,26 @@ class category extends MX_Controller {
         }
         
     }
-	       
-        
+	      //return data updated value 
+      public function edit($id){
+          if ($_POST){
+              $data=array(
+                'cat_title' =>$this->input->post('cat_title'),
+              'cat_description' =>  $this->input->post('cat_description')
+              );
+              
+          $this->category_model->update($id,category::table,$data);
+          redirect('category/categorylist');
+          }
+              else{
+          $data['category']=$this->category_model->getSingleCategory($id);
+          $this->load->view('edit',$data);
+          }
+      }
+      public function delete($id){
+          $this->category_model->delete_row($id);
+          redirect($_SERVER['HTTP_REFERER']);
+      }
+          
 }
 
