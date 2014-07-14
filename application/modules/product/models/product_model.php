@@ -23,9 +23,12 @@ class Product_model extends CI_Model {
                 }
                 return false;
          }
+         //return product value according to input
+         
          public function countProduct() {
                 return $this->db->count_all('tb_product');
          }
+<<<<<<< HEAD
          public function getSingleProduct($id){
              if($_POST){
                  $res = $this->db->get_where(product::table,array('product_id'=>$id));
@@ -77,6 +80,15 @@ class Product_model extends CI_Model {
  
 	
               }
+=======
+         //return no of product
+         
+         public function addProduct($data){
+                $this->db->insert(product_model::Table,$data);
+		
+         }
+         // insert value in database
+>>>>>>> origin
          
 }
 ?>

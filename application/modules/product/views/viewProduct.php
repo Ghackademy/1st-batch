@@ -11,6 +11,8 @@
            Rating: <?php echo $p->rating;?> <br>
            Quantity: <?php echo $p->stock_info;?> <br>
            Shipping details: <?php echo $p->shipping_detail;?> <br>
+           <a href="edit/<?php echo $p->product_id;?>">Edit</a>
+           <a href="delete/<?php echo $p->product_id;?>">Delete</a>
            </div>
         <?php endforeach;  ?>
         
