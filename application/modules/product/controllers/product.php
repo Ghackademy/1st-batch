@@ -63,19 +63,56 @@ class Product extends MX_Controller {
            // print_r($data);die();
          $this->load->view('viewProduct',$data);
         }
-        
+      
+        public function add() {
+        $res['allcategory'] = $this->category_model->getallCategory('tb_category');
+        if ($_POST) {
+            $image = $this->do_upload();
+            $data = array(
+                'Product_name' => $this->input->post('pname'),
+                'product_description' => $this->input->post('pdescription'),
+                'price' => $this->input->post('pprice'),
+                'featured' => $this->input->post('feature'),
+                'publish' => $this->input->post('publish'),
+                'stock_info' => $this->input->post('pquantity'),
+                'rating' => $this->input->post('prating'),
+                'shipping_detail' => $this->input->post('pdetails'),
+                'product_image' => $image,
+                'cat_id' => $this->input->post('category'),
+            );
+            $this->product_model->addProduct($data);
+            redirect('product/lists');
+        } else {
+
+            $this->load->view('addProduct', $res);
+        }
+    }
 
         public function edit($id){
+            $data['allcategory'] = $this->category_model->getallCategory('tb_category');
              if($_POST){
-                $image = $this->do_upload();
-                $this->product_model->updateproduct($id,'tb_product',$image);
-                redirect('product/list');
+                 if(!empty($_FILES['userfile']['name'])){
+                     $image = $this->do_upload();
+                     $this->product_model->updateproduct($id,'tb_product',$image);
+                    redirect('product/lists');
+                 
+                 }
+              else{
+                   $pimage = $this->product_model->getSingleProduct($id);
+                   //print_r($pimage);die();
+                    $image = $pimage->product_image; 
+                    $this->product_model->updateproduct($id,'tb_product',$image);
+                    redirect('product/lists');
+              }
              }
              else{
-                 $data['product']= $this->product_model->getSingleProduct($id);
-                 $this->load->view('editproduct',$data);
+             $data['product']= $this->product_model->getSingleProduct($id); 
+      
+
+                        $this->load->view('editproduct',$data);
              }
-         }
+           
+        }
 	
 }
 

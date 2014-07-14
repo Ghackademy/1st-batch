@@ -8,6 +8,22 @@ class Product_model extends CI_Model {
                 $this->load->database();//loading database
                
          }
+         	function insert($image){  
+            $data['product_name'] = $this->input->post('pname');
+                $data['product_description'] = $this->input->post('pdescription');
+                $data['product_image'] = $image;
+                $data['shipping_detail'] = $this->input->post('pdetail');
+                $data['price'] = $this->input->post('price');
+                $data['rating'] = $this->input->post('rating');
+                $data['featured'] = $this->input->post('feature');
+                $data['publish'] = $this->input->post('publish');
+                $data['cat_id'] = $this->input->post('cat_title');
+                $data['stock_info'] = $this->input->post('pquantity');
+                $data['user_id']=1;
+            $this->db->insert('tb_product',$data);
+        
+            
+        }
          public function getProduct($limit,$start,$where=""){
             if($where!="")
 			$this->db->where($where);
@@ -28,59 +44,34 @@ class Product_model extends CI_Model {
          public function countProduct() {
                 return $this->db->count_all('tb_product');
          }
-<<<<<<< HEAD
+         
          public function getSingleProduct($id){
              if($_POST){
-                 $res = $this->db->get_where(product::table,array('product_id'=>$id));
+                 $res = $this->db->get_where('tb_product',array('product_id'=>$id));
                  $value = $res->row($id);
-                 return $res;
+                 return $value;
              }
          }
          public function updateproduct($id,$tablename,$image){
+             
               $data=array(
              'product_name' => $this->input->post('pname'),
              'product_description' => $this->input->post('pdescription'),
-             'product_image' => $this->input->post('pimage'),
+             'product_image' => $image,
              'shipping_detail' => $this->input->post('pdetails'),
              'price' => $this->input->post('pprice'),
              'rating' => $this->input->post('prating'),
              'featured' => $this->input->post('feature'),
              'publish' => $this->input->post('publish'),
               'stock_info' => $this->input->post('pquantity'),    
-             'cat_id' => $this->input->post('email'),
+             'cat_id' => $this->input->post('cat_title'),
             );
-           	if ($_FILES){
-		
-		$config['upload_path'] = 'uploads/product/original';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size'] = '200';
-		$config['remove_spaces'] = true;
-		$config['overwrite'] = false;
-		$config['max_width']  = '0';
-		$config['max_height']  = '0';
-		$this->load->library('upload', $config);	
-	
-	    if (strlen($_FILES['userfile']['name'])){
-			if(!$this->upload->do_upload('image')){
-				$this->upload->display_errors();
-				exit();
-			}
-			$image = $this->upload->data();
-		
-			if ($image['file_name']){
-				$data['image'] = "uploads/product/original".$image['file_name'];
-		
-			}
-		}
-		
-		
-	}
- 	$this->db->where('product_id', $_POST['id']);
-	$this->db->update('products', $data);	
+ 	$this->db->where('product_id', $id);
+	$this->db->update($tablename, $data);	
  
 	
               }
-=======
+
          //return no of product
          
          public function addProduct($data){
@@ -88,7 +79,6 @@ class Product_model extends CI_Model {
 		
          }
          // insert value in database
->>>>>>> origin
          
 }
 ?>
