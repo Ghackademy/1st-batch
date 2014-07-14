@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Product extends MX_Controller {
+    
 
     public function __construct() {
         parent::__construct();
@@ -63,7 +64,18 @@ class Product extends MX_Controller {
          $this->load->view('viewProduct',$data);
         }
         
-    
+
+        public function edit($id){
+             if($_POST){
+                $image = $this->do_upload();
+                $this->product_model->updateproduct($id,'tb_product',$image);
+                redirect('product/list');
+             }
+             else{
+                 $data['product']= $this->product_model->getSingleProduct($id);
+                 $this->load->view('editproduct',$data);
+             }
+         }
 	
 }
 
