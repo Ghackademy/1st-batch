@@ -8,22 +8,7 @@ class Product_model extends CI_Model {
                 $this->load->database();//loading database
                
          }
-         	function insert($image){  
-            $data['product_name'] = $this->input->post('pname');
-                $data['product_description'] = $this->input->post('pdescription');
-                $data['product_image'] = $image;
-                $data['shipping_detail'] = $this->input->post('pdetail');
-                $data['price'] = $this->input->post('price');
-                $data['rating'] = $this->input->post('rating');
-                $data['featured'] = $this->input->post('feature');
-                $data['publish'] = $this->input->post('publish');
-                $data['cat_id'] = $this->input->post('cat_title');
-                $data['stock_info'] = $this->input->post('pquantity');
-                $data['user_id']=1;
-            $this->db->insert('tb_product',$data);
-        
-            
-        }
+
          public function getProduct($limit,$start,$where=""){
             if($where!="")
 			$this->db->where($where);

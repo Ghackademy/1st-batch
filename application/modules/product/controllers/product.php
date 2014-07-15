@@ -54,13 +54,10 @@ class Product extends MX_Controller {
             $config['total_rows'] = $this->product_model->countProduct();
             $config['per_page'] = 3;
             $config['uri_segment'] = 3;            
-            //$config['use_page_numbers'] = TRUE;
             $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-           //$data['allcategory'] = $thgiis->category_model->getCategoriesFromDb('tbl_category');            
             $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
             $data['links'] = $this->pagination->create_links();
-           // print_r($data);die();
          $this->load->view('viewProduct',$data);
         }
       
