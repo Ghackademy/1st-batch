@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Product extends MX_Controller {
-    
+     const table = 'tb_product';
 
     public function __construct() {
         parent::__construct();
@@ -90,7 +90,7 @@ class Product extends MX_Controller {
              if($_POST){
                  if(!empty($_FILES['userfile']['name'])){
                      $image = $this->do_upload();
-                     $this->product_model->updateproduct($id,'tb_product',$image);
+                     $this->product_model->updateproduct($id,product::table,$image);
                     redirect('product/lists');
                  
                  }
@@ -98,7 +98,7 @@ class Product extends MX_Controller {
                    $pimage = $this->product_model->getSingleProduct($id);
                    //print_r($pimage);die();
                     $image = $pimage->product_image; 
-                    $this->product_model->updateproduct($id,'tb_product',$image);
+                    $this->product_model->updateproduct($id,product::table,$image);
                     redirect('product/lists');
               }
              }
@@ -109,6 +109,10 @@ class Product extends MX_Controller {
                         $this->load->view('editproduct',$data);
              }
            
+        }
+        public function delete($id){
+            $this->product_model->delete_row($id);
+            redirect($_SERVER['HTTP_REFERER']);
         }
 	
 }

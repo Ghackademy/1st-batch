@@ -27,12 +27,12 @@ class Product_model extends CI_Model {
          //return product value according to input
          
          public function countProduct() {
-                return $this->db->count_all('tb_product');
+                return $this->db->count_all(Product_model::Table);
          }
-         
+         //return single id of product
          public function getSingleProduct($id){
              if($_POST){
-                 $res = $this->db->get_where('tb_product',array('product_id'=>$id));
+                 $res = $this->db->get_where(Product_model::Table,array('product_id'=>$id));
                  $value = $res->row($id);
                  return $value;
              }
@@ -64,6 +64,10 @@ class Product_model extends CI_Model {
 		
          }
          // insert value in database
-         
+    public function delete_row($id) {
+        $this->db->where('product_id', $id);
+        $this->db->delete(product_model::Table);
+    }
+
 }
 ?>
