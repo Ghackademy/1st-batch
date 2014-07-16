@@ -32,13 +32,15 @@ class Product_model extends CI_Model {
          //return single id of product
          public function getSingleProduct($id){
              if($_POST){
+                
+             
                  $res = $this->db->get_where(Product_model::Table,array('product_id'=>$id));
                  $value = $res->row($id);
                  return $value;
              }
          }
          public function updateproduct($id,$tablename,$image){
-             
+              $pname = $this->input->post('pname');
               $data=array(
              'product_name' => $this->input->post('pname'),
              'product_description' => $this->input->post('pdescription'),
@@ -48,7 +50,8 @@ class Product_model extends CI_Model {
              'rating' => $this->input->post('prating'),
              'featured' => $this->input->post('feature'),
              'publish' => $this->input->post('publish'),
-              'stock_info' => $this->input->post('pquantity'),    
+             'slug'=>url_title($pname,'dash',true),
+              'stock_info' => $this->input->post('pquantity'), 
              'cat_id' => $this->input->post('cat_title'),
             );
  	$this->db->where('product_id', $id);

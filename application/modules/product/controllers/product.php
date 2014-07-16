@@ -64,6 +64,7 @@ class Product extends MX_Controller {
         public function add() {
         $res['allcategory'] = $this->category_model->getallCategory('tb_category');
         if ($_POST) {
+            $p_name = $this->input->post('pname');
             $image = $this->do_upload();
             $data = array(
                 'Product_name' => $this->input->post('pname'),
@@ -73,6 +74,7 @@ class Product extends MX_Controller {
                 'publish' => $this->input->post('publish'),
                 'stock_info' => $this->input->post('pquantity'),
                 'rating' => $this->input->post('prating'),
+                   'slug'=>url_title($p_name,'dash',true),
                 'shipping_detail' => $this->input->post('pdetails'),
                 'product_image' => $image,
                 'cat_id' => $this->input->post('category'),
@@ -91,12 +93,12 @@ class Product extends MX_Controller {
                  if(!empty($_FILES['userfile']['name'])){
                      $image = $this->do_upload();
                      $this->product_model->updateproduct($id,product::table,$image);
+                       
                     redirect('product/lists');
                  
                  }
               else{
                    $pimage = $this->product_model->getSingleProduct($id);
-                   //print_r($pimage);die();
                     $image = $pimage->product_image; 
                     $this->product_model->updateproduct($id,product::table,$image);
                     redirect('product/lists');
