@@ -11,18 +11,20 @@ class Category_model extends CI_Model {
          }
          
          //function to display all categories
-         function getAllCategory(){
+         public function getAllCategory(){
+		 
              $query= $this->db->get(category_model::table);
              $res = $query->result_array();
              
              return $res;
+		
          }
          
        
          
-         public function insertCategory($tablename, $data){
+         public function insertCategory($data){
              // function to insert category in table
-             $this->db->insert($tablename, $data);
+             $this->db->insert(category_model::table, $data);
              return $this->db->insert_id();
          }
         //function to edit category
@@ -35,7 +37,6 @@ class Category_model extends CI_Model {
               }
          }
             public function update($id,$tablename,$data){
-			
 		$this->db->where('cat_id', $id);
 		$this->db->update($tablename, $data); 
 		return $this->db->affected_rows();

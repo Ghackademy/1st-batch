@@ -16,6 +16,12 @@ class category extends MX_Controller {
     public function categorylist(){ 
         
          $data['allcategory']= $this->category_model->getAllCategory();
+		 	if (empty($data['allcategory']))
+	{
+		show_404();
+	}
+
+	
 
         $this->load->view('categorylist',$data);
     }
@@ -25,12 +31,12 @@ class category extends MX_Controller {
      */
     public function add(){  
         $this->load->library('form_validation');
-
-      
         if ($_POST){
+		$title = $this->input->post('cat_title');
             $data= array(
                 'cat_title'=>  $this->input->post('cat_title'),
-                'cat_description'=>  $this->input->post('cat_desc')
+                'cat_description'=>  $this->input->post('cat_desc'),
+				'slug'=>url_title($title,'dash',true)
             );
           $this->form_validation->set_rules('cat_title', 'cat_title', 'required');
         $this->category_model->insertCategory($data);
@@ -45,12 +51,14 @@ class category extends MX_Controller {
 	      //return data updated value 
       public function edit($id){
           if ($_POST){
+		  	$title = $this->input->post('cat_title');
               $data=array(
                 'cat_title' =>$this->input->post('cat_title'),
-              'cat_description' =>  $this->input->post('cat_description')
+              'cat_description' =>  $this->input->post('cat_description'),
+			  'slug' => url_title($title,'dash',true)
               );
               
-          $this->category_model->update($id,category::table,$data);
+          $this->category_model->update($id,'tb_category',$data);
           redirect('category/categorylist');
           }
               else{
