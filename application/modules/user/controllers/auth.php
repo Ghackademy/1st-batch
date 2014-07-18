@@ -47,7 +47,7 @@ class User extends CI_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('auth/index', $this->data);
+			$this->_render_page('user/index', $this->data);
 		}
 	}
 
@@ -71,7 +71,7 @@ class User extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/user', 'refresh');
+				redirect('/', 'refresh');
 			}
 			else
 			{
@@ -203,7 +203,7 @@ class User extends CI_Controller {
 
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->_render_page('auth/forgot_password', $this->data);
+			$this->_render_page('user/forgot_password', $this->data);
 		}
 		else
 		{
@@ -485,7 +485,7 @@ class User extends CI_Controller {
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
 
-			$this->_render_page('auth/create_user', $this->data);
+			$this->_render_page('user/create_user', $this->data);
 		}
 	}
 
@@ -625,7 +625,7 @@ class User extends CI_Controller {
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
-			redirect('user', 'refresh');
+			redirect('auth', 'refresh');
 		}
 
 		//validate form input
