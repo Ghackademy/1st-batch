@@ -114,9 +114,6 @@ min-width:270px;
     margin-left: 0%;*/
 }
 
-
-
-
 .box{
     width: 100%;
     border: 1px solid black;
@@ -124,7 +121,7 @@ min-width:270px;
 }
 #third{
     width: 100%;
-    min-height: 300px;
+    min-height: 250px;
     color:orange;
  }
  #third hr
@@ -136,14 +133,48 @@ color:orange;
 .advertisement{
     width: 100%;
     min-height: 50px;
+    min-width:100px;
 }
-.contentLeft{
-    background: #ff9;
-    min-height: 300px;
-    width: 100%;
+#fourth
+{
+ width: 100%;
+ min-height: 500px;
 }
-.contentRight{
-    background: #cccccc;
-    min-height: 300px;
-    width: 100%;
+.heading
+{
+    font-size:2em;
+    margin-bottom: 10px;
+}
+.contentLeft
+{
+    min-height:445px;
+    width:100%;
+}
+ .product
+ {
+     min-height: 405px;
+     float:left;
+  
+  
+     width: auto;
+ }
+ .product_img
+ {
+     height:250px;
+     width:250px;
+    box-shadow: 0.1em 0.1em 1em  #000;
+ }
+ .pdesc
+ {
+     font-size: 1.3em;
+     margin-top: 15px;
+  }
+.star
+{
+    
+}
+  
+ .contentRight
+ {
+   border:solid black;
 }
