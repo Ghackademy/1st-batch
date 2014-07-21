@@ -7,266 +7,97 @@ and open the template in the editor.
     Created on : Jul 9, 2014, 2:25:19 AM
     Author     : Radhika
 */
-html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, 
-blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, 
-kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul,
-li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, 
-th, td,article, aside, canvas, details, figcaption, figure,footer, header, 
-hgroup, menu, nav, section, summary,time, mark, audio, video 
-{    margin:0;    padding:0;    border:0;    outline:0;    font-size:100%;    
-     vertical-align:baseline;    background:transparent;}
-body {    line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,
-section {    display:block;}nav ul {    list-style:none;}blockquote,
-q {    quotes:none;}blockquote:before, blockquote:after,q:before,
-q:after {    content:'';    content:none;}a {    margin:0;    padding:0;    font-size:100%;    
-       vertical-align:baseline;    background:transparent;}
-/* change colours to suit your needs */ins {    background-color:#ff9;    color:#000;    text-decoration:none;}
-/* change colours to suit your needs */mark {    background-color:#ff9;    color:#000;    font-style:italic;    font-weight:bold;}
-del {    text-decoration: line-through;}abbr[title],
-dfn[title] {    border-bottom:1px dotted;    cursor:help;}
-table {    border-collapse:collapse;    border-spacing:0;}
-/* change border colour to suit your needs */
-hr {    display:block;    height:1px;    border:0;    border-top:1px solid #cccccc;    margin:1em 0;    padding:0;}
-input, select {    vertical-align:middle;}
+
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, figcaption, figure,footer, header, hgroup, menu, nav, section, summary,time, mark, audio, video {    margin:0;    padding:0;    border:0;    outline:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}body {    line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {    display:block;}nav ul {    list-style:none;}blockquote, q {    quotes:none;}blockquote:before, blockquote:after,q:before, q:after {    content:'';    content:none;}a {    margin:0;    padding:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}/* change colours to suit your needs */ins {    background-color:#ff9;    color:#000;    text-decoration:none;}/* change colours to suit your needs */mark {    background-color:#ff9;    color:#000;    font-style:italic;    font-weight:bold;}del {    text-decoration: line-through;}abbr[title], dfn[title] {    border-bottom:1px dotted;    cursor:help;}table {    border-collapse:collapse;    border-spacing:0;}/* change border colour to suit your needs */hr {    display:block;    height:1px;    border:0;    border-top:1px solid #cccccc;    margin:1em 0;    padding:0;}input, select {    vertical-align:middle;}
+
 /*LocalStyle*/
-@font-face {
-    
-	font-family:"roboto";
-	src:url(../fonts/RobotoCondensed-Regular.ttf);
- 
-}
-#topNavigation{
-    width: 100%;
-    min-height: 50px;
-    background: #080808;
-}
-.container
-{
-    font-family: roboto;
-}
-#second{
-    min-height: 200px;
-    padding: 2em 0em;
-}
-#sidebar{
-
-min-width:270px;
-}
-.sidebarlist
-{
-   
-    width: 100%;
-    background-color: black;
-    min-height:330px;
-    color:white;
-    list-style: none;
-    color:gray;
-}
-#sidebar_heading
-{
-    font-size: 2em;
-    float:left;
-    color:white;
-    margin-left: 10%;
-    margin-top:5%;
-       
-  
-}
-#sidebar_heading_group
-{
-   background-color: black;
-   width: auto;
-   min-height:70px;
-}
-#sidebar_heading_pic
-{
-    height:50px;
-    width:50px;
-    float:left;
-    margin-top:5%;
-    margin-left:10%;
- }
-.sidebarlist li
-{
-    font-size: 1.2em;
-    min-width: 50px;
-    min-height: 55px;
-    height:auto;
-    transition:background-color 0.5s ease-out;
-    text-decoration: none;
-    color:white;
-    border-top: solid 1px gray;
-    text-align: center;
-    width:94%;
-    margin-left:3%;
-}
-.sidebarlist li a
-{
-    text-decoration: none;
-    color:white;
-    
-}
-.sidebarlist li:hover
-{
-    background-color: orange;
-/*    width:100%;
-    margin-left: 0%;*/
-}
-
-.box{
-    width: 100%;
-    border: 1px solid black;
-    min-height: 100px;
-}
-#third{
-    width: 100%;
-    min-height: 250px;
-    color:orange;
- }
- #third hr
- {
-width:100%;
-min-height: 5px;
-color:orange;
- }
-.advertisement{
-    width: 100%;
-    min-height: 50px;
-    min-width:100px;
-}
-#fourth
-{
- width: 100%;
- min-height: 500px;
-}
-.heading
-{
-    font-size:2em;
-    margin-bottom: 10px;
-}
-.contentLeft
-{
-    min-height:445px;
+@font-face{ font-family:Titillium-Regular;
+src:url(fonts/TitilliumWeb-Regular.ttf);
+	}
+@font-face{ font-family:Titillium-Bold;
+src:url(fonts/TitilliumWeb-Bold.ttf);
+	}
+#wrapper{
+    background-color: #ffffff;
     width:100%;
+    font-family: Titillium-Regular;
+    
 }
- .product
- {
-     min-height: 405px;
-     float:left;
-  
-  
-     width: auto;
- }
- .product_img
- {
-     height:250px;
-     width:250px;
-    box-shadow: 0.1em 0.1em 1em  #000;
- }
- .pdesc
- {
-     font-size: 1.3em;
-     margin-top: 15px;
-  }
-.star
-{
-    color:orange;
-    font-size: 1.5em;
+.clear_div{
+    clear:both;
 }
+#header{
+   font-family: Titillium-Bold; 
+   color:white;
   
- .contentRight
- {
+   
+}
+.nav1{
+  background-color: #000000;
+ 
  
 }
-.addtocart
-{
-    background-color: orange;
-    font-size: 1.3em;
-    color:white;
-    padding:7px 12px;
-    width:auto;
-}
-
-footer
-{
-width:100%;  
-color:white;
-font-size:1.2em;
-
-}
-.footer1
-{
-    background-color:orange;
-height:25px;
-}
-.footer2
-{
-    background-color: black;
-    height:100px;
-}
-.footernoteleft
-{
-    
-
-    
-}
-.footernoteright
-{
-    float:right!important;
-    padding:30px 10px;
-  
-}
-.product_detail_heading
-{
-    font-size:2em;
-    
-}
-.product_detail_img
-{
-   border: solid gray 1px;
-  height:400px;
-  width:400px;
-}
-.product_detail_desc
-{
-    height:auto;
-    width:auto;
-    font-size: 1em;
-    padding:20px 0px;
-}
-.product_detail_price{
-    padding:10px 0px;
-    font-size: 2em;} 
-.num
-{
-    padding:8px 13px;
-    border:solid gray 1px;
-    float: left;
-}
-.plus
-{
+.nav1Content{
+   width: 90%;
+  margin:0 auto;
    
-    font-size: 1.9em;
-    float:left;
-    color:white;
-    background-color: black;
-    padding:0px 7px;
+} 
+.nav1Content a:hover{
+    color:#ffffff !important;
 }
-.quantity
-{
-   height:auto;
-   width:auto;
-   padding: 20px 0px;
+.searchForm{
+    margin-left:30%;
+    margin-top:5px;
 }
-.contact_heading
-{
-    font-size: 2em;
+.headerform{
+    background:linear-gradient(180deg,#646464,#131313);
+    padding:10px;
+   
+}
+.headerform input[type="text"]{
+    height: 25px;
+    padding: 5px;
+    width:100%;
+   
 }
 
-.contact_border
-{
-    border:solid gray 1px;
-    margin:0 auto;
-    padding:30px 100px;
+.searchbtn{
+    position:relative;
+    margin-top: -3px;
+   height:27px;
+   width:25px !important;
 }
+
+.nav2Wrapper{
+   background: linear-gradient(180deg,#F4AB25,#FFBF00);
+  }
+.nav2Contents{
+    float:right;
+   margin-right:5%;
   
+}
+.nav2Contents {
+    font-size:18px;
+}
+
+.nav2Menu{
+    color:white;
+     cursor: pointer;
+     padding:20px;
+}
+.nav2Menu:hover{
+    color:black;
+}
+.nav2ScrollDwn{
+    background-color:#fbcd73;
+    opacity:60%;
+    text-align: center;
+    color:black;
+    margin-top:-1px;
+}
+.nav2ScrollDwn a{
+    color:#000000 !important;
+
+}
+
+
