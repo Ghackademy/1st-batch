@@ -2,10 +2,10 @@
 
 <html>
     <head>
-        <title>Bootstrap practice test day1</title>
+        <title>backend</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/customer.css">
+        <link rel="stylesheet" type="text/css" href="css/products.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
        
@@ -13,7 +13,7 @@
     <body>
         <!--headerpart-->
         <div id="main_container">
-        <section id="topNavigation">
+    <section id="topNavigation">
             <div class="container">
                 <div class="row">
                 <div class="header">
@@ -23,19 +23,30 @@
                      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 right-img">
                          <img src="images/shopping.jpg">
                     </div>
+                           <div class="col-lg-4 search">
+                              <div class="input-group inputwrapper">
+                                <input type="text" placeholder="search" class="form-control inputt">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default search_button" type="button"><img src="images/search.png"></button>
+                                </span>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          
+                  
                      <div class=" right-one">
                          <div class="col-md-4 im_admin"><img src="images/administrator.jpg">
                              <a> Administation</a></div>
                    
+                         <div class="col-md-3 im_set"><img src="images/setting.jpg"><a> setting</a></div>
+                         
                          <div class="col-md-4  im_log"> <img src="images/log.jpg"><a> logged in as</a></div>
-                    
-                         <div class="col-md-4 im_set"><img src="images/setting.jpg"><a> setting</a></div>
                      </div>
                 </div>
                </div>
                <div class="clearfix"></div>
             </div>
         </section>
+       
         <section id="menu">
             <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 right-img">
             <div class="container">
@@ -43,10 +54,10 @@
                 <div id="buttons">
          <!-- Standard button -->
          <div id="top_buttons"> 
-              <button type="button" class=" btn-style "><a>Dashboard</a></button>
+              <button type="button" class=" btn-style "><a href="dashboard.html">Dashboard</a></button>
 
                 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <button type="button" class="btn-style current" ><a href="dashboard.html">Products</a></button>
+                <button type="button" class="btn-style current" ><a href="product.html">Products</a></button>
 
                 <!-- Indicates a successful or positive action -->
                 <button type="button" class="btn-style"><a href="success.html">Success</a></button>
@@ -64,22 +75,21 @@
          </div>
          <div id="down_buttons">
                 <!-- Indicates a dangerous or potentially negative action -->
-                <button type="button" class="btn-style"><a href="customer.html">modules</a></button>
+                <button type="button" class="btn-style"><a>modules</a></button>
 
                 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-                <button type="button" class="btn-style"><a href="customer.html">configuration</a></button>
+                <button type="button" class="btn-style"><a>configuration</a></button>
                 
                  <!-- Indicates a dangerous or potentially negative action -->
-                <button type="button" class="btn-style"><a href="customer.html">tools</a></button>
+                <button type="button" class="btn-style"><a>tools</a></button>
 
                 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-                <button type="button" class="btn-style"><a href="customer.html">Orders</a></button>
+                <button type="button" class="btn-style"><a>Orders</a></button>
          </div>
          </div>
             </div>
             </div>
         </section>
-        
         <section id="mainContent">
             <div class="container">
                 <div class="product_head">
@@ -96,64 +106,51 @@
                 <div class="form_box"> 
                 
                     <h2>Add Products</h2>
-                
-                    <!-- start id-form -->
-		<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
-                    <div class="center-block">
-                        <tr>
-			<th valign="top">Product name:</th>
-			<td><input type="text" class="inp-form" /></td>
-			<td></td>
-		</tr>
-		<tr>
-			<th valign="top">Product name:</th>
-			<td><input type="text" class="inp-form-error" /></td>
-			<td>
-			<div class="error-left"></div>
-			<div class="error-inner">This field is required.</div>
-			</td>
-		</tr>
-		<tr>
-		<th valign="top">Category:</th>
-		<td>	
-		<select  class="styledselect_form_1">
-			<option value="">All</option>
-			<option value="">Products</option>
-			<option value="">Categories</option>
-			<option value="">Clients</option>
-			<option value="">News</option>
-		</select>
-		</td>
-		<td></td>
-		</tr>
-		<tr>
-		<th valign="top">Sub Category:</th>
-		<td>	
-		<select  class="styledselect_form_1">
-			<option value="">All</option>
-			<option value="">Products</option>
-			<option value="">Categories</option>
-			<option value="">Clients</option>
-			<option value="">News</option>
-		</select>
-		</td>
-		<td></td>
-		</tr> 
-		<tr>
-			<th valign="top">Price:</th>
-			<td><input type="text" class="inp-form" /></td>
-			<td></td>
-		</tr>
-		<tr>
-		<th valign="top">Select a date:</th>
-		<td class="noheight">
-		
-			<table border="0" cellpadding="0" cellspacing="0">
-			<tr  valign="top">
-				<td>
-				<form id="chooseDateForm" action="#">
-				
-				<select id="d" class="styledselect-day">
+                <!--start id form-->
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Product Name</label>
+                  <div class="col-sm-10">
+                    <input type="name" class="form-control form_input" id="inputname" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="category" class="col-sm-2 control-label">Category</label>
+                  <div class="col-sm-10">
+                    
+                      <select class="form-control form_select">
+                          <option>ABCD</option>
+                      </select>
+                      </div>   
+                  </div>
+                  <div class="form-group">
+                  <label for="category" class="col-sm-2 control-label">Sub Category</label>
+                  <div class="col-sm-10">
+                    
+                      <select class="form-control form_select">
+                          <option>ABCD</option>
+                      </select>
+                      </div>   
+                  </div>
+                 <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Product Name</label>
+                  <div class="col-sm-10">
+                    <input type="name" class="form-control form_input" id="inputname" >
+                  </div>
+                </div>
+                   <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">price</label>
+                  <div class="col-sm-10">
+                    <input type="name" class="form-control form_input" id="price" >
+                  </div>
+                </div>
+                  <div class="form-group">
+                  <label for="category" class="col-sm-2 control-label">date</label>
+                  <div class="col-sm-4 date">
+                      <table> 
+                          <tr>
+                          <td border="0">
+                     <select  class="form-control form_date">
 					<option value="">dd</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -186,10 +183,10 @@
 					<option value="29">29</option>
 					<option value="30">30</option>
 					<option value="31">31</option>
-				</select>
-				</td>
-				<td>
-					<select id="m" class="styledselect-month">
+                     </select>
+                              </td>
+                              <td>
+                                <select class="form-control form_date">
 						<option value="">mmm</option>
 						<option value="1">Jan</option>
 						<option value="2">Feb</option>
@@ -204,9 +201,9 @@
 						<option value="11">Nov</option>
 						<option value="12">Dec</option>
 					</select>
-				</td>
-				<td>
-					<select  id="y"  class="styledselect-year">
+                                  </td>
+                                  <td>
+                                      <select class="form-control form_date">
 						<option value="">yyyy</option>
 						<option value="2005">2005</option>
 						<option value="2006">2006</option>
@@ -215,53 +212,45 @@
 						<option value="2009">2009</option>
 						<option value="2010">2010</option>
 					</select>
-					</form>
-				</td>
-				<td><a href=""  id="date-pick"><img src="images/forms/icon_calendar.jpg"   alt="" /></a></td>
-			</tr>
-			</table>
-		
-		</td>
-		<td></td>
-	</tr>
-	<tr>
-		<th valign="top">Description:</th>
-		<td><textarea rows="" cols="" class="form-textarea"></textarea></td>
-		<td></td>
-	</tr>
-	<tr>
-	<th>Image 1:</th>
-	<td><input type="file" class="file_1" /></td>
-	<td>
-	<div class="bubble-left"></div>
-	<div class="bubble-inner">JPEG, GIF 5MB max per image</div>
-	<div class="bubble-right"></div>
-	</td>
-	</tr>
-	<tr>
-	<th>Image 2:</th>
-	<td>  <input type="file" class="file_1" /></td>
-	<td><div class="bubble-left"></div>
-	<div class="bubble-inner">JPEG, GIF 5MB max per image</div>
-	<div class="bubble-right"></div></td>
-	</tr>
-	<tr>
-	<th>Image 3:</th>
-	<td><input type="file" class="file_1" /></td>
-	<td><div class="bubble-left"></div>
-	<div class="bubble-inner">JPEG, GIF 5MB max per image</div>
-	<div class="bubble-right"></div></td>
-	</tr>
-	<tr>
-		<th>&nbsp;</th>
-		<td valign="top">
-			<input type="button" value="" class="form-submit" />
-			<input type="reset" value="" class="form-reset"  />
-		</td>
-		<td></td>
-	</tr>
-	</div>
-        </table>
+                                      </td>
+                              </tr>
+                      </table>
+                      </div>   
+                  </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Description</label>
+                  <div class="col-sm-10">
+                      <textarea type="name" class="form-control form_input" ></textarea>
+                  </div>
+                </div>
+                  
+                 <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Image1</label>
+                  <div class="col-sm-10">
+                    <input type="file" class="form-control form_input" id="price" >
+                  </div>
+                </div>
+                  <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Image1</label>
+                  <div class="col-sm-10">
+                    <input type="file" class="form-control form_input" id="price" >
+                  </div>
+                </div>
+                  <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Image1</label>
+                  <div class="col-sm-10">
+                      <input type="file" class="form-control form_input" id="price">
+                          
+                  </div>
+                </div>
+                  <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label"></label>
+                  <input type="submit" class="form-control form-button"/>
+                  <input type="reset"class="form-control form-button"/>
+                          
+                  </div>
+                  
+              </form>
 	<!-- end id-form  -->
 
 	 </div>

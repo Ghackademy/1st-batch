@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Bootstrap practice test day1</title>
+        <title>backend</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" type="text/css" href="css/customer.css">
@@ -21,11 +21,16 @@
                      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 right-img">
                          <img src="images/shopping.jpg">
                     </div>
-                    
-                    <div class="search">
-                        <div class="search_input"><input type="text" name="search"></div>
-                        <a href="search"><img src="images/search.jpg"></a>
-                    </div>
+                           <div class="col-lg-4 search">
+                              <div class="input-group inputwrapper">
+                                <input type="text" placeholder="search" class="form-control inputt">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default search_button" type="button"><img src="images/search.png"></button>
+                                </span>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          
+                  
                      <div class=" right-one">
                          <div class="col-md-4 im_admin"><img src="images/administrator.jpg">
                              <a> Administation</a></div>
@@ -47,10 +52,10 @@
                 <div id="buttons">
          <!-- Standard button -->
          <div id="top_buttons"> 
-              <button type="button" class=" btn-style "><a>Dashboard</a></button>
+              <button type="button" class=" btn-style "><a href="dashboard.html">Dashboard</a></button>
 
                 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <button type="button" class="btn-style current" ><a href="dashboard.html">Products</a></button>
+                <button type="button" class="btn-style current" ><a href="product.html">Products</a></button>
 
                 <!-- Indicates a successful or positive action -->
                 <button type="button" class="btn-style"><a href="success.html">Success</a></button>
@@ -97,15 +102,15 @@
 			  </div>
               <div id="infowrap">
               <div id="infobox">
-                    <h3>Sales for July</h3>
+                    <h2>Sales for July</h2>
                     <p><img src="images/graph.jpg" width="360" height="266" /></p>            
                   </div>
                   <div id="infobox" class="margin-left">
-                    <h3>Traffic for July</h3> 
+                    <h2>Traffic for July</h2> 
                     <p><img src="images/graph2.jpg" alt="a" width="359" height="266" /></p>
                   </div>
                   <div id="infobox">
-                    <h3>Last 5 Orders</h3>
+                    <h2>Last 5 Orders</h2>
                     <table>
 			<thead>
 			    <tr>
@@ -144,7 +149,7 @@
 	      </table>            
                   </div>
                   <div id="infobox" class="margin-left">
-                    <h3>Bestsellers</h3> 
+                    <h2>Bestsellers</h2> 
                     <table>
 			<thead>
 			<tr>
@@ -183,7 +188,7 @@
 		</table>
                 </div>
                   <div id="infobox">
-                    <h3>New Customers</h3>
+                    <h2>New Customers</h2>
                     <table>
 			<thead>
 			   <tr>
@@ -228,7 +233,7 @@
 		</table>                 
                   </div>
                   <div id="infobox" class="margin-left">
-                    <h3>Last 5 Reviews</h3> 
+                    <h2>Last 5 Reviews</h2> 
                     <table>
 			<thead>
 			<tr>

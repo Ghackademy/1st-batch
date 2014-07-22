@@ -103,8 +103,9 @@ a :hover{
     background: url('../images/button.jpg')!important;
     border-radius: 0.5em;
 }
-button .current{
-    background:red !important;
+ .current{
+     background:url('../images/button.jpg')!important;
+     border: 1px solid buttonhighlight;
 }
 #mainContent{
    width: 960px;
@@ -160,14 +161,8 @@ button .current{
     width:4em;
     border-radius: 0.3em;
 }
-.show ul li a{
-    color:#6677AF;
-    text-decoration: none;
-}
- /*table*/
- #product-table td a{
-     color:#baafaf !important;
- }
+    /*form*/
+    
  .form_box{
     color: #333;
     font-family: Arial, Helvetica, sans-serif;
@@ -178,68 +173,44 @@ button .current{
     min-width: 780px;
     padding: 35px 0px 30px 0px;
   }
-  table{
-      border:0px!important;
+  .form_box h2{
+      color:#31b0d5;
+      margin:3em 5em 1em 6em;
+      
   }
-table .product_table{
+  .form_box label{
+      color:#39b3d7;
+      font-size: 14px;
+  }
+  .form-button{
+      background: #89CCDF !important;
+  }
+
+.form_input{
+    width:20em !important;
+}
+.form_select{
+    width:10em !important;
+}
+.form_date{
+    width:6.4em !important;
+}
+table{
+    width:10em!important;
+   margin-left:-0.1em !important;
+}
+table td{
+    border:none !important;
+}
+textarea{
+    height:8em !important;
+}
+.form-button{
+    width: 6em !important;
+    display: inline;
     float: left;
-    border-collapse: collapse;
-    margin:0 0.5em;
+    margin:0.5em 0 0.5em 3em;
 }
-#product-table td,#product-table th {
-    border: 1px solid #D2D2D2;
-    padding: 10px 0px 10px 10px;
-    width: auto; 
-}
-
-#product-table	{
-	margin:1.5em auto 20px -0.5555em;
-        width: 936px;
-	}
-#product-table	td a	{
-	color: #393939;
-	}
-#product-table	td a:hover	{
-	text-decoration: underline;
-	}
-#product-table	th	{
-	height: 40px;
-	text-align: left;
-        line-height: 40px;
-        background-color: #F2E8E8;
-	}
-
-#product-table td	{
-	border: 1px solid #d2d2d2;
-	padding: 10px 0 10px 10px;
-	}
-#product-table tr.alternate-row	{
-	background: #ececec;
-	}
-.comment-section{
-            float:left;
-            width: 100%;
-        }
- .comment-section ul .comment{
-            float: left;
-        }
- .comment-section ul li{
-     border:1px solid #333;
-     border-radius: 0.3em;
-     height: 2em;
-     margin:1em 1em 0 1em;
-     padding:0.5em;
-     float:left;
-     width:70%;
-     height: 3em;
-     line-height: 2em;     
-        }      
-  .comment-section ul li img{
-         margin-right: 0.2em;
-         height:1em;
-        }
-
-
    /*dashboard*/
  
  

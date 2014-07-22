@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Bootstrap practice test day1</title>
+        <title>backend</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" type="text/css" href="css/customer.css">
@@ -21,19 +21,30 @@
                      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 right-img">
                          <img src="images/shopping.jpg">
                     </div>
+                           <div class="col-lg-4 search">
+                              <div class="input-group inputwrapper">
+                                <input type="text" placeholder="search" class="form-control inputt">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default search_button" type="button"><img src="images/search.png"></button>
+                                </span>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          
+                  
                      <div class=" right-one">
                          <div class="col-md-4 im_admin"><img src="images/administrator.jpg">
                              <a> Administation</a></div>
                    
+                         <div class="col-md-3 im_set"><img src="images/setting.jpg"><a> setting</a></div>
+                         
                          <div class="col-md-4  im_log"> <img src="images/log.jpg"><a> logged in as</a></div>
-                    
-                         <div class="col-md-4 im_set"><img src="images/setting.jpg"><a> setting</a></div>
                      </div>
                 </div>
                </div>
                <div class="clearfix"></div>
             </div>
         </section>
+       
         <section id="menu">
             <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 right-img">
             <div class="container">
@@ -41,10 +52,10 @@
                 <div id="buttons">
          <!-- Standard button -->
          <div id="top_buttons"> 
-              <button type="button" class=" btn-style "><a>Dashboard</a></button>
+              <button type="button" class=" btn-style "><a href="dashboard.html">Dashboard</a></button>
 
                 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <button type="button" class="btn-style current" ><a href="dashboard.html">Products</a></button>
+                <button type="button" class="btn-style current" ><a href="product.html">Products</a></button>
 
                 <!-- Indicates a successful or positive action -->
                 <button type="button" class="btn-style"><a href="success.html">Success</a></button>
@@ -77,7 +88,6 @@
             </div>
             </div>
         </section>
-        
         <section id="mainContent">
             <div class="container">
                 <div class="product_head">
