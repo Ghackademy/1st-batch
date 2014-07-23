@@ -57,7 +57,7 @@ min-width:270px;
    
     width: 100%;
     background-color: black;
-    min-height:330px;
+    min-height:300px;
     color:white;
     list-style: none;
     color:gray;
@@ -113,36 +113,36 @@ min-width:270px;
     margin-left: 0%;*/
 }
 
-.box{
-    width: 100%;
-    border: 1px solid black;
-    min-height: 100px;
-}
 #third{
     width: 100%;
-    min-height: 250px;
-    color:orange;
+  
  }
  #third hr
  {
 width:100%;
-min-height: 5px;
+min-height:5px;
 color:orange;
+
  }
 .advertisement{
     width: 100%;
-    min-height: 50px;
+  padding-bottom: 20px;
     min-width:100px;
+    
+   
 }
 #fourth
 {
  width: 100%;
  min-height: 500px;
+ padding-top: 2em;
 }
 .heading
 {
     font-size:2em;
     margin-bottom: 10px;
+    
+    margin-left: 10px;
 }
 .contentLeft
 {
@@ -151,11 +151,10 @@ color:orange;
 }
  .product
  {
-     min-height: 405px;
+     min-height: 410px;
      float:left;
-  
-  
      width: auto;
+     padding-bottom: 30px;
  }
  .product_img
  {
@@ -197,24 +196,25 @@ font-size:1.2em;
 .footer1
 {
     background-color:orange;
-height:25px;
+    min-height:25px;
 }
 .footer2
 {
     background-color: black;
-    height:100px;
+    min-height:100px;
 }
 .footernoteleft
 {
     
-
+padding:20px 0px;
     
 }
 .footernoteright
 {
     float:right!important;
-    padding:30px 10px;
-  
+    padding:20px 0px;
+    text-align: right;
+     
 }
 .product_detail_heading
 {
@@ -269,4 +269,29 @@ height:25px;
     margin:0 auto;
     padding:30px 100px;
 }
+#registration_form
+{
+    width:700px;
+    height:700px;
+    margin:0 auto;
+    box-shadow: 0.1em 0.1em 2em #000;
   
+}
+.register_wrapper
+{
+    padding:10px 10px;
+}
+.r1
+{
+    height:50px;
+    width:100%;
+    background-color: black;
+}
+.r2{
+    height:20px;
+    width:100%;
+    background-color: orange;
+}
+#sixth h1{
+    margin-left: 50px;
+}
