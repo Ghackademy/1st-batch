@@ -59,6 +59,9 @@ class User extends CI_Controller {
             die();
         }
     }
+    public function welcome(){
+        $this->load->view('index');
+    }
 
 	//redirect if needed, otherwise display the user list
 	function index()
@@ -88,7 +91,7 @@ class User extends CI_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('index', $this->data);
+			$this->_render_page('userview', $this->data);
 		}
 	}
     function checklogin()
@@ -124,7 +127,7 @@ class User extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('user/index', 'refresh');	
+				redirect('user/userview', 'refresh');	
 			}
 			else
 			{
@@ -498,7 +501,7 @@ class User extends CI_Controller {
 			//check to see if we are creating the user
 			//redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("user/index", 'refresh');
+			redirect("user/userview", 'refresh');
 		}
 		else
 		{
