@@ -8,6 +8,6 @@ category title:<input type="text" name="cat_title" value = "<?php echo $category
 category description:<input type="text" name="cat_desc" value = "<?php echo $category['cat_description'];?>">
 <input type ="submit" name="submit" value="submit">
 </form>
-
+ 
 </body>
 </html>

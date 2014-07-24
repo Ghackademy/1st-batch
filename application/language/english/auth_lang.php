@@ -42,6 +42,7 @@ $lang['index_active_link']       = 'Active';
 $lang['index_inactive_link']     = 'Inactive';
 $lang['index_create_user_link']  = 'Create a new user';
 $lang['index_create_group_link'] = 'Create a new group';
+$lang['index_dashboard_logout']= 'Logout';
 
 // Deactivate User
 $lang['deactivate_heading']                  = 'Deactivate User';
@@ -72,6 +73,8 @@ $lang['create_user_validation_phone3_label']           = 'Third Part of Phone';
 $lang['create_user_validation_company_label']          = 'Company Name';
 $lang['create_user_validation_password_label']         = 'Password';
 $lang['create_user_validation_password_confirm_label'] = 'Password Confirmation';
+$lang['create_user_type']                       = 'User Type:';
+
 
 // Edit User
 $lang['edit_user_heading']                           = 'Edit User';

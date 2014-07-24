@@ -53,12 +53,12 @@ class Product extends MX_Controller {
          * return data
          */
         public function add(){
-            $res['allcategory'] = $this->category_model->getAllCategory('tb_category');
+            $res['allcategory'] = $this->category_model->displayCategory('tb_category');
              if($_POST){
                  $image=$this->do_upload(); 
                  $pname = $this->input->post('pname');
                 $data = array(
-                    'Product_name'=>$this->input->post('pname'),
+                    'product_name'=>$this->input->post('pname'),
                     'product_description'=>$this->input->post('pdescription'),
                     'price'=>$this->input->post('pprice'),
                     'featured'=>$this->input->post('feature'),
@@ -97,7 +97,7 @@ class Product extends MX_Controller {
             $config['last_link'] = 'Last';
              $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-           $data['allcategory'] = $this->category_model->getAllCategory('tb_category');            
+           $data['allcategory'] = $this->category_model->displayCategory('tb_category');            
             $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
             $data['links'] = $this->pagination->create_links();
            // print_r($data);die();
@@ -130,7 +130,7 @@ class Product extends MX_Controller {
          * @param integer id
          */
         public function edit($pid){
-            $data['allcategory'] = $this->category_model->getAllCategory('tb_category');
+            $data['allcategory'] = $this->category_model->displayCategory('tb_category');
                 if($_POST){
                     
                         if(empty($_FILES['userfile']['name'])){
@@ -144,12 +144,17 @@ class Product extends MX_Controller {
                     $image=$this->do_upload(); 
                      $this->product_model->updateProduct($pid,$image);
                   }
-                  redirect('product/lists');                                     
+				   $user_id = $this->session->userdata('userid');
+				  $where = array('user_id'=>$user_id);
+				$data['myProductList'] = $this->product_model->getProduct('','',$where);
+                 $this->load->view('myProduct',$data);                                      
             }
             else{
-                $where = array('product_id'=>$pid);
-                $data['product'] = $this->product_model->getProduct('','',$where);
-                //print_r($data);die();
+                //$where = array('product_id'=>$pid);
+               // $data['product'] = $this->product_model->getProduct('','',$where);
+				$data['product'] = $this->product_model->getSingleProduct($pid);
+				$datas['category']=$this->product_model->getSingleProduct($pid);
+                print_r($datas);die();
                 $this->load->view('EditProduct',$data);
                
             }

@@ -4,6 +4,7 @@ class User extends CI_Controller {
 
 	function __construct()
 	{
+            
 		parent::__construct();
 		$this->load->library('ion_auth');
 		$this->load->library('form_validation');
@@ -19,6 +20,8 @@ class User extends CI_Controller {
 
 		$this->lang->load('auth');
 		$this->load->helper('language');
+                
+               
 	}
 
 	//redirect if needed, otherwise display the user list
@@ -33,7 +36,8 @@ class User extends CI_Controller {
 		elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
 		{
 			//redirect them to the home page because they must be an administrator to view this
-			return show_error('You must be an administrator to view this page.');
+			//return show_error('You must be an administrator to view this page.');
+                    $this->dashboard();
 		}
 		else
 		{
@@ -396,8 +400,11 @@ class User extends CI_Controller {
 	}
 
 	//create a new user
-	function create_user()
+	function sign_up()
 	{
+               
+         $this->data["listGroups"] = $this->ion_auth->grouplist();
+
 		$this->data['title'] = "Create User";
 
      		//if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
@@ -427,6 +434,7 @@ class User extends CI_Controller {
 				'last_name'  => $this->input->post('last_name'),
 				'company'    => $this->input->post('company'),
 				'phone'      => $this->input->post('phone'),
+                               'group_id'     => $this->input->post('groups')
 			);
 		}
 		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
@@ -434,7 +442,7 @@ class User extends CI_Controller {
 			//check to see if we are creating the user
 			//redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("user", 'refresh');
+			redirect("user/login", 'refresh');
 		}
 		else
 		{
@@ -496,10 +504,11 @@ class User extends CI_Controller {
 
 		if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id)))
 		{
-			redirect('auth', 'refresh');
+			redirect('user', 'refresh');
 		}
 
 		$user = $this->ion_auth->user($id)->row();
+                echo $user;die();
 		$groups=$this->ion_auth->groups()->result_array();
 		$currentGroups = $this->ion_auth->get_users_groups($id)->result();
 
@@ -560,7 +569,7 @@ class User extends CI_Controller {
 				$this->session->set_flashdata('message', "User Saved");
 				if ($this->ion_auth->is_admin())
 				{
-					redirect('auth', 'refresh');
+					redirect('user', 'refresh');
 				}
 				else
 				{
@@ -762,5 +771,20 @@ class User extends CI_Controller {
 
 		if (!$render) return $view_html;
 	}
+        
+        
+        public function dashboard(){
+              $id = $this->session->userdata('user_id');
+             $row['group'] = $this->ion_auth->user($id)->row();
+              if($row['group']->group_id == 3){
+                $this->load->view('auth/vendor_dashboard',$row);
+                  
+            }
+            else{
+                $this->load->view('auth/user_dashboard',$row);
+            }
+           
+            
+        }
 
 }

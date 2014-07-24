@@ -11,20 +11,22 @@ class Category extends CI_Controller {
 		$this->load->model('category_model'); 
       }
 	  
-	   /*
-     * adds new category
-     */
+          /*
+          * adds new category
+          */
 	  public function add(){
 	  if ($_POST)
 	  {
+               $this->load->library('form_validation');
 	  $data= array(
                 'cat_title'=>  $this->input->post('cat_title'),
-                'cat_description'=>  $this->input->post('cat_desc')
+                'cat_description'=>  $this->input->post('cat_desc'),
+              'slug'=>url_title($this->input->post('cat_title'),'dash',true)
             );
-			
-			$this->category_model->addCategory(category::table,$data);
+	  $this->form_validation->set_rules('cat_title', 'cat_title', 'required');
+	  $this->category_model->addCategory(category::table,$data);
 			 
-			$this->display();
+	  $this->display();
 	  
 	  }
 	  else
@@ -36,6 +38,10 @@ class Category extends CI_Controller {
 	  
 	  
 	  
+          
+          /*
+          * returns all category
+          */
 	  public function display(){
 	  $data['allcategory']=$this->category_model->displayCategory(category::table);
 	  $this->load->view('categorylist',$data);
@@ -43,11 +49,16 @@ class Category extends CI_Controller {
 	  }
 	  
 	  
+          
+          /*
+          * returns all category with edited category
+          */
 	  public function edit($id){
 	  if($_POST){
 	  $data=array(
                 'cat_title' =>$this->input->post('cat_title'),
-              'cat_description' =>  $this->input->post('cat_desc')
+              'cat_description' =>  $this->input->post('cat_desc'),
+               'slug' => url_title($this->input->post('cat_title'),'dash',true)
               );
 	  $this->category_model->update(category::table,$data,$id);
           $data['allcategory']=$this->category_model->displayCategory(category::table);
@@ -60,5 +71,13 @@ class Category extends CI_Controller {
 	  }
 	  }
 	  
+          
+          /*
+          * deletes a category
+          */
+          public function delete($id){
+          $this->category_model->deleteCategory(category::table,$id);
+          redirect('category/display');
+          }
 	  }
 	  ?>

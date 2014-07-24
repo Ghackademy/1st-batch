@@ -17,23 +17,49 @@ class Category_model extends CI_Model {
 		  $this->db->insert($tablename, $data);
 		 }
 		 
+                 
+                 
+                 /*
+                 * returns all category of database
+                 */
 		 public function displayCategory($tablename){
 		  $query= $this->db->get($tablename);
-             $res = $query->result_array();
+                  $res = $query->result_array();
              
-             return $res;
+                  return $res;
 		 }
 		 
+                 
+                 /*
+                 * gets a category from table
+                 */
 		 public function getSingleCategory($a='',$id)
 		 {
 			 $res=$this->db->get_where($a,array('cat_id'=>$id));
-             return $res->row_array($id);
+                 return $res->row_array($id);
 		 }
 		 
+                 
+                 /*
+                 * updates a category
+                 */
 		 public function update($tablename,$data,$id){
 		 $this->db->where('cat_id', $id);
-            $this->db->update($tablename,$data);
+                 $this->db->update($tablename,$data);
 		 }
 		 
-		 }
+		 
+                  /*
+                  * deletes a category
+                  */
+                  public function deleteCategory($tablename,$id){
+                  $this->db->where('cat_id',$id);
+                  $this->db->delete($tablename);
+                  }
+                 
+                 
+                 
+                 }//end of class
+                 
+                 
 		 ?>

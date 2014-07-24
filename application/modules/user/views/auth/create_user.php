@@ -3,7 +3,7 @@
 
 <div id="infoMessage"><?php echo $message;?></div>
 
-<?php echo form_open("user/create_user");?>
+<?php echo form_open("user/sign_up");?>
 
       <p>
             <?php echo lang('create_user_fname_label', 'first_name');?> <br />
@@ -40,6 +40,13 @@
             <?php echo form_input($password_confirm);?>
       </p>
 
+      
+       <p>
+            <?php echo lang('create_user_type' , 'user_type');?> <br />
+            <?php echo form_dropdown('groups', $listGroups, '3') ?>
+
+            <?php //echo form_input($user_type);?>
+      </p>
 
       <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
 

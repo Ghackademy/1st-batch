@@ -94,7 +94,7 @@ class Product_model extends CI_Model {
                 
              
                  $res = $this->db->get_where(Product_model::table,array('product_id'=>$id));
-                 $value = $res->row($id);
+                 $value = $res->row_array($id);
                  return $value;
          
     }

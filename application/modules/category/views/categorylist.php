@@ -20,7 +20,7 @@ foreach($allcategory as $c): ?>
 
 <td><?php echo $c['cat_description'];?></td>
 <td><a href="<?php echo base_url();?>category/edit/<?php echo $c['cat_id']; ?>">edit</a></td>
-<td><a href="<?php echo base_url();?>delete/<?php echo $c['cat_id']; ?>">delete</a></td>
+<td><a href="<?php echo base_url();?>category/delete/<?php echo $c['cat_id']; ?>">delete</a></td>
 </tr>
 <?php endforeach;?>
 </table>
