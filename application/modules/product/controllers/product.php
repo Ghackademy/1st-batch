@@ -8,6 +8,7 @@ class Product extends MX_Controller {
         $this->load->model('product_model');
         $this->load->library('session');
         $this->load->model('category/category_model');
+    
      }
      
              function do_upload() {
@@ -48,7 +49,8 @@ class Product extends MX_Controller {
             die();
         }
     }
-    
+  
+   
     public function lists(){
              $config['base_url'] = base_url().'/product/lists/';
             $config['total_rows'] = $this->product_model->countProduct();
@@ -78,14 +80,36 @@ class Product extends MX_Controller {
                 'shipping_detail' => $this->input->post('pdetails'),
                 'product_image' => $image,
                 'cat_id' => $this->input->post('category'),
+                'user_id'=> $this->session->userdata('user_id')
             );
             $this->product_model->addProduct($data);
-            redirect('product/lists');
+            redirect('product/myproduct');
         } else {
 
             $this->load->view('addProduct', $res);
         }
     }
+         public function myproduct(){
+              $config['base_url'] = base_url().'/product/myproduct/';
+            $config['total_rows'] = $this->product_model->countProduct();
+            $config['per_page'] = 3;
+            $config['uri_segment'] = 3;            
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+             $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
+                  if($this->session->userdata('userid')==$data['user_id']){
+           
+         }
+            
+                  $data['links'] = $this->pagination->create_links();
+                 $this->load->view('myproduct',$data);
+//                  if($this->session->userdata('user_id')==$data['user_id']){
+//      
+//                      echo"hi";
+//                  }
+       
+                  
+      }
 
         public function edit($id){
             $data['allcategory'] = $this->category_model->getallCategory('tb_category');

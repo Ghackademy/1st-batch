@@ -15,7 +15,10 @@ class Product_model extends CI_Model {
 		
 		                             
              $this->db->limit($limit, $start);
-            $query = $this->db->get('tb_product');
+             $this->db->select('*');
+             $this->db->from('tb_product');
+             $this->db->join('users', 'users.id = tb_product.product_id');
+            $query = $this->db->get();
                 if ($query->num_rows() > 0) {
                         foreach ($query->result() as $row) {
                         $data[] = $row;
@@ -26,19 +29,19 @@ class Product_model extends CI_Model {
          }
          //return product value according to input
          
+  
          public function countProduct() {
                 return $this->db->count_all(Product_model::Table);
          }
          //return single id of product
          public function getSingleProduct($id){
              if($_POST){
-                
-             
                  $res = $this->db->get_where(Product_model::Table,array('product_id'=>$id));
                  $value = $res->row($id);
                  return $value;
              }
          }
+         
          public function updateproduct($id,$tablename,$image){
               $pname = $this->input->post('pname');
               $data=array(

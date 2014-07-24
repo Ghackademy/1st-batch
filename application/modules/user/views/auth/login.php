@@ -26,4 +26,4 @@
 <?php echo form_close();?>
 
 <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
-<p><?php echo anchor('user/create_user', lang('index_create_user_link'))?> 
+<p><?php echo anchor('user/create_user', lang('index_create_user_link'))?> | <?php echo anchor('user/create_group', lang('index_create_group_link'))?></p>

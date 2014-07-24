@@ -29,12 +29,11 @@ class Category_model extends CI_Model {
          }
         //function to edit category
          public function getSingleCategory($id){
-              if($_POST){
              $res=$this->db->get_where(category_model::table,array('cat_id'=>$id));
-             $value = $res->row($id);
-              return $value;
+			 $value = $res->row($id);             
+			 return $value;
              
-              }
+              
          }
             public function update($id,$tablename,$data){
 		$this->db->where('cat_id', $id);
