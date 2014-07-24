@@ -1,0 +1,103 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 9, 2014, 2:25:19 AM
+    Author     : Radhika
+*/
+
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, figcaption, figure,footer, header, hgroup, menu, nav, section, summary,time, mark, audio, video {    margin:0;    padding:0;    border:0;    outline:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}body {    line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {    display:block;}nav ul {    list-style:none;}blockquote, q {    quotes:none;}blockquote:before, blockquote:after,q:before, q:after {    content:'';    content:none;}a {    margin:0;    padding:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}/* change colours to suit your needs */ins {    background-color:#ff9;    color:#000;    text-decoration:none;}/* change colours to suit your needs */mark {    background-color:#ff9;    color:#000;    font-style:italic;    font-weight:bold;}del {    text-decoration: line-through;}abbr[title], dfn[title] {    border-bottom:1px dotted;    cursor:help;}table {    border-collapse:collapse;    border-spacing:0;}/* change border colour to suit your needs */hr {    display:block;    height:1px;    border:0;    border-top:1px solid #cccccc;    margin:1em 0;    padding:0;}input, select {    vertical-align:middle;}
+
+/*LocalStyle*/
+@font-face{ font-family:Titillium-Regular;
+src:url(fonts/TitilliumWeb-Regular.ttf);
+	}
+@font-face{ font-family:Titillium-Bold;
+src:url(fonts/TitilliumWeb-Bold.ttf);
+	}
+#wrapper{
+    background-color: #ffffff;
+    width:100%;
+    font-family: Titillium-Regular;
+    
+}
+.clear_div{
+    clear:both;
+}
+#header{
+   font-family: Titillium-Bold; 
+   color:white;
+  
+   
+}
+.nav1{
+  background-color: #000000;
+ 
+ 
+}
+.nav1Content{
+   width: 90%;
+  margin:0 auto;
+   
+} 
+.nav1Content a:hover{
+    color:#ffffff !important;
+}
+.searchForm{
+    margin-left:30%;
+    margin-top:5px;
+}
+.headerform{
+    background:linear-gradient(180deg,#646464,#131313);
+    padding:10px;
+   
+}
+.headerform input[type="text"]{
+    height: 25px;
+    padding: 5px;
+    width:100%;
+   
+}
+
+.searchbtn{
+    position:relative;
+    margin-top: -3px;
+   height:27px;
+   width:25px !important;
+}
+
+.nav2Wrapper{
+   background: linear-gradient(180deg,#F4AB25,#FFBF00);
+  }
+.nav2Contents{
+    float:right;
+   margin-right:5%;
+  
+}
+.nav2Contents {
+    font-size:18px;
+}
+
+.nav2Menu{
+    color:white;
+     cursor: pointer;
+     padding:20px;
+}
+.nav2Menu:hover{
+    color:black;
+}
+.nav2ScrollDwn{
+    background-color:#fbcd73;
+    opacity:60%;
+    text-align: center;
+    color:black;
+    margin-top:-1px;
+}
+.nav2ScrollDwn a{
+    color:#000000 !important;
+
+}
+
+
