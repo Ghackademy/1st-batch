@@ -15,7 +15,7 @@ class Product_model extends CI_Model {
         */
          public function addProduct($data){
                 $this->db->insert(Product_model::table,$data);
-		
+
          }
          /*
           * @param integer limit
@@ -23,11 +23,11 @@ class Product_model extends CI_Model {
           * @param varchar condition
           * return data 
           */
-         public function getProduct($limit,$start,$where=""){
+         public function getProduct($limit="",$start="",$where=""){
             if($where!="")
 			$this->db->where($where);
-		
-		                             
+
+
              $this->db->limit($limit, $start);
             $query = $this->db->get(Product_model::table);
                 if ($query->num_rows() > 0) {
@@ -62,7 +62,7 @@ class Product_model extends CI_Model {
           * return data
           */
          public function updateProduct($id,$image){
-            $pname = $this->input->post('pname');
+            
             $data = array(
                 'Product_name'=>$this->input->post('pname'),
                 'product_description'=>$this->input->post('pdescription'),
@@ -75,27 +75,27 @@ class Product_model extends CI_Model {
                 'product_image'=>$image,
                  'cat_id'=>$this->input->post('category'),
                  'user_id'=>$this->session->userdata('userid'),
-                  'slug'=>url_title($pname,'dash',true)
+                 'slug'=>url_title($this->input->post('pname'),'dash',true)
 
             );
-            $this->db->where('product_id', $id);
+            $this->db->where('slug', $id);
             $this->db->update(Product_model::table,$data);
+           // echo $this->db->last_query();
             
          }
          /*
           * @param integer id
           */
           public function deleteProduct($id){
-        $this->db->delete(Product_model::table, array('product_id' => $id)); 
+        $this->db->delete(Product_model::table, array('slug' => $id)); 
     }
     
     public function getSingleProduct($id){
-       
-                
-             
-                 $res = $this->db->get_where(Product_model::table,array('product_id'=>$id));
-                 $value = $res->row_array($id);
-                 return $value;
-         
-    }
+            
+            $query = $this->db->get_where(Product_model::table, array('slug' =>$id));
+            $res = $query->row_array($id);
+            //echo $this->db->last_query();
+            return $res;
+        }
 }
+?>

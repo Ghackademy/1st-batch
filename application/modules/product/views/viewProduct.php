@@ -17,4 +17,5 @@
         <?php echo $links; ?>
     </body>
 </html>
+<a href="<?php echo base_url();?>product/myProduct"><b><h2>My products</h2></b></a>
 <a href="<?php echo base_url();?>user/logout"><b><h2>Logout</h2></b></a>

@@ -70,7 +70,7 @@ class Category extends CI_Controller {
 	    $this->load->view('editcategory',$datas);
 	  }
 	  }
-	  
+
           
           /*
           * deletes a category

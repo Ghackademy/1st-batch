@@ -5,8 +5,8 @@ class Product extends MX_Controller {
 	public function __construct(){
             parent::__construct();
             $this->load->model('product_model');
-              $this->load->library('session');
-              $this->load->model('category/category_model');
+            $this->load->library('session');
+            $this->load->model('category/category_model');
              
             
         }
@@ -56,9 +56,8 @@ class Product extends MX_Controller {
             $res['allcategory'] = $this->category_model->displayCategory('tb_category');
              if($_POST){
                  $image=$this->do_upload(); 
-                 $pname = $this->input->post('pname');
-                $data = array(
-                    'product_name'=>$this->input->post('pname'),
+                 $data = array(
+                    'Product_name'=>$this->input->post('pname'),
                     'product_description'=>$this->input->post('pdescription'),
                     'price'=>$this->input->post('pprice'),
                     'featured'=>$this->input->post('feature'),
@@ -69,7 +68,7 @@ class Product extends MX_Controller {
                     'product_image'=>$image,
                      'cat_id'=>$this->input->post('category'),
                      'user_id'=>$this->session->userdata('userid'),
-                      'slug'=>url_title($pname,'dash',true)
+                      'slug'=>url_title($this->input->post('pname'),'dash',true)
                     
                 );
               
@@ -97,7 +96,7 @@ class Product extends MX_Controller {
             $config['last_link'] = 'Last';
              $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-           $data['allcategory'] = $this->category_model->displayCategory('tb_category');            
+           $data['allcategory'] = $this->category_model->getAllCategory('tb_category');            
             $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
             $data['links'] = $this->pagination->create_links();
            // print_r($data);die();
@@ -129,35 +128,24 @@ class Product extends MX_Controller {
         /*
          * @param integer id
          */
-        public function edit($pid){
+        public function edit($id){
             $data['allcategory'] = $this->category_model->displayCategory('tb_category');
-                if($_POST){
-                    
-                        if(empty($_FILES['userfile']['name'])){
-                          $where = array('product_id'=>$pid);
-                          $pimage = $this->product_model->getProduct('','',$where);
-                          $image = $pimage['image']; 
-                          $this->product_model->updateProduct($pid,$image);
-                          
-                  }
-                  else{
+             if($_POST){
+                 if(empty($_FILES['userfile']['name'])){
+                     $product = $this->product_model->getSingleProduct($id);
+                     $pimage = $product['product_image'];
+                     $this->product_model->updateProduct($id,$pimage);
+                 }
+             else{
                     $image=$this->do_upload(); 
-                     $this->product_model->updateProduct($pid,$image);
-                  }
-				   $user_id = $this->session->userdata('userid');
-				  $where = array('user_id'=>$user_id);
-				$data['myProductList'] = $this->product_model->getProduct('','',$where);
-                 $this->load->view('myProduct',$data);                                      
-            }
-            else{
-                //$where = array('product_id'=>$pid);
-               // $data['product'] = $this->product_model->getProduct('','',$where);
-				$data['product'] = $this->product_model->getSingleProduct($pid);
-				$datas['category']=$this->product_model->getSingleProduct($pid);
-                print_r($datas);die();
-                $this->load->view('EditProduct',$data);
-               
-            }
+                    $this->product_model->updateProduct($id,$image);
+             }
+              redirect('product/myproduct');   
+             }   
+             else{
+                 $data['product'] = $this->product_model->getSingleProduct($id);
+                 $this->load->view('editProduct',$data);
+             }
         }
         
         /*
@@ -170,6 +158,3 @@ class Product extends MX_Controller {
         }
     }
 
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
