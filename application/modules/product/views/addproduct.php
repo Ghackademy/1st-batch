@@ -4,7 +4,7 @@
     </head>
     <body>
     
-    <?php //echo validation_errors();?>
+    <?php?>
 
         <h2>Add Your Product Here</h2>
         <form method="post" action="" enctype="multipart/form-data">
@@ -27,3 +27,4 @@
         
     </body>
 </html>
+<a href="<?php echo base_url();?>user/logout"><b><h2>Logout</h2></b></a>
