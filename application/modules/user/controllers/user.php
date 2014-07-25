@@ -7,6 +7,7 @@ class User extends CI_Controller {
             
 		parent::__construct();
 		$this->load->library('ion_auth');
+                $this->load->model('category/category_model');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 
@@ -23,11 +24,18 @@ class User extends CI_Controller {
                 
                
 	}
+	
+	
+	function welcome(){
+            $data['allcategory']=$this->category_model->displayCategory('tb_category');
+	  	$this->load->view('index',$data);
+	}
 
 	//redirect if needed, otherwise display the user list
 	function index()
 	{
-
+                                
+            
 		if (!$this->ion_auth->logged_in())
 		{
 			//redirect them to the login page
@@ -786,5 +794,6 @@ class User extends CI_Controller {
            
             
         }
+       
 
 }

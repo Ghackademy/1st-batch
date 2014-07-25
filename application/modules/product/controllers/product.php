@@ -96,7 +96,7 @@ class Product extends MX_Controller {
             $config['last_link'] = 'Last';
              $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-           $data['allcategory'] = $this->category_model->getAllCategory('tb_category');            
+           $data['allcategory'] = $this->category_model->displayCategory('tb_category');            
             $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
             $data['links'] = $this->pagination->create_links();
            // print_r($data);die();
