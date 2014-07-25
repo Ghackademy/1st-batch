@@ -62,7 +62,7 @@ img{vertical-align:middle}.img-responsive{display:block;height:auto;max-width:10
 .img-circle{border-radius:50%}hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}
 .sr-only{position:absolute;width:1px;height:1px;
          padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
-p{margin:0 0 10px}.lead{margin-bottom:20px;font-size:16px;font-weight:200;line-height:1.4}
+p{margin: 0 auto;}.lead{margin-bottom:20px;font-size:16px;font-weight:200;line-height:1.4}
 @media(min-width:768px){.lead{font-size:21px}}small,.small{font-size:85%}cite{font-style:normal}
 .text-muted{color:#999}.text-primary{color:#428bca}.text-primary:hover{color:#3071a9}
 .text-warning{color:#c09853}.text-warning:hover{color:#a47e3c}.text-danger{color:#b94a48}

@@ -1,6 +1,23 @@
-
-html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, figcaption, figure,footer, header, hgroup, menu, nav, section, summary,time, mark, audio, video {    margin:0;    padding:0;    border:0;    outline:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}body {    line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {    display:block;}nav ul {    list-style:none;}blockquote, q {    quotes:none;}blockquote:before, blockquote:after,q:before, q:after {    content:'';    content:none;}a {    margin:0;    padding:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}/* change colours to suit your needs */ins {    background-color:#ff9;    color:#000;    text-decoration:none;}/* change colours to suit your needs */mark {    background-color:#ff9;    color:#000;
-          font-style:italic;    font-weight:bold;}del {    text-decoration: line-through;}abbr[title], dfn[title] {    border-bottom:1px dotted;    cursor:help;}table {    border-collapse:collapse;    border-spacing:0;}/* change border colour to suit your needs */hr {    display:block;    height:1px;    border:0;    border-top:1px solid #cccccc;    margin:1em 0;    padding:0;}input, select {    vertical-align:middle;}
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em,
+img, ins, kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table,
+caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, figcaption, figure,footer, header, hgroup, menu,
+nav, section, summary,time, mark, audio, video {    margin:0;    padding:0;    border:0;    outline:0;    font-size:100%;  
+                                                    vertical-align:baseline;    background:transparent;}
+body {    line-height:1;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {    display:block;}
+nav ul {    list-style:none;}blockquote, q {    quotes:none;}
+blockquote:before, blockquote:after,q:before, q:after {    content:'';    content:none;}
+a {    margin:0;    padding:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}
+/* change colours to suit your needs */
+ins {    background-color:#ff9;    color:#000;    text-decoration:none;}
+/* change colours to suit your needs */
+mark {    background-color:#ff9;    color:#000;
+          font-style:italic;    font-weight:bold;}del {    text-decoration: line-through;}
+          abbr[title], dfn[title] {    border-bottom:1px dotted;    cursor:help;}
+          table {    border-collapse:collapse;    border-spacing:0;}
+          /* change border colour to suit your needs */
+          hr {    display:block;    height:1px;    border:0;    border-top:1px solid #cccccc;    margin:1em 0;    padding:0;}
+          input, select {    vertical-align:middle;}
 
 /*LocalStyle*/
 body{
@@ -16,6 +33,7 @@ body{
 .container{
     width:960px !important;
 }
+/*--------------------------------------------------header----------------------------------------------------------*/
 .header{
      background: url('../images/header2.jpg');
      height:118px;
@@ -38,7 +56,7 @@ button{
     width: 2em;
 }
 .search img{
-    height: 2em !important;
+    height: 2.2em !important;
     margin:-10px -50px;
 }
 .left-img{
@@ -76,6 +94,8 @@ a :hover{
     color: #eee !important;
     text-decoration: none !important;
 }
+
+/*----------------------------------------------------menu-------------------------------------------------------*/
 #menu{
         border-top:  0.1em solid #31b0d5;
          height: 9em;
@@ -107,6 +127,7 @@ a :hover{
      background:url('../images/button.jpg')!important;
      border: 1px solid buttonhighlight;
 }
+/*--------------------------------------below button-----------------------------------------------------*/
 #mainContent{
    width: 960px;
    height:auto;
@@ -161,7 +182,13 @@ a :hover{
     width:4em;
     border-radius: 0.3em;
 }
-    /*form*/
+    
+    
+
+  /*-------------------------------------------table-------------------------------------------------*/
+  
+  /*-------------------------------------------Add product-----------------------------------------------------------*/
+     /*form*/
     
  .form_box{
     color: #333;
@@ -182,9 +209,7 @@ a :hover{
       color:#39b3d7;
       font-size: 14px;
   }
-  .form-button{
-      background: #89CCDF !important;
-  }
+ 
 
 .form_input{
     width:20em !important;
@@ -195,13 +220,8 @@ a :hover{
 .form_date{
     width:6.4em !important;
 }
-table{
-    width:10em!important;
-   margin-left:-0.1em !important;
-}
-table td{
-    border:none !important;
-}
+
+
 textarea{
     height:8em !important;
 }
@@ -210,15 +230,14 @@ textarea{
     display: inline;
     float: left;
     margin:0.5em 0 0.5em 3em;
+    background: url('../images/button.jpg' )!important;
 }
-   /*dashboard*/
- 
- 
 
+/*---------------------------------------------view product-------------------------------------------------------------*/
 #infobox {
-width: 400px;
+width: 90%;
 float: left;
-margin: 2em;
+margin: 2em auto;
 border:1px solid #e8e7e1;
 }
 
@@ -229,12 +248,13 @@ color: #a43708;
 padding: 10px;
 font-size: 19px;
 margin-top: 0;
+
 }
-table{
+ 
+ table{
 	margin:5px;
-	border: collapse;
 	table-layout:automatic;
-	width:98%;
+	width:100%;
 }
 
 td, th {
@@ -246,27 +266,18 @@ th{
     background-color: #f7f6f0;
 }
 
-.form-submit{
-    background: url('../images/form_submit.gif');
-    width: 80px;
-    height: 30px;
-    border-radius: 0.5em;
-}
-.form-reset{
-    background: url('../images/form_reset.gif');
-    width: 80px;
-    height: 30px;
-    border-radius: 0.5em;
-}
- /*footer*/   
+/*-------------------------------------------footer--------------------------------------------------------*/
+ 
 .footer{
     background: url('../images/header.jpg');
-     height:8em;
+     
+    height: auto;
      margin: 0em auto;
-     width:100%;
+     
+    padding: 1em;
+    border-right: 0.1em solid #31b0d5;
+    border-left: 0.1em solid #31b0d5;
 }
-.footer h2{
-   text-align: center;
-   margin-top:1em !important;
-   text-underline-position: below; 
+.footer span{
+   margin: 0em 20em ;
 }

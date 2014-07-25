@@ -1,18 +1,19 @@
+<!DOCTYPE html>
+
 <html>
     <head>
         <title>backend</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+        <link rel="stylesheet" type="text/css" href="css/products.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
        
     </head>
-    <link href="dashboard.css" rel="stylesheet" type="text/css"/>
     <body>
         <!--headerpart-->
-         <div id="main_container">
-         <section id="topNavigation">
+        <div id="main_container">
+      <section id="topNavigation">
             <div class="container">
                 <div class="row">
                 <div class="header">
@@ -54,10 +55,10 @@
                 <div id="buttons">
          <!-- Standard button -->
          <div id="top_buttons" > 
-                           <button type="button" class=" btn-style  current"><a href="dashboard.html">Dashboard</a></button>
+                           <button type="button" class=" btn-style "><a href="dashboard.html">Dashboard</a></button>
 
                 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <button type="button" class="btn-style" ><a href="view_products.html">Products</a></button>
+                <button type="button" class="btn-style  current" ><a href="view_products.html.html">Products</a></button>
 
                 <!-- Indicates a successful or positive action -->
                 <button type="button" class="btn-style"><a href="success.html">Success</a></button>
@@ -94,71 +95,29 @@
         </section>
         <section id="mainContent">
             <div class="container">
-               <div id="rightnow">
-                    <h3 class="reallynow" style="color: #269abc;" >
-                        <span>Right Now</span>  <br />
-                    </h3>
-			<p class="youhave" style="color:#a29595;">You have <a href="#">19 new orders</a>, <a href="#">12 new users</a>
-                            and <a href="#">5 new reviews</a>, today you made <a href="#">$1523.63 in sales</a>
-                            and a total of <strong>$328.24 profit </strong>
-                    </p>
-			  </div>
-              <div id="infowrap">
-              <div id="infobox">
-                    <h2>Sales for July</h2>
-                    <p><img src="images/graph.jpg" width="360" height="266" /></p>            
-                  </div>
-                  <div id="infobox" class="margin-left">
-                    <h2>Traffic for July</h2> 
-                    <p><img src="images/graph2.jpg" alt="a" width="359" height="266" /></p>
-                  </div>
-                  <div id="infobox">
-                    <h2>Last 5 Orders</h2>
-                    <table>
-			<thead>
-			    <tr>
-                            	<th>Customer</th>
-                                <th>Items</th>
-                                <th>Grand Total</th>
-                            </tr>
-			</thead>
-			<tbody>
-			   <tr>
-                            	<td><a href="#">Jennifer Kyrnin</a></td>
-                                <td>1</td>
-                                <td>14.95 €</td>
-                            </tr>
-			    <tr>
-                            	<td><a href="#">Mark Kyrnin</a></td>
-                            	<td>2</td>
-                                <td>34.27 €</td>
-                            </tr>
-			   <tr>
-                            	<td><a href="#">Virgílio Cezar</a></td>
-                                <td>2</td>
-                                <td>61.39 €</td>
-                            </tr>
-							<tr>
-                            	<td><a href="#">Todd Simonides</a></td>
-                                <td>5</td>
-                                <td>1472.56 €</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="#">Carol Elihu</a></td>
-                                <td>1</td>
-                                <td>9.95 €</td>
-                            </tr>
-		       </tbody>
-	      </table>            
-                  </div>
-                  <div id="infobox" class="margin-left">
-                    <h2>Bestsellers</h2> 
+                <div class="product_head">
+                    <h3>All Products</h3>
+                </div>
+                
+                 <div class="select_sub show">
+			<ul class="sub">
+				<li  class="sub_show current" ><a href="view_products.html">View all products</a></li>
+				<li ><a href="add_products.html">Add product</a></li>
+				
+			</ul>
+		</div>
+               
+                <div class="table-list">
+                    <form id="mainform">
+                    <div id="infobox" class="margin-left">
+                    
                     <table>
 			<thead>
 			<tr>
                             	<th>Product Name</th>
                                 <th>Price</th>
                                 <th>Orders</th>
+                                <th>Action</th>
                             </tr>
 			</thead>
 			<tbody>
@@ -166,139 +125,102 @@
                            <td><a href="#">Apple iPhone 3G 8GB</a></td>
                             <td>199.00 €</td>
                             <td>24</td>
+                            <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
                         </tr>
 			<tr>
                             	<td><a href="#">Fuji FinePix S5800</a></td>
                             	<td>365.24 €</td>
                                 <td>19</td>
+                                <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
                             </tr>
 			<tr>
                             	<td><a href="#">Canon PIXMA MP140</a></td>
                                 <td>59.50 €</td>
                                 <td>12</td>
+                                <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
                             </tr>
 			<tr>
                             	<td><a href="#">Apple iPhone 3G 16GB</a></td>
                                 <td>199.00 €</td>
                                 <td>10</td>
+                                <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
                             </tr>
                             <tr>
                             	<td><a href="#">Prenosnik HP 530 1,6GHz</a></td>
                                 <td>499.00 €</td>
                                 <td>6</td>
+                                <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
+                            </tr>
+                            <tr>
+                           <td><a href="#">Apple iPhone 3G 8GB</a></td>
+                            <td>199.00 €</td>
+                            <td>24</td>
+                            <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
+                        </tr>
+			<tr>
+                            	<td><a href="#">Fuji FinePix S5800</a></td>
+                            	<td>365.24 €</td>
+                                <td>19</td>
+                                <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
+                            </tr>
+			<tr>
+                            	<td><a href="#">Canon PIXMA MP140</a></td>
+                                <td>59.50 €</td>
+                                <td>12</td>
+                                <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
+                            </tr>
+			<tr>
+                            	<td><a href="#">Apple iPhone 3G 16GB</a></td>
+                                <td>199.00 €</td>
+                                <td>10</td>
+                                <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
+                            </tr>
+                            <tr>
+                            	<td><a href="#">Prenosnik HP 530 1,6GHz</a></td>
+                                <td>499.00 €</td>
+                                <td>6</td>
+                                <td><a href="#"><img src="images/page_white_link.png" /></a>
+                                    <a href="#"><img src="images/page_white_edit.png" /></a>
+                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
                             </tr>
 			</tbody>
 		</table>
                 </div>
-                  <div id="infobox">
-                    <h2>New Customers</h2>
-                    <table>
-			<thead>
-			   <tr>
-                            	<th>Customer</th>
-                                <th>Orders</th>
-                                <th>Average</th>
-                                <th>Total</th>
-                            </tr>
-			</thead>
-		   <tbody>
-			   <tr>
-                            	<td><a href="#">Jennifer Kyrnin</a></td>
-                                <td>1</td>
-                                <td>5.6€</td>
-                                <td>14.95 €</td>
-                            </tr>
-			<tr>
-                            	<td><a href="#">Mark Kyrnin</a></td>
-                            	<td>2</td>
-                                <td>14.97€</td>
-                                <td>34.27 €</td>
-                            </tr>
-			<tr>
-                            	<td><a href="#">Virgílio Cezar</a></td>
-                                <td>2</td>
-                                <td>15.31€</td>
-                                <td>61.39 €</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="#">Todd Simonides</a></td>
-                                <td>5</td>
-                                <td>502.61€</td>
-                                <td>1472.56 €</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="#">Carol Elihu</a></td>
-                                <td>1</td>
-                                <td>5.1€</td>
-                                <td>9.95 €</td>
-                            </tr>
-			</tbody>
-		</table>                 
-                  </div>
-                  <div id="infobox" class="margin-left">
-                    <h2>Last 5 Reviews</h2> 
-                    <table>
-			<thead>
-			<tr>
-                            	<th>Reviewer</th>
-                                <th>Product</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-			<tbody>
-			  <tr>
-                            	<td><a href="#">Jennifer Kyrnin</a></td>
-                                <td><a href="#">Apple iPhone 3G 8GB</a></td>
-                                <td><a href="#"><img src="images/page_white_link.png" /></a>
-                                    <a href="#"><img src="images/page_white_edit.png" /></a>
-                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
-                            </tr>
-			<tr>
-                            	<td><a href="#">Mark Kyrnin</a></td>
-                            	<td><a href="#">Prenosnik HP 530 1,6GHz</a></td>
-                                <td><a href="#"><img src="images/page_white_link.png" /></a>
-                                    <a href="#"><img src="images/page_white_edit.png" /></a>
-                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
-                            </tr>
-			  <tr>
-                            	<td><a href="#">Virgílio Cezar</a></td>
-                                <td><a href="#">Fuji FinePix S5800</a></td>
-                                <td><a href="#"><img src="images/page_white_link.png" /></a>
-                                    <a href="#"><img src="images/page_white_edit.png" /></a>
-                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
-                            </tr>
-							<tr>
-                            	<td><a href="#">Todd Simonides</a></td>
-                                <td><a href="#">Canon PIXMA MP140</a></td>
-                                <td><a href="#"><img src="images/page_white_link.png" /></a>
-                                    <a href="#"><img src="images/page_white_edit.png" /></a>
-                                    <a href="#"><img src="images/page_white_delete.png" /></a>
-                                </td>
-                            </tr>
-                            <tr>
-                            	<td><a href="#">Carol Elihu</a></td>
-                                <td><a href="#">Prenosnik HP 530 1,6GHz</a></td>
-                                <td><a href="#"><img src="images/page_white_link.png" /></a>
-                                    <a href="#"><img src="images/page_white_edit.png" /></a>
-                                    <a href="#"><img src="images/page_white_delete.png" /></a></td>
-                            </tr>
-						</tbody>
-					</table>
-                  </div>
-              </div>
-            </div>               
-           <div class="col-md-12 footer">
-           <span>Design By : <a href="sabina.com.np">Sabina Kandel</a> . Admin Panel |
-                    <a href="shoppingcart.com">Shopping Cart</a></span>
-</div>
-       
-        </section>
+                    </form>
+                </div>
+                
+               </div>
             
-      	 </div>
-            
+            </section>
         <!--Javascript Section-->
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
-           
+       
+        <div class="col-md-12 footer">
+           <span>Design By : <a href="sabina.com.np">Sabina Kandel</a> . Admin Panel |
+                    <a href="shoppingcart.com">Shopping Cart</a></span>
+</div>
+
+</div>
+            
+                
     </body>
 </html>

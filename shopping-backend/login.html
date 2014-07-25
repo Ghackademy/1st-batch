@@ -40,16 +40,6 @@
                                 </div>
                                
                                <div class="form-group">
-                                  <label for="usertype" class="col-sm-2 control-label">User Type</label>
-                                  <div class="col-sm-10">
-                                      <select class="form-control input-form">
-                                          <option>Admin</option>
-                                           <option>user</option>
-                                      </select>
-                                       
-                                  </div>
-                                </div>
-                                <div class="form-group">
                                   <div class="col-sm-offset-2 col-sm-10">
                                     <div class="checkbox">
                                       <label>
