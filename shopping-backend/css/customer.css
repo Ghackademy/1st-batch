@@ -120,12 +120,7 @@ a :hover{
          color:#efefef;
      }
 #top_buttons{
-    margin: 0em 6em;
-    height: auto;
-    
-}
-#down_buttons{
-    margin: 0.5em 14.3em;
+    margin: 0em 6em 2em 6em;
     height: auto;
     
 }
