@@ -8,81 +8,113 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-        <script src="lean-slider.js">
-            $(document).ready(function() {
-    $('#slider').leanSlider();
-});
-directionNavPrevBuilder: function(prevText){
-    return '<a href="#" class="lean-slider-prev">'+ prevText +'</a>';        
-}
-
-directionNavNextBuilder: function(nextText){
-    return '<a href="#" class="lean-slider-prev">'+ nextText +'</a>';        
-}
-
-controlNavBuilder: function(index, slide){
-    return '<a href="#" class="lean-slider-control-nav">'+ (index + 1) +'</a>';
-}
-        </script>
+ 
 <link rel="stylesheet" href="lean-slider.css" type="text/css" />
     </head>
     <body>
         <!--headerpart-->
-        <section id="topNavigation">
-            <div class="container">
-            <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Brand</a>
-  </div>
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
-                <div class="clearfix"></div>
+         <nav class="navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="nav1">
+                    <div class="nav1Content">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Logo</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+                            <div class="searchForm">
+                                <div class="col-lg-4 col-xs-12 col-sm-12 col-md-4">
+                                    <div class="headerform input-group">
+
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="searchbtn glyphicon glyphicon-search" type="button">
+                                            </button>
+                                        </span>
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                            </div>     
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">My Cart</a></li>
+                                <li><a href="#">Login</a></li>
+
+                            </ul>
+                        </div>
+                    </div><!-- /.navbar-collapse -->
+                    <!-- /.container-fluid -->
+                </div>
             </div>
-        </section>
+        </nav>
+        <div class="clearfix"></div>
+        <!--nav2-->
+        <div class="nav2Wrapper">
+            <div class="nav2Contents">
+                <!--category-->
+                <div class="btn-group">
+                    <div class="nav2Menu" data-toggle="dropdown">Categories </div>
+                    <ul class="nav2ScrollDwn dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+                <!--brand-->
+                <div class="btn-group">
+                    <div class="nav2Menu" data-toggle="dropdown">Brand</div>
+                    <ul class="nav2ScrollDwn dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+                <!--sales-->
+                <div class="btn-group">
+                    <div class="nav2Menu" data-toggle="dropdown">Sales </div>
+                    <ul class="nav2ScrollDwn dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </div>
+                <!--new product-->
+                <div class="btn-group">
+                    <div class="nav2Menu" data-toggle="dropdown">New products </div>
+                    <ul class="nav2ScrollDwn dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </div>
+                <!--contactus-->
+                <div class="btn-group">
+                    <div class="nav2Menu" data-toggle="dropdown">Contact us</div>
+                    
+                </div>
+                <!--about us-->
+                <div class="btn-group">
+                    <div class="nav2Menu" data-toggle="dropdown">About us </div>
+                  
+                </div>
+
+            </div> <!--content close-->
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="clearfix"></div>
         <section id="second">
             <div class="container">
                 <div class="row">
