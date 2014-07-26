@@ -373,3 +373,16 @@ padding:20px 0px;
 #sixth h1{
     margin-left: 50px;
 }
+.message
+{
+    height:100px;
+    width:100%;
+    background-color: black;
+    color:white;   
+}
+.message p
+{
+    text-align: center;
+    padding:4% 0;
+    font-size: 2em;
+}
