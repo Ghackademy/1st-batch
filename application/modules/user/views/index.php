@@ -46,7 +46,7 @@
         <li><a href="#">My Account</a></li>
         <li><a href="#">My Wishlist</a></li>
         <li><a href="#">My Cart</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="user/login">Login</a></li>
         
       </ul>
          </div>
