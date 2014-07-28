@@ -7,16 +7,34 @@ and open the template in the editor.
     Created on : Jul 9, 2014, 2:25:19 AM
     Author     : Radhika
 */
-
-html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, figcaption, figure,footer, header, hgroup, menu, nav, section, summary,time, mark, audio, video {    margin:0;    padding:0;    border:0;    outline:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}body {    line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {    display:block;}nav ul {    list-style:none;}blockquote, q {    quotes:none;}blockquote:before, blockquote:after,q:before, q:after {    content:'';    content:none;}a {    margin:0;    padding:0;    font-size:100%;    vertical-align:baseline;    background:transparent;}/* change colours to suit your needs */ins {    background-color:#ff9;    color:#000;    text-decoration:none;}/* change colours to suit your needs */mark {    background-color:#ff9;    color:#000;    font-style:italic;    font-weight:bold;}del {    text-decoration: line-through;}abbr[title], dfn[title] {    border-bottom:1px dotted;    cursor:help;}table {    border-collapse:collapse;    border-spacing:0;}/* change border colour to suit your needs */hr {    display:block;    height:1px;    border:0;    border-top:1px solid #cccccc;    margin:1em 0;    padding:0;}input, select {    vertical-align:middle;}
-
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, 
+blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, 
+kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul,
+li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, 
+th, td,article, aside, canvas, details, figcaption, figure,footer, header, 
+hgroup, menu, nav, section, summary,time, mark, audio, video 
+{    margin:0;    padding:0;    border:0;    outline:0;    font-size:100%;    
+     vertical-align:baseline;    background:transparent;}
+body {    line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,
+section {    display:block;}nav ul {    list-style:none;}blockquote,
+q {    quotes:none;}blockquote:before, blockquote:after,q:before,
+q:after {    content:'';    content:none;}a {    margin:0;    padding:0;    font-size:100%;    
+       vertical-align:baseline;    background:transparent;}
+/* change colours to suit your needs */ins {    background-color:#ff9;    color:#000;    text-decoration:none;}
+/* change colours to suit your needs */mark {    background-color:#ff9;    color:#000;    font-style:italic;    font-weight:bold;}
+del {    text-decoration: line-through;}abbr[title],
+dfn[title] {    border-bottom:1px dotted;    cursor:help;}
+table {    border-collapse:collapse;    border-spacing:0;}
+/* change border colour to suit your needs */
+hr {    display:block;    height:1px;    border:0;    border-top:1px solid #cccccc;    margin:1em 0;    padding:0;}
+input, select {    vertical-align:middle;}
 /*LocalStyle*/
-@font-face{ font-family:Titillium-Regular;
-src:url(fonts/TitilliumWeb-Regular.ttf);
-	}
-@font-face{ font-family:Titillium-Bold;
-src:url(fonts/TitilliumWeb-Bold.ttf);
-	}
+@font-face {
+    
+	font-family:"roboto";
+	src:url(../fonts/RobotoCondensed-Regular.ttf);
+ 
+}
 #wrapper{
     background-color: #ffffff;
     width:100%;
@@ -26,11 +44,115 @@ src:url(fonts/TitilliumWeb-Bold.ttf);
 .clear_div{
     clear:both;
 }
-#header{
-   font-family: Titillium-Bold; 
-   color:white;
-  
+
+#topNavigation{
+    width: 100%;
+    min-height: 50px;
+    background: #080808;
+}
+.container
+{
+    font-family: roboto;
+}
+#second{
+    min-height: 200px;
+    padding: 2em 0em;
+}
+#sidebar{
+
+min-width:270px;
+}
+.sidebarlist
+{
    
+    width: 100%;
+    background-color: black;
+    min-height:300px;
+    color:white;
+    list-style: none;
+    color:gray;
+}
+#sidebar_heading
+{
+    font-size: 2em;
+    float:left;
+    color:white;
+    margin-left: 10%;
+    margin-top:5%;
+       
+  
+}
+#sidebar_heading_group
+{
+   background-color: black;
+   width: auto;
+   min-height:70px;
+}
+#sidebar_heading_pic
+{
+    height:50px;
+    width:50px;
+    float:left;
+    margin-top:5%;
+    margin-left:10%;
+ }
+.sidebarlist li
+{
+    font-size: 1.2em;
+    min-width: 50px;
+    min-height: 55px;
+    height:auto;
+    transition:background-color 0.5s ease-out;
+    text-decoration: none;
+    color:white;
+    border-top: solid 1px gray;
+    text-align: center;
+    width:94%;
+    margin-left:3%;
+}
+.sidebarlist li a
+{
+    text-decoration: none;
+    color:white;
+    
+}
+.sidebarlist li:hover
+{
+    background-color: orange;
+/*    width:100%;
+    margin-left: 0%;*/
+}
+
+#third{
+    width: 100%;
+  
+ }
+ #third hr
+ {
+width:100%;
+min-height:5px;
+color:orange;
+
+ }
+.advertisement{
+    width: 100%;
+  padding-bottom: 20px;
+    min-width:100px;
+    
+   
+}
+#fourth
+{
+ width: 100%;
+ min-height: 500px;
+ padding-top: 2em;
+}
+.heading
+{
+    font-size:2em;
+    margin-bottom: 10px;
+    
+    margin-left: 10px;
 }
 .nav1{
   background-color: #000000;
@@ -53,14 +175,85 @@ src:url(fonts/TitilliumWeb-Bold.ttf);
     background:linear-gradient(180deg,#646464,#131313);
     padding:10px;
    
+
 }
 .headerform input[type="text"]{
     height: 25px;
     padding: 5px;
     width:100%;
-   
+}
+.contentLeft
+{
+    min-height:445px;
+    width:100%;
+}
+ .product
+ {
+     min-height: 410px;
+     float:left;
+     width: auto;
+     padding-bottom: 30px;
+ }
+ .product_img
+ {
+     height:250px;
+     width:250px;
+    box-shadow: 0.1em 0.1em 1em  #000;
+ }
+ .pdesc
+ {
+     font-size: 1.3em;
+     margin-top: 15px;
+  }
+.star
+{
+    color:orange;
+    font-size: 1.5em;
+}
+  
+ .contentRight
+ {
+ 
+}
+.addtocart
+{
+    background-color: orange;
+    font-size: 1.3em;
+    color:white;
+    padding:7px 12px;
+    width:auto;
 }
 
+footer
+{
+width:100%;  
+color:white;
+font-size:1.2em;
+
+}
+.footer1
+{
+    background-color:orange;
+    min-height:25px;
+}
+.footer2
+{
+    background-color: black;
+    min-height:100px;
+}
+.footernoteleft
+{
+    
+padding:20px 0px;
+    
+}
+.footernoteright
+{
+    float:right!important;
+    padding:20px 0px;
+    text-align: right;
+     
+}
 .searchbtn{
     position:relative;
     margin-top: -3px;
@@ -75,6 +268,7 @@ src:url(fonts/TitilliumWeb-Bold.ttf);
     float:right;
    margin-right:5%;
   
+
 }
 .nav2Contents {
     font-size:18px;
@@ -100,4 +294,95 @@ src:url(fonts/TitilliumWeb-Bold.ttf);
 
 }
 
+.product_detail_heading
+{
+    font-size:2em;
+    
+}
+.product_detail_img
+{
+   border: solid gray 1px;
+  height:400px;
+  width:400px;
+}
+.product_detail_desc
+{
+    height:auto;
+    width:auto;
+    font-size: 1em;
+    padding:20px 0px;
+}
+.product_detail_price{
+    padding:10px 0px;
+    font-size: 2em;} 
+.num
+{
+    padding:8px 13px;
+    border:solid gray 1px;
+    float: left;
+}
+.plus
+{
+   
+    font-size: 1.9em;
+    float:left;
+    color:white;
+    background-color: black;
+    padding:0px 7px;
+}
+.quantity
+{
+   height:auto;
+   width:auto;
+   padding: 20px 0px;
+}
+.contact_heading
+{
+    font-size: 2em;
+}
 
+.contact_border
+{
+    border:solid gray 1px;
+    margin:0 auto;
+    padding:30px 100px;
+}
+#registration_form
+{
+    width:700px;
+    height:700px;
+    margin:0 auto;
+    box-shadow: 0.1em 0.1em 2em #000;
+  
+}
+.register_wrapper
+{
+    padding:10px 10px;
+}
+.r1
+{
+    height:50px;
+    width:100%;
+    background-color: black;
+}
+.r2{
+    height:20px;
+    width:100%;
+    background-color: orange;
+}
+#sixth h1{
+    margin-left: 50px;
+}
+.message
+{
+    height:100px;
+    width:100%;
+    background-color: black;
+    color:white;   
+}
+.message p
+{
+    text-align: center;
+    padding:4% 0;
+    font-size: 2em;
+}
