@@ -12,7 +12,8 @@ class Product extends MX_Controller {
      }
      
              function do_upload() {
-        $config['upload_path'] = "uploads/product/original/";
+        $config['upload_path'] ="uploads/product/original/";
+        
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size'] = '4000';
         $config['max_width'] = '2000';
@@ -67,7 +68,9 @@ class Product extends MX_Controller {
         $res['allcategory'] = $this->category_model->getallCategory('tb_category');
         if ($_POST) {
             $p_name = $this->input->post('pname');
+            
             $image = $this->do_upload();
+          
             $data = array(
                 'Product_name' => $this->input->post('pname'),
                 'product_description' => $this->input->post('pdescription'),
@@ -77,7 +80,7 @@ class Product extends MX_Controller {
                 'stock_info' => $this->input->post('pquantity'),
                 'rating' => $this->input->post('prating'),
                    'slug'=>url_title($p_name,'dash',true),
-                'shipping_detail' => $this->input->post('pdetails'),
+                'shipping_detail' => $this->input->post('sdetails'),
                 'product_image' => $image,
                 'cat_id' => $this->input->post('category'),
                 'user_id'=> $this->session->userdata('user_id')
@@ -96,11 +99,14 @@ class Product extends MX_Controller {
             $config['uri_segment'] = 3;            
             $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-             $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
-                  if($this->session->userdata('userid')==$data['user_id']){
-           
-         }
-            
+            // $res['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
+            // print_r($res);
+            $uid=$this->session->userdata('userid');
+                      $where =array('user_id' =>$uid); 
+                  
+                     // echo"hi";die();
+            $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page,$where);
+                
                   $data['links'] = $this->pagination->create_links();
                  $this->load->view('myproduct',$data);
 //                  if($this->session->userdata('user_id')==$data['user_id']){

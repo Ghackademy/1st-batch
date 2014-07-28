@@ -140,19 +140,19 @@
 				 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Rating</label>
                   <div class="col-sm-10">
-                    <input type="checkbox" class="form-control form_input" id="price" name="prating" value="1" >
+                    <input type="text" class="form-control form_input" id="price" name="prating" value="1" >
                   </div>
                 </div>
 				 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Publish</label>
                   <div class="col-sm-10">
-                    <input type="checkbox" class="form-control form_input" id="price" name="publish" value="1" >
+                    <input type="text" class="form-control form_input" id="price" name="publish" value="1" >
                   </div>
                 </div>
 				 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Feature</label>
                   <div class="col-sm-10">
-                    <input type="checkbox" class="form-control form_input" id="price" name="feature" value="1">
+                    <input type="text" class="form-control form_input" id="price" name="feature" value="1">
                   </div>
                 </div>
                   <div class="form-group">
@@ -231,12 +231,12 @@
                  <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Product Image</label>
                   <div class="col-sm-10">
-                    <input type="file" class="form-control form_input" name="userfile" value="<?php echo set_value('pimage');?>">
+                    <input type="file" class="form-control form_input" id="price" name="userfile" value="<?php echo set_value('pimage');?>">
                   </div>
                 </div>
                   <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label"></label>
-                  <input type="submit" class="form-control form-button name="submit" value="Add"/>
+                  <input type="submit" class="form-control form-button" name="submit" value="Add"/>
                   <input type="reset"class="form-control form-button"/>
                           
                   </div>
