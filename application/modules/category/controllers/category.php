@@ -48,7 +48,19 @@ class category extends MX_Controller {
         }
         
     }
-	      //return data updated value 
+    public function view(){
+      $data['allcategory']= $this->category_model->getAllCategory();
+       $this->load->view('user/view',$data);
+    }
+ 
+    public function allpost($id){
+        $data['getpost']=$this->category_model->getAllPostOfOneCategory($id);
+        //print_r($data);die();
+       $this->load->view('categorypost',$data);
+    }
+    
+    
+    //edit category
       public function edit($id){
           if ($_POST){
 		  	$title = $this->input->post('cat_title');
@@ -66,6 +78,7 @@ class category extends MX_Controller {
           $this->load->view('edit',$data);
           }
       }
+      
       public function delete($id){
           $this->category_model->delete_row($id);
           redirect($_SERVER['HTTP_REFERER']);

@@ -35,7 +35,23 @@ class Category_model extends CI_Model {
              
               
          }
-            public function update($id,$tablename,$data){
+         public function getAllPostOfOneCategory($id){
+             $this->db->select('*');
+             $this->db->from('tb_product');
+             $this->db->join('tb_category', 'tb_category.cat_id = tb_product.cat_id');
+            $this->db->where('tb_product.cat_id', $id);
+              $query = $this->db->get();
+               if ($query->num_rows() > 0) {
+                        foreach ($query->result() as $row) {
+                        $data[] = $row;
+                    }
+                        return $data;
+                }
+                return false;
+             
+         }
+ //update category
+         public function update($id,$tablename,$data){
 		$this->db->where('cat_id', $id);
 		$this->db->update($tablename, $data); 
 		return $this->db->affected_rows();
@@ -45,4 +61,5 @@ class Category_model extends CI_Model {
             $this->db->where('cat_id',$id);
             $this->db->delete(category_model::table);
         }
+       
 }
