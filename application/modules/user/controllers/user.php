@@ -9,6 +9,7 @@ class User extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->helper('url');
                 $this->load->model('product/product_model');
+                 $this->load->model('category/category_model');
 
 		// Load MongoDB library instead of native db driver if required
 		$this->config->item('use_mongodb', 'ion_auth') ?
@@ -60,7 +61,8 @@ class User extends CI_Controller {
         }
     }
     public function welcome(){
-        $this->load->view('index');
+         $data['allcategory']= $this->category_model->getAllCategory();
+        $this->load->view('user/index',$data);
     }
 
 	//redirect if needed, otherwise display the user list
