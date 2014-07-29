@@ -215,20 +215,25 @@
                        
                         <div class="heading ">Featured Products</div>
                         <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">
-                          
-                          <img src="assets/images/13.jpg" class="product_img"height="250" >
-                          <p class="pdesc">This is converse.<br>$30.99<br>
+                            <?php //print_r($allProductList); die();?>
+                          <?php foreach($allProductList as $p): ?>
+                               <?php if ($p['featured'] == 1){ ?>
+
+                          <img src="<?php echo base_url();?>uploads/product/original/<?php echo $p['product_image'];?>" class="product_img"height="250" >
+                          <p class="pdesc"><?php echo $p['product_name']; ?><br>$30.99<br>
                               <i class="fa fa-star star"></i>
                           <i class="fa fa-star star"></i>
                          
                         </p>
                        <span class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</span>  
                        <span class="addtocart"><i class="fa fa-heart"></i></span>
-                       </div>
-                                     
-                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">
                            
-                        <img src="images/30.jpg" class="product_img" height="250" width="250">
+                       </div><?php } ?>
+                        <?php endforeach; ?>  
+                         
+<!--                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">
+                           
+                        <img src="assets/images/30.jpg" class="product_img" height="250" width="250">
                          <p class="pdesc">Black Jacket.<br>$30.99<br>
                               <i class="fa fa-star star"></i>
                           <i class="fa fa-star star"></i>
@@ -238,11 +243,11 @@
                        <span class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</span> 
                        
                        <span class="addtocart"><i class="fa fa-heart"></i></span>
-                        </div>                       
+                        </div>                       -->
                    
-                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">
+<!--                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">
                            
-                          <img src="images/20_1.jpg" class="product_img"height="250">
+                          <img src="assets/images/20_1.jpg" class="product_img"height="250">
                            <p class="pdesc">A brown bag.<br>$30.99<br>
                               <i class="fa fa-star star"></i>
                           <i class="fa fa-star star"></i>
@@ -250,7 +255,7 @@
                         </p>
                        <span class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</span>  
                        <span class="addtocart"><i class="fa fa-heart"></i></span>
-                    </div>
+                    </div>-->
                
                     </div>
             </div>

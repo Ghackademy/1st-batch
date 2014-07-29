@@ -98,5 +98,11 @@ class Product_model extends CI_Model {
             //print_r($res);
             return $res;
         }
+        
+        public function get(){
+            $query = $this->db->get('tb_product');
+            $res = $query->result_array();
+            return $res;
+        }
 }
 ?>

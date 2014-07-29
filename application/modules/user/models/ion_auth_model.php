@@ -2174,14 +2174,15 @@ public function grouplist()
 {
     $query = $this->db->get('groups');
 
-    foreach ($query->result() as $row)
-            {
-                  $listArray[$row->id] = $row->name;   
-                  //print_r($listArray[$row->id]);exit;
-                  
-            }               
+//    foreach ($query->result() as $row)
+//            {
+//                  $listArray[$row->id] = $row->name;   
+//                  //print_r($listArray[$row->id]);exit;
+//                  
+//            }               
             //echo $this->db->last_query();
-    return $listArray;
+    $res = $query->result_array();
+            return $res;
 }
 
 
