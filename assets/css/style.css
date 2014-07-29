@@ -211,8 +211,8 @@ color:orange;
     font-size: 1.5em;
 }
   
- .contentRight
- {
+ #rightContent
+ {padding-top: 2em;
  
 }
 .addtocart
