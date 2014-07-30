@@ -96,7 +96,7 @@
                 
                     <h2>Add Products</h2>
                 <!--start id form-->
-              <form class="form-horizontal" role="form" method="POST">
+              <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Product Name</label>
                   <div class="col-sm-10">
