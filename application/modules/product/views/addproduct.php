@@ -281,6 +281,7 @@
                 <input type="submit" name="submit">
         </form>
         
-    </body>
+t
+</body>
 </html>
 <a href="<?php echo base_url();?>user/logout"><b><h2>Logout</h2></b></a>-->
