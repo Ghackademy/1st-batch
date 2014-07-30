@@ -39,7 +39,7 @@ class Category_model extends CI_Model {
              $this->db->select('*');
              $this->db->from('tb_product');
              $this->db->join('tb_category', 'tb_category.cat_id = tb_product.cat_id');
-            $this->db->where('tb_product.slug', $id);
+            $this->db->where('tb_product.cat_id', $id);
               $query = $this->db->get();
                if ($query->num_rows() > 0) {
                         foreach ($query->result() as $row) {
