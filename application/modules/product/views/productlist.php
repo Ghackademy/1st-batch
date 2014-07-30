@@ -160,7 +160,6 @@
 					
                         <div class="rightContent col-sm-8 col-md-9 col-xs-12 col-lg-9">
 						<?php foreach($getpost as $product): ?>
-                            <?php print_r($getpost);die();?>
                         <div class="rightContentChild col-sm-6 col-md-4 col-xs-12 col-lg-4">
                             <div class="thumbnail">
 							 
