@@ -415,7 +415,7 @@ class User extends CI_Controller {
 	{
                
          $data['listgrp'] = $this->ion_auth_model->grouplist();
-       // print_r($data);die();
+       //print_r($data);die();
 		$data['title'] = "Create User";
 
      		//if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())

@@ -79,5 +79,10 @@ class Category extends CI_Controller {
           $this->category_model->deleteCategory(category::table,$id);
           redirect('category/display');
           }
+          
+          public function product($id){
+              $datas['pdt']=$this->category_model->productAccCategory($id);
+              print_r($datas); die();       
+          }
 	  }
 	  ?>
