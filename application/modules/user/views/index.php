@@ -127,7 +127,7 @@
                         </div>
                         <ul class="sidebarlist">
                                     <?php foreach($allcategory as $c): ?>
-                                    <li><?php echo $c['cat_title'];?></li>
+                                    <li><a href="<?php base_url(); ?>"><?php echo $c['cat_title'];?></a></li>
                                 
 						<?php endforeach; ?>
                                 </ul>             

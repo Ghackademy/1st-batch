@@ -60,7 +60,30 @@ class Category_model extends CI_Model {
                   }
                  
                  
-                 
+                  public function productAccCategory($id){
+//                      $this->db->select('*');
+//                      $this->db->from('tb_product');
+//                      $this->db->join('tb_category','tb_category.cat_id=tb_product.cat_id');
+//                      $this->db->where('tb_product.slug',$id);
+                      
+                      $query = $this->db->query("select * from tb_product inner join tb_category on tb_category.cat_id=tb_product.cat_id where tb_product.slug='$id'");
+//                       if ($query->num_rows() > 0) {
+//                        foreach ($query->result() as $row) {
+//                        $data[] = $row;
+//                    }
+//                    
+//                        return $data;
+//                         print_r($data);die();
+//                        
+//                }
+//               // echo $this->db->last_query();
+//              
+//                return false;
+                      echo $query;die();
+                      $res = $query->result_array($id);
+                      print_r($res);die();  
+                      return $res;
+                  }
                  }//end of class
                  
                  
