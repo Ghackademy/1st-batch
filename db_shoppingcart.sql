@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
+<<<<<<< HEAD
 -- Generation Time: Jul 17, 2014 at 11:17 PM
+=======
+-- Generation Time: Jul 11, 2014 at 12:00 PM
+>>>>>>> origin/forDesigners
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -297,6 +301,7 @@ CREATE TABLE IF NOT EXISTS `tb_usergroup` (
 INSERT INTO `tb_usergroup` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
 (6, 12, 3);
+<<<<<<< HEAD
 
 -- --------------------------------------------------------
 
@@ -487,6 +492,8 @@ INSERT INTO `user_privilege_users` (`upriv_users_id`, `upriv_users_uacc_fk`, `up
 (13, 2, 2),
 (14, 2, 3),
 (15, 2, 6);
+=======
+>>>>>>> origin/forDesigners
 
 --
 -- Constraints for dumped tables
