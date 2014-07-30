@@ -48,19 +48,24 @@ body{
     height: 1.7em !important;
     margin-top: 0.5em;
 }
+
 .inputt{
     height:1.7em !important;
 }
 button{
-    height:1.7em;
+    height:0em;
     width: 2em;
 }
-.search img{
-    height: 2.2em !important;
-    margin:-10px -50px;
+.search_button{
+    height:1.7em !important;
+}
+.search-img{   
+    margin:-4px -50px;
+   
 }
 .left-img{
-    max-width: 9em;
+    width: auto;
+    float: left;
 }
 
 .right-img{
@@ -121,6 +126,8 @@ a :hover{
  .current{
      background:url('../images/button.jpg')!important;
      border: 1px solid buttonhighlight;
+      border-radius:0.3em; 
+     box-shadow: 1px 1px 0px 1px #88CAE4;
 }
 /*--------------------------------------below button-----------------------------------------------------*/
 #mainContent{
@@ -261,6 +268,42 @@ th{
     background-color: #f7f6f0;
 }
 
+    /*--------------------------------------------slider-----------------------------------------------------------------*/
+.slider-form{
+        width: 100% !important;
+    }
+.new_slide{
+    margin:5em !important;
+}
+.form-wrap{
+    width: 100% !important;
+}
+.form_button{
+    height: auto !important;
+    width: auto !important;
+  }
+  .form-input{
+      width: 5em !important;
+  }
+.form-measure{
+    width:5em !important;
+}
+ul .select{
+    width:auto !important;
+    
+}
+
+/*--------------------------------------------shipping---------------------------------------------------------------*/
+.shipping-table{
+    margin: 4em 0 0 0 !important;
+}
+.shipping-table2{
+    margin: 1em 0 !important;
+}
+.shipping-input{
+    width: 6em;
+    margin:0 0.5em;
+}
 /*-------------------------------------------footer--------------------------------------------------------*/
  
 .footer{
@@ -275,4 +318,9 @@ th{
 }
 .footer span{
    margin: 0em 20em ;
+}
+/*-----------------------------------------option-------------------------------------------------------*/
+
+option,select{
+    color: #39b3d7;
 }
