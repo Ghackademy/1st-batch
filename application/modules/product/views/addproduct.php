@@ -86,7 +86,7 @@
                 </div>
                 <div class="select_sub show">
 			<ul class="sub">
-				<li ><a href="viewproducts.php">View all products</a></li>
+				<li ><a href="product/lists">View all products</a></li>
 				<li  class="sub_show current"><a href="add_products.php">Add product</a></li>
 				
 			</ul>
