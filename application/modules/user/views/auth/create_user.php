@@ -14,9 +14,9 @@
     </head>
     <body>
         <!--headerpart-->
-        <nav class="navbar-default" role="navigation">
+<!--        <nav class="navbar-default" role="navigation">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
+                 Brand and toggle get grouped for better mobile display 
                 <div class="nav1">
                     <div class="nav1Content">
                         <div class="navbar-header">
@@ -29,7 +29,7 @@
                             <a class="navbar-brand" href="#">Logo</a>
                         </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
+                         Collect the nav links, forms, and other content for toggling 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
@@ -42,8 +42,8 @@
                                             <button class="searchbtn glyphicon glyphicon-search" type="button">
                                             </button>
                                         </span>
-                                    </div><!-- /input-group -->
-                                </div><!-- /.col-lg-6 -->
+                                    </div> /input-group 
+                                </div> /.col-lg-6 
                             </div>     
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="#">My Account</a></li>
@@ -53,16 +53,16 @@
 
                             </ul>
                         </div>
-                    </div><!-- /.navbar-collapse -->
-                    <!-- /.container-fluid -->
+                    </div> /.navbar-collapse 
+                     /.container-fluid 
                 </div>
             </div>
-        </nav>
-        <div class="clearfix"></div>
-        <!--nav2-->
+        </nav>-->
+<!--        <div class="clearfix"></div>
+        nav2
         <div class="nav2Wrapper">
             <div class="nav2Contents">
-                <!--category-->
+                category
                 <div class="btn-group">
                     <div class="nav2Menu" data-toggle="dropdown">Categories </div>
                     <ul class="nav2ScrollDwn dropdown-menu" role="menu">
@@ -72,7 +72,7 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </div>
-                <!--brand-->
+                brand
                 <div class="btn-group">
                     <div class="nav2Menu" data-toggle="dropdown">Brand</div>
                     <ul class="nav2ScrollDwn dropdown-menu" role="menu">
@@ -82,7 +82,7 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </div>
-                <!--sales-->
+                sales
                 <div class="btn-group">
                     <div class="nav2Menu" data-toggle="dropdown">Sales </div>
                     <ul class="nav2ScrollDwn dropdown-menu" role="menu">
@@ -91,7 +91,7 @@
                         <li><a href="#">Something else here</a></li>
                     </ul>
                 </div>
-                <!--new product-->
+                new product
                 <div class="btn-group">
                     <div class="nav2Menu" data-toggle="dropdown">New products </div>
                     <ul class="nav2ScrollDwn dropdown-menu" role="menu">
@@ -100,20 +100,20 @@
                         <li><a href="#">Something else here</a></li>
                     </ul>
                 </div>
-                <!--contactus-->
+                contactus
                 <div class="btn-group">
                     <div class="nav2Menu" data-toggle="dropdown">Contact us</div>
                     
                 </div>
-                <!--about us-->
+                about us
                 <div class="btn-group">
                     <div class="nav2Menu" data-toggle="dropdown">About us </div>
                   
                 </div>
 
-            </div> <!--content close-->
+            </div> content close
             <div class="clearfix"></div>
-        </div>
+        </div>-->
 
         <div class="clearfix"></div>
  
