@@ -82,7 +82,7 @@ class Category extends CI_Controller {
           
           public function product($id){
               $datas['pdt']=$this->category_model->productAccCategory($id);
-              print_r($datas); die();       
+              //print_r($datas); die();       
           }
 	  }
 	  ?>

@@ -15,7 +15,7 @@ th, td,article, aside, canvas, details, figcaption, figure,footer, header,
 hgroup, menu, nav, section, summary,time, mark, audio, video 
 {    margin:0;    padding:0;    border:0;    outline:0;    font-size:100%;    
      vertical-align:baseline;    background:transparent;}
-body {    line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,
+body {    line-height:1!important;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,
 section {    display:block;}nav ul {    list-style:none;}blockquote,
 q {    quotes:none;}blockquote:before, blockquote:after,q:before,
 q:after {    content:'';    content:none;}a {    margin:0;    padding:0;    font-size:100%;    
@@ -211,8 +211,8 @@ color:orange;
     font-size: 1.5em;
 }
   
- #rightContent
- {padding-top: 2em;
+ .contentRight
+ {
  
 }
 .addtocart
@@ -349,15 +349,16 @@ padding:20px 0px;
 }
 #registration_form
 {
-    width:700px;
-    height:700px;
+    width:600px;
+    height:650px;
     margin:0 auto;
     box-shadow: 0.1em 0.1em 2em #000;
   
 }
 .register_wrapper
 {
-    padding:10px 10px;
+    padding:20px 0px;
+   
 }
 .r1
 {
@@ -385,4 +386,26 @@ padding:20px 0px;
     text-align: center;
     padding:4% 0;
     font-size: 2em;
+}
+#sixth .wrapper
+{
+    
+    margin: 0 auto;
+    padding:20px 0px;
+    width:500px;
+}
+.modal-content
+{
+    margin:25% auto;
+    width:400px;
+}
+.modal-header
+{
+    background-color: black;
+    color:white;
+}
+.orangeline
+{
+    background-color: orange;
+    height:10px;
 }
