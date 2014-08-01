@@ -70,7 +70,7 @@ class User extends CI_Controller {
 	function login()
 	{
 		//$this->data['title'] = "Login";
-
+echo $this->input->post('identity');die('i ma here');
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
