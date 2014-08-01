@@ -65,14 +65,13 @@ class User extends CI_Controller {
         $this->load->view('user/index',$data);
     }
 
-	//redirect if needed, otherwise display the user list
-	function index()
+		function index()
 	{
 
 		if (!$this->ion_auth->logged_in())
 		{
 			//redirect them to the login page
-			redirect('user/login', 'refresh');
+			redirect('user/welcome', 'refresh');
 		}
 		elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
 		{
@@ -93,7 +92,7 @@ class User extends CI_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('customer', $this->data);
+			$this->_render_page('admin_dashboard', $this->data);
 		}
 	}
     function checklogin()
@@ -129,7 +128,7 @@ class User extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('user/index', 'refresh');	
+				redirect('/user', 'refresh');	
 			}
 			else
 			{
@@ -144,21 +143,20 @@ class User extends CI_Controller {
 			//the user is not logging in so display the login page
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+//
+//			$this->data['identity'] = array('name' => 'identity',
+//				'id' => 'identity',
+//				'type' => 'text',
+//				'value' => $this->form_validation->set_value('identity'),
+//			);
+//			$this->data['password'] = array('name' => 'password',
+//				'id' => 'password',
+//				'type' => 'password',
+//			);
 
-			$this->data['identity'] = array('name' => 'identity',
-				'id' => 'identity',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('identity'),
-			);
-			$this->data['password'] = array('name' => 'password',
-				'id' => 'password',
-				'type' => 'password',
-			);
-
-			$this->_render_page('login', $this->data);
+			$this->_render_page('user/index', $this->data);
 		}
 	}
-
 	//log the user out
 	function logout()
 	{
@@ -457,7 +455,7 @@ class User extends CI_Controller {
 	function create_user()
 	{
 		$data['title'] = "Create User";
-                $data['groupname'] = $this->ion_auth_model->get_groups();
+                $data['groupname'] = $this->ion_auth_model->getgroups();
              
               
 

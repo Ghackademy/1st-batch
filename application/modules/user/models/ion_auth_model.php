@@ -267,6 +267,17 @@ class Ion_auth_model extends CI_Model
 	 * @return void
 	 * @author Mathew
 	 **/
+         public function getusers(){
+            $query=$this->db->get('users');
+            $value= $query->result_array();
+            return $value;
+        }
+        
+        public function getgroups(){
+            $query=$this->db->get('groups');
+            $value= $query->result_array();
+            return $value;
+        }
 	public function hash_password($password, $salt=false, $use_sha1_override=FALSE)
 	{
 		if (empty($password))
