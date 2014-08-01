@@ -101,6 +101,7 @@ class Product extends MX_Controller {
             $data['links'] = $this->pagination->create_links();
            // print_r($data);die();
          $this->load->view('viewProduct',$data);
+         
         }
         
         /*

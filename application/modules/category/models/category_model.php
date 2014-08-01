@@ -1,7 +1,8 @@
-
+<?php ob_start(); ?>
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+ 
 class Category_model extends CI_Model {
+   
     function __construct() {
                 
                 parent::__construct();
@@ -15,7 +16,7 @@ class Category_model extends CI_Model {
 		 *inserts into database table
 		 */
 		 public function addCategory($tablename,$data){
-		  $this->db->insert($tablename, $data);
+		  $this->db->insert($tablename,$data);
 		 }
 		 
                  
@@ -60,6 +61,7 @@ class Category_model extends CI_Model {
                  
                  
                   public function productAccCategory($id){
+
 //                      $this->db->select('*');
 //                      $this->db->from('tb_product');
 //                      $this->db->join('tb_category','tb_category.cat_id=tb_product.cat_id');
@@ -85,5 +87,5 @@ class Category_model extends CI_Model {
                   }
                  }//end of class
                  
-                 
+      
 		 ?>

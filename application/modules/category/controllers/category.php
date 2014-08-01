@@ -9,6 +9,7 @@ class Category extends CI_Controller {
 		parent::__construct();
 		// load category model
 		$this->load->model('category_model'); 
+                
       }
 	  
           /*
@@ -81,8 +82,9 @@ class Category extends CI_Controller {
           }
           
           public function product($id){
+
               $datas['pdt']=$this->category_model->productAccCategory($id);
               //print_r($datas); die();       
           }
-	  }
+}
 	  ?>
