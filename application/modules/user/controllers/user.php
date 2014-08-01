@@ -128,14 +128,14 @@ class User extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/user', 'refresh');	
+				redirect('user/index', 'refresh');	
 			}
 			else
 			{
 				//if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('user/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('user/welcome', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -170,6 +170,9 @@ class User extends CI_Controller {
 		redirect('user/login', 'refresh');
 	}
 
+        function dashboard(){
+            $this->load->view('vendor_dashboard');
+        }
 	//change password
 	function change_password()
 	{

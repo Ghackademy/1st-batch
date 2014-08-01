@@ -156,7 +156,7 @@
                         </div>
                         <ul class="sidebarlist">
 						<?php foreach($allcategory as $all): ?>
-                                    <li><a href="<?php echo base_url();?>category/allpost/<?php echo $all['slug'];?>"><?php echo $all['cat_title'];?></a></li> 
+                                    <li><a href="<?php echo base_url();?>category/allpost/<?php echo $all['cat_slug'];?>"><?php echo $all['cat_title'];?></a></li> 
                                      <?php  endforeach; ?>
                                 </ul>             
                                 </div>
