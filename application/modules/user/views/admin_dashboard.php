@@ -114,10 +114,10 @@
                     <h3>User Comments</h3>
                 </div>
                     <ul class="comment"> 
-                        <li><img src="images/list.jpg">lorem psum lorem epsum eoocmaoncieh nvoevn vnonvo  nvosnv.</li>
-                    <li><img src="images/list.jpg">lorem psum lorem epsum eoocmaoncieh nvoevn vnonvo  nvosnv.</li>
-                    <li><img src="images/list.jpg">lorem psum lorem epsum eoocmaoncieh nvoevn vnonvo  nvosnv.</li>
-                    <li><img src="images/list.jpg">lorem psum lorem epsum eoocmaoncieh nvoevn vnonvo  nvosnv.</li>
+                        <li><img src="<?php echo base_url();?>assests/backend/images/list.jpg">lorem psum lorem epsum eoocmaoncieh nvoevn vnonvo  nvosnv.</li>
+                    <li><img src="<?php echo base_url();?>assests/backend/images/list.jpg">lorem psum lorem epsum eoocmaoncieh nvoevn vnonvo  nvosnv.</li>
+                    <li><img src="<?php echo base_url();?>assests/backend/images/list.jpg">lorem psum lorem epsum eoocmaoncieh nvoevn vnonvo  nvosnv.</li>
+                    <li><img src="<?php echo base_url();?>assests/backend/images/list.jpg">lorem psum lorem epsum eoocmaoncieh nvoevn vnonvo  nvosnv.</li>
                     </ul> 
                     
                </div>
