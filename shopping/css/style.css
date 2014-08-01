@@ -412,3 +412,16 @@ padding:20px 0px;
     background-color: orange;
     height:10px;
 }
+.add_product_wrapper
+{
+    margin:0 auto;
+    border:solid gray 1px;
+    padding:20px 10px;
+    box-shadow: 0.1em 0.1em 1em #000;
+    
+}
+#seventh
+{
+    
+    padding:20px 0;
+}
