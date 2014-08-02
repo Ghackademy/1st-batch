@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shopping cart Admin </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-----------------------Navigation---------------------------------- -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+             <div class="navbar-header">
+                
+                 <a class="navbar-brand" href="index.html">Shopping cart Admin</a>
+            </div>
+            
+            
+          
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li>
+                    <div class="navbar-search">
+               
+                    <div class="col-lg-4">
+                    <div class="input-group search">
+                      <input type="text" class="form-control" placeholder="search">
+                      <span class="input-group-btn ">
+                          <button class="btn btn-default" type="button">
+                              <span class="glyphicon glyphicon-search search-img"></span>
+                          </button>
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+                
+               
+            </div>  
+                    </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                           <li class="active">
+                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    
+                    <li>
+                        <a href="customer.html"><i class="fa fa-fw fa-table"></i> customer</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-edit"></i>
+                            Products<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo1" class="collapse side nav">
+                            
+                            <li>
+                                 <a href="product.html">view Product</a>
+                                <a href="Add_product.html">Add Product</a>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="shipping.html"><i class="fa fa-fw fa-desktop"></i> shipping</a>
+                    </li>
+                  
+                            <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-edit"></i>
+                          Slider<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo2" class="collapse side nav">
+                            
+                            <li>
+                                 <a href="Gallery.html">view Gallery</a>
+                                <a href="Add_slider.html">Add Slider</a>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i>
+                            Create Group<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse side nav">
+                            <li>
+                                <label class="form"><a href="#">User type </a></label>
+                            </li>
+                            <li>
+                                <a href="#"><select class="form-control ">
+                                        <option>Admin</option>
+                                        <option>vendor</option>
+                                        <option>user</option>
+                                    </select></a>
+                        </ul>
+                    </li>
+                
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                           Add Product <small>details</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-edit"></i> Form 
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+               <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Form Element Examples
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Basic Form Examples</h3>
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>Text Input</label>
+                                            <input class="form-control" />
+                                            <p class="help-block">Help text here.</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Text Input with Placeholder</label>
+                                            <input class="form-control" placeholder="PLease Enter Keyword" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Just A Label Control</label>
+                                            <p class="form-control-static">info@yourdomain.com</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>File input</label>
+                                            <input type="file" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Text area</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Checkboxes</label>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="" />Checkbox Example One
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value=""/>Checkbox Example Two
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value=""/>Checkbox Example Three
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Inline Checkboxes Examples</label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox"/> One
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox"/> Two
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox"/> Three
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Radio Button Examples</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />Radio Example One
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"/>Radio Example Two
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"/>Radio Example Three
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Select Example</label>
+                                            <select class="form-control">
+                                                <option>One Vale</option>
+                                                <option>Two Vale</option>
+                                                <option>Three Vale</option>
+                                                <option>Four Vale</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Multiple Select Example</label>
+                                            <select multiple class="form-control">
+                                                <option>One Vale</option>
+                                                <option>Two Vale</option>
+                                                <option>Three Vale</option>
+                                                <option>Four Vale</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <button type="reset" class="btn btn-primary">Reset Button</button>
+
+                                    </form>
+                                    <br />
+                                      <h3>With radio & checkboxes</h3>
+                                    <form>
+
+    <div class="form-group input-group">
+      <span class="input-group-addon">
+        <input type="checkbox" />
+      </span>
+      <input type="text" class="form-control" />
+    </div>
+                                         <div class="form-group input-group">
+      <span class="input-group-addon">
+        <input type="radio" />
+      </span>
+      <input type="text" class="form-control" />
+    </div>
+                                    </form>
+
+                                 
+    </div>
+                                
+                                <div class="col-md-6">
+                                    <h3>Disabled Form State Examples</h3>
+                                    <form role="form">
+                                        <fieldset disabled="disabled">
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Disabled input</label>
+                                                <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Disabled select </label>
+                                                <select id="disabledSelect" class="form-control">
+                                                    <option>Disabled select</option>
+                                                </select>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" />Disabled Checkbox
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Disabled Button</button>
+                                        </fieldset>
+                                    </form>
+                                    <h3>Validation State Examples</h3>
+                                    <form role="form">
+                                        <div class="form-group has-success">
+                                            <label class="control-label" for="inputSuccess">Input with success</label>
+                                            <input type="text" class="form-control" id="inputSuccess">
+                                        </div>
+                                        <div class="form-group has-warning">
+                                            <label class="control-label" for="inputWarning">Input with warning</label>
+                                            <input type="text" class="form-control" id="inputWarning">
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label class="control-label" for="inputError">Input with error</label>
+                                            <input type="text" class="form-control" id="inputError">
+                                        </div>
+                                    </form>
+                                    <h3>Input Group Examples</h3>
+                                    <form role="form">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">@</span>
+                                            <input type="text" class="form-control" placeholder="Username">
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-addon">.00</span>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-eur"></i>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Font Awesome Icon">
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">$</span>
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-addon">.00</span>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                    <h3>Different Size Input Groups</h3>
+                                     <form role="form">
+  <div class=" form-group input-group input-group-lg">
+  <span class="input-group-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username" />
+</div>
+
+<div class="form-group input-group">
+  <span class="input-group-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username" />
+</div>
+
+<div class="form-group input-group input-group-sm">
+  <span class="input-group-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username" />
+</div>
+                                         
+                                     </form>
+                                    <h3>Different Size Input Groups</h3>
+                                     <form role="form">
+                                  <div class="input-group">
+      <span class="form-group input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" class="form-control" />
+    </div>
+<br />
+                                           <div class="input-group">
+     
+      <input type="text" class="form-control" />
+                                                <span class="form-group input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div>
+                                         </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+            </div>
+                    <div class="col-sm-7 col-xs-12 clearfix"></div>
+                                           
+         </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+</body>
+
+</html>
