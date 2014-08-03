@@ -156,7 +156,7 @@
                         <h1 class="page-header">
                             Shipping <small>details</small>
                         </h1>
-                        <ol class="breadcrumb">
+                        <ol class="breadcrumb topic">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                             </li>
@@ -166,20 +166,35 @@
                         </ol>
                     </div>
                 </div>
+            
+             <div class="row"> 
+                  <div class="col-sm-6 col-lg-12 infobox">
+                        <div class="dash-tile dash-tile-2x">
+                        <div class="dash-tile-header">
+                        
+                            <i class="fa fa-shopping-cart" style="color: #fff; margin-left: 1em;"></i> <a>New Entry</a>
+                        </div>
+                        <div class="dash-tile-content">
+                        <div class="dash-tile-content-inner-fluid">
+                       
+                            
+                    
                   <div class="table-list ">
                     <form id="mainform ">
-                <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class=" shipping-table" >
+               
+                          <div class="table-responsive">
+                            <table class="table">
                                    <tbody>
                                   <tr>
-                                      <th class="table-header-repeat line-left">
+                                      <th class="table-header-repeat line-left warning">
                                           <a>Date Start:</a>
                                           <input type="text" class="shipping-input form-control datepicker" >
                                       </th>
-                                      <th  class="table-header-repeat line-left">
+                                      <th  class="table-header-repeat line-left warning">
                                           <a>Date End:</a>
                                           <input type="text" class="shipping-input form-control datepicker">
                                       </th>
-                                     <th  class="table-header-repeat line-left">
+                                     <th  class="table-header-repeat line-left warning">
                                          <a>Group By:</a>
                                          <select name="filter_group" class="select-box form-control">
                                              <option value="year" class="shipping-input"> Years</option>
@@ -189,7 +204,7 @@
                                                           <option value="day"class="shipping-input" >Days</option>
                                           </select>
                                      </th>
-                                     <th  class="table-header-repeat line-left"><a>Order Status:</a>
+                                     <th  class="table-header-repeat line-left warning"><a>Order Status:</a>
                                          <select name="filter_order_status_id" class="select-box form-control">
                                          <option value="0"><a>All Statuses</option>
                                             <option value="7">Canceled</option>
@@ -212,8 +227,11 @@
                         </tr>
                       </tbody>
              </table>
-                       <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class=" shipping-table2">
-                            <tr>
+                          </div>                
+                      
+                          <div class="table-responsive">
+                            <table class="table">
+                            <tr class="active">
                                         <th class="table-header-repeat line-left minwidth-1"><a href="">Date start</a>	</th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">date end</a></th>
 					<th class="table-header-repeat line-left"><a href="">shipping title</a></th>
@@ -221,42 +239,42 @@
 					<th class="table-header-repeat line-left"><a href="">total</a></th>
                                         
 				</tr>
-                                <tr>
+                                <tr class="warning">
                                     <td><a>11/11/2014</a></td>
                                     <td><a>12/14/2014</a></td>
                                     <td><a>nbsdoasgfasjbfashfipoaflbaviugadkjbvaidvubgak</a></td>
                                     <td><a>250</a></td>
 				    <td><a href="">15000$</a></td>
                                 </tr>
-                                <tr class="alternate-row">
+                                <tr class="danger">
                                     <td><a>11/11/2014</a></td>
                                     <td><a>12/14/2014</a></td>
                                     <td><a>nbsdoasgfasjbfashfipoaflbaviugadkjbvaidvubgak</a></td>
                                     <td><a>250</a></td>
 				    <td><a href="">15000$</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="warning">
                                     <td><a>11/11/2014</a></td>
                                     <td><a>12/14/2014</a></td>
                                     <td><a>nbsdoasgfasjbfashfipoaflbaviugadkjbvaidvubgak</a></td>
                                     <td><a>250</a></td>
 				    <td><a href="">15000$</a></td>
                                 </tr>
-                                <tr class="alternate-row">
+                                <tr class="success">
                                     <td><a>11/11/2014</a></td>
                                     <td><a>12/14/2014</a></td>
                                     <td><a>nbsdoasgfasjbfashfipoaflbaviugadkjbvaidvubgak</a></td>
                                     <td><a>250</a></td>
 				    <td><a href="">15000$</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="active">
                                     <td><a>11/11/2014</a></td>
                                     <td><a>12/14/2014</a></td>
                                     <td><a>nbsdoasgfasjbfashfipoaflbaviugadkjbvaidvubgak</a></td>
                                     <td><a>250</a></td>
 				    <td><a href="">15000$</a></td>
                                 </tr>
-                                <tr class="alternate-row">
+                                <tr class="danger">
                                     <td><a>11/11/2014</a></td>
                                     <td><a>12/14/2014</a></td>
                                     <td><a>nbsdoasgfasjbfashfipoaflbaviugadkjbvaidvubgak</a></td>
@@ -265,7 +283,7 @@
                                 </tr>
                                 
                     </table>  
-               
+                          </div>
                </form> 
             </div>
          </div>
