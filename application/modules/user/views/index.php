@@ -70,7 +70,8 @@
       </div>
           <div class="orangeline"></div>
       <div class="modal-body">
-        <form role="form" action="<?php echo base_url();?>user/login" method="POST">
+        <form role="form" action="user/login" method="POST">
+           <?php echo validation_errors(); ?>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="identity">

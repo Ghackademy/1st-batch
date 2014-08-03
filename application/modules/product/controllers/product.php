@@ -79,7 +79,7 @@ class Product extends MX_Controller {
                 'publish' => $this->input->post('publish'),
                 'stock_info' => $this->input->post('pquantity'),
                 'rating' => $this->input->post('prating'),
-                   'slug'=>url_title($p_name,'dash',true),
+                   'product_slug'=>url_title($p_name,'dash',true),
                 'shipping_detail' => $this->input->post('sdetails'),
                 'product_image' => $image,
                 'cat_id' => $this->input->post('category'),

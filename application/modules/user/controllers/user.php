@@ -62,7 +62,7 @@ class User extends CI_Controller {
     }
     public function welcome(){
          $data['allcategory']= $this->category_model->getAllCategory();
-        $this->load->view('user/index',$data);
+        $this->load->view('index',$data);
     }
 
 		function index()
@@ -108,10 +108,9 @@ class User extends CI_Controller {
         }
     }
   
-	//log the user in
+		//log the user in
 	function login()
 	{
-		$this->data['title'] = "Login";
 
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
@@ -122,6 +121,7 @@ class User extends CI_Controller {
 			//check to see if the user is logging in
 			//check for "remember me"
 			$remember = (bool) $this->input->post('remember');
+                        
 
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
@@ -143,7 +143,7 @@ class User extends CI_Controller {
 			//the user is not logging in so display the login page
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-//
+
 //			$this->data['identity'] = array('name' => 'identity',
 //				'id' => 'identity',
 //				'type' => 'text',
@@ -154,10 +154,9 @@ class User extends CI_Controller {
 //				'type' => 'password',
 //			);
 
-			$this->_render_page('user/index', $this->data);
+			$this->_render_page('index', $this->data);
 		}
-	}
-	//log the user out
+	}	//log the user out
 	function logout()
 	{
 		$this->data['title'] = "Logout";
@@ -171,7 +170,8 @@ class User extends CI_Controller {
 	}
 
         function dashboard(){
-            $this->load->view('vendor_dashboard');
+            $data = $this->session->userdata('username');
+            $this->load->view('vendor_dashboard',$data);
         }
 	//change password
 	function change_password()
