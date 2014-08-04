@@ -74,6 +74,12 @@ class Product_model extends CI_Model {
         $this->db->where('product_id', $id);
         $this->db->delete(product_model::Table);
     }
+          public function get(){
+            $query = $this->db->get('tb_product');
+            $res = $query->result_array();
+            return $res;
+        }
+
 
 }
 ?>
