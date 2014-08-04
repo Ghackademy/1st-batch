@@ -72,8 +72,8 @@ class Home extends CI_Controller {
 	//log the user in
 	function login()
 	{
-		//$this->data['title'] = "Login";
-echo $this->input->post('identity');die('i ma here');
+		$this->data['title'] = "Login";
+//echo $this->input->post('identity');die('i ma here');
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -802,6 +802,22 @@ echo $this->input->post('identity');die('i ma here');
             }
            
             
+        }
+        
+        function product(){
+            $config['base_url'] = base_url().'/home/product/';
+            $config['total_rows'] = $this->product_model->countProduct();
+            $config['per_page'] = 6;
+            $config['uri_segment'] = 3;            
+            $config['first_link'] = 'First';
+            $config['last_link'] = 'Last';
+             $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+           $data['allcategory'] = $this->category_model->displayCategory('tb_category');            
+            $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
+            $data['links'] = $this->pagination->create_links();
+           // print_r($data);die();
+          $this->load->view('product_list',$data);
         }
        
 
