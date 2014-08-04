@@ -4,12 +4,13 @@ class User extends CI_Controller {
 
 	function __construct()
 	{
+            
 		parent::__construct();
 		$this->load->library('ion_auth');
+                $this->load->model('category/category_model');
+                   $this->load->model('product/product_model');
 		$this->load->library('form_validation');
-		$this->load->helper('url');
-                $this->load->model('product/product_model');
-                 $this->load->model('category/category_model');
+		$this->load->helper('url','form');
 
 		// Load MongoDB library instead of native db driver if required
 		$this->config->item('use_mongodb', 'ion_auth') ?
@@ -21,65 +22,34 @@ class User extends CI_Controller {
 
 		$this->lang->load('auth');
 		$this->load->helper('language');
+                
+               
 	}
-        
-        function do_upload() {
-        $config['upload_path'] = "user/uploads/original/";
-        $config['allowed_types'] = 'gif|jpg|png|jpeg';
-        $config['max_size'] = '4000';
-        $config['max_width'] = '2000';
-        $config['max_height'] = '2000';
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload("userfile")) {
-            $data = $this->upload->data();
-            /* PATH */
-            $source = "uploads/original/" . $data['file_name'];
-            $destination_resized = "user/uploads/resized/";
-             $destination_thumb = "user/uploads/thumb/";
-            $size_resized_width = 200;
-            $size_resized_height = 100;
-            $size_thumb_width = 50;
-            $size_thumb_height = 50;
-            $this->image_moo
-                    ->load($source)
-                    /* RESIZING IMAGE TO BE MEDIUM SIZE */
-                    ->resize_crop($size_resized_width, $size_resized_height)
-                    ->save($destination_resized . $data['file_name'])
-                    
-                    ->resize_crop($size_thumb_width, $size_thumb_height)
-                    ->save($destination_thumb . $data['file_name']);
+	
+	
+	function welcome(){
+            $data['allcategory']=$this->category_model->getAllCategory('tb_category');
+             $data['allProductList'] = $this->product_model->get();
 
-            if ($this->image_moo->errors)
-                print $this->image_moo->display_errors();
-            else {
-                return $data['file_name'];
-            }
-        } else {
-            $error = strip_tags($this->upload->display_errors());
-            echo "<script type='text/javascript'>alert('.$error.');history.back(-1);</script>";
-            die();
-        }
-    }
-    public function welcome(){
-         $data['allcategory']= $this->category_model->getAllCategory();
-        $this->load->view('index',$data);
-    }
+	  	$this->load->view('index',$data);
+	}
 
-		function index()
+	//redirect if needed, otherwise display the user list
+	function index()
 	{
-
+                                
+            
 		if (!$this->ion_auth->logged_in())
 		{
 			//redirect them to the login page
-			redirect('user/welcome', 'refresh');
+			redirect('user/login', 'refresh');
 		}
 		elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
 		{
-			//redirect them to the respective dashboard page because they must be an administrator to view this
+			//redirect them to the home page because they must be an administrator to view this
 			//return show_error('You must be an administrator to view this page.');
-			redirect('user/checklogin');
+                    $this->dashboard();
 		}
-                
 		else
 		{
 			//set the flash data error message if there is one
@@ -92,26 +62,14 @@ class User extends CI_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('admin_dashboard', $this->data);
+			$this->_render_page('auth/index', $this->data);
 		}
 	}
-    function checklogin()
-    {
-        $id = $this->session->userdata('user_id');
-        $user = $this->ion_auth->user($id)->row();
-        
-        if($user->group_id == 2){
-            $this->load->view('user_dashboard');
-        }
-        else if($user->group_id == 3){
-            $this->load->view('vendor_dashboard');
-        }
-    }
-  
-		//log the user in
+
+	//log the user in
 	function login()
 	{
-
+		//$this->data['title'] = "Login";
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -121,21 +79,20 @@ class User extends CI_Controller {
 			//check to see if the user is logging in
 			//check for "remember me"
 			$remember = (bool) $this->input->post('remember');
-                        
 
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('user/index', 'refresh');	
+				redirect('/user', 'refresh');
 			}
 			else
 			{
 				//if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('user/welcome', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('user/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -156,7 +113,9 @@ class User extends CI_Controller {
 
 			$this->_render_page('index', $this->data);
 		}
-	}	//log the user out
+	}
+
+	//log the user out
 	function logout()
 	{
 		$this->data['title'] = "Logout";
@@ -169,10 +128,6 @@ class User extends CI_Controller {
 		redirect('user/login', 'refresh');
 	}
 
-        function dashboard(){
-            $data = $this->session->userdata('username');
-            $this->load->view('vendor_dashboard',$data);
-        }
 	//change password
 	function change_password()
 	{
@@ -182,7 +137,7 @@ class User extends CI_Controller {
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect('user/login', 'refresh');
+			redirect('auth/login', 'refresh');
 		}
 
 		$user = $this->ion_auth->user()->row();
@@ -219,7 +174,7 @@ class User extends CI_Controller {
 			);
 
 			//render
-			$this->_render_page('change_password', $this->data);
+			$this->_render_page('user/change_password', $this->data);
 		}
 		else
 		{
@@ -262,7 +217,7 @@ class User extends CI_Controller {
 
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->_render_page('forgot_password', $this->data);
+			$this->_render_page('auth/forgot_password', $this->data);
 		}
 		else
 		{
@@ -344,7 +299,7 @@ class User extends CI_Controller {
 				$this->data['code'] = $code;
 
 				//render
-				$this->_render_page('reset_password', $this->data);
+				$this->_render_page('user/reset_password', $this->data);
 			}
 			else
 			{
@@ -429,7 +384,7 @@ class User extends CI_Controller {
 			$this->data['csrf'] = $this->_get_csrf_nonce();
 			$this->data['user'] = $this->ion_auth->user($id)->row();
 
-			$this->_render_page('deactivate_user', $this->data);
+			$this->_render_page('user/deactivate_user', $this->data);
 		}
 		else
 		{
@@ -455,17 +410,17 @@ class User extends CI_Controller {
 	}
 
 	//create a new user
-	function create_user()
+	function sign_up()
 	{
+               
+         $data['listgrp'] = $this->ion_auth_model->grouplist();
+       //print_r($data);die();
 		$data['title'] = "Create User";
-                $data['groupname'] = $this->ion_auth_model->getgroups();
-             
-              
 
-//		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
-//		{
-//			redirect('user', 'refresh');
-//		}
+     		//if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		//{
+			//redirect('auth', 'refresh');
+		//}
 
 		$tables = $this->config->item('tables','ion_auth');
 		
@@ -473,22 +428,22 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
-		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
+		//$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
-
-		if ($this->form_validation->run() == true)
+ 		if ($this->form_validation->run() == true)
 		{
 			$username = strtolower($this->input->post('first_name')) . ' ' . strtolower($this->input->post('last_name'));
 			$email    = strtolower($this->input->post('email'));
 			$password = $this->input->post('password');
-
+                      //  print_r($password);die();
 			$additional_data = array(
 				'first_name' => $this->input->post('first_name'),
 				'last_name'  => $this->input->post('last_name'),
 				'company'    => $this->input->post('company'),
-                              'group_id' =>$this->input->post('user_type')
-//                               
+				'phone'      => $this->input->post('phone'),
+                               'group_id'     => $this->input->post('groups')
 			);
                        
 		}
@@ -503,8 +458,8 @@ class User extends CI_Controller {
 		{
 			//display the create user form
 			//set the flash data error message if there is one
-			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
-
+//			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+//
 //			$this->data['first_name'] = array(
 //				'name'  => 'first_name',
 //				'id'    => 'first_name',
@@ -522,25 +477,6 @@ class User extends CI_Controller {
 //				'id'    => 'email',
 //				'type'  => 'text',
 //				'value' => $this->form_validation->set_value('email'),
-//			);
-//                        
-//                        $this->data['country'] = array(
-//				'name'  => 'country',
-//				'id'    => 'country',
-//				'type'  => 'text',
-//				'value' => $this->form_validation->set_value('country'),
-//			);
-//                           $this->data['zipcode'] = array(
-//				'name'  => 'zipcode',
-//				'id'    => 'zipcode',
-//				'type'  => 'text',
-//				'value' => $this->form_validation->set_value('zipcode'),
-//			);
-//                              $this->data['poboxno'] = array(
-//				'name'  => 'poboxno',
-//				'id'    => 'poboxno',
-//				'type'  => 'text',
-//				'value' => $this->form_validation->set_value('poboxno'),
 //			);
 //			$this->data['company'] = array(
 //				'name'  => 'company',
@@ -566,17 +502,11 @@ class User extends CI_Controller {
 //				'type'  => 'password',
 //				'value' => $this->form_validation->set_value('password_confirm'),
 //			);
-//                        	$this->data['image'] = array(
-//				'name'  => 'image',
-//				'id'    => 'image',
-//				'type'  => 'file',
-//				'value' => $this->form_validation->set_value('image'),
-//			);
-
-			$this->_render_page('register', $data);
+            
+			$this->_render_page('auth/create_user', $data);
+                   // $this->load->view('auth/create_user',$listgroup);
 		}
 	}
-      
 
 	//edit a user
 	function edit_user($id)
@@ -589,6 +519,7 @@ class User extends CI_Controller {
 		}
 
 		$user = $this->ion_auth->user($id)->row();
+                echo $user;die();
 		$groups=$this->ion_auth->groups()->result_array();
 		$currentGroups = $this->ion_auth->get_users_groups($id)->result();
 
@@ -596,9 +527,6 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('phone', $this->lang->line('edit_user_validation_phone_label'), 'required|xss_clean');
-                $this->form_validation->set_rules('country', $this->lang->line('edit_user_validation_country_label'), 'required|xss_clean');
-                $this->form_validation->set_rules('zipcode', $this->lang->line('edit_user_validation_zipcode_label'), 'required|xss_clean');
-                $this->form_validation->set_rules('poboxno', $this->lang->line('edit_user_validation_poboxno_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('groups', $this->lang->line('edit_user_validation_groups_label'), 'xss_clean');
 
@@ -613,9 +541,6 @@ class User extends CI_Controller {
 			$data = array(
 				'first_name' => $this->input->post('first_name'),
 				'last_name'  => $this->input->post('last_name'),
-                                'country'    => $this->input->post('country'),
-                                'zipcode'    => $this->input->post('zipcode'),
-                                'poboxno'    => $this->input->post('poboxno'),
 				'company'    => $this->input->post('company'),
 				'phone'      => $this->input->post('phone'),
 			);
@@ -687,24 +612,6 @@ class User extends CI_Controller {
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('last_name', $user->last_name),
 		);
-                $this->data['country'] = array(
-			'name'  => 'country',
-			'id'    => 'country',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('country', $user->country),
-		);
-                $this->data['zipcode'] = array(
-			'name'  => 'zipcode',
-			'id'    => 'zipcode',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('zipcode', $user->zipcode),
-		);
-                $this->data['poboxno'] = array(
-			'name'  => 'poboxno',
-			'id'    => 'poboxno',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('poboxno', $user->poboxno),
-		);
 		$this->data['company'] = array(
 			'name'  => 'company',
 			'id'    => 'company',
@@ -727,12 +634,8 @@ class User extends CI_Controller {
 			'id'   => 'password_confirm',
 			'type' => 'password'
 		);
-               $this->data['image'] = array(
-			'name' => 'image',
-			'id'   => 'image',
-			'type' => 'file'
-		);
-		$this->_render_page('edit_user', $this->data);
+
+		$this->_render_page('auth/edit_user', $this->data);
 	}
 
 	// create a new group
@@ -757,7 +660,7 @@ class User extends CI_Controller {
 				// check to see if we are creating the group
 				// redirect them back to the admin page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("user", 'refresh');
+				redirect("auth", 'refresh');
 			}
 		}
 		else
@@ -779,7 +682,7 @@ class User extends CI_Controller {
 				'value' => $this->form_validation->set_value('description'),
 			);
 
-			$this->_render_page('create_group', $this->data);
+			$this->_render_page('auth/create_group', $this->data);
 		}
 	}
 
@@ -789,14 +692,14 @@ class User extends CI_Controller {
 		// bail if no group id given
 		if(!$id || empty($id))
 		{
-			redirect('user', 'refresh');
+			redirect('auth', 'refresh');
 		}
 
 		$this->data['title'] = $this->lang->line('edit_group_title');
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
-			redirect('user', 'refresh');
+			redirect('auth', 'refresh');
 		}
 
 		$group = $this->ion_auth->group($id)->row();
@@ -819,7 +722,7 @@ class User extends CI_Controller {
 				{
 					$this->session->set_flashdata('message', $this->ion_auth->errors());
 				}
-				redirect("user", 'refresh');
+				redirect("auth", 'refresh');
 			}
 		}
 
@@ -842,7 +745,7 @@ class User extends CI_Controller {
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
 
-		$this->_render_page('edit_group', $this->data);
+		$this->_render_page('auth/edit_group', $this->data);
 	}
 
 
@@ -879,5 +782,23 @@ class User extends CI_Controller {
 
 		if (!$render) return $view_html;
 	}
+        
+        
+        public function dashboard(){
+            $data['allcategory']=$this->category_model->getAllCategory('tb_category');
+             $data['allProductList'] = $this->product_model->get();
+              $id = $this->session->userdata('user_id');
+             $row['group'] = $this->ion_auth->user($id)->row();
+              if($row['group']->group_id == 3){
+                $this->load->view('vendor_dashboard',$row);
+                  
+            }
+            else{
+                $this->load->view('user_dashboard',$row);
+            }
+           
+            
+        }
+       
 
 }
