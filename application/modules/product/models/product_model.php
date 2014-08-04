@@ -1,3 +1,4 @@
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 const Table = 'tbl_product';
 class Product_model extends CI_Model {
@@ -105,4 +106,3 @@ class Product_model extends CI_Model {
             return $res;
         }
 }
-?>
