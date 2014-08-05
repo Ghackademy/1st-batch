@@ -62,7 +62,7 @@ class User extends CI_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('auth/index', $this->data);
+			$this->_render_page('admin_dashboard', $this->data);
 		}
 	}
 
