@@ -12,16 +12,16 @@
     <title>Shopping cart Admin </title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assests/backend/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assests/backend/css/style.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assests/backend/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>assests/backend/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -196,10 +196,8 @@
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Last Name</a>	</th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">First Name</a></th>
 					<th class="table-header-repeat line-left"><a href="">Email</a></th>
-					<th class="table-header-repeat line-left"><a href="">Due</a></th>
-					<th class="table-header-repeat line-left"><a href="">Website</a></th>
-                                        <th class="table-header-options line-left minwidth-1"><a href="">Orders</a></th>
-                                        <th class="table-header-options line-left"><a href="">Item</a></th>
+					<th class="table-header-repeat line-left"><a href="">Groups</a></th>
+					<th class="table-header-repeat line-left"><a href="">Status</a></th>
                                         <th class="table-header-options line-left"><a href="">Action</a></th>
                         </tr>
 						<?php foreach ($users as $user):?>
@@ -208,12 +206,10 @@
                                        <td><a href=""><?php echo $user->last_name;?></a></td>
                                         <td><a href=""><?php echo $user->first_name;?></a></td>
 					<td><a href=""><?php echo $user->email;?></a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-5 info-tooltip">lorem epsum</a>
-					</td>
-                                        <td>5</td>
+					<?php foreach ($user->groups as $group):?>
+					<td><?php echo anchor("auth/edit_group/".$group->id, $group->name) ;?></td>
+					 <?php endforeach?>
+					<td><a href=""><?php echo ($user->active) ? anchor("auth/deactivate/".$user->id, lang('index_active_link')) : anchor("auth/activate/". $user->id, lang('index_inactive_link'));?></a></td>
                                         <td>
                                             <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-primary" data-original-title="Process">
                             <i class="fa fa-edit"></i>
@@ -225,112 +221,6 @@
                                         </td>
                         </tr>
                         <?php endforeach ?>
-                        <tr class="warning">
-                                        
-                                        <td><a href="">Sabev</a></td>
-                                        <td><a href="">George</a></td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-5 info-tooltip">lorem epsum</a>
-					</td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-primary" data-original-title="Process">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" data-original-title="Cancel">
-                            <i class="fa fa-times">
-                                
-                            </i></a>
-                                        </td>
-                        </tr>
-                        
-                        <tr class="danger">
-                                         
-                                        <td><a href="">Sabev</a></td>
-                                        <td><a href="">George</a></td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-5 info-tooltip">lorem epsum</a>
-					</td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-primary" 
-                                               data-original-title="Process"><i class="fa fa-edit"></i>
-                                            </a>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" 
-                                                    data-original-title="Cancel"><i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
-                        </tr>
-                        
-                        <tr class="success">
-                                       
-                                        <td><a href="">Sabev</a></td>
-                                        <td><a href="">George</a></td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-5 info-tooltip">lorem epsum</a>
-					</td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-primary" 
-                                               data-original-title="Process"><i class="fa fa-edit"></i>
-                                            </a>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" 
-                                                    data-original-title="Cancel"><i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
-                        </tr>
-                        
-                        
-                        <tr class="warning">
-                                        
-                                        <td><a href="">Sabev</a></td>
-                                        <td><a href="">George</a></td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-5 info-tooltip">lorem epsum</a>
-					</td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-primary" 
-                                               data-original-title="Process"><i class="fa fa-edit"></i>
-                                            </a>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" 
-                                                    data-original-title="Cancel"><i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
-                        </tr>
-                        <tr class="danger">
-                                        
-                                        <td><a href="">Sabev</a></td>
-                                        <td><a href="">George</a></td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-5 info-tooltip">lorem epsum</a>
-					</td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-primary" 
-                                               data-original-title="Process"><i class="fa fa-edit"></i>
-                                            </a>
-                                            <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" 
-                                                    data-original-title="Cancel"><i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
-                        </tr>
-
                                   
                       </table>
                       </div>   
