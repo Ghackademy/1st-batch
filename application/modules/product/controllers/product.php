@@ -61,7 +61,7 @@ class Product extends MX_Controller {
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
             $data['links'] = $this->pagination->create_links();
-         $this->load->view('viewProduct',$data);
+         $this->load->view('allproductlist',$data);
         }
       
         public function add() {

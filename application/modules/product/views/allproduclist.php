@@ -79,21 +79,22 @@
             <!-- Sidebar <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                           <li class="active">
+                       <li class="active">
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     
                     <li>
                         <a href="customer.html"><i class="fa fa-fw fa-table"></i> customer</a>
                     </li>
-                    <li>
+                        <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-edit"></i>
                             Products<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse side nav">
                             
                             <li>
-                                 <a href="product.html">view Product</a>
+                                 <a href="allproductlist.php">view Product</a>
                                 <a href="Add_product.html">Add Product</a>
+                            </li>
                         </ul>
                     </li>
                     
@@ -107,8 +108,8 @@
                         <ul id="demo2" class="collapse side nav">
                             
                             <li>
-                                 <a href="Gallery.html">view Gallery</a>
-                                <a href="Add_slider.html">Add Slider</a>
+                                 <a href="slider.html">view Gallery</a>
+                                <a href="slider.html">Add Slider</a>
                         </ul>
                     </li>
                     
@@ -127,7 +128,8 @@
                                     </select></a>
                         </ul>
                     </li>
-                
+                   
+                </ul>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -137,92 +139,66 @@
             <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                           Add Product <small>details</small>
+                           Products <small>list</small>
                         </h1>
                         <ol class="breadcrumb topic">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Form 
+                                <i class="fa fa-table"></i> Tables
                             </li>
                         </ol>
                     </div>
                 </div>
-            <div class="row">
-                 <div class="dash-tile dash-tile-2x">
-                        <div class="dash-tile-header">
-                        
-                            <i class="fa fa-shopping-cart" style="color: #fff; margin-left: 1em;"></i> <a>New Entry</a>
+                <div class="table-list">
+                      <form id="mainform">
+                        <div class="table-responsive">
+                         <table class="table">
+                            <tr class="active">
+                               		<th class="table-header-repeat line-left minwidth-1"><a href="">product</a>	</th>
+					<th class="table-header-repeat line-left"><a href="">Description</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Price</a></th>
+                                        <th class="table-header-repeat line-left"><a href="">Category</a></th>
+					<th class="table-header-repeat line-left"><a href="">stock</a></th>
+                                        <th class="table-header-repeat line-left"><a href="">Action</a></th>
+                                        
+				</tr>
+				<?php foreach ($allProductList as $p): ?>
+                                <tr class="success">
+					<td><a href=""><?php echo $p->product_name;?></a></td>
+					<td><a href=""> <?php echo $p->product_description;?></a></td>
+                    <td><a href=""><?php echo $p->price;?></a></td>
+					<td><a href=""><?php echo $p->stock_info;?> </a></td>
+                                        <td><a href=""><?php echo $p->category;?> </a></td>
+                                        <td>
+                                           <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-primary" 
+                                              data-original-title="Process">
+                                             <i class="fa fa-edit"></i>          
+                                             </a>
+                                           <a href="" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" 
+                                              data-original-title="Cancel">
+                                              <i class="fa fa-times"></i></a>
+                                        </td>
+					
+                                </tr>
+								<?php endforeach ?>              	
+                    </table>
                         </div>
-                        <div class="dash-tile-content">
-                        <div class="dash-tile-content-inner-fluid">
-                       <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Title</a></label>
-                              <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="pname" value="<?php echo set_value('pname');?>">
-                              </div>
-                            </div>
-                           
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Category</a></label>
-                              <div class="col-sm-10">
-                                       <select name="category">
-                     <?php foreach($allcategory as $c): ?>        
-                        <option value=<?php echo $c['cat_id'];?>><?php echo $c['cat_title'];?></option>
-                     <?php endforeach;  ?>
-               </select>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                                <label  class="col-sm-2 control-label"><a>Image1</a></label>
-                              <div class="col-sm-10">
-                                <input type="file" class="form-control select-input" id="inputPassword3" >
-                              </div>                             
-                            </div>
-                            <div class="form-group">
-                                <label  class="col-sm-2 control-label"><a>Preview</a></label>
-                              <div class="col-sm-10">
-                                  <img src="images/slider1.jpg">
-                              </div>
-                            </div>
-                           
-                                                        
-                           <div class="form-group">
-                                <label  class="col-sm-2 control-label"><a>Description</a></label>
-                              <div class="col-sm-10">
-                                <textarea class="form-control" rows="6"style="width: 40em;"name="pdescription" value="<?php echo set_value('pname');?>"></textarea>
-                              </div> 
-                            </div>
-                           
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Price</a></label>
-                              <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title"name="pprice" value="<?php echo set_value('pprice');?>">
-                              </div>
-                            </div>
-                           <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Quantity</a></label>
-                              <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="pquantity" value="<?php echo set_value('pquantity');?>">
-                              </div>
-                            </div>
-                            
-                            <div class="form-group">
-                              <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Upload</button>
-                                <button type="reset" class="btn btn-default">Reset</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                        </div>
-                 </div>
-                    </div>
-             
+                    </form>
+                    
                     <div class="col-sm-7 col-xs-12 clearfix"></div>
-                                           
+                       <ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+                    <div class="col-sm-7 col-xs-12 clearfix"></div>
+                </div>
          </div>
         <!-- /#page-wrapper -->
 
