@@ -1,4 +1,6 @@
+
 <?php ob_start(); ?>
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
 class Product extends MX_Controller {
@@ -97,12 +99,16 @@ class Product extends MX_Controller {
             $config['last_link'] = 'Last';
              $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
            $data['allcategory'] = $this->category_model->displayCategory('tb_category');            
+
             $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
             $data['links'] = $this->pagination->create_links();
            // print_r($data);die();
          $this->load->view('viewProduct',$data);
+
          
+
         }
         
         /*

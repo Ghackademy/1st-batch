@@ -93,6 +93,7 @@ class Product_model extends CI_Model {
     
     public function getSingleProduct($id){
             
+
             $query = $this->db->get_where(Product_model::table, array('product_id' =>$id));
             $res = $query->row($id);
             //echo $this->db->last_query();
@@ -106,3 +107,4 @@ class Product_model extends CI_Model {
             return $res;
         }
 }
+

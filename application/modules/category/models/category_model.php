@@ -1,9 +1,15 @@
 
+
 <?php ob_start(); ?>
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
 class Category_model extends CI_Model {
+
    
+
+    const table='tb_category';
+
+
     function __construct() {
                 
                 parent::__construct();
@@ -11,7 +17,7 @@ class Category_model extends CI_Model {
                 $this->load->database();
                
          }
-		 
+ 
 		 /*
 		 *takes tablename and data as input 
 		 *inserts into database table

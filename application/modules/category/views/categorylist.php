@@ -15,7 +15,9 @@
 foreach($allcategory as $c): ?>
 
 <tr>
+
 <td><a href="<?php echo base_url();?>category/product/<?php echo $c['slug'];?>"><?php echo $c['cat_title'];?></a></td>
+
 <td><?php echo $c['cat_description'];?></td>
 <td><a href="<?php echo base_url();?>category/edit/<?php echo $c['cat_id']; ?>">edit</a></td>
 <td><a href="<?php echo base_url();?>category/delete/<?php echo $c['cat_id']; ?>">delete</a></td>
@@ -26,4 +28,3 @@ foreach($allcategory as $c): ?>
 </body>
 
 </html>
-
