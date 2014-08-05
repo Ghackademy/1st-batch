@@ -92,8 +92,8 @@
                         <ul id="demo1" class="collapse side nav">
                             
                             <li>
-                                  <a href="product.html">view Product</a>
-                                <a href="Add_product.html">Add Product</a>
+                                  <a href="product/lists">view Product</a>
+                                <a href="product/add">Add Product</a>
                         </ul>
                     </li>
                     
