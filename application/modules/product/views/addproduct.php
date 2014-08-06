@@ -202,6 +202,12 @@
                                 <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title"name="pprice" value="<?php echo set_value('pprice');?>">
                               </div>
                             </div>
+                             <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Stock-info</a></label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title"name="pdetails" value="<?php echo set_value('pdetails');?>">
+                              </div>
+                            </div>
                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Quantity</a></label>
                               <div class="col-sm-10">
