@@ -207,7 +207,7 @@
                                         <td><a href=""><?php echo $user->first_name;?></a></td>
 					<td><a href=""><?php echo $user->email;?></a></td>
 					<?php foreach ($user->groups as $group):?>
-					<td><?php echo anchor("auth/edit_group/".$group->id, $group->name) ;?></td>
+					<td><?php echo anchor("auth/edit_group/".$group->id, $group->name) ;?><br/></td>
 					 <?php endforeach?>
 					<td><a href=""><?php echo ($user->active) ? anchor("auth/deactivate/".$user->id, lang('index_active_link')) : anchor("auth/activate/". $user->id, lang('index_inactive_link'));?></a></td>
                                         <td>
