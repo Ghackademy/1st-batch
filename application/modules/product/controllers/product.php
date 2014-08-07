@@ -10,7 +10,9 @@ class Product extends MX_Controller {
         $this->load->model('category/category_model');
     
      }
-     
+     /*
+      * 
+      */
              function do_upload() {
         $config['upload_path'] ="uploads/product/original/";
         
@@ -50,7 +52,9 @@ class Product extends MX_Controller {
             die();
         }
     }
-  
+  /*
+   * return data
+   */
    
     public function lists(){
              $config['base_url'] = base_url().'/product/lists/';
@@ -63,7 +67,9 @@ class Product extends MX_Controller {
             $data['links'] = $this->pagination->create_links();
          $this->load->view('allproductlist',$data);
         }
-      
+      /*
+       * return res
+       */
         public function add() {
         $res['allcategory'] = $this->category_model->getallCategory('tb_category');
         if ($_POST) {
@@ -92,6 +98,9 @@ class Product extends MX_Controller {
             $this->load->view('addProduct', $res);
         }
     }
+    /*
+     * return data
+     */
          public function myproduct(){
               $config['base_url'] = base_url().'/product/myproduct/';
             $config['total_rows'] = $this->product_model->countProduct();
@@ -109,14 +118,12 @@ class Product extends MX_Controller {
                 
                   $data['links'] = $this->pagination->create_links();
                  $this->load->view('myproduct',$data);
-//                  if($this->session->userdata('user_id')==$data['user_id']){
-//      
-//                      echo"hi";
-//                  }
        
                   
       }
-
+/*
+ * param integer id
+ */
         public function edit($id){
             $data['allcategory'] = $this->category_model->getallCategory('tb_category');
              if($_POST){
