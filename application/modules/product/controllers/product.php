@@ -108,8 +108,6 @@ class Product extends MX_Controller {
             $config['uri_segment'] = 3;            
             $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-            // $res['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
-            // print_r($res);
             $uid=$this->session->userdata('userid');
                       $where =array('user_id' =>$uid); 
                   
