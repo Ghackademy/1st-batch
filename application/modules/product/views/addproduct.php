@@ -157,7 +157,7 @@
                         </div>
                         <div class="dash-tile-content">
                         <div class="dash-tile-content-inner-fluid">
-                       <form class="form-horizontal" role="form">
+                       <form class="form-horizontal" role="form" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Title</a></label>
                               <div class="col-sm-10">
@@ -214,10 +214,22 @@
                                 <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="pquantity" value="<?php echo set_value('pquantity');?>">
                               </div>
                             </div>
+                              <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Featured</a></label>
+                              <div class="col-sm-10">
+                                <input type="checkbox" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="feature" value="<?php echo set_value('feature');?>">
+                              </div>
+                            </div>
+                              <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Publish</a></label>
+                              <div class="col-sm-10">
+                                <input type="checkbox" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="publish" value="<?php echo set_value('publish');?>">
+                              </div>
+                            </div>
                             
                             <div class="form-group">
                               <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Upload</button>
+                                <button type="submit" name="submit" class="btn btn-default">Upload</button>
                                 <button type="reset" class="btn btn-default">Reset</button>
                               </div>
                             </div>
