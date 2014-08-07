@@ -201,13 +201,125 @@ color:orange;
  {
      height:250px;
      width:250px;
-    box-shadow: 0.1em 0.1em 1em  #000;
+     border:solid 1px #cccccc;
+     overflow: hidden;
+     cursor:pointer;
  }
+ .product_img:hover
+ {
+     box-shadow: 0.1em 0.1em 1em  #000;
+
+ }
+/* Wrappers */
+.rating-wrap{
+	width:150px;
+	height:25px;
+	position:relative;
+        background-color: white;
+}
+
+
+.radio-wrap{
+	width:100%;
+	height:100%;
+      
+}
+
+/* Radio Buttons */
+input[type=radio] {
+	display:inline-block;
+	position:relative;
+	z-index:2;
+	margin:0;
+	width:17.4%;
+	height:100%;
+	opacity:0;
+        
+}
+
+/* Filled Rating */
+.rating-fill{
+	width:0;
+	height:100%;
+	background:url(http://digualized.com/wp-content/uploads/2014/04/star.png) orange;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+        
+}
+
+
+/* Checked Inputs */
+
+input[value="5"]:checked + .rating-fill{
+	width:100%;
+}
+
+input[value="4"]:checked + .rating-fill{
+	width:80%;
+}
+
+input[value="3"]:checked + .rating-fill{
+	width:60%;
+}
+
+input[value="2"]:checked + .rating-fill{
+	width:40%;
+}
+
+input[value="1"]:checked + .rating-fill{
+	width:20%;
+}
+
+
+/* Blank Stars */
+
+.rating-blank{
+	width:100%;
+	height:100%;
+	background: url(images/star.png);
+	position:absolute;
+	top:0;
+	left:0;	
+	z-index:0;
+        background-color: white;
+      
+}
+
+/* Optional Hover Effect */
+
+input[value="5"]:hover + .rating-fill{
+	width:100%;
+}
+
+input[value="4"]:hover + .rating-fill{
+	width:80%;
+}
+
+input[value="3"]:hover + .rating-fill{
+	width:60%;
+}
+
+input[value="2"]:hover + .rating-fill{
+	width:40%;
+}
+
+input[value="1"]:hover + .rating-fill{
+	width:20%;
+}
  .pdesc
  {
-     font-size: 1.3em;
-     margin-top: 15px;
+     
+    text-align: center;
+    padding:10px 0px;
+    
   }
+  .pdesc p{
+       
+      text-align: center;
+     
+ }
 .star
 {
     color:orange;
@@ -216,16 +328,23 @@ color:orange;
   
  .contentRight
  {
- 
+
 }
 .addtocart
 {
-    background-color: orange;
+   border:solid #ccc 1px;
     font-size: 1.3em;
-    color:white;
-    padding:7px 12px;
+    color:black;
+    padding:10px 10px;
     width:auto;
+   transition:background-color 0.5s ease-out;
 }
+.addtocart:hover
+{
+    background-color: black;
+    color:white;
+}
+
 
 footer
 {
@@ -242,20 +361,16 @@ font-size:1.2em;
 .footer2
 {
     background-color: black;
-    min-height:100px;
+    min-height:80px;
 }
 .footernoteleft
 {
-    
-padding:20px 0px;
-    
+ padding:10px 0px;
 }
 .footernoteright
 {
-    float:right!important;
-    padding:20px 0px;
     text-align: right;
-     
+    padding:10px 0px;
 }
 .searchbtn{
     position:relative;
@@ -304,7 +419,7 @@ padding:20px 0px;
 }
 .product_detail_img
 {
-   border: solid gray 1px;
+   border: solid #ccc 1px;
   height:400px;
   width:400px;
 }
@@ -321,7 +436,7 @@ padding:20px 0px;
 .num
 {
     padding:8px 13px;
-    border:solid gray 1px;
+    border:solid #ccc 1px;
     float: left;
 }
 .plus
@@ -331,7 +446,7 @@ padding:20px 0px;
     float:left;
     color:white;
     background-color: black;
-    padding:0px 7px;
+    padding:2px 7px;
 }
 .quantity
 {
@@ -358,6 +473,7 @@ padding:20px 0px;
     box-shadow: 0.1em 0.1em 2em #000;
   
 }
+
 .register_wrapper
 {
     padding:20px 0px;
@@ -365,10 +481,15 @@ padding:20px 0px;
 }
 .r1
 {
-    height:50px;
+    height:70px;
     width:100%;
     background-color: black;
-}
+    color:white;
+ }
+ .r1 label
+ {
+     padding:25px 70px;
+ }
 .r2{
     height:20px;
     width:100%;
@@ -377,15 +498,27 @@ padding:20px 0px;
 #sixth h1{
     margin-left: 50px;
 }
-.message
+
+#sixth .wrapper
 {
-    height:100px;
-    width:100%;
-    background-color: black;
-    color:white;   
+    
+    margin: 0 auto;
+    padding:20px 0px;
+    width:500px;
 }
-.message p
+.modal-content
 {
+    margin:25% auto;
+    width:400px;
+}
+.modal-header
+{
+    background-color: black;
+    color:white;
+}
+.orangeline
+{
+<<<<<<< HEAD
     text-align: center;
     padding:4% 0;
     font-size: 2em;
@@ -411,4 +544,29 @@ padding:20px 0px;
 {
     background-color: orange;
     height:10px;
+=======
+    background-color: orange;
+    height:10px;
+}
+.add_product_wrapper
+{
+    margin:0 auto;
+    border:solid gray 1px;
+    padding:20px 10px;
+    box-shadow: 0.1em 0.1em 1em #000;
+    
+}
+#seventh
+{
+     padding:20px 0;
+}
+.addwrapper
+{
+    margin:0 auto;
+    border:solid black;
+}
+.about
+{
+    padding:50px 0px;
+>>>>>>> origin/forDesigners
 }
