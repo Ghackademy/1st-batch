@@ -18,7 +18,7 @@
                    
                    type:'POST',
                    data:data,
-                   url:'<?php echo base_url();?>/home/login',
+                   url:'<?php echo base_url();?>/user/login',
                    success:function(res)
            {
                alert(res);return false;
@@ -98,7 +98,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <form id="login" role="form" method="post" action="home/login">
+                        <form id="login" role="form" method="post" action="">
                             <div class="form-group">
                                 <div id="infoMessage"><?php //echo $message; ?><?php echo validation_errors();  ?></div>
 
