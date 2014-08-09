@@ -56,7 +56,7 @@ class category extends MX_Controller {
     public function allpost($id){
         $data['getpost']=$this->category_model->getAllPostOfOneCategory($id);
 		  $data['allcategory']= $this->category_model->getAllCategory();
-       $this->load->view('product/productlist',$data);
+       $this->load->view('home/productlist',$data);
     }
     
     
