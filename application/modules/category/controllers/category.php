@@ -1,7 +1,7 @@
 
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class Category extends MX_Controller {
      //define tablename as constant table
      const table = "tb_category"; 
 	 

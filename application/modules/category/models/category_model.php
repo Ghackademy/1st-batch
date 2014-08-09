@@ -87,7 +87,7 @@ class Category_model extends CI_Model {
 //                return false;
                       //echo $query;die();
                       $res = $query->result_array($id);
-                      print_r($res);die();  
+                     // print_r($res);die();  
                       return $res;
                   }
                  }//end of class
