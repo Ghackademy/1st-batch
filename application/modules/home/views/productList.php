@@ -6,9 +6,9 @@
         <title>Index</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/shopping/css/bootstrap.min.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/shopping/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/shopping/css/style.css" type="text/css">
 
     <body>
 
@@ -130,7 +130,7 @@
                                 </div>
                                 <ul class="sidebarlist">
                                 <?php foreach ($allcategory as $c): ?>
-                                    <li><a href="<?php base_url(); ?>./category/product/<?php echo $c['cslug']; ?>"><?php echo $c['cat_title']; ?></a></li>
+                                    <li><a href="<?php echo base_url(); ?>home/lists/<?php echo $c['cslug']; ?>"><?php echo $c['cat_title']; ?></a></li>
 
                                 <?php endforeach; ?>
                             </ul>             
@@ -160,15 +160,15 @@
 
 
                 <div class="col-md-9 col-xs-12 col-sm-8 col-lg-9">
-                    <div id ="rightContent">
+                   <div id ="rightContent">
+                        <?php foreach($pdt as $p): ?>
                         <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4">
                             <div class="rightContentChild">
-                               <?php foreach ($allProductList as $p): ?>
                                 <div class="thumbnail">
-                                    <?php echo $p->product_name;?>
-                                    <img src="<?php echo base_url(); ?>uploads/product/resized/<?php echo $p->product_image; ?>" data-src="holder.js/300x300" alt="...">
+                                        
+                                    <img src="<?php echo base_url();?>uploads/product/resized/<?php echo $p['product_image'];?>" data-src="holder.js/300x300" alt="...">
                                     <div class="caption">
-                                        <p class="pdesc"><?php echo $p->product_description;?><br><?php echo "$".$p->price;?><br>
+                                        <p class="pdesc"><?php echo $p['product_description'];?><br><?php echo $p['price'];?><br>
                                             <i class="fa fa-star star"></i>
                                             <i class="fa fa-star star"></i>
                                         </p>       
@@ -177,15 +177,19 @@
                                       <span class="addtocarticon"><i class="fa fa-heart"></i></span> 
                                        
                                         <div class="clearfix"></div>
+                                         
                                     </div>
                                     
-                                    </div>
-                                 <?php endforeach;  ?>
-                                </div>
-                            <?php echo $links; ?>
-                            </div>
-                    </div>
 
+                                    </div>
+                               
+                                </div>
+                            </div>
+                        <?php endforeach;?>
+                        <div class="clearfix"></div>
+                            
+                    </div>
+                    
 
 <!--
                         <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4">
@@ -313,7 +317,7 @@
 
         </section>
 
-        <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
-        <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/shopping/js/jquery.js"></script>
+        <script src="<?php echo base_url(); ?>assets/shopping/js/bootstrap.min.js"></script>
     </body>
 </html>
