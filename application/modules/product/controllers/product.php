@@ -81,7 +81,7 @@ class Product extends MX_Controller {
         }
         else{
                 //$this->load->view('addProduct',$data);
-                $this->load->view('addProduct',$res);
+                $this->load->view('home/addProduct',$res);
             }
         
         

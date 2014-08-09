@@ -71,7 +71,7 @@ class User extends CI_Controller {
 	function login()
 	{
 		//$this->data['title'] = "Login";
-echo $this->input->post('identity');die('i ma here');
+echo $this->input->post('identity');die();
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -454,7 +454,7 @@ echo $this->input->post('identity');die('i ma here');
 			//check to see if we are creating the user
 			//redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("user/login", 'refresh');
+			redirect("home/index", 'refresh');
 		}
 		else
 		{
