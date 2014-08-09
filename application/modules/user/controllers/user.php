@@ -99,6 +99,8 @@ class User extends CI_Controller {
 		{
 			//the user is not logging in so display the login page
 			//set the flash data error message if there is one
+                                $data['allcategory'] = $this->category_model->getAllCategory('tb_category');
+                               $data['allProductList'] = $this->product_model->get();
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
 //			$this->data['identity'] = array('name' => 'identity',
@@ -110,8 +112,9 @@ class User extends CI_Controller {
 //				'id' => 'password',
 //				'type' => 'password',
 //			);
+             
 
-			$this->_render_page('index', $this->data);
+			$this->_render_page('home/index', $this->data);
 		}
 	}
 
