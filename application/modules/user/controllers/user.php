@@ -114,7 +114,7 @@ class User extends CI_Controller {
 //			);
              
 
-			$this->_render_page('home/index', $this->data);
+			$this->_render_page('Home/index', $this->data);
 		}
 	}
 
