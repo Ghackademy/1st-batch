@@ -31,7 +31,7 @@ class User extends CI_Controller {
             $data['allcategory']=$this->category_model->getAllCategory('tb_category');
              $data['allProductList'] = $this->product_model->get();
 
-	  	$this->load->view('index',$data);
+	  	$this->load->view('home/index',$data);
 	}
 
 	//redirect if needed, otherwise display the user list
