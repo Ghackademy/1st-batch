@@ -35,11 +35,12 @@ class Product_model extends CI_Model {
          }
          //return single id of product
          public function getSingleProduct($id){
-             if($_POST){
-                 $res = $this->db->get_where(Product_model::Table,array('product_id'=>$id));
-                 $value = $res->row($id);
+             
+                 $res = $this->db->get_where(Product_model::Table,array('product_slug'=>$id));
+                 $value = $res->row_array($id);
+                 //echo $this->db->last_query();die();
                  return $value;
-             }
+            
          }
          
          public function updateproduct($id,$tablename,$image){

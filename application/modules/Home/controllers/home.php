@@ -20,6 +20,11 @@ class Home extends MX_Controller {
 
 	  	$this->load->view('index',$data);
 	}
+            public function singleProduct($id){
+            $data['singleProduct']=$this->product_model->getSingleProduct($id);
+           //print_r($data);die();
+            $this->load->view('singleProduct',$data);
+        }
 }
     
     

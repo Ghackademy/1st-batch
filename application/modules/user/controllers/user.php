@@ -25,14 +25,7 @@ class User extends CI_Controller {
                 
                
 	}
-	
-	
-	function welcome(){
-            $data['allcategory']=$this->category_model->getAllCategory('tb_category');
-             $data['allProductList'] = $this->product_model->get();
 
-	  	$this->load->view('home/index',$data);
-	}
 
 	//redirect if needed, otherwise display the user list
 	function index()
@@ -48,6 +41,7 @@ class User extends CI_Controller {
 		{
 			//redirect them to the home page because they must be an administrator to view this
 			//return show_error('You must be an administrator to view this page.');
+//                    
                     $this->dashboard();
 		}
 		else
@@ -84,37 +78,30 @@ class User extends CI_Controller {
 			{
 				//if the login is successful
 				//redirect them back to the home page
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/user', 'refresh');
+				//$this->session->set_flashdata('message', $this->ion_auth->messages());
+                              // redirect('user/', 'refresh');
+                            $var = "success";
+                          echo json_encode($var);
+                           // echo false;
 			}
 			else
 			{
 				//if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('user/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+                                $msg = "invalid username or password";
+                                echo json_encode($msg);
+				//redirect('user/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
 		{
 			//the user is not logging in so display the login page
 			//set the flash data error message if there is one
-                                $data['allcategory'] = $this->category_model->getAllCategory('tb_category');
-                               $data['allProductList'] = $this->product_model->get();
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
-//			$this->data['identity'] = array('name' => 'identity',
-//				'id' => 'identity',
-//				'type' => 'text',
-//				'value' => $this->form_validation->set_value('identity'),
-//			);
-//			$this->data['password'] = array('name' => 'password',
-//				'id' => 'password',
-//				'type' => 'password',
-//			);
-             
-
-			$this->_render_page('home/index', $this->data);
+                      echo json_encode($this->data['message']);		
+                        // echo "form validation";
+//			$this->_render_page('home/index', $this->data);
 		}
 	}
 

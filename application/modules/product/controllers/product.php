@@ -151,6 +151,7 @@ class Product extends MX_Controller {
             $this->product_model->delete_row($id);
             redirect($_SERVER['HTTP_REFERER']);
         }
+    
 	
 }
 
