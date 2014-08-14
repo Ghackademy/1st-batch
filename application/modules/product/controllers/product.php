@@ -95,7 +95,7 @@ class Product extends MX_Controller {
             redirect('product/myproduct');
         } else {
 
-            $this->load->view('addProduct', $res);
+            $this->load->view('addproduct', $res);
         }
     }
     /*
