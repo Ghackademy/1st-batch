@@ -10,9 +10,11 @@ class category extends MX_Controller {
               
     }
     
-     /*
-      * returns template
-      */
+     
+    /*
+     * list category
+     * return category list view
+     */
     public function categorylist(){ 
         
          $data['allcategory']= $this->category_model->getAllCategory();
@@ -27,7 +29,8 @@ class category extends MX_Controller {
     }
     
     /*
-     * returns data insert
+     * @add category
+     * returns add view
      */
     public function add(){  
         $this->load->library('form_validation');
@@ -56,7 +59,11 @@ class category extends MX_Controller {
 
     
     
-    //edit category
+    /*
+     * @edit category
+     * @param int id
+     * @return edit view
+     */
       public function edit($id){
           if ($_POST){
 		  	$title = $this->input->post('cat_title');
@@ -74,6 +81,10 @@ class category extends MX_Controller {
           $this->load->view('edit',$data);
           }
       }
+      /*
+ * @delete category
+ * @param int id
+ */
       
       public function delete($id){
           $this->category_model->delete_row($id);
