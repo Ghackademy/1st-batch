@@ -63,7 +63,7 @@
     <label for="inputtext" class="col-sm-3 control-label">User Type</label>
     <div class="col-sm-9">
            <select name="user_type">
-                     <?php foreach($groupname as $usertype): ?>
+                     <?php foreach($listgrp as $usertype): ?>
                         <option value=<?php echo $usertype['id'];?>><?php echo $usertype['name'];?></option>
                      <?php endforeach;  ?>
                </select>

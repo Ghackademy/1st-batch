@@ -1395,14 +1395,10 @@ class Ion_auth_model extends CI_Model
 		                ->get($this->tables['users_groups']);
 	}
         public function get_groups(){
-           $query = $this->db->get('groups');
-
-    foreach ($query->result() as $row)
-            {
-                  $listArray[$row->id] = $row->name;                
-            }               
-
-    return $listArray;
+           $query = $this->db->get('groups');              
+           $res = $query->result_array();
+             
+             return $res;
         }
 
 	/**

@@ -403,8 +403,7 @@ class User extends CI_Controller {
 	function sign_up()
 	{
                
-         $data['listgrp'] = $this->ion_auth_model->grouplist();
-       //print_r($data);die();
+         $data['listgrp'] = $this->ion_auth_model->get_groups();
 		$data['title'] = "Create User";
 
      		//if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
@@ -418,7 +417,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
-		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
+//		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
 		//$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
@@ -433,7 +432,7 @@ class User extends CI_Controller {
 				'last_name'  => $this->input->post('last_name'),
 				'company'    => $this->input->post('company'),
 				'phone'      => $this->input->post('phone'),
-                               'group_id'     => $this->input->post('groups')
+                               'group_id'     => $this->input->post('user_type')
 			);
                        
 		}
@@ -442,7 +441,7 @@ class User extends CI_Controller {
 			//check to see if we are creating the user
 			//redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("user/login", 'refresh');
+			redirect("home/index", 'refresh');
 		}
 		else
 		{
@@ -493,8 +492,8 @@ class User extends CI_Controller {
 //				'value' => $this->form_validation->set_value('password_confirm'),
 //			);
             
-			$this->_render_page('auth/create_user', $data);
-                   // $this->load->view('auth/create_user',$listgroup);
+			$this->_render_page('register', $data);
+                 
 		}
 	}
 
