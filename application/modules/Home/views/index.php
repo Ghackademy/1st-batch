@@ -77,7 +77,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="#">My Account</a></li>
                                 <li><a href="#">My Wishlist</a></li>
-                                <li><a href="#">My Cart</a></li>
+                                <li><a href="user/sign_up">Register</a></li>
 
                                 <li data-toggle="modal" data-target="#myModal"> <a href="">Login</a></li>
 

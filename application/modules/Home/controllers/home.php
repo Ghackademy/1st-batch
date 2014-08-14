@@ -12,18 +12,22 @@ class Home extends MX_Controller {
     }
     
      /*
-      * returns template
+      * @return index view
       */
 	public function index(){
             $data['allcategory']=$this->category_model->getAllCategory('tb_category');
              $data['allProductList'] = $this->product_model->get();
 
 	  	$this->load->view('index',$data);
-	}
+        }
+        /*
+         * @param int
+         * @returns singleProduct
+         * @returns singleproduct view
+         */
             public function singleProduct($id){
             $data['singleProduct']=$this->product_model->getSingleProduct($id);
-           //print_r($data);die();
-            $this->load->view('singleProduct',$data);
+            $this->load->view('singleproduct',$data);
         }
 }
     
