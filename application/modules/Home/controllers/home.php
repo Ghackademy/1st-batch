@@ -20,12 +20,6 @@ class Home extends MX_Controller {
 
 	  	$this->load->view('index',$data);
 	}
-            public function allpost($id){
-                   $data['getpost']=$this->category_model->getAllPostOfOneCategory($id);
-		  $data['allcategory']= $this->category_model->getAllCategory();
-                  $this->load->view('productlist',$data);
-              }
-              
             public function singleProduct($id){
             $data['singleProduct']=$this->product_model->getSingleProduct($id);
            //print_r($data);die();

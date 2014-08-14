@@ -8,35 +8,6 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/assests/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/assests/css/font-awesome.min.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-                <script type="text/javascript">
-            $(document).ready(function(){
-            $("#login").submit(function() {
-               var data  = $('#login').serialize();
-              // alert(data);return false;
-               $.ajax({
-                   
-                   type:'POST',
-                   data:data,
-                   dataType:'json',
-                  url:'<?php echo base_url();?>user/login',
-                   success:function(res)
-           {
-               // alert(res);return false;
-               if (res =="success"){
-                  
-             window.location="<?php echo base_url(); ?>user/index";
-               }
-               else{
-                   $('#infoMessage').html(res);
-               }
-           }
-           
-               });
-               return false;
-
-            });
-            });
-        </script>
        
 <link rel="stylesheet" href="<?php echo base_url();?>/assests/lean-slider.css" type="text/css" />
     </head>
@@ -78,7 +49,7 @@
                                 <li><a href="#">My Account</a></li>
                                 <li><a href="#">My Wishlist</a></li>
                                 <li><a href="#">My Cart</a></li>
-                                 <li data-toggle="modal" data-target="#myModal"> <a href="">Login</a></li>
+                                <li><a href="#">Login</a></li>
 
                             </ul>
                         </div>
@@ -88,43 +59,6 @@
             </div>
         </nav>
         <div class="clearfix"></div>
-         <!-- Modal -->
-
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Login</h4>
-                    </div>
-                    <div class="orangeline"></div>
-                    <div id="errdisplay">
-
-                    </div>
-                    <div class="modal-body">
-
-                        <form id="login" role="form" method="post" action="">
-                            <div class="form-group">
-                                <div id="infoMessage"><?php //echo $message; ?><?php //echo validation_errors();  ?></div>
-
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="identity">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-                            </div>
-
-                            <button type="submit" class="btn btn-default">Login</button>
-
-                        </form>
-                    </div>
-
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-
-        </div><!-- /.modal -->
         <!--nav2-->
         <div class="nav2Wrapper">
             <div class="nav2Contents">
