@@ -57,10 +57,6 @@ class Product extends MX_Controller {
         }
     }
 
-    /*
-     * list prouct
-     * return product list view
-     */
 
     public function lists() {
         $config['base_url'] = base_url() . '/product/lists/';
