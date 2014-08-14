@@ -99,25 +99,9 @@ class User extends CI_Controller {
 			//the user is not logging in so display the login page
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-<<<<<<< HEAD
                       echo json_encode($this->data['message']);		
                         // echo "form validation";
 //			$this->_render_page('home/index', $this->data);
-=======
-
-//			$this->data['identity'] = array('name' => 'identity',
-//				'id' => 'identity',
-//				'type' => 'text',
-//				'value' => $this->form_validation->set_value('identity'),
-//			);
-//			$this->data['password'] = array('name' => 'password',
-//				'id' => 'password',
-//				'type' => 'password',
-//			);
-             
-
-			$this->_render_page('Home/index', $this->data);
->>>>>>> origin/Group1
 		}
 	}
 
