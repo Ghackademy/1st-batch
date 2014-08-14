@@ -155,7 +155,7 @@
                         <div class="dash-tile dash-tile-2x">
                         <div class="dash-tile-header">
                         
-                            <i class="fa fa-shopping-cart" style="color: #fff; margin-left: 1em;"></i> <a>New Orders</a>
+                            <i class="fa fa-shopping-cart" style="color: #fff; margin-left: 1em;"></i> <a>All customers</a>
                         </div>
                         <div class="dash-tile-content">
                   <div class="dash-tile-content-inner-fluid">
