@@ -51,6 +51,21 @@ class category extends MX_Controller {
         }
         
     }
+    /*
+     * @return all product
+     * @param int
+     * @return view page
+     */
+    public function allpost($id){
+        $data['getpost']=$this->category_model->getAllPostOfOneCategory($id);
+		  $data['allcategory']= $this->category_model->getAllCategory();
+       $this->load->view('home/productlist',$data);
+    }
+    
+    /*
+     * 
+     * return category view 
+     */
     public function view(){
       $data['allcategory']= $this->category_model->getAllCategory();
        $this->load->view('user/view',$data);
