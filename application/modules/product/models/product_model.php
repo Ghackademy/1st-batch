@@ -9,6 +9,9 @@ class Product_model extends CI_Model {
                
          }
 
+         /*
+          * 
+          */
          public function getProduct($limit,$start,$where=""){
             if($where!="")
 			$this->db->where($where);
@@ -16,8 +19,8 @@ class Product_model extends CI_Model {
 		                             
              $this->db->limit($limit, $start);
              $this->db->select('*');
-             $this->db->from('tb_product');
-             $this->db->join('users', 'users.id = tb_product.product_id');
+             $this->db->from(product_model::Table);
+             $this->db->join('users', 'users.id = Table.product_id');
             $query = $this->db->get();
                 if ($query->num_rows() > 0) {
                         foreach ($query->result() as $row) {
@@ -51,7 +54,6 @@ class Product_model extends CI_Model {
              'product_image' => $image,
              'shipping_detail' => $this->input->post('pdetails'),
              'price' => $this->input->post('pprice'),
-             'rating' => $this->input->post('prating'),
              'featured' => $this->input->post('feature'),
              'publish' => $this->input->post('publish'),
              'slug'=>url_title($pname,'dash',true),
@@ -63,6 +65,14 @@ class Product_model extends CI_Model {
  
 	
               }
+                 public function getAllStars(){
+		 $this->input->post('data');
+             $query= $this->db->get('tb_product');
+             $res = $query->result_array();
+             
+             return $res;
+		
+         }
 
          //return no of product
          
@@ -76,7 +86,7 @@ class Product_model extends CI_Model {
         $this->db->delete(product_model::Table);
     }
           public function get(){
-            $query = $this->db->get('tb_product');
+            $query = $this->db->get(product_model::Table);
             $res = $query->result_array();
             return $res;
         }

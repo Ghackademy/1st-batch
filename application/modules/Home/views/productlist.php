@@ -9,6 +9,51 @@
         <link rel="stylesheet" href="<?php echo base_url();?>assests/css/bootstrap.min.css" type="text/css" media="screen">
         <link rel="stylesheet" href="<?php echo base_url();?>assests/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" href="<?php echo base_url();?>assests/css/style.css" type="text/css">
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+             <script type="text/javascript">
+            $(document).ready(function(){
+                
+                $(".star").click(function(){
+               var rating = $(this).val();
+            //alert(rating); return false;
+              $.ajax({
+            
+                 type:'POST',
+                  data:rating,
+                 url:'<?php echo base_url();?>home/rating',
+                 sucess:function(res)
+         {
+             alert(res);
+         }
+              });
+            });
+            $("#login").submit(function() {
+               var data  = $('#login').serialize();
+              // alert(data);return false;
+               $.ajax({
+                   
+                   type:'POST',
+                   data:data,
+                   dataType:'json',
+                  url:'<?php echo base_url();?>user/login',
+                   success:function(res)
+           {
+               // alert(res);return false;
+               if (res ==="success"){
+                  
+             window.location="<?php echo base_url(); ?>user/index";
+               }
+               else{
+                   $('#infoMessage').html(res);
+               }
+           }
+           
+               });
+               return false;
+
+            });
+            });
+        </script>
 
     <body>
 
@@ -58,7 +103,7 @@
             </div>
         </nav>
         <div class="clearfix"></div>
-        <!--nav2-->
+       
         		       <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -69,17 +114,25 @@
         <h4 class="modal-title" id="myModalLabel">Login</h4>
       </div>
           <div class="orangeline"></div>
-      <div class="modal-body">
-        <form role="form" action="<?php echo base_url();?>user/login" method="POST">
+<div class="modal-body">
+        <form id="login" role="form" method="post" action="">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="identity">
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"name="identity">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" password="password">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"name="password">
   </div>
-            <button type="submit" class="btn btn-default" name="submit">Login</button>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Remember me
+    </label>
+      <label><a href="">Forgot Password?</a></label>
+      
+  </div>
+            <button type="submit" class="btn btn-default">Login</button>
+            <label>New User?? <a href="user/sign_up">Register</a></label>
 </form>
       </div>
       
@@ -87,6 +140,7 @@
   </div><!-- /.modal-dialog -->
   
 </div><!-- /.modal -->
+        <!--nav2-->
         <div class="nav2Wrapper">
             <div class="nav2Contents">
                 <!--category-->
@@ -158,27 +212,13 @@
                                     <div id="sidebar_heading">Categories</div><div class="clearfix"></div>
                                 </div>
                                 <ul class="sidebarlist">
-                                   <?php foreach($allcategory as $all): ?>
+                                 <?php foreach (array_slice($allcategory,0,5) as $all): ?>
                                     <li><a href="<?php echo base_url();?>category/allpost/<?php echo $all['cat_slug'];?>"><?php echo $all['cat_title'];?></a></li> 
                                      <?php  endforeach; ?>
                                 </ul>             
                             </div>
 
-                            <div id="sidebar">
-
-                                <div id="sidebar_heading_group">
-                                    <div id="sidebar_heading">Shop by
-                                    </div><div class="clearfix"></div>
-                                </div>
-                                <ul class="sidebarlist">
-                                    <li><a href="">Shirts</a></li> 
-                                    <li><a href="">Pants</a></li>
-                                    <li><a href="">Accessories</a></li>
-                                    <li><a href="">Jeans</a></li>
-                                    <li><a href="">Dresses</a></li>
-                                    <li><a href="">Sports</a></li>
-                                </ul>             
-                            </div>
+                           
 
                         </div>
                     </div>
@@ -195,8 +235,18 @@
                                 <img src="<?php echo base_url();?>uploads/product/resized/<?php echo $product->product_image;?>" data-src="holder.js/300x300" alt="...">
                                 <div class="caption">
                                     <p class="pdesc"> <?php echo $product->product_name;?><br><?php echo $product->price;?> <br>
-                                        <i class="fa fa-star star"></i>
-                                        <i class="fa fa-star star"></i>
+                                       <div id="wrapper" class="col-md-10 col-xs-12 col-sm-12 col-lg-10 center-block" >
+                                <input type="radio" id="star1" name="star" class="star"  value="1"/>
+                                   <label for="star1"></label>
+                                    <input type="radio" id="star2" name="star" class="star"  value="2"/>
+                                    <label for="star2"></label>
+                                    <input type="radio" id="star3" name="star" class="star"  value="3" checked="checked"/>
+                                    <label for="star3"></label>
+                                    <input type="radio" id="star4" name="star" class="star" value="4"/>
+                                    <label for="star4"></label>
+                                    <input type="radio" id="star5" name="star" class="star"  value="5"/>
+                                    <label for="star5"></label>
+                            </div>
                                     </p>       
 
 
