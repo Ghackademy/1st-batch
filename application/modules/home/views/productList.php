@@ -6,9 +6,54 @@
         <title>Index</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/shopping/css/bootstrap.min.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/shopping/css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/shopping/css/style.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo base_url();?>assests/css/bootstrap.min.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="<?php echo base_url();?>assests/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo base_url();?>assests/css/style.css" type="text/css">
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+             <script type="text/javascript">
+            $(document).ready(function(){
+                
+                $(".star").click(function(){
+               var rating = $(this).val();
+            //alert(rating); return false;
+              $.ajax({
+            
+                 type:'POST',
+                  data:rating,
+                 url:'<?php echo base_url();?>home/rating',
+                 sucess:function(res)
+         {
+             alert(res);
+         }
+              });
+            });
+            $("#login").submit(function() {
+               var data  = $('#login').serialize();
+              // alert(data);return false;
+               $.ajax({
+                   
+                   type:'POST',
+                   data:data,
+                   dataType:'json',
+                  url:'<?php echo base_url();?>user/login',
+                   success:function(res)
+           {
+               // alert(res);return false;
+               if (res ==="success"){
+                  
+             window.location="<?php echo base_url(); ?>user/index";
+               }
+               else{
+                   $('#infoMessage').html(res);
+               }
+           }
+           
+               });
+               return false;
+
+            });
+            });
+        </script>
 
     <body>
 
@@ -47,7 +92,8 @@
                                 <li><a href="#">My Account</a></li>
                                 <li><a href="#">My Wishlist</a></li>
                                 <li><a href="#">My Cart</a></li>
-                                <li><a href="#">Login</a></li>
+                                 <li data-toggle="modal" data-target="#myModal">
+                                    <a href="">Login</a></li>
 
                             </ul>
                         </div>
@@ -57,6 +103,43 @@
             </div>
         </nav>
         <div class="clearfix"></div>
+       
+        		       <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+          <div class="orangeline"></div>
+<div class="modal-body">
+        <form id="login" role="form" method="post" action="">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"name="identity">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"name="password">
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Remember me
+    </label>
+      <label><a href="">Forgot Password?</a></label>
+      
+  </div>
+            <button type="submit" class="btn btn-default">Login</button>
+            <label>New User?? <a href="user/sign_up">Register</a></label>
+</form>
+      </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  
+</div><!-- /.modal -->
         <!--nav2-->
         <div class="nav2Wrapper">
             <div class="nav2Contents">
@@ -125,168 +208,59 @@
                             <div id="sidebar">
 
                                 <div id="sidebar_heading_group">
-                                    <img src="<?php echo base_url(); ?>assets/images/orange.png" id="sidebar_heading_pic">
+                                    <img src="<?php echo base_url();?>assests/images/orange.png" id="sidebar_heading_pic">
                                     <div id="sidebar_heading">Categories</div><div class="clearfix"></div>
                                 </div>
                                 <ul class="sidebarlist">
-                                <?php foreach ($allcategory as $c): ?>
-                                    <li><a href="<?php echo base_url(); ?>home/lists/<?php echo $c['cslug']; ?>"><?php echo $c['cat_title']; ?></a></li>
-
-                                <?php endforeach; ?>
-                            </ul>             
-                            </div>
-
-                            <div id="sidebar">
-
-                                <div id="sidebar_heading_group">
-                                    <div id="sidebar_heading">Shop by
-                                    </div><div class="clearfix"></div>
-                                </div>
-                                <ul class="sidebarlist">
-                                    <li><a href="">Shirts</a></li> 
-                                    <li><a href="">Pants</a></li>
-                                    <li><a href="">Accessories</a></li>
-                                    <li><a href="">Jeans</a></li>
-                                    <li><a href="">Dresses</a></li>
-                                    <li><a href="">Sports</a></li>
+                                 <?php foreach (array_slice($allcategory,0,5) as $all): ?>
+                                    <li><a href="<?php echo base_url();?>category/allpost/<?php echo $all['cat_slug'];?>"><?php echo $all['cat_title'];?></a></li> 
+                                     <?php  endforeach; ?>
                                 </ul>             
                             </div>
 
+                           
+
                         </div>
                     </div>
 
 
                 </div>
 
-
-                <div class="col-md-9 col-xs-12 col-sm-8 col-lg-9">
-                   <div id ="rightContent">
-                        <?php foreach($pdt as $p): ?>
-                        <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4">
-                            <div class="rightContentChild">
-                                <div class="thumbnail">
-                                        
-                                    <img src="<?php echo base_url();?>uploads/product/resized/<?php echo $p['product_image'];?>" data-src="holder.js/300x300" alt="...">
-                                    <div class="caption">
-                                        <p class="pdesc"><?php echo $p['product_description'];?><br><?php echo $p['price'];?><br>
-                                            <i class="fa fa-star star"></i>
-                                            <i class="fa fa-star star"></i>
-                                        </p>       
-
-                                      <div class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
-                                      <span class="addtocarticon"><i class="fa fa-heart"></i></span> 
-                                       
-                                        <div class="clearfix"></div>
-                                         
-                                    </div>
-                                    
-
-                                    </div>
-                               
-                                </div>
+					
+                        <div class="rightContent col-sm-8 col-md-9 col-xs-12 col-lg-9">
+						<?php foreach($getpost as $product): ?>
+                        <div class="rightContentChild col-sm-6 col-md-4 col-xs-12 col-lg-4">
+                            <div class="thumbnail">
+							 
+                                <img src="<?php echo base_url();?>uploads/product/resized/<?php echo $product->product_image;?>" data-src="holder.js/300x300" alt="...">
+                                <div class="caption">
+                                    <p class="pdesc"> <?php echo $product->product_name;?><br><?php echo $product->price;?> <br>
+                                       <div id="wrapper" class="col-md-10 col-xs-12 col-sm-12 col-lg-10 center-block" >
+                                <input type="radio" id="star1" name="star" class="star"  value="1"/>
+                                   <label for="star1"></label>
+                                    <input type="radio" id="star2" name="star" class="star"  value="2"/>
+                                    <label for="star2"></label>
+                                    <input type="radio" id="star3" name="star" class="star"  value="3" checked="checked"/>
+                                    <label for="star3"></label>
+                                    <input type="radio" id="star4" name="star" class="star" value="4"/>
+                                    <label for="star4"></label>
+                                    <input type="radio" id="star5" name="star" class="star"  value="5"/>
+                                    <label for="star5"></label>
                             </div>
-                        <?php endforeach;?>
-                        <div class="clearfix"></div>
-                            
-                    </div>
+                                    </p>       
+
+
+                                    <div class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
+                                    <span class="addtocarticon"><i class="fa fa-heart"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+								 
+                            </div>
+                        </div>
+						 <?php endforeach;  ?>
+						</div>
+
                     
-
-<!--
-                        <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4">
-                            <div class="rightContentChild">
-
-                                <div class="thumbnail">
-                                    <img src="images/30.jpg" data-src="holder.js/300x300" alt="...">
-                                    <div class="caption">
-                                        <p class="pdesc">This is converse.<br>$30.99<br>
-                                            <i class="fa fa-star star"></i>
-                                            <i class="fa fa-star star"></i>
-                                        </p>       
-
-
-                                        <div class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
-                                        <span class="addtocarticon"><i class="fa fa-heart"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4">
-                            <div class="rightContentChild">
-                                <div class="thumbnail">
-                                    <img src="images/30.jpg" data-src="holder.js/300x300" alt="...">
-                                    <div class="caption">
-                                        <p class="pdesc">This is converse.<br>$30.99<br>
-                                            <i class="fa fa-star star"></i>
-                                            <i class="fa fa-star star"></i>
-                                        </p>       
-
-
-                                        <div class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
-                                        <span class="addtocarticon"><i class="fa fa-heart"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4">
-                            <div class="rightContentChild">
-                                <div class="thumbnail">
-                                    <img src="images/30.jpg" data-src="holder.js/300x300" alt="...">
-                                    <div class="caption">
-                                        <p class="pdesc">This is converse.<br>$30.99<br>
-                                            <i class="fa fa-star star"></i>
-                                            <i class="fa fa-star star"></i>
-                                        </p>       
-
-
-                                        <div class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
-                                        <span class="addtocarticon"><i class="fa fa-heart"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rightContentChild col-sm-6 col-md-4 col-xs-12 col-lg-4">
-                            <div class="thumbnail">
-                                <img src="images/30.jpg" data-src="holder.js/300x300" alt="...">
-                                <div class="caption">
-                                    <p class="pdesc">This is converse.<br>$30.99<br>
-                                        <i class="fa fa-star star"></i>
-                                        <i class="fa fa-star star"></i>
-                                    </p>       
-
-
-                                    <div class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
-                                    <span class="addtocarticon"><i class="fa fa-heart"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rightContentChild col-sm-6 col-md-4 col-xs-12 col-lg-4">
-                            <div class="thumbnail">
-                                <img src="images/30.jpg" data-src="holder.js/300x300" alt="...">
-                                <div class="caption">
-                                    <p class="pdesc">This is converse.<br>$30.99<br>
-                                        <i class="fa fa-star star"></i>
-                                        <i class="fa fa-star star"></i>
-                                    </p>       
-
-
-                                    <div class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
-                                    <span class="addtocarticon"><i class="fa fa-heart"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>-->
-
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="clearfix"></div>
 
@@ -317,7 +291,7 @@
 
         </section>
 
-        <script src="<?php echo base_url(); ?>assets/shopping/js/jquery.js"></script>
-        <script src="<?php echo base_url(); ?>assets/shopping/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url();?>assests/js/jquery.js"></script>
+        <script src="<?php echo base_url();?>assests/js/bootstrap.min.js"></script>
     </body>
 </html>

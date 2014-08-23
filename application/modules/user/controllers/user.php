@@ -2,7 +2,6 @@
 
 class User extends CI_Controller {
 
-
 	function __construct()
 	{
             
@@ -26,14 +25,7 @@ class User extends CI_Controller {
                 
                
 	}
-	
-	
-	function welcome(){
-            $data['allcategory']=$this->category_model->displayCategory('tb_category');
-             $data['allProductList'] = $this->product_model->get();
 
-	  	$this->load->view('index',$data);
-	}
 
 	//redirect if needed, otherwise display the user list
 	function index()
@@ -49,6 +41,7 @@ class User extends CI_Controller {
 		{
 			//redirect them to the home page because they must be an administrator to view this
 			//return show_error('You must be an administrator to view this page.');
+//                    
                     $this->dashboard();
 		}
 		else
@@ -63,7 +56,7 @@ class User extends CI_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('auth/index', $this->data);
+			$this->_render_page('admin_dashboard', $this->data);
 		}
 	}
 
@@ -71,7 +64,6 @@ class User extends CI_Controller {
 	function login()
 	{
 		//$this->data['title'] = "Login";
-echo $this->input->post('identity');die();
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -86,15 +78,20 @@ echo $this->input->post('identity');die();
 			{
 				//if the login is successful
 				//redirect them back to the home page
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/user', 'refresh');
+				//$this->session->set_flashdata('message', $this->ion_auth->messages());
+                              // redirect('user/', 'refresh');
+                            $var = "success";
+                          echo json_encode($var);
+                           // echo false;
 			}
 			else
 			{
 				//if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('user/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+                                $msg = "invalid username or password";
+                                echo json_encode($msg);
+				//redirect('user/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -102,18 +99,9 @@ echo $this->input->post('identity');die();
 			//the user is not logging in so display the login page
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
-//			$this->data['identity'] = array('name' => 'identity',
-//				'id' => 'identity',
-//				'type' => 'text',
-//				'value' => $this->form_validation->set_value('identity'),
-//			);
-//			$this->data['password'] = array('name' => 'password',
-//				'id' => 'password',
-//				'type' => 'password',
-//			);
-
-			$this->_render_page('index', $this->data);
+                      echo json_encode($this->data['message']);		
+                        // echo "form validation";
+//			$this->_render_page('home/index', $this->data);
 		}
 	}
 
@@ -415,8 +403,7 @@ echo $this->input->post('identity');die();
 	function sign_up()
 	{
                
-         $data['listgrp'] = $this->ion_auth_model->grouplist();
-       //print_r($data);die();
+         $data['listgrp'] = $this->ion_auth_model->get_groups();
 		$data['title'] = "Create User";
 
      		//if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
@@ -430,7 +417,7 @@ echo $this->input->post('identity');die();
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
-		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
+//		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
 		//$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
@@ -445,7 +432,7 @@ echo $this->input->post('identity');die();
 				'last_name'  => $this->input->post('last_name'),
 				'company'    => $this->input->post('company'),
 				'phone'      => $this->input->post('phone'),
-                               'group_id'     => $this->input->post('groups')
+                               'group_id'     => $this->input->post('user_type')
 			);
                        
 		}
@@ -505,8 +492,8 @@ echo $this->input->post('identity');die();
 //				'value' => $this->form_validation->set_value('password_confirm'),
 //			);
             
-			$this->_render_page('auth/create_user', $data);
-                   // $this->load->view('auth/create_user',$listgroup);
+			$this->_render_page('register', $data);
+                 
 		}
 	}
 
@@ -787,16 +774,16 @@ echo $this->input->post('identity');die();
         
         
         public function dashboard(){
-            $row['allcategory']=$this->category_model->displayCategory('tb_category');
-            $row['allProductList'] = $this->product_model->get();
+            $data['allcategory']=$this->category_model->getAllCategory('tb_category');
+             $data['allProductList'] = $this->product_model->get();
               $id = $this->session->userdata('user_id');
              $row['group'] = $this->ion_auth->user($id)->row();
               if($row['group']->group_id == 3){
-                $this->load->view('auth/vendor_dashboard',$row);
+                $this->load->view('vendor_dashboard',$row);
                   
             }
             else{
-                $this->load->view('auth/user_dashboard',$row);
+                $this->load->view('user_dashboard',$row);
             }
            
             

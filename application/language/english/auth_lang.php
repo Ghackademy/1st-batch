@@ -23,7 +23,7 @@ $lang['error_csrf'] = 'This form post did not pass our security checks.';
 // Login
 $lang['login_heading']         = 'Login';
 $lang['login_subheading']      = 'Please login with your email/username and password below.';
-$lang['login_identity_label']  = 'Email/Username:';
+$lang['login_identity_label']  = 'Email /Username:';
 $lang['login_password_label']  = 'Password:';
 $lang['login_remember_label']  = 'Remember Me:';
 $lang['login_submit_btn']      = 'Login';
@@ -40,9 +40,16 @@ $lang['index_status_th']         = 'Status';
 $lang['index_action_th']         = 'Action';
 $lang['index_active_link']       = 'Active';
 $lang['index_inactive_link']     = 'Inactive';
-$lang['index_create_user_link']  = 'Create a new user';
+$lang['index_create_user_link']  = 'New user ? Regiter Here';
+$lang['index_user_dashboard_profile_link']  = 'Profile';
+$lang['index_user_dashboard_logout_link']  = 'Logout';
 $lang['index_create_group_link'] = 'Create a new group';
-$lang['index_dashboard_logout']= 'Logout';
+//
+$lang['vendor_dashboard_heading']                           = 'Welcome To Dashboard';
+$lang['vendor_dashboard_addcategory_link']                = 'Add Category';
+$lang['vendor_dashboard_addproduct_link']                = 'Add Product';
+$lang['vendor_dashboard_ownproduct_link']                = 'My Product';
+
 
 // Deactivate User
 $lang['deactivate_heading']                  = 'Deactivate User';
@@ -54,38 +61,45 @@ $lang['deactivate_validation_confirm_label'] = 'confirmation';
 $lang['deactivate_validation_user_id_label'] = 'user ID';
 
 // Create User
-$lang['create_user_heading']                           = 'Create User';
+$lang['create_user_heading']                           = 'New User';
 $lang['create_user_subheading']                        = 'Please enter the user\'s information below.';
 $lang['create_user_fname_label']                       = 'First Name:';
 $lang['create_user_lname_label']                       = 'Last Name:';
+$lang['create_user_country_label']                       = 'Country:';
+$lang['create_user_zipcode_label']                       = 'Zipcode:';
+$lang['create_user_poboxno_label']                       = 'PO Box:';
 $lang['create_user_company_label']                     = 'Company Name:';
 $lang['create_user_email_label']                       = 'Email:';
 $lang['create_user_phone_label']                       = 'Phone:';
 $lang['create_user_password_label']                    = 'Password:';
 $lang['create_user_password_confirm_label']            = 'Confirm Password:';
-$lang['create_user_submit_btn']                        = 'Create User';
+$lang['create_user_type_label']                    = 'User Type';
+$lang['create_user_submit_btn']                        = 'Register';
 $lang['create_user_validation_fname_label']            = 'First Name';
 $lang['create_user_validation_lname_label']            = 'Last Name';
 $lang['create_user_validation_email_label']            = 'Email Address';
 $lang['create_user_validation_phone1_label']           = 'First Part of Phone';
 $lang['create_user_validation_phone2_label']           = 'Second Part of Phone';
 $lang['create_user_validation_phone3_label']           = 'Third Part of Phone';
-$lang['create_user_validation_company_label']          = 'Company Name';
+$lang['create_user_validation_company_label']          = 'Company';
 $lang['create_user_validation_password_label']         = 'Password';
 $lang['create_user_validation_password_confirm_label'] = 'Password Confirmation';
-$lang['create_user_type']                       = 'User Type:';
-
+$lang['create_user_image_label'] = 'Upload Image';
 
 // Edit User
 $lang['edit_user_heading']                           = 'Edit User';
 $lang['edit_user_subheading']                        = 'Please enter the user\'s information below.';
 $lang['edit_user_fname_label']                       = 'First Name:';
 $lang['edit_user_lname_label']                       = 'Last Name:';
+$lang['edit_user_country_label']                     = 'Country Name:';
+$lang['edit_user_zipcode_label']                     = 'Zipcode:';
+$lang['edit_user_poboxno_label']                     = 'PO Box:';
 $lang['edit_user_company_label']                     = 'Company Name:';
 $lang['edit_user_email_label']                       = 'Email:';
 $lang['edit_user_phone_label']                       = 'Phone:';
 $lang['edit_user_password_label']                    = 'Password: (if changing password)';
 $lang['edit_user_password_confirm_label']            = 'Confirm Password: (if changing password)';
+$lang['edit_user_image_heading']                    = 'Upload Image';
 $lang['edit_user_groups_heading']                    = 'Member of groups';
 $lang['edit_user_submit_btn']                        = 'Save User';
 $lang['edit_user_validation_fname_label']            = 'First Name';
@@ -94,10 +108,16 @@ $lang['edit_user_validation_email_label']            = 'Email Address';
 $lang['edit_user_validation_phone1_label']           = 'First Part of Phone';
 $lang['edit_user_validation_phone2_label']           = 'Second Part of Phone';
 $lang['edit_user_validation_phone3_label']           = 'Third Part of Phone';
+$lang['edit_user_validation_country_label']          = 'Country';
+$lang['edit_user_validation_zipcode_label']          = 'Zip Code';
+$lang['edit_user_validation_poboxno_label']          = 'PO Box';
 $lang['edit_user_validation_company_label']          = 'Company Name';
 $lang['edit_user_validation_groups_label']           = 'Groups';
 $lang['edit_user_validation_password_label']         = 'Password';
 $lang['edit_user_validation_password_confirm_label'] = 'Password Confirmation';
+
+//User Dashboard
+$lang['user_dashboard_heading']                      ='Welcome To Dashboard';
 
 // Create Group
 $lang['create_group_title']                  = 'Create Group';

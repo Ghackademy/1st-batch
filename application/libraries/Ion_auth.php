@@ -458,8 +458,8 @@ class Ion_auth
 
 		return $this->in_group($admin_group, $id);
 	}
-        
-       
+	
+
 	/**
 	 * in_group
 	 *

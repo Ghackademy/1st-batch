@@ -1,92 +1,110 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Category extends MX_Controller {
-     //define tablename as constant table
-     const table = "tb_category"; 
-	 
-	function __construct()
+class category extends MX_Controller { 
+    Public function __construct(){
+        parent::__construct();
+        $this->load->model('category_model'); // load category model
+        $this->load->library('session');
+     
+        
+              
+    }
+    
+     
+    /*
+     * list category
+     * return category list view
+     */
+    public function categorylist(){ 
+        
+         $data['allcategory']= $this->category_model->getAllCategory();
+		 	if (empty($data['allcategory']))
 	{
-		parent::__construct();
-		// load category model
-		$this->load->model('category_model'); 
+		show_404();
+	}
 
-      }
-	  
-          /*
-          * adds new category
-          */
-	  public function add(){
-	  if ($_POST)
-	  {
-               $this->load->library('form_validation');
-	  $data= array(
+	
+
+        $this->load->view('categorylist',$data);
+    }
+    
+    /*
+     * @add category
+     * returns add view
+     */
+    public function add(){  
+        $this->load->library('form_validation');
+        if ($_POST){
+		$title = $this->input->post('cat_title');
+            $data= array(
                 'cat_title'=>  $this->input->post('cat_title'),
                 'cat_description'=>  $this->input->post('cat_desc'),
-              'slug'=>url_title($this->input->post('cat_title'),'dash',true)
+				'slug'=>url_title($title,'dash',true)
             );
-	  $this->form_validation->set_rules('cat_title', 'cat_title', 'required');
-	  $this->category_model->addCategory(category::table,$data);
-			 
-	  $this->display();
-	  
-	  }
-	  else
-	  {
-	  $this->load->view('categoryadd');
-	  }
-	  
-	  }
-	  
-	  
-	  
-          
-          /*
-          * returns all category
-          */
-	  public function display(){
-	  $data['allcategory']=$this->category_model->displayCategory(category::table);
-	  $this->load->view('categorylist',$data);
-	  
-	  }
-	  
-	  
-          
-          /*
-          * returns all category with edited category
-          */
-	  public function edit($id){
-	  if($_POST){
-	  $data=array(
+          $this->form_validation->set_rules('cat_title', 'cat_title', 'required');
+        $this->category_model->insertCategory($data);
+        redirect('category/categorylist');
+        
+        }
+        else{
+            $this->load->view('addcategory');
+        }
+        
+    }
+    /*
+     * @return all product
+     * @param int
+     * @return view page
+     */
+    public function allpost($id){
+        $data['getpost']=$this->category_model->getAllPostOfOneCategory($id);
+		  $data['allcategory']= $this->category_model->getAllCategory();
+       $this->load->view('home/productlist',$data);
+    }
+    
+    /*
+     * 
+     * return category view 
+     */
+    public function view(){
+      $data['allcategory']= $this->category_model->getAllCategory();
+       $this->load->view('user/view',$data);
+    }
+ 
+
+    
+    
+    /*
+     * @edit category
+     * @param int id
+     * @return edit view
+     */
+      public function edit($id){
+          if ($_POST){
+		  	$title = $this->input->post('cat_title');
+              $data=array(
                 'cat_title' =>$this->input->post('cat_title'),
-              'cat_description' =>  $this->input->post('cat_desc'),
-               'slug' => url_title($this->input->post('cat_title'),'dash',true)
+              'cat_description' =>  $this->input->post('cat_description'),
+			  'slug' => url_title($title,'dash',true)
               );
-	  $this->category_model->update(category::table,$data,$id);
-          $data['allcategory']=$this->category_model->displayCategory(category::table);
-	  $this->load->view('categorylist',$data);
-	  }
-	  else{
-	   $datas['category']=$this->category_model->getSingleCategory(category::table,$id);
-//	   print_r($datas);die();
-	    $this->load->view('editcategory',$datas);
-	  }
-	  }
-
-          
-          /*
-          * deletes a category
-          */
-          public function delete($id){
-          $this->category_model->deleteCategory(category::table,$id);
-          redirect('category/display');
+              
+          $this->category_model->update($id,'tb_category',$data);
+          redirect('category/categorylist');
           }
-
-          
-          public function product($id){
-
-              $datas['pdt']=$this->category_model->productAccCategory($id);
-              //print_r($datas); die();       
+              else{
+          $data['category']=$this->category_model->getSingleCategory($id);
+          $this->load->view('edit',$data);
           }
+      }
+      /*
+ * @delete category
+ * @param int id
+ */
+      
+      public function delete($id){
+          $this->category_model->delete_row($id);
+          redirect($_SERVER['HTTP_REFERER']);
+      }
+          
 }
-	  ?>
+

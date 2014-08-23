@@ -267,6 +267,17 @@ class Ion_auth_model extends CI_Model
 	 * @return void
 	 * @author Mathew
 	 **/
+         public function getusers(){
+            $query=$this->db->get('users');
+            $value= $query->result_array();
+            return $value;
+        }
+        
+        public function getgroups(){
+            $query=$this->db->get('groups');
+            $value= $query->result_array();
+            return $value;
+        }
 	public function hash_password($password, $salt=false, $use_sha1_override=FALSE)
 	{
 		if (empty($password))
@@ -914,7 +925,6 @@ class Ion_auth_model extends CI_Model
 		//filter out any data passed that doesnt have a matching column in the users table
 		//and merge the set user data and the additional data
 		$user_data = array_merge($this->_filter_data($this->tables['users'], $additional_data), $data);
-
 		$this->trigger_events('extra_set');
 
 		$this->db->insert($this->tables['users'], $user_data);
@@ -1384,6 +1394,12 @@ class Ion_auth_model extends CI_Model
 		                ->join($this->tables['groups'], $this->tables['users_groups'].'.'.$this->join['groups'].'='.$this->tables['groups'].'.id')
 		                ->get($this->tables['users_groups']);
 	}
+        public function get_groups(){
+           $query = $this->db->get('groups');              
+           $res = $query->result_array();
+             
+             return $res;
+        }
 
 	/**
 	 * add_to_group
@@ -2163,27 +2179,4 @@ class Ion_auth_model extends CI_Model
 		//just return the string IP address now for better compatibility
 		return $ip_address;
 	}
-        
-        /**
- * group list
- *
- * @return array
- * @author Susilo N
- **/
-public function grouplist()
-{
-    $query = $this->db->get('groups');
-
-//    foreach ($query->result() as $row)
-//            {
-//                  $listArray[$row->id] = $row->name;   
-//                  //print_r($listArray[$row->id]);exit;
-//                  
-//            }               
-            //echo $this->db->last_query();
-    $res = $query->result_array();
-            return $res;
-}
-
-
 }

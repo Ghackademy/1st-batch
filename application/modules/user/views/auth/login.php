@@ -1,4 +1,4 @@
- <h1><?php echo lang('login_heading');?></h1>
+<h1><?php echo lang('login_heading');?></h1>
 <p><?php echo lang('login_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -26,4 +26,4 @@
 <?php echo form_close();?>
 
 <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
-<p><?php echo anchor('user/sign_up', lang('index_create_user_link'))?> 
+<p><?php echo anchor('user/create_user', lang('index_create_user_link'))?> | <?php echo anchor('user/create_group', lang('index_create_group_link'))?></p>
