@@ -71,7 +71,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="user/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -93,7 +93,7 @@
                             
                             <li>
                                   <a href="product/lists">view Product</a>
-                                <a href="product/add">Add Product</a>
+                                <a href="product/add">Add Product</a></li>
                         </ul>
                     </li>
                     
