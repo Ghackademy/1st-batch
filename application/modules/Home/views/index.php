@@ -11,16 +11,17 @@
         <script type="text/javascript">
             $(document).ready(function() {
 
-            $(".myclass").click(function(){
-                alert($(this).text());
-            });
+//            $(".center-block").click(function(){
+//                var product_id = ($(this).attr('value'));
+//            });
 
                 $(".star").click(function() {
 
                     var rating = $(this).val();
-                    $(".new").click(function() {
+                    $(".center-block").click(function() {
                         var product_id = $(this).attr('value');
                         var dataString = 'rating=' + rating + '&product_id=' + product_id;
+                        alert(dataString);return false;
                         $.ajax({
                             type: 'POST',
                             data: dataString,
@@ -42,7 +43,7 @@
                         url: '<?php echo base_url(); ?>user/login',
                         success: function(res)
                         {
-                            // alert(res);return false;
+                            
                             if (res === "success") {
 
                                 window.location = "<?php echo base_url(); ?>user/index";
@@ -137,7 +138,7 @@
                                 <label>
                                     <input type="checkbox"> Remember me
                                 </label>
-                                <label><a href="">Forgot Password?</a></label>
+                                <label><a href="user/forgot_password">Forgot Password?</a></label>
 
                             </div>
                             <button type="submit" class="btn btn-default">Login</button>
@@ -298,7 +299,7 @@
                             </div>
                             <ul class="sidebarlist">
                                 <?php foreach (array_slice($allcategory, 0, 5) as $category): ?>
-                                    <li><a href="<?php base_url(); ?>home/rating/<?php echo $category['cat_slug']; ?>"><?php echo $category['cat_title']; ?></a></li>
+                                    <li><a href="<?php base_url(); ?>home/allpost/<?php echo $category['cat_slug']; ?>"><?php echo $category['cat_title']; ?></a></li>
 
                                 <?php endforeach; ?>
                             </ul>             
@@ -374,6 +375,7 @@
                         <hr color="orange"> 
                     </div>
                 </div>
+                
             </div>
         </section>
         <section id="fourth" >
@@ -387,9 +389,9 @@
                         <div class="heading " id="myStar">Featured Products</div>
 
                         <?php foreach ($allProductList as $p): ?>
-                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product myclass" style="height:20px; width:20px; background-color: black; margin:10px" value="<?php echo $p['product_id'];?>">
-                            <?php echo $p['product_id'];?>
-                        </div>
+<!--                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product myclass" style="height:20px; width:20px; background-color: black; margin:10px" value="<?php echo $p['product_id'];?>">
+                            <?php //echo $p['product_id'];?>
+                        </div>-->
 
                             <?php if ($p['featured'] == 1) { ?>
 
@@ -401,12 +403,12 @@
                                         <div class="pdesc">
                                             <p><a href="home/singleProduct/<?php echo $p['product_slug']; ?>"><?php echo $p['product_name']; ?></a></p>
                                             <p><?php echo $p['price']; ?></p>
-                                            <div id="wrapper" class="col-md-10 col-xs-12 col-sm-12 col-lg-10 center-block">
-                                                <input type="radio" name="star"  value="1" class="star" />
+                                            <div id="wrapper" class="col-md-10 col-xs-12 col-sm-12 col-lg-10 center-block"value="<?php echo $p['product_id']; ?>">
+                                                <input type="radio" id="star1" name="star"  value="1" class="star" />
                                                 <label for="star1"></label>
-                                                <input type="radio" id="star2" name="star" class="star"  value="2" data-id="<?php echo $p['product_id']; ?>"/>
+                                                <input type="radio" id="star2" name="star" class="star"  value="2"/>
                                                 <label for="star2"></label>
-                                                <input type="radio" id="star3" name="star" class="star"  value="3" checked="checked"/>
+                                                <input type="radio" id="star3" name="star" class="star"  value="3"/>
                                                 <label for="star3"></label>
                                                 <input type="radio" id="star4" name="star" class="star" value="4"/>
                                                 <label for="star4"></label>
