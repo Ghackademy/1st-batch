@@ -115,7 +115,7 @@ class User extends CI_Controller {
 
 		//redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('user/login', 'refresh');
+		redirect('home/index', 'refresh');
 	}
 
 	//change password
@@ -207,7 +207,7 @@ class User extends CI_Controller {
 
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->_render_page('auth/forgot_password', $this->data);
+			$this->_render_page('home/forgetpassword', $this->data);
 		}
 		else
 		{
@@ -492,7 +492,7 @@ class User extends CI_Controller {
 //				'value' => $this->form_validation->set_value('password_confirm'),
 //			);
             
-			$this->_render_page('register', $data);
+			$this->_render_page('home/register', $data);
                  
 		}
 	}

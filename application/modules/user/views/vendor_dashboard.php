@@ -10,6 +10,10 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
        
 <link rel="stylesheet" href="lean-slider.css" type="text/css" />
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="style.css" type="text/css"/>
+
+
     </head>
     <body>
         <!--headerpart-->
@@ -49,7 +53,7 @@
                                 <li><a href="#">My Account</a></li>
                                 <li><a href="#">My Wishlist</a></li>
                                 <li><a href="#">My Cart</a></li>
-                                <li><a href="#">Login</a></li>
+                                <li><a href="user/logout">Logout</a></li>
 
                             </ul>
                         </div>
@@ -115,34 +119,58 @@
             <div class="clearfix"></div>
         </div>
 
-        <div class="clearfix"></div>]
-        <section class="container">
-         <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
-                    <div id="sidebar">
+            <div class="container">
+            <div class="row">
+
+               <div class="col-md-3 col-xs-12 col-sm-4 col-lg-3">  
+               
                         
-                        <div id="sidebar_heading_group">
-                           <img src="images/orange.png" id="sidebar_heading_pic">
-                           <div id="sidebar_heading">Dashboard</div><div class="clearfix"></div>
-                        </div>
-                        <ul class="sidebarlist">
-                                    <li><a href="">AddCategory</a></li> 
-                                    <li><a href="product/add">AddProduct</a></li>
-                                    <li><a href="">My Product</a></li>
-                                    <li><a href="">Option1</a></li>
-                                    <li><a href="">Option2</a></li>
-                                    <li><a href="">Option3</a></li>
-                                </ul>             
+
+                            <div id="sidebar1">
+
+                                <div class="sidebar_heading_group1">
+                                   
+                                    <div class="sidebar_heading1 underline">Dashboard</div>
+                                    <div class="clearfix"></div>
+
                                 </div>
+                                <ul class="sidebarlist1">
+                                    <li><a href="" class="currentsidebar1">Account Dashboard</a></li> 
+                                    <li><a href="category/add">Add Category</a></li>
+                                    <li><a href="product/add">Add Product</a></li>
+                                    <li><a href="my_product.html">My Product</a></li>
+                                    <li><a href="">My Products Reviews</a></li>
+                                    <li><a href="">Billing Agreements</a></li>
+                                </ul>             
+                            </div>
+
+
+
                 </div>
-             <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
-                 <div class="message">
-                     <p>
-            Welcome to Dashboard! <?php echo $this->session->userdata('username');?>
-                     </p>
-        </div>
-             </div> 
-            
-        </section>
+
+
+                <div class="col-md-9 col-xs-12 col-sm-8 col-lg-9">
+                   
+                                <div class="sidebar_heading_group1">
+                                   <div class="sidebar_heading1 underline">My Dashboard</div>
+                                    <div class="clearfix"></div>
+                                    </div> 
+                    <p class="dashboardContent">Welcome! <?php echo $this->session->userdata('username');?><br>
+                    From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
+                            
+
+                      
+                    </div>
+
+
+
+                        
+
+
+                        
+                    </div>
+                </div>
+
        
          <div class="clearfix"></div>
         <section id="fifth">
@@ -154,11 +182,20 @@
                              <div class="container">
                              <div class="row">
                             <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12 footernoteleft">
-                                G-Hackademy All rights reserved
-                                <br>Designed by sylvia
+
+                               <address>
+ G-Hackademy<br>
+  All rights reserved<br>
+  Designed by sylvia<br>
+  </address>
                             </div>
-                             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 footernoteright">
-                               Special|New Products|Top Sellers|Our Stores
+                             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 footernoteright pull-right">
+                                 <address>
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
                             </div>
                         </div>
                              </div>

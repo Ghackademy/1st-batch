@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assests/css/font-awesome.min.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
-        <link rel="stylesheet" href="<?php echo base_url();?>assests/css/lean-slider.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo base_url();?>assests/lean-slider.css" type="text/css" />
     </head>
     <body>
         <nav class="navbar-default" role="navigation">
@@ -190,7 +190,7 @@
 
                 </div>
                 <div class="btn-group">
-                    <div class="nav2Menu" data-toggle="dropdown">Logout</div>
+                    <div class="nav2Menu" data-toggle="dropdown"><a href="user/logout">Logout</a></div>
 
                 </div>
                 <div class="clearfix"></div>
@@ -235,135 +235,146 @@
                         <div class="sidebar_heading1 underline">My Dashboard</div>
                         <div class="clearfix"></div>
                     </div> 
-                    <div class="dashboardContent">
+                        <div class="dashboardContent1">
                         
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-sm-12"> 
-                            <div id="carousel-example-generic" class="dashboardslide carousel slide" data-ride="carousel">
-
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                </ol>
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img src="<?php echo base_url();?>assests/images/13.jpg" alt="shoes">
-                                        <div class="carousel-caption">
-                                            this is shoe
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <img src="<?php echo base_url();?>assests/images/20_1.jpg" alt="...">
-                                        <div class="carousel-caption">
-                                            ths is whatever
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Controls -->
-                                <a class="dashboardcontrol left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="dashboardcontrol right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
+                        <div class="dashboardchild col-lg-3 col-md-3 col-sm-12 col-sm-12"> 
+                            <div class="dashboardchildcontent"><a href="mywishlist2.html" class="dashboardlink">3</a>
+                                <p>items in Wishlist</p>
                             </div>
-                            <ul class="list-group">
-                                <li class="list-group-item active">My wishtlist</li>
-                                <li class="list-group-item">Orders</li>
-                            </ul>
-                        </div>
+                            </div>
                
                   
                    
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-sm-12"> 
-                            <div id="carousel-example-generic" class="dashboardslide carousel slide" data-ride="carousel">
-
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                </ol>
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img src="<?php echo base_url();?>assests/images/13.jpg" alt="shoes">
-                                        <div class="carousel-caption">
-                                            this is shoe
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <img src="<?php echo base_url();?>assests/images/20_1.jpg" alt="...">
-                                        <div class="carousel-caption">
-                                            ths is whatever
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Controls -->
-                                <a class="dashboardcontrol left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="dashboardcontrol right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
-                            </div>
-                            <ul class="list-group">
-                                <li class="list-group-item active">My wishtlist</li>
-                                <li class="list-group-item">Orders</li>
-                            </ul>
-                        </div>
-                         
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-sm-12"> 
-                            <div id="carousel-example-generic" class="dashboardslide carousel slide" data-ride="carousel">
-
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                </ol>
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img src="<?php echo base_url();?>assests/images/13.jpg" alt="shoes">
-                                        <div class="carousel-caption">
-                                            this is shoe
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <img src="<?php echo base_url();?>assests/images/20_1.jpg" alt="...">
-                                        <div class="carousel-caption">
-                                            ths is whatever
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Controls -->
-                                <a class="dashboardcontrol left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="dashboardcontrol right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
-                            </div>
-                            <ul class="list-group">
-                                <li class="list-group-item active">My wishtlist</li>
-                                <li class="list-group-item">Orders</li>
-                            </ul>
                        
+                            <div class="dashboardchild col-lg-3 col-md-3 col-sm-12 col-sm-12"> 
+                            <div class="dashboardchildcontent"><a href="myorders.html" class="dashboardlink">3</a>
+                                <p>items in orderlist</p>
+                            </div>
+                            </div>
+                       
+                         
+                    
+                            <div class="dashboardchild col-lg-3 col-md-3 col-sm-12 col-sm-12"> 
+                                
+                            <div class="dashboardchildcontent"><a href="productreview.html" class="dashboardlink">3</a>
+                                <p>comments made</p>
+                            </div>
+                            </div>
+                       
+                   
+                         
+                            <div class="dashboardchild col-lg-3 col-md-3 col-sm-12 col-sm-12"> 
+                            <div class=" dashboardchildcontent"><a href="itemlist.html" class="dashboardlink">3</a>
+                                <p>new products available</p>
+                            </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            </div>
+                    <div class="dashboardContent1">
+             <section id="third">
+                    <div class='row'>
+    <div class='col-md-12'>
+      <div class="carousel slide media-carousel" id="media">
+        <div class="carousel-inner">
+ <div class="item  active">
+            <div class="row">
+                <div class="col-md-3">
+                <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url();?>assests/images/block1.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div>
+                 <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url();?>assests/images/block2.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url();?>assests/images/block3.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url();?>assests/images/banner1-images.png" alt="advertisement 1"></a>
+                        </div>
+                </div>     
+                 </div>
+                 </div> 
+                    
+                    
+             <div class="item">
+            <div class="row">
+                <div class="col-md-3">
+                <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url();?>assests/images/block1.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div>
+                 <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url();?>assests/images/block2.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url();?>assests/images/block3.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                    <div class="col-md-3">
+                     <div class="advertisement row">
+                        <a class="thumbnail" href="#"><img src="<?php echo base_url();?>assests/images/banner1-images.png" alt="advertisement 1"></a>
+                            </div>
+                    </div>     
+                 </div>
+                 </div>           
+                    
+                   
+          </div>
+         <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#media" class="right carousel-control">›</a>
+          </div>
+               
+          </div>
                     </div>
+        </section>            
+                          
+
+                </div>  
+                    
+                                <div class="dashboardContent1 contentRight pull-right">
+                       
+                        <div class="heading ">Featured Products</div>
+                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">
+                            <a href="product_details.html">
+                                <img src="images/13.jpg" class="product_img" height="250" ></a>
+                          <div class="pdesc">
+                         <p>Black Jacket.</p>
+                         <p>$30.99</p>
+                         <div id="wrapper" class="col-md-10 col-xs-12 col-sm-12 col-lg-10 center-block" >
+                                <input type="radio" id="star1" name="star" />
+                                <label for="star1"></label>
+                                <input type="radio" id="star2" name="star" />
+                                <label for="star2"></label>
+                                <input type="radio" id="star3" name="star" checked="checked"/>
+                                <label for="star3"></label>
+                                <input type="radio" id="star4" name="star" />
+                                <label for="star4"></label>
+                                <input type="radio" id="star5" name="star" />
+                                <label for="star5"></label>
+                            </div>
+                        </div>             
+                       <a href=""><span class="addtocart pull-left"><i class="fa fa-shopping-cart"></i> Add to Cart</span></a> 
+                       
+                        <a href=""><span class="addtocart pull-right"><i class="fa fa-heart"></i> WishList</span></a>
+                        </div>
+                                     
+
+               
                     </div>
-
-
-
-
-
-
-
+                 
+                        <div class="clearfix"></div>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
         </div>
