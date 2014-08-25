@@ -88,7 +88,7 @@
                             <div class=" col-lg-6 col-xs-12 col-sm-12 col-md-6 pull-right">
                                 <div class="col-lg-4 c0l-md-4 col-sm-4 col-xs-4">
                                     <div class="row">
-                                        <img src="images/ecommerce-websites-online-shops2.png" height="100" alt="" class="col-md-12 col-lg-12">
+                                        <img src="<?php echo base_url(); ?>assests/images/ecommerce-websites-online-shops2.png" height="100" alt="" class="col-md-12 col-lg-12">
                                     </div>
                                 </div>
 
@@ -346,36 +346,79 @@
                 </div>
             </div>
         </section>
-        <section id="third">
+                <section id="third">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <hr color="orange">
-                        <div class="col-md-3 col-sm-6 col-xs-12 col-lg-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <hr color="orange">
 
-                            <div class="advertisement row">
-                                <img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1">
-                            </div>
+                    <div class='row'>
+    <div class='col-md-12'>
+      <div class="carousel slide media-carousel" id="media">
+        <div class="carousel-inner">
+ <div class="item  active">
+            <div class="row">
+                <div class="col-md-3">
+                <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1"></a>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 col-lg-3 ">
-                            <div class="advertisement">
-                                <img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 col-lg-3">
-                            <div class="advertisement">
-                                <img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 col-lg-3">
-                            <div class="advertisement">
-                                <img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1">
-                            </div>
-                        </div>
-                        <hr color="orange"> 
-                    </div>
                 </div>
-                
+                 <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1"></a>
+                        </div>
+                </div>     
+                 </div>
+                 </div> 
+                    
+                    
+             <div class="item">
+            <div class="row">
+                <div class="col-md-3">
+                <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div>
+                 <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1"></a>
+                        </div>
+                </div>     
+                 </div>
+                 </div>           
+                    
+                   
+          </div>
+         <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#media" class="right carousel-control">›</a>
+          </div>
+               
+          </div>
+                    
+               </div>
+               <hr color="orange"> 
+                </div>
+            </div>
             </div>
         </section>
         <section id="fourth" >
