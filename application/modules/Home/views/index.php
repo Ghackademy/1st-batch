@@ -94,15 +94,21 @@
 
                                 <div class="searchWrap col-lg-8 col-md-8 col-sm-8 col-xs-8 pull-right">
                                     <div class="row">
+                                         <form name="" method="GET" action="home/search">
                                         <div class="headerform input-group">
-
-                                            <input type="text" class="form-control">
+                                           
+                                            <input type="text" name="keyword" class="form-control">
+<!--                                             <input type="submit" value="Submit" />-->
                                             <span class="searchbtnbg input-group-btn">
-                                                <button class="searchbtn glyphicon glyphicon-search" type="button">
+                                                
+                                              <button class="searchbtn glyphicon glyphicon-search"  type="submit">
                                                 </button>
-                                            </span>
+                                            </span
+                                          
                                         </div>
+                                         </form> 
                                     </div>
+                                    
                                 </div>
                             </div> 
                         </div>
@@ -138,7 +144,7 @@
                                 <label>
                                     <input type="checkbox"> Remember me
                                 </label>
-                                <label><a href="user/forgot_password">Forgot Password?</a></label>
+                                <label><a href="<?php echo base_url();?>user/forgot_password">Forgot Password?</a></label>
 
                             </div>
                             <button type="submit" class="btn btn-default">Login</button>

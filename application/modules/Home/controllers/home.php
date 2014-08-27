@@ -10,6 +10,8 @@ class Home extends MX_Controller {
         $this->load->model('category/category_model'); // load category model
         $this->load->model('product/product_model');
         $this->load->model('rating/rating_model');
+        $this->load->model('user/ion_auth_model');
+        $this->load->model('home/home_model');
         $this->load->library('session');
     }
 
@@ -72,6 +74,17 @@ class Home extends MX_Controller {
             $data['msg'] = "Invalid username or password";
         }
         echo json_encode($data);
+    }
+     public function search()
+    {
+          $keyword = $_GET['keyword']; // you can also use $this->input->post('keyword');
+           $data['searchitem'] = $this->home_model->searchproduct($keyword);
+           if(empty($data['searchitem'])){
+              echo "The search item is not available";
+           }else{
+//               redirect(base_url().'home/search',$data);
+               $this->load->view('home/searchlist',$data);
+           }
     }
 
 }

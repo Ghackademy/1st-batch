@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assests/css/font-awesome.min.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
  
-<link rel="stylesheet" href="lean-slider.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo base_url(); ?>assests/lean-slider.css" type="text/css" />
     </head>
     <body>
         <!--headerpart-->
@@ -157,25 +157,20 @@
         <div class="clearfix"></div>
         <section id="second">
             <div class="container">
-                <div class="row">
-                <div class="col-md-6 col-xs-10 col-sm-10 col-lg-4 col-md-offset-3 col-xs-offset-1 col-sm-offset-1 col-lg-offset-4">
-  <form name="" method="POST">
-        <?php echo validation_errors(); ?>
-  <fieldset>
-    <legend>Forgot Your Password?</legend>
-    <label class="col-md-6 ">Email Address</label>
-    <input type="email" placeholder="email address" name="email" class="col-md-6">
-    <br>
-    <br>
-    <br>
-    <span class="help-block col-md-12">type in your email address so that we can send you your new password</span>
-    <br>
-    <button type="submit" name="submit" class="btn">Submit</button>
-  </fieldset>
-</form>
-                </div>
-               
-            </div>
+    <?php foreach($searchitem as $search) :?>
+	          <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">    
+                                    <a href="product_details.html">
+                                        <img src="<?php echo base_url(); ?>uploads/product/original/<?php echo $search['product_image']; ?>" class="product_img" height="250" ></a>
+
+                                    <div class="new" value="<?php echo $search['product_id']; ?>">
+                                        <div class="pdesc">
+                                            <p><a href="home/singleProduct/<?php echo $search['product_slug']; ?>"><?php echo $search['product_name']; ?></a></p>
+                                            <p><?php echo $search['price']; ?></p>
+                                        
+                                        </div>     
+                                    </div>
+                                </div>
+	<?php endforeach?>
             </div>
         </section>
     
