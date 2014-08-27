@@ -92,8 +92,8 @@
                         <ul id="demo1" class="collapse side nav">
                             
                             <li>
-                                  <a href="product/lists">view Product</a>
-                                <a href="product/add">Add Product</a></li>
+                                  <a href="<?php echo base_url();?>product/lists">view Product</a>
+                                <a href="<?php echo base_url();?>product/add">Add Product</a></li>
                         </ul>
                     </li>
                     

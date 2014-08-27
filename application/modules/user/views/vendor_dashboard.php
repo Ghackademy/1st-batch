@@ -136,9 +136,9 @@
                                 </div>
                                 <ul class="sidebarlist1">
                                     <li><a href="" class="currentsidebar1">Account Dashboard</a></li> 
-                                    <li><a href="category/add">Add Category</a></li>
-                                    <li><a href="product/add">Add Product</a></li>
-                                    <li><a href="my_product.html">My Product</a></li>
+                                    <li><a href="<?php echo base_url();?>category/add">Add Category</a></li>
+                                    <li><a href="<?php echo base_url();?>product/add">Add Product</a></li>
+                                    <li><a href="">My Product</a></li>
                                     <li><a href="">My Products Reviews</a></li>
                                     <li><a href="">Billing Agreements</a></li>
                                 </ul>             
