@@ -99,8 +99,16 @@ class Product extends MX_Controller {
             $this->product_model->addProduct($data);
             redirect('product/myproduct');
         } else {
-
-            $this->load->view('addproduct', $res);
+                  $id = $this->session->userdata('user_id');
+             $res['group'] = $this->ion_auth->user($id)->row();
+              if($res['group']->group_id == 1){
+                $this->load->view('addproduct',$res);
+                  
+            }
+//            else{
+//                $this->load->view('user_dashboard',$row);
+//            }
+//            $this->load->view('addproduct', $res);
         }
     }
 
