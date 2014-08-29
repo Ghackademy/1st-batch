@@ -78,6 +78,7 @@ class Product extends MX_Controller {
      */
 
     public function add() {
+        
         $res['allcategory'] = $this->category_model->getallCategory('tb_category');
         if ($_POST) {
             $p_name = $this->input->post('pname');
@@ -108,11 +109,7 @@ class Product extends MX_Controller {
                   
             }
     }
-            public function addMedia(){
-                  $image = $this->do_upload();
-                $data=array('frontend_image'=>$image
-                        );
-            }
+          
    
 
     /*
