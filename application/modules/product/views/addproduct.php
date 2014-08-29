@@ -176,15 +176,15 @@
                               </div>
                             </div>
                             <div class="form-group">
-                                <label  class="col-sm-2 control-label"><a>Image1</a></label>
+                                <label  class="col-sm-2 control-label"><a>Product Image</a></label>
                               <div class="col-sm-10">
-                                <input type="file" class="form-control select-input" id="inputPassword3" >
+                                <input type="file" name="image" class="form-control select-input" id="inputPassword3" >
                               </div>                             
                             </div>
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label"><a>Preview</a></label>
                               <div class="col-sm-10">
-                                  <img src="images/slider1.jpg">
+                                  <img src="<?php echo base_url();?>assests/backend/images/slider1.jpg">
                               </div>
                             </div>
                            

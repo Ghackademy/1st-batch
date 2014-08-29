@@ -12,6 +12,8 @@ class Product extends MX_Controller {
         $this->load->model('product_model');
         $this->load->library('session');
         $this->load->model('category/category_model');
+
+          // $this->load->model('user/ion_auth_model');
     }
 
     /*
@@ -98,19 +100,20 @@ class Product extends MX_Controller {
             );
             $this->product_model->addProduct($data);
             redirect('product/myproduct');
-        } else {
-                  $id = $this->session->userdata('user_id');
-             $res['group'] = $this->ion_auth->user($id)->row();
-              if($res['group']->group_id == 1){
-                $this->load->view('addproduct',$res);
+        }
+        else {
+//                
+           $this->load->view('addproduct',$res);
+            
                   
             }
-//            else{
-//                $this->load->view('user_dashboard',$row);
-//            }
-//            $this->load->view('addproduct', $res);
-        }
     }
+            public function addMedia(){
+                  $image = $this->do_upload();
+                $data=array('frontend_image'=>$image
+                        );
+            }
+   
 
     /*
      * user product
