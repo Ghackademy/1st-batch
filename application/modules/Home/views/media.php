@@ -157,11 +157,11 @@
                         </div>
                         <div class="dash-tile-content">
                         <div class="dash-tile-content-inner-fluid">
-                       <form class="form-horizontal" role="form" enctype="multipart/form-data">
+                       <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label"><a>Upload New media</a></label>
                               <div class="col-sm-10">
-                                <input type="file" name="image" class="form-control select-input" id="inputPassword3" >
+                                <input type="file" name="userfile" class="form-control select-input" id="inputPassword3" >
                               </div>                             
                             </div>
                             <div class="form-group">
