@@ -157,7 +157,7 @@
                         </div>
                         <div class="dash-tile-content">
                         <div class="dash-tile-content-inner-fluid">
-                       <form class="form-horizontal" role="form" enctype="multipart/form-data">
+                       <form class="form-horizontal" role="form" enctype="multipart/form-data" method="Post">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Title</a></label>
                               <div class="col-sm-10">
@@ -178,7 +178,7 @@
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label"><a>Product Image</a></label>
                               <div class="col-sm-10">
-                                <input type="file" name="image" class="form-control select-input" id="inputPassword3" >
+                                <input type="file" name="userfile" class="form-control select-input" id="inputPassword3" value="<?php echo set_value('pimage');?>>
                               </div>                             
                             </div>
                             <div class="form-group">
@@ -192,47 +192,50 @@
                            <div class="form-group">
                                 <label  class="col-sm-2 control-label"><a>Description</a></label>
                               <div class="col-sm-10">
-                                <textarea class="form-control" rows="6"style="width: 40em;"name="pdescription" value="<?php echo set_value('pname');?>"></textarea>
+                                <textarea class="form-control" rows="6"style="width: 40em;" name="pdescription" value="<?php echo set_value('pname');?>"></textarea>
                               </div> 
                             </div>
                            
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Price</a></label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title"name="pprice" value="<?php echo set_value('pprice');?>">
+                                <input type="text" class="form-control select-input" id="inputEmail3"name="pprice" value="<?php echo set_value('pprice');?>">
                               </div>
                             </div>
                              <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Stock-info</a></label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title"name="pdetails" value="<?php echo set_value('pdetails');?>">
+                                <input type="text" class="form-control select-input" id="inputEmail3" name="pdetails" value="<?php echo set_value('pdetails');?>">
                               </div>
                             </div>
                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Quantity</a></label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="pquantity" value="<?php echo set_value('pquantity');?>">
+                                <input type="text" class="form-control select-input" id="inputEmail3" name="pquantity" value="<?php echo set_value('pquantity');?>">
                               </div>
                             </div>
                               <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Featured</a></label>
                               <div class="col-sm-10">
-                                <input type="checkbox" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="feature" value="<?php echo set_value('feature');?>">
+                                <input type="checkbox" class="form-control select-input" id="inputEmail3" name="feature" value="<?php echo set_value('feature');?>">
                               </div>
                             </div>
                               <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Publish</a></label>
                               <div class="col-sm-10">
-                                <input type="checkbox" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="publish" value="<?php echo set_value('publish');?>">
+                                <input type="checkbox" class="form-control select-input" id="inputEmail3" name="publish" value="<?php echo set_value('publish');?>">
                               </div>
                             </div>
                             
-                            <div class="form-group">
-                              <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" name="submit" class="btn btn-default">Upload</button>
-                                <button type="reset" class="btn btn-default">Reset</button>
-                              </div>
-                            </div>
+                          <div class="col-sm-12 control-label" >
+                    <div class="col-sm-4">
+                 <button type="submit" name="submit" class="btn btn-default">Add</button>
+                    </div>
+                    <div class="col-sm-4"></div>
+                     <div class="col-sm-3">
+                 <button type="reset" class="btn btn-default">Reset</button>
+                     </div>
+                </div>
                           </form>
                         </div>
                         </div>

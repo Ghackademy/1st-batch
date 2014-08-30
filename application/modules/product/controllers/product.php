@@ -92,7 +92,6 @@ class Product extends MX_Controller {
                 'featured' => $this->input->post('feature'),
                 'publish' => $this->input->post('publish'),
                 'stock_info' => $this->input->post('pquantity'),
-                'rating' => $this->input->post('prating'),
                 'product_slug' => url_title($p_name, 'dash', true),
                 'shipping_detail' => $this->input->post('sdetails'),
                 'product_image' => $image,
@@ -100,7 +99,7 @@ class Product extends MX_Controller {
                 'user_id' => $this->session->userdata('user_id')
             );
             $this->product_model->addProduct($data);
-            redirect('product/myproduct');
+            redirect('product/userproduct');
         }
         else {
 //                
@@ -124,11 +123,11 @@ class Product extends MX_Controller {
         $config['uri_segment'] = 3;
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $uid = $this->session->userdata('userid');
+        $uid = $this->session->userdata('user_id');
         $where = array('user_id' => $uid);
 
         // echo"hi";die();
-        $data['allProductList'] = $this->product_model->getProduct($config["per_page"], $page, $where);
+        $data['myproductList'] = $this->product_model->getProduct($config["per_page"], $page, $where);
 
         $data['links'] = $this->pagination->create_links();
         $this->load->view('myproduct', $data);
