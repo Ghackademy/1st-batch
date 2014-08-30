@@ -71,7 +71,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="<?php echo base_url(); ?>user/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -92,8 +92,8 @@
                         <ul id="demo1" class="collapse side nav">
                             
                             <li>
-                                 <a href="product.html">view Product</a>
-                                <a href="Add_product.html">Add Product</a>
+                                 <a href="<?php echo base_url(); ?>product/userproduct">view Product</a>
+                                <a href="<?php echo base_url(); ?>product/add">Add Product</a>
                         </ul>
                     </li>
                     
@@ -141,7 +141,8 @@
                         </h1>
                         <ol class="breadcrumb topic">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="<?php base_url(); ?>">Dashboard</a>
+                                    
                             </li>
                             <li class="active">
                                 <i class="fa fa-edit"></i> Form 
@@ -157,7 +158,7 @@
                         </div>
                         <div class="dash-tile-content">
                         <div class="dash-tile-content-inner-fluid">
-                       <form class="form-horizontal" role="form" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form" enctype="multipart/form-data" method="post">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Title</a></label>
                               <div class="col-sm-10">
@@ -176,15 +177,15 @@
                               </div>
                             </div>
                             <div class="form-group">
-                                <label  class="col-sm-2 control-label"><a>Image1</a></label>
+                                <label  class="col-sm-2 control-label"><a>Product Image</a></label>
                               <div class="col-sm-10">
-                                <input type="file" class="form-control select-input" id="inputPassword3" >
+                                <input type="file" name="userfile" class="form-control select-input" id="inputPassword3" value="<?php echo set_value('pimage');?>>
                               </div>                             
                             </div>
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label"><a>Preview</a></label>
                               <div class="col-sm-10">
-                                  <img src="images/slider1.jpg">
+                                  <img src="<?php echo base_url();?>assests/backend/images/slider1.jpg">
                               </div>
                             </div>
                            
@@ -199,31 +200,37 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Price</a></label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title"name="pprice" value="<?php echo set_value('pprice');?>">
+                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-price" name="pprice" value="<?php echo set_value('pprice');?>">
                               </div>
                             </div>
                              <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Stock-info</a></label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title"name="pdetails" value="<?php echo set_value('pdetails');?>">
+                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-stock"name="pquantity" value="<?php echo set_value('pdetails');?>">
                               </div>
                             </div>
                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Quantity</a></label>
+                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Rating</a></label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="pquantity" value="<?php echo set_value('pquantity');?>">
+                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Product-Rating" name="prating" value="<?php echo set_value('pquantity');?>">
+                              </div>
+                            </div>
+                           <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label"><a>Shipping Detail</a></label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control select-input" id="inputEmail3" placeholder="Shiping details" name="sdetails" value="<?php echo set_value('sdetails');?>">
                               </div>
                             </div>
                               <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Featured</a></label>
                               <div class="col-sm-10">
-                                <input type="checkbox" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="feature" value="<?php echo set_value('feature');?>">
+                                <input type="checkbox" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="feature" value="1">
                               </div>
                             </div>
                               <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Publish</a></label>
                               <div class="col-sm-10">
-                                <input type="checkbox" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="publish" value="<?php echo set_value('publish');?>">
+                                <input type="checkbox" class="form-control select-input" id="inputEmail3" placeholder="Product-title" name="publish" value=1>
                               </div>
                             </div>
                             

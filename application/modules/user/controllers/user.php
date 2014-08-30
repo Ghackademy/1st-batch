@@ -115,7 +115,7 @@ class User extends CI_Controller {
 
 		//redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('user/login', 'refresh');
+		redirect('home/index', 'refresh');
 	}
 
 	//change password
@@ -207,7 +207,7 @@ class User extends CI_Controller {
 
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->_render_page('auth/forgot_password', $this->data);
+			$this->_render_page('home/forgetpassword', $this->data);
 		}
 		else
 		{
@@ -241,7 +241,60 @@ class User extends CI_Controller {
 			}
 		}
 	}
+        
+    /*
+     * upload image
+     */
 
+    function do_upload() {
+        $config['upload_path'] = "uploads/product/original/";
+
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = '4000';
+        $config['max_width'] = '2000';
+        $config['max_height'] = '2000';
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload("userfile")) {
+            $data = $this->upload->data();
+            /* PATH */
+            $source = "uploads/frontend/original/" . $data['file_name'];
+            $destination_resized = "uploads/frontend/resized/";
+            $destination_thumb = "uploads/frontend/thumb/";
+            $size_resized_width = 200;
+            $size_resized_height = 100;
+            $size_thumb_width = 50;
+            $size_thumb_height = 50;
+            $this->load->library('image_moo');
+            $this->image_moo
+                    ->load($source)
+                    /* RESIZING IMAGE TO BE MEDIUM SIZE */
+                    ->resize_crop($size_resized_width, $size_resized_height)
+                    ->save($destination_resized . $data['file_name'])
+                    ->resize_crop($size_thumb_width, $size_thumb_height)
+                    ->save($destination_thumb . $data['file_name']);
+
+            if ($this->image_moo->errors)
+                print $this->image_moo->display_errors();
+            else {
+                return $data['file_name'];
+            }
+        } else {
+            $error = strip_tags($this->upload->display_errors());
+            echo "<script type='text/javascript'>alert('.$error.');history.back(-1);</script>";
+            die();
+        }
+    }
+          
+        public function addMedia(){
+            if($_POST){
+                  $image = $this->do_upload();
+                $data=array('frontend_image'=>$image
+                        );
+                $this->ion_auth_model->addimage($data);
+            }else{
+                $this->load->view('home/media');
+            }
+        }
 	//reset password - final step for forgotten password
 	public function reset_password($code = NULL)
 	{
@@ -492,7 +545,7 @@ class User extends CI_Controller {
 //				'value' => $this->form_validation->set_value('password_confirm'),
 //			);
             
-			$this->_render_page('register', $data);
+			$this->_render_page('home/register', $data);
                  
 		}
 	}

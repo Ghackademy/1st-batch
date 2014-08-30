@@ -71,7 +71,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="user/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -92,13 +92,13 @@
                         <ul id="demo1" class="collapse side nav">
                             
                             <li>
-                                  <a href="product/lists">view Product</a>
-                                <a href="product/add">Add Product</a>
+                                  <a href="<?php echo base_url();?>product/lists">view Product</a>
+                                <a href="<?php echo base_url();?>product/add">Add Product</a></li>
                         </ul>
                     </li>
                     
                     <li>
-                        <a href="shipping.html"><i class="fa fa-fw fa-desktop"></i> shipping</a>
+                        <a href="<?php echo base_url();?>user/addMedia"><i class="fa fa-fw fa-desktop"></i>Media</a>
                     </li>
                   
                             <li>

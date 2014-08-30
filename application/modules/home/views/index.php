@@ -11,16 +11,17 @@
         <script type="text/javascript">
             $(document).ready(function() {
 
-           // $(".myclass").click(function(){
-               // alert($(this).text());
-           // });
+//            $(".center-block").click(function(){
+//                var product_id = ($(this).attr('value'));
+//            });
 
                 $(".star").click(function() {
 
                     var rating = $(this).val();
-                    $(".new").click(function() {
+                    $(".center-block").click(function() {
                         var product_id = $(this).attr('value');
                         var dataString = 'rating=' + rating + '&product_id=' + product_id;
+                        alert(dataString);return false;
                         $.ajax({
                             type: 'POST',
                             data: dataString,
@@ -42,7 +43,7 @@
                         url: '<?php echo base_url(); ?>user/login',
                         success: function(res)
                         {
-                            // alert(res);return false;
+                            
                             if (res === "success") {
 
                                 window.location = "<?php echo base_url(); ?>user/index";
@@ -87,21 +88,27 @@
                             <div class=" col-lg-6 col-xs-12 col-sm-12 col-md-6 pull-right">
                                 <div class="col-lg-4 c0l-md-4 col-sm-4 col-xs-4">
                                     <div class="row">
-                                        <img src="images/ecommerce-websites-online-shops2.png" height="100" alt="" class="col-md-12 col-lg-12">
+                                        <img src="<?php echo base_url(); ?>assests/images/ecommerce-websites-online-shops2.png" height="100" alt="" class="col-md-12 col-lg-12">
                                     </div>
                                 </div>
 
                                 <div class="searchWrap col-lg-8 col-md-8 col-sm-8 col-xs-8 pull-right">
                                     <div class="row">
+                                         <form name="" method="GET" action="home/search">
                                         <div class="headerform input-group">
-
-                                            <input type="text" class="form-control">
+                                           
+                                            <input type="text" name="keyword" class="form-control">
+<!--                                             <input type="submit" value="Submit" />-->
                                             <span class="searchbtnbg input-group-btn">
-                                                <button class="searchbtn glyphicon glyphicon-search" type="button">
+                                                
+                                              <button class="searchbtn glyphicon glyphicon-search"  type="submit">
                                                 </button>
-                                            </span>
+                                            </span
+                                          
                                         </div>
+                                         </form> 
                                     </div>
+                                    
                                 </div>
                             </div> 
                         </div>
@@ -137,7 +144,7 @@
                                 <label>
                                     <input type="checkbox"> Remember me
                                 </label>
-                                <label><a href="">Forgot Password?</a></label>
+                                <label><a href="<?php echo base_url();?>user/forgot_password">Forgot Password?</a></label>
 
                             </div>
                             <button type="submit" class="btn btn-default">Login</button>
@@ -298,7 +305,7 @@
                             </div>
                             <ul class="sidebarlist">
                                 <?php foreach (array_slice($allcategory, 0, 5) as $category): ?>
-                                    <li><a href="<?php base_url(); ?>home/rating/<?php echo $category['cat_slug']; ?>"><?php echo $category['cat_title']; ?></a></li>
+                                    <li><a href="<?php base_url(); ?>home/allpost/<?php echo $category['cat_slug']; ?>"><?php echo $category['cat_title']; ?></a></li>
 
                                 <?php endforeach; ?>
                             </ul>             
@@ -345,35 +352,79 @@
                 </div>
             </div>
         </section>
-        <section id="third">
+                <section id="third">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <hr color="orange">
-                        <div class="col-md-3 col-sm-6 col-xs-12 col-lg-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <hr color="orange">
 
-                            <div class="advertisement row">
-                                <img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1">
-                            </div>
+                    <div class='row'>
+    <div class='col-md-12'>
+      <div class="carousel slide media-carousel" id="media">
+        <div class="carousel-inner">
+ <div class="item  active">
+            <div class="row">
+                <div class="col-md-3">
+                <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1"></a>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 col-lg-3 ">
-                            <div class="advertisement">
-                                <img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 col-lg-3">
-                            <div class="advertisement">
-                                <img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 col-lg-3">
-                            <div class="advertisement">
-                                <img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1">
-                            </div>
-                        </div>
-                        <hr color="orange"> 
-                    </div>
                 </div>
+                 <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1"></a>
+                        </div>
+                </div>     
+                 </div>
+                 </div> 
+                    
+                    
+             <div class="item">
+            <div class="row">
+                <div class="col-md-3">
+                <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div>
+                 <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1"></a>
+                        </div>
+                </div> 
+                <div class="col-md-3">
+                 <div class="advertisement row">
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1"></a>
+                        </div>
+                </div>     
+                 </div>
+                 </div>           
+                    
+                   
+          </div>
+         <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#media" class="right carousel-control">›</a>
+          </div>
+               
+          </div>
+                    
+               </div>
+               <hr color="orange"> 
+                </div>
+            </div>
             </div>
         </section>
         <section id="fourth" >
@@ -387,7 +438,7 @@
                         <div class="heading " id="myStar">Featured Products</div>
 
                         <?php foreach ($allProductList as $p): ?>
-                        <!--<div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product myclass" style="height:20px; width:20px; background-color: black; margin:10px" value="<?php echo $p['product_id'];?>">
+<!--                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product myclass" style="height:20px; width:20px; background-color: black; margin:10px" value="<?php echo $p['product_id'];?>">
                             <?php //echo $p['product_id'];?>
                         </div>-->
 
@@ -401,12 +452,12 @@
                                         <div class="pdesc">
                                             <p><a href="home/singleProduct/<?php echo $p['product_slug']; ?>"><?php echo $p['product_name']; ?></a></p>
                                             <p><?php echo $p['price']; ?></p>
-                                            <div id="wrapper" class="col-md-10 col-xs-12 col-sm-12 col-lg-10 center-block">
-                                                <input type="radio" name="star"  value="1" class="star" />
+                                            <div id="wrapper" class="col-md-10 col-xs-12 col-sm-12 col-lg-10 center-block"value="<?php echo $p['product_id']; ?>">
+                                                <input type="radio" id="star1" name="star"  value="1" class="star" />
                                                 <label for="star1"></label>
-                                                <input type="radio" id="star2" name="star" class="star"  value="2" data-id="<?php echo $p['product_id']; ?>"/>
+                                                <input type="radio" id="star2" name="star" class="star"  value="2"/>
                                                 <label for="star2"></label>
-                                                <input type="radio" id="star3" name="star" class="star"  value="3" checked="checked"/>
+                                                <input type="radio" id="star3" name="star" class="star"  value="3"/>
                                                 <label for="star3"></label>
                                                 <input type="radio" id="star4" name="star" class="star" value="4"/>
                                                 <label for="star4"></label>

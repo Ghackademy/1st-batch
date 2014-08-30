@@ -9,7 +9,7 @@
            Description: <?php echo $p->product_description;?> <br>
            <img src="<?php echo base_url();?>uploads/product/resized/<?php echo $p->product_image;?>"/><br>
            Price: <?php echo $p->price;?> 
-           Rating: <?php echo $p->rating;?> <br>
+           Rating: <?php echo $p->average_rating;?> <br>
            Quantity: <?php echo $p->stock_info;?> <br>
            Shipping details: <?php echo $p->shipping_detail;?> <br>
            <a href="edit/<?php echo $p->product_id;?>">Edit</a>

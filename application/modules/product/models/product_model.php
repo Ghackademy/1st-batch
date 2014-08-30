@@ -20,7 +20,7 @@ class Product_model extends CI_Model {
              $this->db->limit($limit, $start);
              $this->db->select('*');
              $this->db->from(product_model::Table);
-             $this->db->join('users', 'users.id = Table.product_id');
+             $this->db->join('users', 'users.id = tb_product.product_id');
             $query = $this->db->get();
                 if ($query->num_rows() > 0) {
                         foreach ($query->result() as $row) {

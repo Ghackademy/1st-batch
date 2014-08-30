@@ -12,6 +12,8 @@ class Product extends MX_Controller {
         $this->load->model('product_model');
         $this->load->library('session');
         $this->load->model('category/category_model');
+
+          // $this->load->model('user/ion_auth_model');
     }
 
     /*
@@ -76,9 +78,10 @@ class Product extends MX_Controller {
      */
 
     public function add() {
+         
         $res['allcategory'] = $this->category_model->getallCategory('tb_category');
         if ($_POST) {
-            $p_name = $this->input->post('pname');
+//            $p_name = $this->input->post('pname');
 
             $image = $this->do_upload();
 
@@ -89,20 +92,31 @@ class Product extends MX_Controller {
                 'featured' => $this->input->post('feature'),
                 'publish' => $this->input->post('publish'),
                 'stock_info' => $this->input->post('pquantity'),
-                'rating' => $this->input->post('prating'),
-                'product_slug' => url_title($p_name, 'dash', true),
+                'average_rating' => $this->input->post('prating'),
+                'product_slug' => url_title($this->input->post('pname'), 'dash', true),
                 'shipping_detail' => $this->input->post('sdetails'),
                 'product_image' => $image,
                 'cat_id' => $this->input->post('category'),
                 'user_id' => $this->session->userdata('user_id')
             );
+           
             $this->product_model->addProduct($data);
-            redirect('product/myproduct');
-        } else {
-
-            $this->load->view('addproduct', $res);
+            redirect('product/userproduct');
         }
+        else {
+//                
+           $this->load->view('addproduct',$res);
+            
+                  
+            }
     }
+           
+    public function addMedia(){
+                  $image = $this->do_upload();
+                $data=array('frontend_image'=>$image
+                        );
+            }
+   
 
     /*
      * user product
@@ -110,17 +124,18 @@ class Product extends MX_Controller {
      */
 
     public function userproduct() {
-        $config['base_url'] = base_url() . '/product/myproduct/';
+        $config['base_url'] = base_url() . '/product/userproduct/';
         $config['total_rows'] = $this->product_model->countProduct();
         $config['per_page'] = 3;
         $config['uri_segment'] = 3;
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $uid = $this->session->userdata('userid');
+        $uid = $this->session->userdata('user_id');
+        
         $where = array('user_id' => $uid);
 
-        // echo"hi";die();
         $data['allProductList'] = $this->product_model->getProduct($config["per_page"], $page, $where);
+       // print_r($data);die();
 
         $data['links'] = $this->pagination->create_links();
         $this->load->view('myproduct', $data);

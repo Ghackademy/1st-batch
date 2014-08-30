@@ -4,20 +4,16 @@
         <title>Bootstrap practice test day1</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assests/css/style.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assests/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assests/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assests/css/style.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assests/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assests/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assests/css/font-awesome.min.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-       
+ 
 <link rel="stylesheet" href="lean-slider.css" type="text/css" />
-<link rel="stylesheet" href="style.css" type="text/css">
-<link rel="stylesheet" href="style.css" type="text/css"/>
-
-
     </head>
     <body>
         <!--headerpart-->
-    <!--headerpart-->
          <nav class="navbar-default" role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -53,7 +49,8 @@
                                 <li><a href="#">My Account</a></li>
                                 <li><a href="#">My Wishlist</a></li>
                                 <li><a href="#">My Cart</a></li>
-                                <li><a href="user/logout">Logout</a></li>
+                                <li data-toggle="modal" data-target="#myModal">
+                                    <a href="">Login</a></li>
 
                             </ul>
                         </div>
@@ -63,8 +60,45 @@
             </div>
         </nav>
         <div class="clearfix"></div>
+        <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+          <div class="orangeline"></div>
+<div class="modal-body">
+        <form role="form">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Remember me
+    </label>
+      <label><a href="">Forgot Password?</a></label>
+      
+  </div>
+            <button type="submit" class="btn btn-default">Login</button>
+            <label>New User?? <a href="">Register</a></label>
+</form>
+      </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  
+</div><!-- /.modal -->
         <!--nav2-->
-           <div class="nav2Wrapper">
+        
+        <div class="nav2Wrapper">
             <div class="nav2Contents">
                 <!--category-->
                 <div class="btn-group">
@@ -82,8 +116,9 @@
                     <ul class="nav2ScrollDwn dropdown-menu" role="menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
+                        <li><a href="#">Separated link</a></li>  
                         <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
+
                     </ul>
                 </div>
                 <!--sales-->
@@ -119,60 +154,32 @@
             <div class="clearfix"></div>
         </div>
 
+        <div class="clearfix"></div>
+        <section id="second">
             <div class="container">
-            <div class="row">
-
-               <div class="col-md-3 col-xs-12 col-sm-4 col-lg-3">  
+                <div class="row">
+                <div class="col-md-6 col-xs-10 col-sm-10 col-lg-4 col-md-offset-3 col-xs-offset-1 col-sm-offset-1 col-lg-offset-4">
+  <form name="" method="POST">
+        <?php echo validation_errors(); ?>
+  <fieldset>
+    <legend>Forgot Your Password?</legend>
+    <label class="col-md-6 ">Email Address</label>
+    <input type="email" placeholder="email address" name="email" class="col-md-6">
+    <br>
+    <br>
+    <br>
+    <span class="help-block col-md-12">type in your email address so that we can send you your new password</span>
+    <br>
+    <button type="submit" name="submit" class="btn">Submit</button>
+  </fieldset>
+</form>
+                </div>
                
-                        
-
-                            <div id="sidebar1">
-
-                                <div class="sidebar_heading_group1">
-                                   
-                                    <div class="sidebar_heading1 underline">Dashboard</div>
-                                    <div class="clearfix"></div>
-
-                                </div>
-                                <ul class="sidebarlist1">
-                                    <li><a href="" class="currentsidebar1">Account Dashboard</a></li> 
-                                    <li><a href="<?php echo base_url();?>category/add">Add Category</a></li>
-                                    <li><a href="<?php echo base_url();?>product/add">Add Product</a></li>
-                                    <li><a href="<?php echo base_url();?>product/userproduct">My Product</a></li>
-                                    <li><a href="">My Products Reviews</a></li>
-                                    <li><a href="">Billing Agreements</a></li>
-                                </ul>             
-                            </div>
-
-
-
-                </div>
-
-
-                <div class="col-md-9 col-xs-12 col-sm-8 col-lg-9">
-                   
-                                <div class="sidebar_heading_group1">
-                                   <div class="sidebar_heading1 underline">My Dashboard</div>
-                                    <div class="clearfix"></div>
-                                    </div> 
-                    <p class="dashboardContent">Welcome! <?php echo $this->session->userdata('username');?><br>
-                    From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
-                            
-
-                      
-                    </div>
-
-
-
-                        
-
-
-                        
-                    </div>
-                </div>
-
-       
-         <div class="clearfix"></div>
+            </div>
+            </div>
+        </section>
+    
+   
         <section id="fifth">
             
                     <footer>
@@ -182,15 +189,12 @@
                              <div class="container">
                              <div class="row">
                             <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12 footernoteleft">
-
-                               <address>
- G-Hackademy<br>
-  All rights reserved<br>
-  Designed by sylvia<br>
-  </address>
+                               
+                                G-Hackademy All rights reserved
+                                <br>Designed by sylvia
                             </div>
                              <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 footernoteright pull-right">
-                                 <address>
+                                  <address>
   <strong>Twitter, Inc.</strong><br>
   795 Folsom Ave, Suite 600<br>
   San Francisco, CA 94107<br>
@@ -204,7 +208,7 @@
             
         </section>
         <!--Javascript Section-->
-        <script type="text/javascript" src="<?php echo base_url();?>assests/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>assests/js/jquery.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assests/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assests/js/jquery.js"></script>
     </body>
 </html>
