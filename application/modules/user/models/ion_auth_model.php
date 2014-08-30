@@ -275,6 +275,7 @@ class Ion_auth_model extends CI_Model
         
           public function addimage($data){
                 $this->db->insert('users',$data);
+                return $this->db->insert_id();
 		
          }
         public function getgroups(){

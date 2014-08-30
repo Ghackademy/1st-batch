@@ -288,9 +288,12 @@ class User extends CI_Controller {
         public function addMedia(){
             if($_POST){
                   $image = $this->do_upload();
+                     
                 $data=array('frontend_image'=>$image
                         );
                 $this->ion_auth_model->addimage($data);
+              
+                redirect('home/index');
             }else{
                 $this->load->view('home/media');
             }

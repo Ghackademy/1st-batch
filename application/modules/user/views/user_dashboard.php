@@ -190,7 +190,7 @@
 
                 </div>
                 <div class="btn-group">
-                    <div class="nav2Menu" data-toggle="dropdown"><a href="user/logout">Logout</a></div>
+                    <div class="nav2Menu" data-toggle="dropdown"><a href="<?php echo base_url();?>user/logout">Logout</a></div>
 
                 </div>
                 <div class="clearfix"></div>
