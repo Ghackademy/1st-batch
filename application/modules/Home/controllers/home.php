@@ -9,7 +9,7 @@ class Home extends MX_Controller {
         parent::__construct();
         $this->load->model('category/category_model'); // load category model
         $this->load->model('product/product_model');
-        $this->load->model('rating/rating_model');
+        $this->load->model('slider/slider_model');
         $this->load->model('user/ion_auth_model');
         $this->load->model('home/home_model');
         $this->load->library('session');
@@ -22,7 +22,7 @@ class Home extends MX_Controller {
     public function index() {
         $data['allcategory'] = $this->category_model->getAllCategory('tb_category');
         $data['allProductList'] = $this->product_model->get();
-
+         $data['frontend_image']=$this->slider_model->getimage();
         $this->load->view('index', $data);
     }
 

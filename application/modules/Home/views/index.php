@@ -321,21 +321,26 @@
                                 </ol>
 
                                 <!-- Wrapper for slides -->
+                                
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="<?php echo base_url(); ?>assests/images/bg1-bannersequence.jpg" alt="...">
+                                        
+                                         <img src="<?php echo base_url();?>assests/images/bg1-bannersequence.jpg" alt="...">
 
                                         <div class="carousel-caption">
                                             arnav izzo
                                         </div>
                                     </div>
+                                    <?php foreach($frontend_image as $image):?>
                                     <div class="item">
+                                        
+                                        <img src="<?php echo base_url(); ?>uploads/product/original/<?php echo $image['frontend_image'];?>" height='100px !important' width='870px'    >
 
-                                        <img src="<?php echo base_url(); ?>assests/images/bg2-bannersequence.jpg" alt="...">
                                         <div class="carousel-caption">
-                                            jenisha shakya
+                                            arnav izzo
                                         </div>
                                     </div>
+                                    <?php endforeach;?>
                                 </div>
 
                                 <!-- Controls -->
@@ -362,56 +367,36 @@
     <div class='col-md-12'>
       <div class="carousel slide media-carousel" id="media">
         <div class="carousel-inner">
- <div class="item  active">
+              <div class="item active">
             <div class="row">
                 <div class="col-md-3">
+                   
                 <div class="advertisement row">
+                      
                     <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1"></a>
                         </div>
-                </div>
-                 <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div> 
-                <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div> 
-                <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1"></a>
-                        </div>
+                    
                 </div>     
                  </div>
                  </div> 
-                    
-                    
-             <div class="item">
+ <div class="item">
             <div class="row">
                 <div class="col-md-3">
+                  <?php foreach ($allProductList as $p): ?>  
                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1"></a>
-                        </div>
+                      
+                    <?php if ($p['featured'] == 1) { ?>
+                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>uploads/product/resized/<?php echo $p['product_image'];?>" alt="advertisement 1"></a>
+                 <?php }?>
+                          
                 </div>
-                 <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div> 
-                <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div> 
-                <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1"></a>
-                        </div>
+                   <?php endforeach;?> 
                 </div>     
                  </div>
-                 </div>           
+                 </div> 
+          
+                    
+                 
                     
                    
           </div>
@@ -438,10 +423,6 @@
                         <div class="heading " id="myStar">Featured Products</div>
 
                         <?php foreach ($allProductList as $p): ?>
-<!--                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product myclass" style="height:20px; width:20px; background-color: black; margin:10px" value="<?php echo $p['product_id'];?>">
-                            <?php //echo $p['product_id'];?>
-                        </div>-->
-
                             <?php if ($p['featured'] == 1) { ?>
 
                                 <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">    
