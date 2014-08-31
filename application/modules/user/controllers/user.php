@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class User extends MX_Controller {
 
 	function __construct()
 	{
@@ -284,20 +284,7 @@ class User extends CI_Controller {
             die();
         }
     }
-          
-        public function addMedia(){
-            if($_POST){
-                  $image = $this->do_upload();
-                     
-                $data=array('frontend_image'=>$image
-                        );
-                $this->ion_auth_model->addimage($data);
-              
-                redirect('home/index');
-            }else{
-                $this->load->view('home/media');
-            }
-        }
+  
 	//reset password - final step for forgotten password
 	public function reset_password($code = NULL)
 	{
