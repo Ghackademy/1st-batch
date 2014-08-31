@@ -217,13 +217,13 @@
                               <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Featured</a></label>
                               <div class="col-sm-10">
-                                <input type="checkbox" class="form-control select-input" id="inputEmail3" name="feature" value="<?php echo set_value('feature');?>">
+                                <input type="checkbox" class="form-control select-input" id="inputEmail3" name="feature" value=1>
                               </div>
                             </div>
                               <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label"><a>Publish</a></label>
                               <div class="col-sm-10">
-                                <input type="checkbox" class="form-control select-input" id="inputEmail3" name="publish" value="<?php echo set_value('publish');?>">
+                                <input type="checkbox" class="form-control select-input" id="inputEmail3" name="publish" value=1>
                               </div>
                             </div>
                             
