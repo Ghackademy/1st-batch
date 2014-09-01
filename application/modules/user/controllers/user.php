@@ -54,6 +54,7 @@ class User extends MX_Controller {
 			foreach ($this->data['users'] as $k => $user)
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+     
 			}
 
 			$this->_render_page('admin_dashboard', $this->data);
