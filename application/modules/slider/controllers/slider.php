@@ -11,8 +11,10 @@ class Slider extends MX_Controller{
      public function index(){
        
          $data['sliderdata']=$this->slidermodel->fetch();
+         $data['featuredata']=$this->slidermodel->fetchfeature();
         // print_r($data);
     $this->load->view('index.php',$data);
+    
      }
      
      public function slidercontrols()

@@ -46,5 +46,9 @@ foreach ($val as $v):?>
             <input type="submit" name="view" value="Go back to shopping">
         </form>
         
+        <form name="checkout" action="<?php echo site_url();?>/product/checkout" >
+            <input type="submit" value="Checkout" method="post" >
+        </form>
+        
     </body>
 </html>

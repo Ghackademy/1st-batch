@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/1st-batch';
-
+$config['base_url']	= 'http://localhost/ghack';
+$config['modules_locations'] = array(APPPATH.'modules/' => '../modules/',);
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'kriti';
+$config['encryption_key'] = "98495511489849551148984955114898";
 
 /*
 |--------------------------------------------------------------------------

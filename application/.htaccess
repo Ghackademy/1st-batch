@@ -1,0 +1,2 @@
+Deny from all
+RewriteBase http://localhost/ghack/

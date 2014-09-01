@@ -15,8 +15,13 @@ class Slidermodel extends CI_Model
         $a=$query->result();
         return($a);
     }
-    
-     public function add()
+    public function fetchfeature()
+    {
+        $query=$this->db->query('select * from `product_details` order by vendor_id DESC limit 0,10');
+        $a=$query->result();
+        return($a);
+    }
+    public function add()
     {
       
         $image = $this->do_upload();

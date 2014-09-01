@@ -44,7 +44,7 @@ class Product_model extends CI_Model
              
             );
             $this->db->insert('option_details', $data);
-           //  print_r($data);
+           
         }
       
         //to insert the featured image in slider
@@ -64,7 +64,22 @@ class Product_model extends CI_Model
         }
         echo"data inserted";
     }
+    public function showwish($a)
+    {
+     
+        $query=$this->db->get_where('tbl_wishlist',array('user_id'=>$a));
+         $res=$query->result();
+           // print_r($res);die();
+         return $res;
+        
+        
+    }
     
+    public function wishlist($data)
+    {
+        $query=$this->db->insert('tbl_wishlist',$data);
+        redirect('slider/index');
+    }
     //to get id of the product whose id, description and category are given
     public function getid($a,$b,$c)
     {
@@ -75,7 +90,7 @@ class Product_model extends CI_Model
         
     }
     
-    public function getdata()
+public function getdata()
     {
       $query = $this->db->get('product_details');        
         if ($query->num_rows() > 0) {
@@ -141,6 +156,7 @@ public function do_uploads() {
             die();
         }
 }
+
 public function do_upload() {
         $config['upload_path'] = './uploads/product/original';
         $config['allowed_types'] = 'gif|jpg|png';
@@ -180,6 +196,29 @@ public function do_upload() {
             die();
         }
 }
+
+public function getvendor($a)
+{
+     $query=$this->db->get_where('product_details',array('id'=>$a));
+        $results=$query->result();
+        $b=($results[0]);
+      return $b->vendor_id;
+    
 }
+
+public function checkout($date,$uid,$id,$qty,$vid)
+{
+    $data=array(
+            'date' => $date,
+            'product_id'=>$id,
+            'product_qty'=>$qty,
+            'user_id'=>$uid,
+            'vendor_id'=>$vid
+            );
+     $this->db->insert('tbl_purchase', $data);
+    
+}
+}
+
 
 ?>
