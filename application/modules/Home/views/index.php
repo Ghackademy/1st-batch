@@ -310,7 +310,7 @@
                                     <?php foreach($frontend_image as $image):?>
                                     <div class="item">
                                         
-                                        <img src="<?php echo base_url(); ?>uploads/product/original/<?php echo $image['frontend_image'];?>">
+                                        <img src="<?php echo base_url(); ?>uploads/product/thumb/<?php echo $image['frontend_image'];?>">
 
                                         <div class="carousel-caption">
                                             arnav izzo
@@ -421,7 +421,7 @@
                                             </div>
                                         </div>     
                                     </div>
-                                    <a href=""><span class="addtocart pull-left"><i class="fa fa-shopping-cart"></i> Add to Cart</span></a> 
+                                    <a href="<?php echo base_url();?>cart/add/<?php echo $p['product_slug']; ?>"><span class="addtocart pull-left"><i class="fa fa-shopping-cart"></i> Add to Cart</span></a> 
 
                                     <a href=""><span class="addtocart pull-right"><i class="fa fa-heart"></i> WishList</span></a>
 

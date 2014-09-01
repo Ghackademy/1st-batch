@@ -12,8 +12,10 @@ class Product extends MX_Controller {
         $this->load->model('product_model');
         $this->load->library('session');
         $this->load->model('category/category_model');
+        $this->load->model('user/ion_auth_model');
+		$this->load->library('ion_auth') ;
+           $this->lang->load('auth');
 
-          // $this->load->model('user/ion_auth_model');
     }
 
     /*
@@ -34,12 +36,10 @@ class Product extends MX_Controller {
             $source = "uploads/product/original/" . $data['file_name'];
             $destination_resized = "uploads/product/resized/";
             $destination_thumb = "uploads/product/thumb/";
-             $size_original_width = 870;
-            $size_original_height = 400;
             $size_resized_width = 270;
             $size_resized_height = 120;
-            $size_thumb_width = 50;
-            $size_thumb_height = 50;
+            $size_thumb_width = 870;
+            $size_thumb_height = 400;
             $this->load->library('image_moo');
             $this->image_moo
                     ->load($source)
@@ -71,7 +71,15 @@ class Product extends MX_Controller {
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['allProductList'] = $this->product_model->getProduct($config["per_page"], $page);
         $data['links'] = $this->pagination->create_links();
+          $id = $this->session->userdata('user_id');
+             $row['group'] = $this->ion_auth->user($id)->row();
+//             print_r($row);die();
+       if($row['group']->group_id == 1){
+           
         $this->load->view('allproductlist', $data);
+        }else{
+          $this->load->view('viewProduct', $data);  
+        }
     }
 
     /*
