@@ -165,45 +165,21 @@
                     <div class="nav2Menu mega-dropdown dropdown-toggle" data-toggle="dropdown">Categories </div>
 
                     <ul class="dropdown-menu mega-dropdown-menu col-sm-12 col-md-9 col-lg-9 col-xs-12 nav2childdropdwn">
-
+ <?php foreach (array_slice($allcategory, 0, 5) as $category): ?>
                         <li class="col-sm-12 col-md-4 col-lg-4 col-xs-12">
+                              
                             <ul>
-                                <li class="dropdown-header">Dresses</li>
+                             
+                                <li class="dropdown-header"><a href="<?php base_url(); ?>home/allpost/<?php echo $category['cat_slug']; ?>"><?php echo $category['cat_title']; ?></a></li>
                                 <li><a href="#">Unique Features</a></li>
                                 <li><a href="#">Image Responsive</a></li>
                                 <li><a href="#">Auto Carousel</a></li>
                                 <li><a href="#">Newsletter Form</a></li>
                                 <li><a href="#">Four columns</a></li>
                                 <li class="divider"></li>
-                                <li class="dropdown-header">Tops</li>
-                                <li><a href="#">Good Typography</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-12 col-md-4 col-lg-4 col-xs-12">
-                            <ul>
-                                <li class="dropdown-header">Jackets</li>
-                                <li><a href="#">Easy to customize</a></li>
-                                <li><a href="#">Glyphicons</a></li>
-                                <li><a href="#">Pull Right Elements</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Pants</li>
-                                <li><a href="#">Coloured Headers</a></li>
-                                <li><a href="#">Primary Buttons & Default</a></li>
-                                <li><a href="#">Calls to action</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-12 col-md-4 col-lg-4 col-xs-12">
-                            <ul>
-                                <li class="dropdown-header">Accessories</li>
-                                <li><a href="#">Default Navbar</a></li>
-                                <li><a href="#">Lovely Fonts</a></li>
-                                <li><a href="#">Responsive Dropdown </a></li>							
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Newsletter</li>
-
-                            </ul>
-                        </li>
-
+                           </ul>
+                       </li>
+                               <?php endforeach;?>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -334,7 +310,7 @@
                                     <?php foreach($frontend_image as $image):?>
                                     <div class="item">
                                         
-                                        <img src="<?php echo base_url(); ?>uploads/product/original/<?php echo $image['frontend_image'];?>" height='100px !important' width='870px'    >
+                                        <img src="<?php echo base_url(); ?>uploads/product/original/<?php echo $image['frontend_image'];?>">
 
                                         <div class="carousel-caption">
                                             arnav izzo
@@ -380,20 +356,18 @@
                  </div>
                  </div> 
  <div class="item">
-            <div class="row">
+  <div class="row">
+			  <?php foreach ($allProductList as $p): ?> 
+ <?php if ($p['featured'] == 1) { ?>			  
                 <div class="col-md-3">
-                  <?php foreach ($allProductList as $p): ?>  
                 <div class="advertisement row">
-                      
-                    <?php if ($p['featured'] == 1) { ?>
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>uploads/product/resized/<?php echo $p['product_image'];?>" alt="advertisement 1"></a>
-                 <?php }?>
-                          
-                </div>
-                   <?php endforeach;?> 
-                </div>     
+               <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>uploads/product/resized/<?php echo $p['product_image'];?>" alt="advertisement 1"></a>
+        </div>
+          </div>
+				        <?php }?>
+				 <?php endforeach;?> 
                  </div>
-                 </div> 
+				 </div> 
           
                     
                  
