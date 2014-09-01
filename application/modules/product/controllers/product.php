@@ -34,8 +34,10 @@ class Product extends MX_Controller {
             $source = "uploads/product/original/" . $data['file_name'];
             $destination_resized = "uploads/product/resized/";
             $destination_thumb = "uploads/product/thumb/";
-            $size_resized_width = 200;
-            $size_resized_height = 100;
+             $size_original_width = 870;
+            $size_original_height = 400;
+            $size_resized_width = 270;
+            $size_resized_height = 120;
             $size_thumb_width = 50;
             $size_thumb_height = 50;
             $this->load->library('image_moo');
