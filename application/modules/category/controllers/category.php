@@ -10,27 +10,36 @@ class category extends MX_Controller {
               
     }
     
-     /*
-      * returns template
-      */
+     
+    /*
+     * list category
+     * return category list view
+     */
     public function categorylist(){ 
         
          $data['allcategory']= $this->category_model->getAllCategory();
+		 	if (empty($data['allcategory']))
+	{
+		show_404();
+	}
+
+	
 
         $this->load->view('categorylist',$data);
     }
     
     /*
-     * returns data insert
+     * @add category
+     * returns add view
      */
     public function add(){  
         $this->load->library('form_validation');
-
-      
         if ($_POST){
+		$title = $this->input->post('cat_title');
             $data= array(
                 'cat_title'=>  $this->input->post('cat_title'),
-                'cat_description'=>  $this->input->post('cat_desc')
+                'cat_description'=>  $this->input->post('cat_desc'),
+				'slug'=>url_title($title,'dash',true)
             );
           $this->form_validation->set_rules('cat_title', 'cat_title', 'required');
         $this->category_model->insertCategory($data);
@@ -42,15 +51,44 @@ class category extends MX_Controller {
         }
         
     }
-	      //return data updated value 
+    /*
+     * @return all product
+     * @param int
+     * @return view page
+     */
+    public function allpost($id){
+        $data['getpost']=$this->category_model->getAllPostOfOneCategory($id);
+		  $data['allcategory']= $this->category_model->getAllCategory();
+       $this->load->view('home/productlist',$data);
+    }
+    
+    /*
+     * 
+     * return category view 
+     */
+    public function view(){
+      $data['allcategory']= $this->category_model->getAllCategory();
+       $this->load->view('user/view',$data);
+    }
+ 
+
+    
+    
+    /*
+     * @edit category
+     * @param int id
+     * @return edit view
+     */
       public function edit($id){
           if ($_POST){
+		  	$title = $this->input->post('cat_title');
               $data=array(
                 'cat_title' =>$this->input->post('cat_title'),
-              'cat_description' =>  $this->input->post('cat_description')
+              'cat_description' =>  $this->input->post('cat_description'),
+			  'slug' => url_title($title,'dash',true)
               );
               
-          $this->category_model->update($id,category::table,$data);
+          $this->category_model->update($id,'tb_category',$data);
           redirect('category/categorylist');
           }
               else{
@@ -58,6 +96,11 @@ class category extends MX_Controller {
           $this->load->view('edit',$data);
           }
       }
+      /*
+ * @delete category
+ * @param int id
+ */
+      
       public function delete($id){
           $this->category_model->delete_row($id);
           redirect($_SERVER['HTTP_REFERER']);

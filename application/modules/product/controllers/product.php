@@ -1,120 +1,201 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
-class Product extends MX_Controller {
-     const table = 'tb_product';
-
-    public function __construct() {
+class Product extends MX_Controller{
+    
+   
+   public function __construct() {
         parent::__construct();
-        $this->load->model('product_model');
-        $this->load->library('session');
-        $this->load->model('category/category_model');
-     }
-     
-             function do_upload() {
-        $config['upload_path'] = "uploads/product/original/";
-        $config['allowed_types'] = 'gif|jpg|png|jpeg';
-        $config['max_size'] = '4000';
-        $config['max_width'] = '2000';
-        $config['max_height'] = '2000';
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload("userfile")) {
-            $data = $this->upload->data();
-            /* PATH */
-            $source = "uploads/product/original/" . $data['file_name'];
-            $destination_resized = "uploads/product/resized/";
-             $destination_thumb = "uploads/product/thumb/";
-            $size_resized_width = 200;
-            $size_resized_height = 100;
-            $size_thumb_width = 50;
-            $size_thumb_height = 50;
-            $this->load->library('image_moo');
-            $this->image_moo
-                    ->load($source)
-                    /* RESIZING IMAGE TO BE MEDIUM SIZE */
-                    ->resize_crop($size_resized_width, $size_resized_height)
-                    ->save($destination_resized . $data['file_name'])
-                    
-                    ->resize_crop($size_thumb_width, $size_thumb_height)
-                    ->save($destination_thumb . $data['file_name']);
-
-            if ($this->image_moo->errors)
-                print $this->image_moo->display_errors();
-            else {
-                return $data['file_name'];
-            }
-        } else {
-            $error = strip_tags($this->upload->display_errors());
-            echo "<script type='text/javascript'>alert('.$error.');history.back(-1);</script>";
-            die();
+         $this->load->model('product_model');
+          $this->load->library('pagination');
+          $this->load->helper('url');
+          $this->load->helper('date');
+          $this->load->library('encrypt');
+          $this->load->library('session');
+          
+    }
+    public function index1()
+    {
+        if($this->input->post('upload')) 
+        {
+            $this->product_model->do_upload();  
         }
+        $this->load->view('view1');
     }
     
-    public function lists(){
-             $config['base_url'] = base_url().'/product/lists/';
-            $config['total_rows'] = $this->product_model->countProduct();
-            $config['per_page'] = 3;
-            $config['uri_segment'] = 3;            
-            $this->pagination->initialize($config);
-            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-            $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
-            $data['links'] = $this->pagination->create_links();
-         $this->load->view('viewProduct',$data);
-        }
-      
-        public function add() {
-        $res['allcategory'] = $this->category_model->getallCategory('tb_category');
-        if ($_POST) {
-            $image = $this->do_upload();
-            $data = array(
-                'Product_name' => $this->input->post('pname'),
-                'product_description' => $this->input->post('pdescription'),
-                'price' => $this->input->post('pprice'),
-                'featured' => $this->input->post('feature'),
-                'publish' => $this->input->post('publish'),
-                'stock_info' => $this->input->post('pquantity'),
-                'rating' => $this->input->post('prating'),
-                'shipping_detail' => $this->input->post('pdetails'),
-                'product_image' => $image,
-                'cat_id' => $this->input->post('category'),
-            );
-            $this->product_model->addProduct($data);
-            redirect('product/lists');
-        } else {
-
-            $this->load->view('addProduct', $res);
-        }
-    }
-
-        public function edit($id){
-            $data['allcategory'] = $this->category_model->getallCategory('tb_category');
-             if($_POST){
-                 if(!empty($_FILES['userfile']['name'])){
-                     $image = $this->do_upload();
-                     $this->product_model->updateproduct($id,product::table,$image);
-                    redirect('product/lists');
-                 
-                 }
-              else{
-                   $pimage = $this->product_model->getSingleProduct($id);
-                   //print_r($pimage);die();
-                    $image = $pimage->product_image; 
-                    $this->product_model->updateproduct($id,product::table,$image);
-                    redirect('product/lists');
-              }
-             }
-             else{
-             $data['product']= $this->product_model->getSingleProduct($id); 
-      
-
-                        $this->load->view('editproduct',$data);
-             }
+    public function wishlist($a)
+    {
+        {
+        $id=$a;
+         $a=$this->product_model->getsingle($id);
+        
+            $b=($a[0]);
+         //  echo $b->description;
+         
+        $data = array(
+            'user_id'=>1,
+           'item_id' => $b->id,
            
+          
+       );
+   }
+        $this->product_model->wishlist($data);
+    }
+    
+    public function showwishlist()
+    {
+        $a=1;
+        $data=$this->product_model->showwish($a);
+        $count=count($data);
+       $da['number']=$count;
+       for($i=0;$i<$count;$i++)
+       {
+           $b[$i]=$data[$i]->item_id; 
+           
+           $da['items'][$i]=$this->product_model->getsingle($b[$i]);
+       
+   
+      $this->load->view('wishlist',$da);
+       }
+    //  print_r($da);
+        
+      
+    }
+    public function index()
+    {
+            
+            $data['userdata']=$this->product_model->getdata();
+            $this->load->view('products',$data);
+            
+    }
+     public function show1()
+    {
+             if($this->input->post('view'))
+            {
+        
+            $data['userdata']=$this->product_model->getdata();
+            $this->load->view('products',$data);
+            }
+            
+    }
+    
+    public function additem()
+    {
+        if($this->input->post('add'))
+        {
+               
+            $this->product_model->add();
+                      redirect('product/index');
+            
         }
-        public function delete($id){
-            $this->product_model->delete_row($id);
-            redirect($_SERVER['HTTP_REFERER']);
-        }
-	
-}
+        else
+       $this->load->view('products1');  
+    }
+    
+    public function addtocart($a)
+    
+        {
+        $id=$a;
+         $a=$this->product_model->getsingle($id);
+        
+            $b=($a[0]);
+         //  echo $b->description;
+         
+        $data = array(
+           'id' => $b->id,
+           'name' => $b->title,
+           'qty' => '1',
+            'price' => $b->price,        
+       );
 
+        $a = $this->cart->insert($data);
+
+    
+//     $res = $b->title." inserted to cart successfully";
+//       echo $res;
+   
+   }
+    
+    
+    function show()
+   {
+        //$a=$this->cart->contents();
+       $a['val']=$this->cart->contents();
+     // echo"<pre>";
+       $this->load->view('slider/viewcart',$a);
+       //print_r($a);
+   }
+    
+   public function remove()
+   {
+       $row=$this->input->post('rowid');
+       //echo $row;
+       $data = array(
+               'rowid' => $row,
+               'qty'   => 0
+            );
+
+        $this->cart->update($data); 
+        redirect('product/show');
+   }
+   
+   public function checkout()
+   {
+       date_default_timezone_set('Asia/Kathmandu'); 
+       $uid=1;
+     //   $uid = $this->session->userdata('uid');
+//        if(empty($uid))
+//        {
+//           //$this->session->set_flashdata('cart', 'yes');
+//            redirect('user/userlogin');
+//        }
+        $format = 'DATE_RFC822';
+        $time = time();
+
+        standard_date($format, $time);
+       
+       $a=$this->cart->contents(); 
+       foreach($a as $b):
+            $id  = $b['id'];
+            $qty=$b['qty'];
+            $date= standard_date($format, $time);
+            $vid=$this->product_model->getvendor($id);
+     // echo $date.'<BR>'.$uid.'<BR>'.$id.'<BR>'.$qty.'<BR>'.$vid; 
+            
+            $this->product_model->checkout($date,$uid,$id,$qty,$vid);
+       endforeach;
+       $this->cart->destroy();
+       redirect('slider/index');
+      
+   }
+   
+    function update()
+   {
+       $row=$this->input->post('rowid');
+        $qty=$this->input->post('qty');
+       
+       //echo $row;
+       $data = array(
+               'rowid' => $row,
+               'qty'   => $qty,
+            );
+
+        $this->cart->update($data); 
+        redirect('product/show');
+   }
+
+    function decrement()
+   {
+       $row=$this->input->post('rowid');
+        $qty=$this->input->post('qty');
+        $qty=$qty-1;
+       //echo $row;
+       $data = array(
+               'rowid' => $row,
+               'qty'   => $qty,
+            );
+
+        $this->cart->update($data); 
+        redirect('product/show');
+   }
+
+}
 ?>

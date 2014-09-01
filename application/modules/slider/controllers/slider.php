@@ -1,0 +1,44 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+class Slider extends MX_Controller{
+    
+    public function __construct()
+    {
+        parent::__construct();
+         $this->load->model('slidermodel');
+    }
+    
+    
+     public function index(){
+       
+         $data['sliderdata']=$this->slidermodel->fetch();
+         $data['featuredata']=$this->slidermodel->fetchfeature();
+        // print_r($data);
+    $this->load->view('index.php',$data);
+    
+     }
+     
+     public function slidercontrols()
+     {
+         if($this->input->post('add'))
+         {
+             $this->slidermodel->add();
+         }
+         else
+         $this->load->view('editslider.php'); 
+     }
+     
+     public function edit()
+     {
+         $data['sliderdata']=$this->slidermodel->fetch();
+          $this->load->view('removeslider',$data);
+           if($this->input->post('replace')) 
+           {
+               $this->slidermodel->replace();
+           }
+           
+           else if($this->input->post('remove')){
+                $this->slidermodel->removesingle();
+           }
+     }
+}
+?>
