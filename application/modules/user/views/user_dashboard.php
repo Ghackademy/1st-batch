@@ -217,6 +217,7 @@
                             <li><a href="" class="currentsidebar1">Account Dashboard</a></li> 
                             <li><a href="accountinfo.html">Account Information</a></li>
                             <li><a href="mywishlist.html">My Wishlist</a></li>
+                            <li><a href="<?php echo base_url();?>product/lists">Products</a></li>
                             <li><a href="">My Orders</a></li>
                             <li><a href="">My Products Reviews</a></li>
                             <li><a href="">Billing Agreements</a></li>

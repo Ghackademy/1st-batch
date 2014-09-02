@@ -262,7 +262,7 @@
     <label class="panel-title lead">Add Product</label>
   </div>
   <div class="panel-body">
-       <form class="form-horizontal" role="form" method="post">
+       <form class="form-horizontal" role="form" method="post"enctype="multipart/form-data">
   <div class="form-group">
     <label class="col-sm-5 control-label">Product Name</label>
     <div class="col-sm-7">
