@@ -9,6 +9,7 @@ class Cart extends MX_Controller {
         parent::__construct();
         $this->load->model('product/product_model');
         $this->load->library('session');
+        
     }
 
     public function add($id) {
@@ -21,13 +22,24 @@ class Cart extends MX_Controller {
         );
         $this->cart->insert($data);
 //            echo "add($id) called";
-        $c = $this->cart->contents();
-        print_r($c);
-    }
-    public function total(){
-       echo $this->cart->total();
+        redirect('cart/addToCart');
        
     }
+    public function addToCart(){
+        $data['cartdata']=  $this->cart->contents();
+       $this->load->view('home/mycart',$data);
+    }
+
+    public function total(){
+     echo $this->cart->total();
+      
+       
+    }
+    public function checkout(){
+    echo"You must login";
+      
+    }
+
     public function destroy(){
         $this->cart->destroy();
     }
