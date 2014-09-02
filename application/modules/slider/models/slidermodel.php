@@ -15,6 +15,13 @@ class Slidermodel extends CI_Model
         $a=$query->result();
         return($a);
     }
+    public function getsingle($id)
+    {
+        $query = $this->db->get_where('slider',array('id'=>$id));  
+        $res=$query->row();
+        return ($res);
+        
+    }
     public function fetchfeature()
     {
         $query=$this->db->query('select * from `product_details` order by vendor_id DESC limit 0,10');
@@ -29,24 +36,42 @@ class Slidermodel extends CI_Model
             'title' => $this->input->post('title'),
         
             'image'=> $image,
+            'description'=>$this->input->post('description'),
            
         );
-        $this->db->insert('slider', $data);
-        echo"data inserted";
+       // print_r($data); die();
+       $this->db->insert('slider', $data);
+      // redirect('slider/index');
+       
+        //echo"data inserted";
     
     }
+    public function update($a)
+    {
+          $image = $this->do_upload();
+           $data = array(
+                 'title' =>$this->input->post('title'),
+               'image'=> $image,
+                 'description'=>$this->input->post('description'),
+            );
+
+            $this->db->where('id', $a);
+            $this->db->update('slider', $data); 
+
+      
+        
+       }
+        
     
-    public function replace()
+    public function replace($a)
     {
          $image = $this->do_upload();
-         $a=$this->input->post('id');
+        
           $query = $this->db->query("UPDATE  `slider` set `image`='$image' WHERE `id`=$a");
     }
-    public function removesingle()
+    public function removesingle($a)
     {
-        $a=$this->input->post('id');
-        echo $a;
-
+        
         $query = $this->db->query("DELETE  from `slider` where `id`=$a");
       
     }

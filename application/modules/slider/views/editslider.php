@@ -10,17 +10,6 @@
             </td>
             
             </tr>
-            <tr>
-            <td>
            
-<!--                <a href="<?php echo base_url();?>slider/remove">Remove image from slide</a>          </tr>-->
-           <form name="form" method="post" action="<?php echo site_url(); ?>/slider/edit" >
-            </td>
-                 <input type="submit" value="Edit slider">
-   
-                </form>
-            </tr>
-            
-        
     </table>
 </html>

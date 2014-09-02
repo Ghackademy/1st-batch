@@ -3,27 +3,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Slider Page</title>
-layout CSS
+
 <link href="<?php echo base_url();?>/assets/css/style.css" rel="stylesheet" />
-login register CSS
+<!--login register CSS-->
 <link href="<?php echo base_url();?>/assets/css/modal.css" rel="stylesheet" />
-Social link CSS
+<!--Social link CSS-->
 <link href="<?php echo base_url();?>/assets/css/socialplugin.css" rel="stylesheet" />
-product Detail CSS
+<!--product Detail CSS-->
 <link href="<?php echo base_url();?>/assets/css/templatemo_style.css" rel="stylesheet" />
-style sheet of categories
+<!--style sheet of categories-->
 <link href="<?php echo base_url();?>/assets/css/styles.css" rel="stylesheet" />
 
-Jquery attachment
+<!--Jquery attachment-->
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>/assets/js/jquery-1.10.2.min.js"></script>
   
-  liteAccordion css 
+  <!--liteAccordion css--> 
         <link href="<?php echo base_url();?>/assets/css/liteaccordion.css" rel="stylesheet" />
 
-         easing 
+         <!--easing--> 
         <script src="<?php echo base_url();?>/assets/js/jquery.easing.1.3.js"></script>
 
-         liteAccordion js 
+         <!--liteAccordion js--> 
         <script src="<?php echo base_url();?>/assets/js/liteaccordion.jquery.js"></script>
 </head>
     
@@ -98,22 +98,22 @@ Jquery attachment
       </div>
           <div class="orangeline"></div>
 <div class="modal-body">
-        <form role="form">
+    <form role="form" action="user/userlogin" method="post">
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
   </div>
-  <div class="checkbox">
+<!--  <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
     </label>
       <label><a href="">Forgot Password?</a></label>
       
-  </div>
+  </div>-->
             <button type="submit" class="btn btn-default">Login</button>
             <label>New User?? <a href="">Register</a></label>
 </form>
@@ -265,10 +265,7 @@ Jquery attachment
         <!--liteAccordion demos, social & analytics--> 
         <script>
             (function($, d) {
-                // please don't copy and paste this page
-                // it breaks my analytics!
-
-                // demos
+                
                 $('#one').liteAccordion({
                         onTriggerSlide : function() {
                             this.find('figcaption').fadeOut();
