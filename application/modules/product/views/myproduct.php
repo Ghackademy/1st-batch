@@ -148,7 +148,8 @@
                         <div class="product_detail">
                             <?php foreach ($myproductList as $p): ?>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-xs-12 ">
-                                    <img src="<?php echo base_url(); ?>uploads/product/resized/<?php echo $p->product_image; ?>" class="product_detail_img" height="500px" width="500px" >
+                                    
+                                    <img src="<?php echo base_url(); ?>uploads/product/original/<?php echo $p->product_image; ?>" class="product_detail_img" height="500px" width="500px" >
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-xs-12">
                                     <div class="product_detail_heading text-right">

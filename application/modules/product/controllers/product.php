@@ -78,7 +78,7 @@ class Product extends MX_Controller {
            
         $this->load->view('allproductlist', $data);
         }else{
-          $this->load->view('viewProduct', $data);  
+          $this->load->view('allproduct', $data);  
         }
     }
 
@@ -112,12 +112,20 @@ class Product extends MX_Controller {
             redirect('product/userproduct');
         }
         else {
-//                
-           $this->load->view('addproduct',$res);
+                   $id = $this->session->userdata('user_id');
+             $row['group'] = $this->ion_auth->user($id)->row();
+//             print_r($row);die();
+       if($row['group']->group_id == 1){
+           
+        $this->load->view('addproduct', $res);
+        }else{
+          $this->load->view('user/vendor_addproduct', $res);  
+        }
+    }   
             
                   
             }
-    }
+    
           
    
 
