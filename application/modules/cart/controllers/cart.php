@@ -8,7 +8,10 @@ class Cart extends MX_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('product/product_model');
+         $this->load->model('user/ion_auth_model');
+          $this->load->model('cart/cart_model');
         $this->load->library('session');
+         $this->load->library('ion_auth');
         
     }
 
@@ -35,13 +38,36 @@ class Cart extends MX_Controller {
       
        
     }
+    public function confirm(){
+    if (!$this->ion_auth->logged_in()){
+                redirect('home/index');
+    }
+    else{
+        foreach($this->cart->contents() as $items):
+        $data=array(
+            'product_id'=>$items['id'],
+         'product_name'=>$items['name'],
+         'product_quantity'=>$items['qty'],
+         'product_price'=>$items['price'],
+            'product_subtotal'=>$items['subtotal'],
+             'user_id'=>$this->session->userdata['user_id']   
+       );
+        $this->cart_model->insert($data);
+   endforeach;
+        
+    
+    redirect('cart/destroy');
+    }
+    }
+    
     public function checkout(){
-    echo"You must login";
-      
+        $this->load->view(paymentDetailsForm);
     }
 
     public function destroy(){
+//        $id = $this->cart->contents('id');
         $this->cart->destroy();
+        redirect('cart/addToCart');
     }
 
 }

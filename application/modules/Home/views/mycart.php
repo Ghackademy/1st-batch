@@ -156,7 +156,7 @@
 
         <div class="clearfix"></div>
         <section id="second">
-            <div class="container">
+            <div class="container addcart">
     <?php foreach($cartdata as $cart) :?>
 	          <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product"> 
                       <h1>My Wishlist</h1>

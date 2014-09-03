@@ -155,9 +155,9 @@
                 <div class="col-md-9 col-xs-12 col-sm-8 col-lg-9">
                     <div id ="rightContent">
                               <?php foreach ($allProductList as $p): ?>
-                        <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4">
+                        <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4"    style="border:solid red">
                             <div class="rightContentChild">
-                                 
+                                <div class="row"> 
                                 <div class="thumbnail">
                                     <img src="<?php echo base_url(); ?>uploads/product/original/<?php echo $p->product_image; ?>" data-src="holder.js/300x300" alt="...">
                                     <div class="caption">
@@ -175,10 +175,10 @@
                                                 <input type="radio" id="star5" name="star" class="star"  value="5"/>
                                                 <label for="star5"></label>
                                             </div>
-
-                                      <div class="addtocart pull-left"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
-                                      <span class="addtocart pull-right"><i class="fa fa-heart"></i>Whishlist</span> 
-                                       
+                                        
+                                        <a  href="<?php echo base_url(); ?>cart/addToCart/<?php echo $p->product_slug; ?>"><span class="addtocart col-md-6 pull-left "><i class="fa fa-shopping-cart"></i>Add to Cart</span></a>  
+                                            <a href=""><span class="addtocart col-md-6 pull-right"><i class="fa fa-heart"></i>Wishlist</span></a> 
+                                        
                                         <div class="clearfix"></div>
                                     </div>
                                     </div>
@@ -186,6 +186,7 @@
                                 </div>
                            
                             </div>
+                        </div>
                           <?php endforeach;?>
                     </div>
 
