@@ -11,7 +11,6 @@ class Home_model extends CI_Model {
     }
      public function searchproduct($keyword)
      {
-//            $query=$this->db->get_where('tb_product',array('product_name'=>$keyword));
          $this->db->like('product_name',$keyword);
          $query = $this->db->get('tb_product');
              $row = $query->result_array();

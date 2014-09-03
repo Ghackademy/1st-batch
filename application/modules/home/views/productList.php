@@ -250,8 +250,9 @@
                                     </p>       
 
 
-                                    <div class="addtocart"><i class="fa fa-shopping-cart"></i>ADD TO CART</div>  
-                                    <span class="addtocarticon"><i class="fa fa-heart"></i></span>
+                                    <a href=""><span class="addtocart pull-left"><i class="fa fa-shopping-cart"></i> Add to Cart</span></a> 
+                       
+                        <a href=""><span class="addtocart pull-right"><i class="fa fa-heart"></i> WishList</span></a>
                                     <div class="clearfix"></div>
                                 </div>
 								 

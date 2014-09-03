@@ -1,49 +1,75 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
 class Cart extends MX_Controller {
-   
-	public function __construct(){
-            parent::__construct();
-            $this->load->model('product/product_model');
-            $this->load->library('cart');
-            $this->load->library('session');
-            
-        }
-        public function index(){
-            $config['base_url'] = base_url().'/cart/index';
-            $config['total_rows'] = $this->product_model->countProduct();
-            $config['per_page'] = 3;
-            $config['uri_segment'] = 3;            
-            $config['first_link'] = 'First';
-            $config['last_link'] = 'Last';
-             $this->pagination->initialize($config);
-            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-           //$data['allcategory'] = $this->category_model->display('tb_category');            
-            $data['allProductList'] = $this->product_model->getProduct($config["per_page"],$page);
-            $data['links'] = $this->pagination->create_links();
-               //print_r($data);die();
-         $this->load->view('shopping',$data);
-        }
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('product/product_model');
+         $this->load->model('user/ion_auth_model');
+          $this->load->model('cart/cart_model');
+        $this->load->library('session');
+         $this->load->library('ion_auth');
         
-        public function add(){
-            
-            $product = $this->product_model->getSingleProduct($this->input->post('id'));
-            $data = array(
-                'id'=>$this->input->post('id'),
-                'qty'=>1,
-                'price'=>$product->price,
-                'name'=>$product->product_name
-            );
-            $this->cart->insert($data);
-            $this->load->view('cartDisplay');
-            }
-            
-            public function remove($rowid){
-                $this->cart->update(array(
-                    'rowid' => $rowid,
-                    'qty' => 0
-                ));
-               // print_r($this->cart->contents());
-               $this->load->view('cartDisplay'); 
-            }
+    }
+
+    public function add($id) {
+        $data = $this->product_model->getSingleProduct($id);
+        $data = array(
+            'id' => $data['product_id'],
+            'name' => $data['product_name'],
+            'qty' => 1,
+            'price' => $data['price']
+        );
+        $this->cart->insert($data);
+//            echo "add($id) called";
+        redirect('cart/addToCart');
+       
+    }
+    public function addToCart(){
+        $data['cartdata']=  $this->cart->contents();
+       $this->load->view('home/mycart',$data);
+    }
+
+    public function total(){
+     echo $this->cart->total();
+      
+       
+    }
+    public function confirm(){
+    if (!$this->ion_auth->logged_in()){
+                redirect('home/index');
+    }
+    else{
+        foreach($this->cart->contents() as $items):
+        $data=array(
+            'product_id'=>$items['id'],
+         'product_name'=>$items['name'],
+         'product_quantity'=>$items['qty'],
+         'product_price'=>$items['price'],
+            'product_subtotal'=>$items['subtotal'],
+             'user_id'=>$this->session->userdata['user_id']   
+       );
+        $this->cart_model->insert($data);
+   endforeach;
+        
+    
+    redirect('cart/destroy');
+    }
+    }
+    
+    public function checkout(){
+        $this->load->view(paymentDetailsForm);
+    }
+
+    public function destroy(){
+//        $id = $this->cart->contents('id');
+        $this->cart->destroy();
+        redirect('cart/addToCart');
+    }
+
 }
+
+?>
