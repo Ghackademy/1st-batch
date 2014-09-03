@@ -39,7 +39,7 @@ class category extends MX_Controller {
             $data= array(
                 'cat_title'=>  $this->input->post('cat_title'),
                 'cat_description'=>  $this->input->post('cat_desc'),
-				'slug'=>url_title($title,'dash',true)
+				'cat_slug'=>url_title($title,'dash',true)
             );
           $this->form_validation->set_rules('cat_title', 'cat_title', 'required');
         $this->category_model->insertCategory($data);

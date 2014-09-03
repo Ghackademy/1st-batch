@@ -165,45 +165,21 @@
                     <div class="nav2Menu mega-dropdown dropdown-toggle" data-toggle="dropdown">Categories </div>
 
                     <ul class="dropdown-menu mega-dropdown-menu col-sm-12 col-md-9 col-lg-9 col-xs-12 nav2childdropdwn">
-
+ <?php foreach (array_slice($allcategory, 0, 5) as $category): ?>
                         <li class="col-sm-12 col-md-4 col-lg-4 col-xs-12">
+                              
                             <ul>
-                                <li class="dropdown-header">Dresses</li>
+                             
+                                <li class="dropdown-header"><a href="<?php base_url(); ?>home/allpost/<?php echo $category['cat_slug']; ?>"><?php echo $category['cat_title']; ?></a></li>
                                 <li><a href="#">Unique Features</a></li>
                                 <li><a href="#">Image Responsive</a></li>
                                 <li><a href="#">Auto Carousel</a></li>
                                 <li><a href="#">Newsletter Form</a></li>
                                 <li><a href="#">Four columns</a></li>
                                 <li class="divider"></li>
-                                <li class="dropdown-header">Tops</li>
-                                <li><a href="#">Good Typography</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-12 col-md-4 col-lg-4 col-xs-12">
-                            <ul>
-                                <li class="dropdown-header">Jackets</li>
-                                <li><a href="#">Easy to customize</a></li>
-                                <li><a href="#">Glyphicons</a></li>
-                                <li><a href="#">Pull Right Elements</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Pants</li>
-                                <li><a href="#">Coloured Headers</a></li>
-                                <li><a href="#">Primary Buttons & Default</a></li>
-                                <li><a href="#">Calls to action</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-12 col-md-4 col-lg-4 col-xs-12">
-                            <ul>
-                                <li class="dropdown-header">Accessories</li>
-                                <li><a href="#">Default Navbar</a></li>
-                                <li><a href="#">Lovely Fonts</a></li>
-                                <li><a href="#">Responsive Dropdown </a></li>							
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Newsletter</li>
-
-                            </ul>
-                        </li>
-
+                           </ul>
+                       </li>
+                               <?php endforeach;?>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -321,21 +297,26 @@
                                 </ol>
 
                                 <!-- Wrapper for slides -->
+                                
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="<?php echo base_url(); ?>assests/images/bg1-bannersequence.jpg" alt="...">
+                                        
+                                         <img src="<?php echo base_url();?>assests/images/bg1-bannersequence.jpg" alt="...">
 
                                         <div class="carousel-caption">
                                             arnav izzo
                                         </div>
                                     </div>
+                                    <?php foreach($frontend_image as $image):?>
                                     <div class="item">
+                                        
+                                        <img src="<?php echo base_url(); ?>uploads/product/thumb/<?php echo $image['frontend_image'];?>">
 
-                                        <img src="<?php echo base_url(); ?>assests/images/bg2-bannersequence.jpg" alt="...">
                                         <div class="carousel-caption">
-                                            jenisha shakya
+                                            arnav izzo
                                         </div>
                                     </div>
+                                    <?php endforeach;?>
                                 </div>
 
                                 <!-- Controls -->
@@ -362,56 +343,34 @@
     <div class='col-md-12'>
       <div class="carousel slide media-carousel" id="media">
         <div class="carousel-inner">
- <div class="item  active">
+              <div class="item active">
             <div class="row">
                 <div class="col-md-3">
+                   
                 <div class="advertisement row">
+                      
                     <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1"></a>
                         </div>
-                </div>
-                 <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div> 
-                <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div> 
-                <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1"></a>
-                        </div>
+                    
                 </div>     
                  </div>
                  </div> 
-                    
-                    
-             <div class="item">
-            <div class="row">
+ <div class="item">
+  <div class="row">
+			  <?php foreach ($allProductList as $p): ?> 
+ <?php if ($p['featured'] == 1) { ?>			  
                 <div class="col-md-3">
                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block1.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div>
-                 <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block2.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div> 
-                <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/block3.jpg" alt="advertisement 1"></a>
-                        </div>
-                </div> 
-                <div class="col-md-3">
-                 <div class="advertisement row">
-                    <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>assests/images/banner1-images.png" alt="advertisement 1"></a>
-                        </div>
-                </div>     
+               <a class="thumbnail" href="#"><img src="<?php echo base_url(); ?>uploads/product/resized/<?php echo $p['product_image'];?>" alt="advertisement 1"></a>
+        </div>
+          </div>
+				        <?php }?>
+				 <?php endforeach;?> 
                  </div>
-                 </div>           
+				 </div> 
+          
+                    
+                 
                     
                    
           </div>
@@ -438,10 +397,6 @@
                         <div class="heading " id="myStar">Featured Products</div>
 
                         <?php foreach ($allProductList as $p): ?>
-<!--                        <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product myclass" style="height:20px; width:20px; background-color: black; margin:10px" value="<?php echo $p['product_id'];?>">
-                            <?php //echo $p['product_id'];?>
-                        </div>-->
-
                             <?php if ($p['featured'] == 1) { ?>
 
                                 <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4 product">    
@@ -466,7 +421,7 @@
                                             </div>
                                         </div>     
                                     </div>
-                                    <a href=""><span class="addtocart pull-left"><i class="fa fa-shopping-cart"></i> Add to Cart</span></a> 
+                                    <a href="<?php echo base_url();?>cart/add/<?php echo $p['product_slug']; ?>"><span class="addtocart pull-left"><i class="fa fa-shopping-cart"></i> Add to Cart</span></a> 
 
                                     <a href=""><span class="addtocart pull-right"><i class="fa fa-heart"></i> WishList</span></a>
 

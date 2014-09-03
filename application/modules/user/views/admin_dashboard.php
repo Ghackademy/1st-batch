@@ -98,7 +98,7 @@
                     </li>
                     
                     <li>
-                        <a href="<?php echo base_url();?>user/addMedia"><i class="fa fa-fw fa-desktop"></i>Media</a>
+                        <a href="<?php echo base_url();?>slider/addMedia"><i class="fa fa-fw fa-desktop"></i>Media</a>
                     </li>
                   
                             <li>

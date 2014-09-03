@@ -78,6 +78,7 @@ class Product_model extends CI_Model {
          
          public function addProduct($data){
                 $this->db->insert(product_model::Table,$data);
+                return $this->db->insert_id();
 		
          }
          // insert value in database

@@ -172,12 +172,8 @@
                 </div>
 
                 <div class="btn-group">
-                    <div class="nav2Menu" data-toggle="dropdown">New products </div>
-                    <ul class="nav2ScrollDwn dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                    </ul>
+                    <div class="nav2Menu"><a href="<?php echo base_url();?>product/lists">Products</a> </div>
+                  
                 </div>
 
                 <div class="btn-group">
@@ -190,7 +186,7 @@
 
                 </div>
                 <div class="btn-group">
-                    <div class="nav2Menu" data-toggle="dropdown"><a href="user/logout">Logout</a></div>
+                    <div class="nav2Menu"><a href="<?php echo base_url();?>user/logout">Logout</a></div>
 
                 </div>
                 <div class="clearfix"></div>
@@ -221,6 +217,7 @@
                             <li><a href="" class="currentsidebar1">Account Dashboard</a></li> 
                             <li><a href="accountinfo.html">Account Information</a></li>
                             <li><a href="mywishlist.html">My Wishlist</a></li>
+                            <li><a href="<?php echo base_url();?>product/lists">Products</a></li>
                             <li><a href="">My Orders</a></li>
                             <li><a href="">My Products Reviews</a></li>
                             <li><a href="">Billing Agreements</a></li>

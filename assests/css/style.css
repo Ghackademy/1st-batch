@@ -388,6 +388,7 @@ color:orange;
     width:auto;
     text-align: center;
    transition:background-color 0.5s ease-out;
+   float:left;
 }
 .addtocart:hover
 {
@@ -978,4 +979,8 @@ text-align:left;
 .list-group-item.active, .list-group-item:hover {
     border-left: 3px solid orange;
     background-color: #F8F7F5;
+}
+.addcart
+{
+    min-height:400px;
 }

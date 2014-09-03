@@ -67,7 +67,7 @@
       </div>
           <div class="orangeline"></div>
 <div class="modal-body">
-        <form role="form" method="POST"action="product/add" enctype="multipart/form-data">
+        <form role="form" method="post" enctype="multipart/form-data">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
@@ -262,7 +262,7 @@
     <label class="panel-title lead">Add Product</label>
   </div>
   <div class="panel-body">
-       <form class="form-horizontal" role="form">
+       <form class="form-horizontal" role="form" method="post"enctype="multipart/form-data">
   <div class="form-group">
     <label class="col-sm-5 control-label">Product Name</label>
     <div class="col-sm-7">
@@ -326,7 +326,7 @@
   <div class="form-group">
     <label class="col-sm-5 control-label">Product Image</label>
     <div class="col-sm-7">
-    <input type="file" id="exampleInputFile">
+    <input type="file" name="userfile" class="form-control select-input" id="inputPassword3" value="<?php echo set_value('pimage');?>>
     </div>
    
     </div>
