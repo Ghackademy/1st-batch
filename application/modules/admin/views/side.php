@@ -57,9 +57,7 @@
                         
                         </i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="Profile.html"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
+                        
                         <li>
                             <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
@@ -101,26 +99,11 @@
                         <ul id="demo2" class="collapse side nav">
                             
                             <li>
-                                 <a href="gallery.html">view Gallery</a>
-                                <a href="Add_slider.html">Add Slider</a>
+                                 <a href="<?php echo site_url();?>/admin/editslider">view Gallery</a>
+                                <a href="<?php echo site_url();?>/admin/addtoslider">Add Slider</a>
                         </ul>
                     </li>
-                    
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i>
-                            Create Group<i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse side nav">
-                            <li>
-                                <label class="form"><a href="#">User type </a></label>
-                            </li>
-                            <li>
-                                <a href="#"><select class="form-control ">
-                                        <option>Admin</option>
-                                        <option>vendor</option>
-                                        <option>user</option>
-                                    </select></a>
-                        </ul>
-                    </li>
+                  
                     
                    
                 </ul>

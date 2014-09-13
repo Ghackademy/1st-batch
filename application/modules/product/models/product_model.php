@@ -75,6 +75,13 @@ class Product_model extends CI_Model
         
     }
     
+    public function removewish($a)
+    {
+        
+        $query="DELETE FROM `tbl_wishlist` where `id`=$a";
+        $this->db->query($query);
+    }
+    
     public function wishlist($data)
     {
         $query=$this->db->insert('tbl_wishlist',$data);
@@ -106,7 +113,8 @@ public function getdata()
     {
         
         $query=$this->db->get_where('product_details',array('id'=>$id));
-        $a=$query->result();
+        $a=$query->row();
+        
         return $a;
         
     }

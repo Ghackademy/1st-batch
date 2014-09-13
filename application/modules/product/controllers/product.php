@@ -23,47 +23,51 @@ class Product extends MX_Controller{
     
     public function wishlist($a)
     {
-        {
+        
+        $uid=$this->session->userdata('id');
         $id=$a;
          $a=$this->product_model->getsingle($id);
         
-            $b=($a[0]);
-         //  echo $b->description;
-         
-        $data = array(
-            'user_id'=>1,
-           'item_id' => $b->id,
            
-          
+        
+        
+        $data = array(
+            'user_id'=> $uid,
+           'item_id' => $a->id,
+            'title'=>$a->title,
+            'image'=>$a->image,  
+            'price'=>$a->price,
        );
-   }
+   
+     
         $this->product_model->wishlist($data);
     }
     
     public function showwishlist()
     {
-        $a=1;
-        $data=$this->product_model->showwish($a);
-        $count=count($data);
-       $da['number']=$count;
-       for($i=0;$i<$count;$i++)
-       {
-           $b[$i]=$data[$i]->item_id; 
-           
-           $da['items'][$i]=$this->product_model->getsingle($b[$i]);
-       
-   
-      $this->load->view('wishlist',$da);
-       }
-    //  print_r($da);
-        
+        $a=0;
+        $data['items']=$this->product_model->showwish($a);
+       // print_r($data['items']);
+        $this->load->view('wishlist.php',$data);
+
       
+    }
+    
+    public function showdetails($a)
+    {
+        $da=array();
+        $da['items']=array();
+        $da['items']=$this->product_model->getsingle($a);
+       // print_r($da['items']);
+       $this->load->view('wishlist',$da);
+        
     }
     public function index()
     {
             
-            $data['userdata']=$this->product_model->getdata();
-            $this->load->view('products',$data);
+//            $data['userdata']=$this->product_model->getdata();
+//            $this->load->view('products',$data);
+        $this->load->view('header');
             
     }
      public function show1()
@@ -96,14 +100,16 @@ class Product extends MX_Controller{
         $id=$a;
          $a=$this->product_model->getsingle($id);
         
-            $b=($a[0]);
+        
+            //$b=($a[0]);
+            
          //  echo $b->description;
          
         $data = array(
-           'id' => $b->id,
-           'name' => $b->title,
+           'id' => $a->id,
+           'name' => $a->title,
            'qty' => '1',
-            'price' => $b->price,        
+            'price' => $a->price,        
        );
 
         $a = $this->cart->insert($data);
@@ -114,7 +120,26 @@ class Product extends MX_Controller{
    
    }
     
+     public function tocart($a,$c)
     
+        {
+         
+         $b=$this->product_model->getsingle($a);
+         
+        
+        $data = array(
+           'id' => $b->id,
+           'name' => $b->title,
+           'qty' => '1',
+            'price' => $b->price,        
+       );
+
+        $this->cart->insert($data);
+        $this->product_model->removewish($c);
+        $this->showwishlist();
+
+   
+   }
     function show()
    {
         //$a=$this->cart->contents();
@@ -140,8 +165,8 @@ class Product extends MX_Controller{
    public function checkout()
    {
        date_default_timezone_set('Asia/Kathmandu'); 
-       $uid=1;
-     //   $uid = $this->session->userdata('uid');
+     
+        $uid = $this->session->userdata('id');
 //        if(empty($uid))
 //        {
 //           //$this->session->set_flashdata('cart', 'yes');
