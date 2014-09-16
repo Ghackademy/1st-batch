@@ -26,6 +26,7 @@ class Slider extends MX_Controller {
 
             redirect('home/index', $data);
         } else {
+            $this->load->view('user/adminsidebar');
             $this->load->view('user/media', $data);
         }
     }

@@ -71,14 +71,18 @@ class Product extends MX_Controller {
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['allProductList'] = $this->product_model->getProduct($config["per_page"], $page);
         $data['links'] = $this->pagination->create_links();
-          $id = $this->session->userdata('user_id');
-             $row['group'] = $this->ion_auth->user($id)->row();
+        $id = $this->session->userdata('user_id');
+        $row['group'] = $this->ion_auth->user($id)->row();
 //             print_r($row);die();
-       if($row['group']->group_id == 1){
-           
-        $this->load->view('allproductlist', $data);
-        }else{
-          $this->load->view('allproduct', $data);  
+        if ($row['group']->group_id == 1) { 
+          $this->load->view('user/adminsidebar');
+            $this->load->view('allproductlist', $data);
+         
+        } else {
+            $this->load->view('user/userdashboard_header');
+            $this->load->view('user/usersidebar');
+            $this->load->view('allproduct', $data);
+            $this->load->view('base/footer');
         }
     }
 
@@ -116,10 +120,13 @@ class Product extends MX_Controller {
              $row['group'] = $this->ion_auth->user($id)->row();
 //             print_r($row);die();
        if($row['group']->group_id == 1){
-           
+           $this->load->view('user/adminsidebar'); 
         $this->load->view('addproduct', $res);
         }else{
-          $this->load->view('user/vendor_addproduct', $res);  
+             $this->load->view('user/userdashboard_header');
+               $this->load->view('user/vendorsidebar');
+          $this->load->view('user/vendor_addproduct', $res); 
+             $this->load->view('base/footer');
         }
     }   
             
@@ -148,7 +155,10 @@ class Product extends MX_Controller {
         $data['myproductList'] = $this->product_model->getProduct($config["per_page"], $page, $where);
 
         $data['links'] = $this->pagination->create_links();
+         $this->load->view('user/userdashboard_header');
+               $this->load->view('user/vendorsidebar');
         $this->load->view('myproduct', $data);
+         $this->load->view('base/footer');
     }
 
     /*

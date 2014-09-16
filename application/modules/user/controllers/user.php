@@ -8,7 +8,7 @@ class User extends MX_Controller {
 		parent::__construct();
 		$this->load->library('ion_auth');
                 $this->load->model('category/category_model');
-                   $this->load->model('product/product_model');
+                $this->load->model('product/product_model');
 		$this->load->library('form_validation');
 		$this->load->helper('url','form');
 
@@ -19,7 +19,7 @@ class User extends MX_Controller {
 		$this->load->database();
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-
+               $this->load->library('ion_auth') ;
 		$this->lang->load('auth');
 		$this->load->helper('language');
                 
@@ -27,7 +27,9 @@ class User extends MX_Controller {
 	}
 
 
-	//redirect if needed, otherwise display the user list
+	/*
+         * @redirect if needed, otherwise display the user list
+         */
 	function index()
 	{
                                 
@@ -56,12 +58,14 @@ class User extends MX_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
      
 			}
-
+                        $this->load->view('user/adminsidebar');
 			$this->_render_page('admin_dashboard', $this->data);
 		}
 	}
 
-	//log the user in
+	/*
+         * @log the user in
+         */
 	function login()
 	{
 		//$this->data['title'] = "Login";
@@ -106,7 +110,9 @@ class User extends MX_Controller {
 		}
 	}
 
-	//log the user out
+	/*
+         * @log the user out
+         */
 	function logout()
 	{
 		$this->data['title'] = "Logout";
@@ -119,7 +125,9 @@ class User extends MX_Controller {
 		redirect('home/index', 'refresh');
 	}
 
-	//change password
+	/*
+         * @change password
+         */
 	function change_password()
 	{
 		$this->form_validation->set_rules('old', $this->lang->line('change_password_validation_old_password_label'), 'required');
@@ -187,7 +195,9 @@ class User extends MX_Controller {
 		}
 	}
 
-	//forgot password
+	/*
+         * @forgot password
+         */
 	function forgot_password()
 	{
 		$this->form_validation->set_rules('email', $this->lang->line('forgot_password_validation_email_label'), 'required|valid_email');
@@ -207,8 +217,10 @@ class User extends MX_Controller {
 			}
 
 			//set any errors and display the form
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			//$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+                        $this->load->view('base/header');
 			$this->_render_page('home/forgetpassword', $this->data);
+                        $this->load->view('base/footer');
 		}
 		else
 		{
@@ -286,7 +298,9 @@ class User extends MX_Controller {
         }
     }
   
-	//reset password - final step for forgotten password
+	/*
+         * @reset password - final step for forgotten password
+         */
 	public function reset_password($code = NULL)
 	{
 		if (!$code)
@@ -377,7 +391,9 @@ class User extends MX_Controller {
 	}
 
 
-	//activate the user
+	/*
+         * @activate the user
+         */
 	function activate($id, $code=false)
 	{
 		if ($code !== false)
@@ -403,7 +419,9 @@ class User extends MX_Controller {
 		}
 	}
 
-	//deactivate the user
+	/*
+         * deactivate the user
+         */
 	function deactivate($id = NULL)
 	{
 		$id = $this->config->item('use_mongodb', 'ion_auth') ? (string) $id : (int) $id;
@@ -443,7 +461,9 @@ class User extends MX_Controller {
 		}
 	}
 
-	//create a new user
+	/*
+         * @create a new user
+         */
 	function sign_up()
 	{
                
@@ -541,7 +561,9 @@ class User extends MX_Controller {
 		}
 	}
 
-	//edit a user
+	/*
+         * @edit a user
+         */
 	function edit_user($id)
 	{
 		$this->data['title'] = "Edit User";
@@ -595,7 +617,9 @@ class User extends MX_Controller {
 				}
 			}
 
-			//update the password if it was posted
+			/*
+                         * @update the password if it was posted
+                         */
 			if ($this->input->post('password'))
 			{
 				$this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
@@ -671,7 +695,9 @@ class User extends MX_Controller {
 		$this->_render_page('auth/edit_user', $this->data);
 	}
 
-	// create a new group
+	/*
+         * @ create a new group
+         */
 	function create_group()
 	{
 		$this->data['title'] = $this->lang->line('create_group_title');
@@ -719,7 +745,9 @@ class User extends MX_Controller {
 		}
 	}
 
-	//edit a group
+	/*
+         * @edit a group
+         */
 	function edit_group($id)
 	{
 		// bail if no group id given
@@ -816,18 +844,28 @@ class User extends MX_Controller {
 		if (!$render) return $view_html;
 	}
         
-        
+        /*
+         * @return userdashboard view if user
+         * @return vendordashboard view if vendor 
+         */
         public function dashboard(){
             $data['allcategory']=$this->category_model->getAllCategory('tb_category');
              $data['allProductList'] = $this->product_model->get();
               $id = $this->session->userdata('user_id');
              $row['group'] = $this->ion_auth->user($id)->row();
               if($row['group']->group_id == 3){
+                 $this->load->view('user/userdashboard_header'); 
+                 $this->load->view('user/vendorsidebar'); 
                 $this->load->view('vendor_dashboard',$row);
+                $this->load->view('base/footer');
+                 
                   
             }
             else{
+                $this->load->view('user/userdashboard_header'); 
+                 $this->load->view('user/usersidebar'); 
                 $this->load->view('user_dashboard',$row);
+                $this->load->view('base/footer');
             }
            
             

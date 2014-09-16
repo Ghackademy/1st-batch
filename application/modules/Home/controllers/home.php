@@ -23,11 +23,13 @@ class Home extends MX_Controller {
         $data['allcategory'] = $this->category_model->getAllCategory('tb_category');
         $data['allProductList'] = $this->product_model->get();
          $data['frontend_image']=$this->slider_model->getimage();
+         $this->load->view('base/header');
         $this->load->view('index', $data);
+          $this->load->view('base/footer');
     }
 
     /*
-     * @param int
+     * @param int id
      * @returns singleProduct
      * @returns singleproduct view
      */
@@ -35,33 +37,39 @@ class Home extends MX_Controller {
     public function singleProduct($id) {
         $data['singleProduct'] = $this->product_model->getSingleProduct($id);
         // $data['allrating'] = $this->rating_model->insert($id);
-
+        $this->load->view('base/header');
         $this->load->view('singleproduct', $data);
+        $this->load->view('base/footer');
     }
-//
-//    public function rating() {
-//        echo $this->input->post('rating');
-//        echo $this->input->post('product_id');
-//        die();
-//        $data['getpost'] = $this->category_model->getAllPostOfOneCategory($slug);
-//        $data['allcategory'] = $this->category_model->getAllCategory();
-//        // echo $slug;die();
-//
-//        $row = array(
-//            'product_slug' => $slug,
-//            'grade' => $this->input->post('star'),
-//        );
-//
-//        // print_r($row);die();
-//        $this->rating_model->insert($row);
-//
-//        $this->load->view('home/productlist', $data);
-//    }
 
+    public function rating() {
+        echo $this->input->post('rating');
+       echo $this->input->post('product_id');
+        die();
+        $data['getpost'] = $this->category_model->getAllPostOfOneCategory($slug);
+        $data['allcategory'] = $this->category_model->getAllCategory();
+         echo $slug;die();
+
+        $row = array(
+            'product_slug' => $slug,
+            'grade' => $this->input->post('star'),
+        );
+
+       print_r($row);die();
+       $this->rating_model->insert($row);
+
+        $this->load->view('home/productlist', $data);
+    }
+/*
+ * @return productlist view
+ * 
+ */
       public function allpost($id){
         $data['getpost']=$this->category_model->getAllPostOfOneCategory($id);
 		  $data['allcategory']= $this->category_model->getAllCategory();
+                   $this->load->view('base/header');
        $this->load->view('home/productlist',$data);
+        $this->load->view('base/footer');
     }
     
     public function user_status($username, $password) {
@@ -75,6 +83,11 @@ class Home extends MX_Controller {
         }
         echo json_encode($data);
     }
+    /*
+     * 
+     * @return search item
+     *  
+     */
      public function search()
     {
           $keyword = $_GET['keyword']; // you can also use $this->input->post('keyword');
@@ -83,7 +96,9 @@ class Home extends MX_Controller {
               echo "The search item is not available";
            }else{
 //               redirect(base_url().'home/search',$data);
+                $this->load->view('base/header');
                $this->load->view('home/searchlist',$data);
+                $this->load->view('base/footer');
            }
     }
 

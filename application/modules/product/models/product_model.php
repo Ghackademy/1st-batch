@@ -91,6 +91,7 @@ class Product_model extends CI_Model {
             $res = $query->result_array();
             return $res;
         }
+      
 
       
 }

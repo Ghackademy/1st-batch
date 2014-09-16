@@ -47,7 +47,10 @@ class category extends MX_Controller {
         
         }
         else{
+               $this->load->view('user/userdashboard_header');
+               $this->load->view('user/vendorsidebar');
             $this->load->view('addcategory');
+            $this->load->view('base/footer');
         }
         
     }

@@ -76,60 +76,6 @@
                     </ul>
                 </li>
             </ul>
-            <!-- Sidebar <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                           <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    
-                    <li>
-                        <a href="customer.html"><i class="fa fa-fw fa-table"></i> customer</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-edit"></i>
-                            Products<i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo1" class="collapse side nav">
-                            
-                            <li>
-                                 <a href="product.html">view Product</a>
-                                <a href="Add_product.html">Add Product</a>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a href="shipping.html"><i class="fa fa-fw fa-desktop"></i> shipping</a>
-                    </li>
-                  
-                            <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-edit"></i>
-                          Slider<i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo2" class="collapse side nav">
-                            
-                            <li>
-                                 <a href="Gallery.html">view Gallery</a>
-                                <a href="Add_slider.html">Add Slider</a>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i>
-                            Create Group<i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse side nav">
-                            <li>
-                                <label class="form"><a href="#">User type </a></label>
-                            </li>
-                            <li>
-                                <a href="#"><select class="form-control ">
-                                        <option>Admin</option>
-                                        <option>vendor</option>
-                                        <option>user</option>
-                                    </select></a>
-                        </ul>
-                    </li>
-                
-                </ul>
-            </div>
             <!-- /.navbar-collapse -->
         </nav>
 

@@ -8,12 +8,17 @@ class Cart extends MX_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('product/product_model');
-         $this->load->model('user/ion_auth_model');
-          $this->load->model('cart/cart_model');
+        $this->load->model('user/ion_auth_model');
+        $this->load->model('cart/cart_model');
         $this->load->library('session');
-         $this->load->library('ion_auth');
-        
+        $this->load->library('ion_auth');
     }
+
+    /*
+     * @return add view
+     * @PARAM int id
+     * @add cart
+     */
 
     public function add($id) {
         $data = $this->product_model->getSingleProduct($id);
@@ -24,47 +29,71 @@ class Cart extends MX_Controller {
             'price' => $data['price']
         );
         $this->cart->insert($data);
-//            echo "add($id) called";
         redirect('cart/addToCart');
-       
-    }
-    public function addToCart(){
-        $data['cartdata']=  $this->cart->contents();
-       $this->load->view('home/mycart',$data);
     }
 
-    public function total(){
-     echo $this->cart->total();
-      
-       
-    }
-    public function confirm(){
-    if (!$this->ion_auth->logged_in()){
-                redirect('home/index');
-    }
-    else{
-        foreach($this->cart->contents() as $items):
-        $data=array(
-            'product_id'=>$items['id'],
-         'product_name'=>$items['name'],
-         'product_quantity'=>$items['qty'],
-         'product_price'=>$items['price'],
-            'product_subtotal'=>$items['subtotal'],
-             'user_id'=>$this->session->userdata['user_id']   
-       );
-        $this->cart_model->insert($data);
-   endforeach;
-        
-    
-    redirect('cart/destroy');
-    }
-    }
-    
-    public function checkout(){
-        $this->load->view(paymentDetailsForm);
+    /*
+     * @return cart view
+     */
+
+    public function addToCart() {
+        $data['cartdata'] = $this->cart->contents();
+         $this->load->view('base/header');
+        $this->load->view('home/mycart', $data);
+         $this->load->view('base/footer');
     }
 
-    public function destroy(){
+    /*
+     * return total of all the cart
+     */
+
+    public function total() {
+        echo $this->cart->total();
+    }
+
+    /*
+     * @insert cart to database
+     */
+
+    public function confirm() {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('home/index');
+        } else {
+            foreach ($this->cart->contents() as $items):
+                $data = array(
+                    'product_id' => $items['id'],
+                    'product_name' => $items['name'],
+                    'product_quantity' => $items['qty'],
+                    'product_price' => $items['price'],
+                    'product_subtotal' => $items['subtotal'],
+                    'user_id' => $this->session->userdata['user_id']
+                );
+                $this->cart_model->insert($data);
+            endforeach;
+
+
+            redirect('cart/destroy');
+        }
+    }
+
+    /*
+     * @return payment view if logged in
+     * @return login view if not logged in
+     */
+
+    public function checkout() {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('home/index');
+        } else {
+            $this->load->view('paymentDetailsForm');
+        }
+    }
+
+    /*
+     * @destroy cart
+     */
+
+    public function destroy() {
 //        $id = $this->cart->contents('id');
         $this->cart->destroy();
         redirect('cart/addToCart');
