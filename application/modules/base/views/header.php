@@ -248,7 +248,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <div class="nav2Menu" data-toggle="dropdown">Contact us</div>
+                    <a href="<?php echo base_url();?>home/staticpages">Contact us</a>
 
                 </div>
 

@@ -23,7 +23,7 @@ class Home extends MX_Controller {
         $data['allcategory'] = $this->category_model->getAllCategory('tb_category');
         $data['allProductList'] = $this->product_model->get();
          $data['frontend_image']=$this->slider_model->getimage();
-         $this->load->view('base/header');
+         $this->load->view('base/header',$data);
         $this->load->view('index', $data);
           $this->load->view('base/footer');
     }
@@ -36,7 +36,6 @@ class Home extends MX_Controller {
 
     public function singleProduct($id) {
         $data['singleProduct'] = $this->product_model->getSingleProduct($id);
-        // $data['allrating'] = $this->rating_model->insert($id);
         $this->load->view('base/header');
         $this->load->view('singleproduct', $data);
         $this->load->view('base/footer');
@@ -68,6 +67,7 @@ class Home extends MX_Controller {
         $data['getpost']=$this->category_model->getAllPostOfOneCategory($id);
 		  $data['allcategory']= $this->category_model->getAllCategory();
                    $this->load->view('base/header');
+                   $this->load->view('base/sidebar');
        $this->load->view('home/productlist',$data);
         $this->load->view('base/footer');
     }
@@ -101,6 +101,11 @@ class Home extends MX_Controller {
                 $this->load->view('base/footer');
            }
     }
+    public function staticpages()
+    {
+        $this->load->view('contact_us');
+
+   }
 
 }
 

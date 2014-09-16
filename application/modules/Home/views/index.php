@@ -138,16 +138,11 @@
                                             <p><a href="home/singleProduct/<?php echo $p['product_slug']; ?>"><?php echo $p['product_name']; ?></a></p>
                                             <p><?php echo $p['price']; ?></p>
                                             <div id="wrapper" class="col-md-10 col-xs-12 col-sm-12 col-lg-10 center-block"value="<?php echo $p['product_id']; ?>">
-                                                <input type="radio" id="star1" name="star"  value="1" class="star" />
+                                              <?php for ($k=1;$k<6;$k++){?>
+                                                <input type="radio" id="star<?php echo $k;?>" name="star"  value="<?php echo $k?>" class="star" />
                                                 <label for="star1"></label>
-                                                <input type="radio" id="star2" name="star" class="star"  value="2"/>
-                                                <label for="star2"></label>
-                                                <input type="radio" id="star3" name="star" class="star"  value="3"/>
-                                                <label for="star3"></label>
-                                                <input type="radio" id="star4" name="star" class="star" value="4"/>
-                                                <label for="star4"></label>
-                                                <input type="radio" id="star5" name="star" class="star"  value="5"/>
-                                                <label for="star5"></label>
+                                              <?php }?>
+                                                
                                             </div>
                                         </div>     
                                     </div>
