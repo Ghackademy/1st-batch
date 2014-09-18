@@ -1,12 +1,12 @@
 <html>
     <head>
-        <title>Add Product</title>
+        <title>Edit Product</title>
     </head>
     <body>
     
     <?php //echo validation_errors();?>
 
-        <h2>Add Your Product Here</h2>
+        <h2>Edit Your Product Here</h2>
         <form method="post" action="" enctype="multipart/form-data">
            Product Name:<input type="text" name="pname" value="<?php echo set_value('pname');?>"><br>
            Product Description:<input type="text" name="pdescription" value="<?php echo set_value('pdescription');?>"><br>

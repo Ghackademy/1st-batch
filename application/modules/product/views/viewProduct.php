@@ -4,6 +4,7 @@
       
         <div>
              <?php foreach ($allProductList as $p): ?>
+            <h1> Posted By: <?php echo $p->first_name;?></h2><br/>
             <h2>Name: <?php echo $p->product_name;?></h2> <br>
            Description: <?php echo $p->product_description;?> <br>
            <img src="<?php echo base_url();?>uploads/product/resized/<?php echo $p->product_image;?>"/><br>

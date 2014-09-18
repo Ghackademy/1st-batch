@@ -1,224 +1,98 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+class Product_model extends CI_Model {
+    const Table = 'tb_product';
+            function __construct() {
+                // Call the Model constructor
+                parent::__construct();
+                $this->load->database();//loading database
+               
+         }
 
-class Product_model extends CI_Model
-{
-    var $gallery_path; 
-     public function __construct() {
-        parent::__construct();
-       
-    }
-    
-    //adds product details in the product table
-    //adds additional options in the option table
-    //adds featured image in the slider table
-    public function add()
-    {
-        $image = $this->do_upload();
-        $title=$this->input->post('name');
-        $category=$this->input->post('category');
-        $description=$this->input->post('description');
-        
-         //to add product details in the product table
-        $data=array(
-            'title' => $title,
-        'description' =>$description,
-        'category'=> $category,
-       'image'=> $image,
-            'price'=>$this->input->post('price'),
-        );
-        $this->db->insert('product_details', $data);
-        
-       //to insert the attitional product descriptions
-         $no=$this->input->post('itemno');
-         $id=$this->product_model->getid($title,$description,$category);//to get id of the product from database
-       for($i=1;$i<=$no;$i++)
-        {
-           
-            $data=array(
-            'option_name' => $this->input->post('optnname'.$i),
-            'option_value' => $this->input->post('optnval'.$i),
-            'product_id'=>$id,
+         /*
+          * 
+          */
+         public function getProduct($limit,$start,$where=""){
+            if($where!="")
+			$this->db->where($where);
+		
+		                             
+             $this->db->limit($limit, $start);
+             $this->db->select('*');
+             $this->db->from(product_model::Table);
+             $this->db->join('users', 'users.id = tb_product.product_id');
+            $query = $this->db->get();
+                if ($query->num_rows() > 0) {
+                        foreach ($query->result() as $row) {
+                        $data[] = $row;
+                    }
+                        return $data;
+                }
+                return false;
+         }
+         //return product value according to input
+         
+  
+         public function countProduct() {
+                return $this->db->count_all(Product_model::Table);
+         }
+         //return single id of product
+         public function getSingleProduct($id){
              
+                 $res = $this->db->get_where(Product_model::Table,array('product_slug'=>$id));
+                 $value = $res->row_array($id);
+                 //echo $this->db->last_query();die();
+                 return $value;
+            
+         }
+         
+         public function updateproduct($id,$tablename,$image){
+              $pname = $this->input->post('pname');
+              $data=array(
+             'product_name' => $this->input->post('pname'),
+             'product_description' => $this->input->post('pdescription'),
+             'product_image' => $image,
+             'shipping_detail' => $this->input->post('pdetails'),
+             'price' => $this->input->post('pprice'),
+             'featured' => $this->input->post('feature'),
+             'publish' => $this->input->post('publish'),
+             'slug'=>url_title($pname,'dash',true),
+              'stock_info' => $this->input->post('pquantity'), 
+             'cat_id' => $this->input->post('cat_title'),
             );
-            $this->db->insert('option_details', $data);
-           
+ 	$this->db->where('product_id', $id);
+	$this->db->update($tablename, $data);	
+ 
+	
+              }
+                 public function getAllStars(){
+		 $this->input->post('data');
+             $query= $this->db->get('tb_product');
+             $res = $query->result_array();
+             
+             return $res;
+		
+         }
+
+         //return no of product
+         
+         public function addProduct($data){
+                $this->db->insert(product_model::Table,$data);
+                return $this->db->insert_id();
+		
+         }
+         // insert value in database
+    public function delete_row($id) {
+        $this->db->where('product_id', $id);
+        $this->db->delete(product_model::Table);
+    }
+          public function get(){
+            $query = $this->db->get(product_model::Table);
+            $res = $query->result_array();
+            return $res;
         }
       
-        //to insert the featured image in slider
-         $a=$this->input->post('featured');
-        if($a==1)
-        {    
-        $image1 = $this->do_uploads();
-        
-             $data=array(
-            'title' => $this->input->post('name'),
-             'image'=> $image1,
-           
-        );
-             $this->db->insert('slider', $data);
-             
-        
-        }
-        echo"data inserted";
-    }
-    public function showwish($a)
-    {
-     
-        $query=$this->db->get_where('tbl_wishlist',array('user_id'=>$a));
-         $res=$query->result();
-           // print_r($res);die();
-         return $res;
-        
-        
-    }
-    
-    public function wishlist($data)
-    {
-        $query=$this->db->insert('tbl_wishlist',$data);
-        redirect('slider/index');
-    }
-    //to get id of the product whose id, description and category are given
-    public function getid($a,$b,$c)
-    {
-         $query=$this->db->get_where('product_details',array('title'=>$a,'description'=>$b,'category'=>$c));
-        $a=$query->result();
-        $b=($a[0]);
-      return $b->id;
-        
-    }
-    
-public function getdata()
-    {
-      $query = $this->db->get('product_details');        
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $data[] = $row;
-            }
-            return $data;
-        }
-        return false;
-    }
-    
-    public function getsingle($id)
-    {
-        
-        $query=$this->db->get_where('product_details',array('id'=>$id));
-        $a=$query->result();
-        return $a;
-        
-    }
 
-public function do_uploads() {
-        $config['upload_path'] = './uploads/slider/original';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '2000';
-        $config['max_width'] = '2024';
-        $config['max_height'] = '1000';
-       //print_r( $config);die();
-
-         $this->load->library('upload');
-            $this->upload->initialize($config);
-            
-         if ($this->upload->do_upload("userfile")) {
-            $data = $this->upload->data();
-            /* PATH */
-            $source = "./uploads/slider/original/" . $data['file_name'];
-            $destination_resized = "./uploads/slider/resized/";
-             $destination_thumb = "./uploads/slider/thumb/";
-            $size_resized_width = 720;
-            $size_resized_height = 300;
-            $size_thumb_width = 100;
-            $size_thumb_height = 100;
-            $this->load->library('image_moo');
-            $this->image_moo
-                    ->load($source)
-                    /* RESIZING IMAGE TO BE MEDIUM SIZE */
-                     ->make_watermark_text("stha-ruby", "./assets/fonts/DANUBE__.TTF",10, "#00CDFF")
-                    ->resize(720,300)
-                    ->watermark(2)
-                  
-                    ->save($destination_resized . $data['file_name'])
-                    
-                    ->resize_crop($size_thumb_width, $size_thumb_height)
-                    ->save($destination_thumb . $data['file_name']);
-
-            if ($this->image_moo->errors)
-                print $this->image_moo->display_errors();
-            else {
-                return $data['file_name'];
-            }
-        } else {
-            $error = strip_tags($this->upload->display_errors());
-            echo "<script type='text/javascript'>alert('.$error.');history.back(-1);</script>";
-            die();
-        }
+      
 }
-
-public function do_upload() {
-        $config['upload_path'] = './uploads/product/original';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '2000';
-        $config['max_width'] = '2024';
-        $config['max_height'] = '1000';
-       //print_r( $config);die();
-        $this->load->library('upload', $config);
-         if ($this->upload->do_upload("userfile")) {
-            $data = $this->upload->data();
-            /* PATH */
-            $source = "./uploads/product/original/" . $data['file_name'];
-            $destination_resized = "./uploads/product/resized/";
-             $destination_thumb = "./uploads/product/thumb/";
-            $size_resized_width = 720;
-            $size_resized_height = 300;
-            $size_thumb_width = 100;
-            $size_thumb_height = 100;
-            $this->load->library('image_moo');
-            $this->image_moo
-                    ->load($source)
-                    /* RESIZING IMAGE TO BE MEDIUM SIZE */
-                    ->resize(720,300)
-                    ->save($destination_resized . $data['file_name'])
-                    
-                    ->resize_crop($size_thumb_width, $size_thumb_height)
-                    ->save($destination_thumb . $data['file_name']);
-
-            if ($this->image_moo->errors)
-                print $this->image_moo->display_errors();
-            else {
-                return $data['file_name'];
-            }
-        } else {
-            $error = strip_tags($this->upload->display_errors());
-            echo "<script type='text/javascript'>alert('.$error.');history.back(-1);</script>";
-            die();
-        }
-}
-
-public function getvendor($a)
-{
-     $query=$this->db->get_where('product_details',array('id'=>$a));
-        $results=$query->result();
-        $b=($results[0]);
-      return $b->vendor_id;
-    
-}
-
-public function checkout($date,$uid,$id,$qty,$vid)
-{
-    $data=array(
-            'date' => $date,
-            'product_id'=>$id,
-            'product_qty'=>$qty,
-            'user_id'=>$uid,
-            'vendor_id'=>$vid
-            );
-     $this->db->insert('tbl_purchase', $data);
-    
-}
-}
-
-
 ?>
