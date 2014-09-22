@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>order</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+         <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        
+
+    </head> 
+    <body>
+        
+        <div class="wrapper">
+            <div class="navbar-fixed-top">
+            <div class="header ">
+                 <div class="headertext">
+                Restuarant
+            </div>
+            </div>
+            <div class="navwrapper">
+               <nav class="navbar navbar-inverse " role="navigation">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                        <li><a href="../index.html">Main</a></li>
+                    <li  class="active"><a href="#">Orders</a></li>
+                    <li><a href="../product/products.html">Products</a></li>
+                    <li><a href="../staff/staff.html">Staff</a></li>
+                    <li><a href="../reports/reports.html">Reports</a></li>
+                    <li><a href="#">Exit</a></li>
+                  </ul>
+                </div>
+                </nav>
+ 
+            </div>
+        </div>
+            
+            <section class="second ">
+                <div class="sidebar col-md-2">
+                    <ul class="nav nav-stacked">
+                       <li class="active"><a href="#">Make an order</a></li>
+                        <li><a href="order_list.html">View Order</a></li>
+                         <li><a href="find_order.html">Find Order</a></li>
+                    </ul>
+             </div>
+                <div class="order_pane col-md-9">
+                    <div class="panel panel-default">
+                 <div class="panel-heading">
+                <h3 class="panel-title">Make a new order</h3>
+                     </div>
+                    <div class="panel-body">
+                        <div class="order_list col-md-4">
+                            <table class="table table-striped">
+                                <tr><th>Quantity</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                                <tr><td>2</td>
+                                <td> buff chowmein</td>
+                                <td>50</td>
+                                </tr>
+                                <tr><td>2</td>
+                                <td> buff chowmein</td>
+                                <td>50</td>
+                                </tr>
+                            </table>
+                            <div class="order_total">
+                             <table class="table table-bordered">
+                                 <tr><td>Sub total</td>
+                                     <td>34</td></tr>
+                                 <tr><td>Sales Tax</td>
+                                     <td>34</td></tr>
+                                 <tr><td>Tip</td>
+                                     <td>34</td></tr>
+                                 <tr style="border-top:solid black"><td>Total</td>
+                                     <td>454</td></tr>
+                             </table>   
+                            </div>   
+                        </div>
+                        <div class=" menu col-md-8">
+                            <ul class="nav nav-tabs">
+  <li><a href="#Food" data-toggle="tab">Food</a></li>
+  <li><a href="#Beverages" data-toggle="tab">Beverages</a></li>
+  <li><a href="#Lunch" data-toggle="tab">Lunch</a></li>
+  <li><a href="#Breakfast" data-toggle="tab">Breakfast</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="Food">
+      <button type="button" class="btn btn-default">American Choupsey</button>
+      <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Momo<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Buff</a></li>
+    <li><a href="#">Veg</a></li>
+  </ul>
+</div>
+       <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Chowmein<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Buff</a></li>
+    <li><a href="#">Veg</a></li>
+      <li><a href="#">Egg</a></li>
+  </ul>
+</div>
+       <button type="button" class="btn btn-default">American Choupsey</button>
+      <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Momo<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Buff</a></li>
+    <li><a href="#">Veg</a></li>
+  </ul>
+</div>
+       <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Chowmein<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Buff</a></li>
+    <li><a href="#">Veg</a></li>
+      <li><a href="#">Egg</a></li>
+  </ul>
+</div>
+        <button type="button" class="btn btn-default">American Choupsey</button>
+      <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Momo<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Buff</a></li>
+    <li><a href="#">Veg</a></li>
+  </ul>
+</div>
+       <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Chowmein<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Buff</a></li>
+    <li><a href="#">Veg</a></li>
+      <li><a href="#">Egg</a></li>
+  </ul>
+</div>
+</div>
+    <div class="tab-pane" id="Beverages">
+              <button type="button" class="btn btn-default">Water Bottle</button>
+      <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Cold Drinks<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Fanta</a></li>
+    <li><a href="#">Coke</a></li>
+  </ul>
+</div>
+       <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Tea<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Milk Tea</a></li>
+    <li><a href="#">Black Tea</a></li>
+      <li><a href="#">Herbal Tea</a></li>
+  </ul>
+</div>
+    </div>
+    <div class="tab-pane" id="Lunch">
+           <button type="button" class="btn btn-default">Nepali Thali</button>
+    </div>
+    <div class="tab-pane" id="Breakfast">
+           <button type="button" class="btn btn-default">Bread and eggs</button>
+    </div>
+</div>
+                    </div>
+                        
+                    </div>
+                  
+                        <div class="panel-footer">
+                        <button type="button" class="btn btn-link pull-left">Discard</button>
+                        <button type="button" class="btn btn-link">Pay</button>
+                        <button type="button" class="btn btn-link pull-right">Done</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+           
+        </div>
+    </body> 
+</html>
